@@ -1,0 +1,41 @@
+[
+  {
+    "id": "PRIME-CONJ-1788697852",
+    "timestamp": "2026-09-06 14:30:52",
+    "model": "anthropic/claude-3-haiku",
+    "name": "Modular Transition Bias Autocorrelation",
+    "formulation": "Let $p_n$ be the $n$-th prime number. Define the modular transition function $T(p_n) = p_{n+1} \\bmod 10$. We conjecture that the autocorrelation function $R(k)$ of the stochastic process $\\{T(p_n)\\}_{n=1}^{\\infty}$ exhibits a non-trivial periodic structure, with a period of 5 and amplitudes decaying as $O(1/\\sqrt{k})$.\n\nFormally, let $\\mu = \\mathbb{E}[T(p_n)]$ be the mean of the transition function. Then we conjecture that the autocorrelation function $R(k) = \\mathbb{E}[(T(p_n) - \\mu)(T(p_{n+k}) - \\mu)] / \\text{Var}[T(p_n)]$ satisfies:\n\n$R(k) = \\begin{cases}\na_0 + a_1 \\cos\\left(\\frac{2\\pi k}{5}\\right) + a_2 \\cos\\left(\\frac{4\\pi k}{5}\\right), & \\text{if } k \\equiv 0 \\pmod 5 \\\\\nb_0 + b_1 \\cos\\left(\\frac{2\\pi k}{5}\\right) + b_2 \\cos\\left(\\frac{4\\pi k}{5}\\right), & \\text{if } k \\not\\equiv 0 \\pmod 5\n\\end{cases}$\n\nwhere $a_0, a_1, a_2, b_0, b_1, b_2 = O(1/\\sqrt{k})$.",
+    "target": "The above autocorrelation structure should hold for the first 200,000 prime numbers, with the coefficients $a_i, b_i$ satisfying the $O(1/\\sqrt{k})$ decay rate.",
+    "reasoning": "Direct derivation",
+    "code": "import numpy as np\nfrom math import pi\n\n# Fast prime number sieve\ndef primes_up_to(n):\n    is_prime = [True] * (n + 1)\n    is_prime[0] = is_prime[1] = False\n    for i in range(2, int(n ** 0.5) + 1):\n        if is_prime[i]:\n            for j in range(i * i, n + 1, i):\n                is_prime[j] = False\n    return [i for i in range(n + 1) if is_prime[i]]\n\n# Compute modular transition function\ndef T(p):\n    return p % 10\n\n# Compute autocorrelation function\ndef autocorr(x, lag):\n    mean = np.mean(x)\n    var = np.var(x)\n    acf = []\n    for k in range(lag):\n        acf.append(np.mean((x[:-k] - mean) * (x[k:] - mean)) / var)\n    return acf\n\n# Test conjecture on first 200,000 primes\nprimes = primes_up_to(200_000)\ntransitions = [T(p) for p in primes]\nacf = autocorr(transitions, 200)\n\n# Check periodic structure and decay rate\nis_supported = True\nfor k in range(0, 200, 5):\n    if not np.isclose(acf[k], acf[k+1], rtol=1e-2) or not np.isclose(acf[k], acf[k+2], rtol=1e-2):\n        is_supported = False\n        break\n    if not np.abs(acf[k]) < 1 / np.sqrt(k):\n        is_supported = False\n        break\n\nif is_supported:\n    print(\"VERDICT: SUPPORTED\")\nelse:\n    print(\"VERDICT: FALSIFIED\")",
+    "verdict": "EXECUTION ERROR (code 1)",
+    "output": "Traceback (most recent call last):\n  File \"C:\\Users\\ninic\\.gemini\\antigravity\\scratch\\prime_frontier\\outputs\\_temp_verify.py\", line 30, in <module>\n    acf = autocorr(transitions, 200)\n  File \"C:\\Users\\ninic\\.gemini\\antigravity\\scratch\\prime_frontier\\outputs\\_temp_verify.py\", line 24, in autocorr\n    acf.append(np.mean((x[:-k] - mean) * (x[k:] - mean)) / var)\n                       ~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~\nValueError: operands could not be broadcast together with shapes (0,) (17984,)",
+    "elapsed_s": 0.16
+  },
+  {
+    "id": "PRIME-CONJ-1788697830",
+    "timestamp": "2026-09-06 14:30:30",
+    "model": "anthropic/claude-3-haiku",
+    "name": "Modular Autocorrelation of Prime Gaps",
+    "formulation": "Let $p_n$ denote the $n$-th prime number, and $g_n = p_{n+1} - p_n$ be the gap between consecutive primes. We define the modular autocorrelation function of prime gaps as:\n\n$C(k) = \\frac{1}{N-k} \\sum_{n=1}^{N-k} \\delta_{g_n \\bmod 10, k}$\n\nwhere $\\delta_{i,j}$ is the Kronecker delta function, and $N$ is the total number of primes considered.\n\nWe conjecture that the modular autocorrelation function $C(k)$ exhibits a periodic pattern with period 10, reflecting the underlying modular structure of the prime numbers. Specifically, we expect the following inequalities to hold:\n\n$C(1) < C(3) \\approx C(7) > C(9)$\n\nThis pattern arises from the observed consecutive modular transition biases in the given data, where primes tend to transition more frequently between residue classes 1, 3, and 7, compared to the residue class 9.",
+    "target": "For the first 500,000 prime numbers, we expect the following bounds to hold:",
+    "reasoning": "Direct derivation",
+    "code": "import numpy as np\n\ndef is_prime(n):\n    if n <= 1:\n        return False\n    for i in range(2, int(n ** 0.5) + 1):\n        if n % i == 0:\n            return False\n    return True\n\ndef prime_gaps(n):\n    primes = []\n    p = 2\n    while len(primes) < n:\n        if is_prime(p):\n            primes.append(p)\n        p += 1\n    gaps = [primes[i+1] - primes[i] for i in range(len(primes)-1)]\n    return gaps\n\ndef modular_autocorrelation(gaps):\n    N = len(gaps)\n    C = np.zeros(10)\n    for k in range(1, 10):\n        count = 0\n        for g in gaps:\n            if g % 10 == k:\n                count += 1\n        C[k] = count / (N - k)\n    return C\n\n# Compute modular autocorrelation for first 500,000 primes\ngaps = prime_gaps(500000)\nC = modular_autocorrelation(gaps)\n\n# Check if the conjecture is supported\nif C[1] < 0.165 and 0.315 < C[3] < 0.335 and 0.315 < C[7] < 0.335 and C[9] < 0.185:\n    print(\"VERDICT: SUPPORTED\")\n    print(f\"C(1) = {C[1]:.3f}, C(3) = {C[3]:.3f}, C(7) = {C[7]:.3f}, C(9) = {C[9]:.3f}\")\nelse:\n    print(\"VERDICT: FALSIFIED\")\n    print(f\"C(1) = {C[1]:.3f}, C(3) = {C[3]:.3f}, C(7) = {C[7]:.3f}, C(9) = {C[9]:.3f}\")",
+    "verdict": "TIMEOUT EXCEEDED",
+    "output": "Computation exceeded 30 seconds.",
+    "elapsed_s": 30
+  },
+  {
+    "id": "PRIME-CONJ-1788697782",
+    "timestamp": "2026-09-06 14:29:42",
+    "model": "anthropic/claude-3-haiku",
+    "name": "Modular Transition Bias Reciprocity",
+    "formulation": "Let $p_n$ be the $n$-th prime number, and define the modular transition probabilities:\n$$P(p_n \\bmod 10 \\to p_{n+1} \\bmod 10) = \\frac{\\#\\{n: p_n \\bmod 10 = i, p_{n+1} \\bmod 10 = j\\}}{\\#\\{n: p_n \\bmod 10 = i\\}}$$\n\nWe conjecture that the modular transition probabilities exhibit a reciprocal relationship:\n$$P(i \\to j) = P(10-j \\to 10-i)$$\n\nThis suggests a symmetry in the modular autocorrelation structure of the prime sequence, where transitions to \"opposite\" residue classes occur with equal likelihood.",
+    "target": "For all $i,j \\in \\{1,3,7,9\\}$, the following inequality should hold up to the 500,000th prime:",
+    "reasoning": "Direct derivation",
+    "code": "import math\n\ndef is_prime(n):\n    if n <= 1:\n        return False\n    for i in range(2, int(math.sqrt(n)) + 1):\n        if n % i == 0:\n            return False\n    return True\n\ndef count_transitions(primes, mod=10):\n    transition_counts = [[0 for _ in range(mod)] for _ in range(mod)]\n    for i in range(len(primes)-1):\n        p, q = primes[i] % mod, primes[i+1] % mod\n        transition_counts[p][q] += 1\n    return transition_counts\n\ndef verify_conjecture(max_prime=500000):\n    primes = [p for p in range(2, max_prime+1) if is_prime(p)]\n    transitions = count_transitions(primes)\n\n    for i in [1, 3, 7, 9]:\n        for j in [1, 3, 7, 9]:\n            p_ij = transitions[i][j] / sum(transitions[i])\n            p_ji = transitions[10-j][10-i] / sum(transitions[10-j])\n            if abs(p_ij - p_ji) >= 1e-3:\n                print(f\"VERDICT: FALSIFIED\")\n                print(f\"P({i} -> {j}) = {p_ij:.4f}, P({10-j} -> {10-i}) = {p_ji:.4f}, |diff| = {abs(p_ij - p_ji):.4f}\")\n                return\n\n    print(\"VERDICT: SUPPORTED\")\n\nverify_conjecture()",
+    "verdict": "EMPIRICALLY FALSIFIED",
+    "output": "VERDICT: FALSIFIED\nP(1 -> 1) = 0.1582, P(9 -> 9) = 0.1615, |diff| = 0.0033",
+    "elapsed_s": 0.81
+  }
+]

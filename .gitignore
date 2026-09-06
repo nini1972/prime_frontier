@@ -1,0 +1,13 @@
+# Environment & Secrets
+config/.env
+.env
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+*.class
+_temp_verify.py
+
+# OS artifacts
+.DS_Store
+Thumbs.db
