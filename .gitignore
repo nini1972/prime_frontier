@@ -13,5 +13,6 @@ _temp_verify.py
 Thumbs.db
 
 
-#Ignore vscode AI rules
-.github\instructions\codacy.instructions.md
+# Ignore vscode AI rules & settings
+.github/instructions/codacy.instructions.md
+.vscode/
