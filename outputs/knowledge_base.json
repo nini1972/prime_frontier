@@ -17,6 +17,15 @@
       "timeout": 0,
       "duplicates": 0,
       "last_run": "2026-09-07 23:14:24"
+    },
+    "prime_powers": {
+      "attempts": 2,
+      "supported": 0,
+      "falsified": 1,
+      "errors": 1,
+      "timeout": 0,
+      "duplicates": 0,
+      "last_run": "2026-09-07 23:23:14"
     }
   },
   "models": {
@@ -24,10 +33,22 @@
       "attempts": 2,
       "success": 2,
       "errors": 0
+    },
+    "r1": {
+      "attempts": 1,
+      "success": 0,
+      "errors": 1
+    },
+    "qwen_math": {
+      "attempts": 1,
+      "success": 1,
+      "errors": 0
     }
   },
   "confirmed_laws": [],
   "seen_signatures": [
-    "bound|density|dominates|gap|gaps|other|sexy"
+    "bound|density|dominates|gap|gaps|other|sexy",
+    "166|315|332|about|base|beyond|but|composites|data|decreases|distribution|each|eliminated|empirical|from|given|increases|invariant|new|note|number|observation|odd|sieve|starting|sum|total",
+    "composites|contribution|frac|geq|given|interval|introduced|left|lfloor|new|number|odd|power|rfloor|right|where"
   ]
 }

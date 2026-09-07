@@ -117,14 +117,18 @@ def query_math_model(
             
             choice = res_data.get("choices", [{}])[0]
             msg = choice.get("message", {})
-            content = msg.get("content", "")
+            content = msg.get("content") or ""
+            reasoning = msg.get("reasoning") or ""
             
             # DeepSeek R1 exposes reasoning either via message.reasoning or <think> tags
-            reasoning = msg.get("reasoning")
             if not reasoning and "<think>" in content and "</think>" in content:
                 parts = content.split("</think>")
                 reasoning = parts[0].replace("<think>", "").strip()
                 content = parts[1].strip()
+                
+            # If content is empty but reasoning is present, fallback to reasoning
+            if not content and reasoning:
+                content = reasoning
                 
             return {
                 "content": content,

@@ -1,5 +1,48 @@
 [
   {
+    "id": "PRIME-CONJ-1788816194",
+    "timestamp": "2026-09-07 23:23:14",
+    "model": "qwen/qwen-2.5-72b-instruct",
+    "domain": "prime_powers",
+    "name": "Prime Power Contribution to Composites",
+    "formulation": "Let \\( p \\) be a prime number and \\( p^k \\) be a prime power where \\( k \\geq 2 \\). The number of new odd composites introduced by \\( p^k \\) in the interval \\([1, N]\\) is given by:\n\\[ C(p^k) = \\left\\lfloor \\frac{N - p^k}{p} \\right\\rfloor + 1 \\]\nwhere \\( C(p^k) \\) is the number of new odd composites introduced by \\( p^k \\).",
+    "target": "For each prime power \\( p^k \\) where \\( p \\leq \\sqrt{N} \\) and \\( k \\geq 2 \\), the number of new odd composites introduced by \\( p^k \\) in the interval \\([1, 1000]\\) should match the value computed by the formula \\( C(p^k) \\).",
+    "reasoning": "Direct derivation",
+    "code": "import numpy as np\nfrom core.sieve import generate_primes\n\n# Define the range\nN = 1000\nsqrt_N = int(np.sqrt(N))\n\n# Generate base primes up to sqrt(N)\nbase_primes = generate_primes(sqrt_N)\n\n# Prime powers up to N\nprime_powers = {\n    3: [9, 27, 81, 243, 729],\n    5: [25, 125, 625],\n    7: [49, 343],\n    11: [121],\n    13: [169],\n    17: [289],\n    19: [361],\n    23: [529],\n    29: [841],\n    31: [961]\n}\n\n# Function to compute the number of new odd composites introduced by p^k\ndef compute_new_composites(p, k, N):\n    p_k = p ** k\n    return (N - p_k) // p + 1\n\n# Verify the conjecture\nsupported = True\nfor p in base_primes:\n    if p not in prime_powers:\n        prime_powers[p] = []\n    for k in range(2, int(np.log(N) / np.log(p)) + 1):\n        p_k = p ** k\n        if p_k > N:\n            break\n        expected = compute_new_composites(p, k, N)\n        actual = prime_powers[p].count(p_k)\n        if expected != actual:\n            supported = False\n            print(f\"Conjecture falsified for p = {p}, k = {k}: expected {expected}, actual {actual}\")\n            break\n    if not supported:\n        break\n\nif supported:\n    print(\"VERDICT: SUPPORTED\")\nelse:\n    print(\"VERDICT: FALSIFIED\")",
+    "verdict": "EMPIRICALLY FALSIFIED",
+    "output": "Conjecture falsified for p = 2, k = 2: expected 499, actual 0\nVERDICT: FALSIFIED",
+    "elapsed_s": 0.14,
+    "repairs_attempted": 1
+  },
+  {
+    "id": "PRIME-CONJ-1788816145",
+    "timestamp": "2026-09-07 23:22:25",
+    "model": "deepseek/deepseek-r1-distill-llama-70b",
+    "domain": "prime_powers",
+    "name": "Empirical Prime Invariant",
+    "formulation": "We are given data about the distribution of composites eliminated by base primes in the sieve.\nObservation: The number of new odd composites eliminated by each prime p starting at p^2 decreases as p increases.\nTotal odd composites: 332. The sum of composites eliminated by primes from 3 to 17 (as given) is:\n  166 (for 3) + 66 (5) + 37 (7) + 20 (11) + 16 (13) + 10 (17) = 315.\nBut note: primes beyond",
+    "target": "Quantitative validation",
+    "reasoning": "We are given data about the distribution of composites eliminated by base primes in the sieve.\nObservation: The number of new odd composites eliminated by each prime p starting at p^2 decreases as p increases.\nTotal odd composites: 332. The sum of composites eliminated by primes from 3 to 17 (as given) is:\n  166 (for 3) + 66 (5) + 37 (7) + 20 (11) + 16 (13) + 10 (17) = 315.\nBut note: primes beyond 17 (i.e., 19, 23, 29, 31) also eliminate composites. However, the data only provided up to 17? \nActually, the data says: \"Number of new odd composites eliminated by each base prime starting at p^2: {3: 166, 5: 66, 7: 37, 11: 20, 13: 16, 17: 10}\" \nand then stops. Why? Because the next prime is 19, and 19^2 = 361, and then we go 19*19, 19*21, ... but note that 19*23 is already above 1000? \nActually",
+    "code": "",
+    "verdict": "NO CODE GENERATED",
+    "output": "",
+    "elapsed_s": 0.0,
+    "repairs_attempted": 0
+  },
+  {
+    "id": "PRIME-CONJ-1788699526",
+    "timestamp": "2026-09-06 14:58:46",
+    "model": "anthropic/claude-3-haiku",
+    "name": "Empirical Prime Invariant",
+    "formulation": "Let $p_n$ be the $n$-th prime number. Define the modular transition probabilities $P(p_n \\bmod 10 \\rightarrow p_{n+1} \\bmod 10)$ as the empirical frequencies of the transitions between the residue classes of consecutive primes modulo 10.\n\nWe conjecture that the modular transition probabilities exhibit a specific bias pattern, where certain transitions are significantly more or less likely than others. Specifically, we hypothesize that:\n\n1. The transitions $1 \\rightarrow 1$ and $9 \\rightarrow 9$ have lower probabilities than the uniform $1/4$ chance.\n2. The transitions $1 \\rightarrow 3$, $1 \\rightarrow 7$, $3 \\rightarrow 7$, and $7 \\rightarrow 1$ have higher probabilities than the uniform $1/4$ chance.\n\nMathematically, we can express this as:\n\n$P(p_n \\bmod 10 = 1 \\rightarrow p_{n+1} \\bmod 10 = 1) < 1/4$  \n$P(p_n \\bmod 10 = 9 \\rightarrow p_{n+1} \\bmod 10 = 9) < 1/4$  \n$P(p_n \\bmod 10 = 1 \\rightarrow p_{n+1} \\bmod 10 = 3) > 1/4$  \n$P(p_n \\bmod 10 = 1 \\rightarrow p_{n+1} \\bmod 10 = 7) > 1/4$  \n$P(p_n \\bmod 10 = 3 \\rightarrow p_{n+1} \\bmod 10 = 7) > 1/4$  \n$P(p_n \\bmod 10 = 7 \\rightarrow p_{n+1} \\bmod 10 = 1) > 1/4$",
+    "target": "We hypothesize that the above modular transition bias pattern will hold for the first 200,000 prime numbers, with the specific probabilities deviating from the uniform $1/4$ chance by at least 10 percentage points.",
+    "reasoning": "Direct derivation",
+    "code": "import numpy as np\n\ndef is_prime(n):\n    if n < 2:\n        return False\n    sieve = np.ones(n // 2, dtype=bool)\n    for i in range(3, int(n ** 0.5) + 1, 2):\n        if sieve[i // 2]:\n            sieve[i * i // 2::i] = False\n    return np.sum(sieve) + (n > 2)\n\nprimes = [p for p in range(2, 200_000) if is_prime(p)]\nn = len(primes)\n\n# Compute modular transition probabilities\ntransitions = np.zeros((10, 10), dtype=int)\nfor i in range(n - 1):\n    transitions[primes[i] % 10, primes[i + 1] % 10] += 1\n\ntransition_probs = transitions / (n - 1)\n\n# Check the conjecture\nsupported = True\nif transition_probs[1, 1] < 0.25 - 0.1 and transition_probs[9, 9] < 0.25 - 0.1:\n    print(\"VERDICT: SUPPORTED\")\n    print(f\"P(1 -> 1) = {transition_probs[1, 1]:.4f}\")\n    print(f\"P(9 -> 9) = {transition_probs[9, 9]:.4f}\")\nelse:\n    print(\"VERDICT: FALSIFIED\")\n    supported = False\n\nif transition_probs[1, 3] > 0.25 + 0.1 and transition_probs[1, 7] > 0.25 + 0.1 and \\\n   transition_probs[3, 7] > 0.25 + 0.1 and transition_probs[7, 1] > 0.25 + 0.1:\n    print(\"VERDICT: SUPPORTED\")\n    print(f\"P(1 -> 3) = {transition_probs[1, 3]:.4f}\")\n    print(f\"P(1 -> 7) = {transition_probs[1, 7]:.4f}\")\n    print(f\"P(3 -> 7) = {transition_probs[3, 7]:.4f}\")\n    print(f\"P(7 -> 1) = {transition_probs[7, 1]:.4f}\")\nelse:\n    print(\"VERDICT: FALSIFIED\")\n    supported = False\n\nif supported:\n    print(\"OVERALL VERDICT: SUPPORTED\")\nelse:\n    print(\"OVERALL VERDICT: FALSIFIED\")",
+    "verdict": "EMPIRICALLY SUPPORTED",
+    "output": "VERDICT: SUPPORTED\nP(1 -> 1) = 0.0000\nP(9 -> 9) = 0.0000\nVERDICT: FALSIFIED\nOVERALL VERDICT: FALSIFIED",
+    "elapsed_s": 17.89
+  },
+  {
     "id": "PRIME-CONJ-1788697852",
     "timestamp": "2026-09-06 14:30:52",
     "model": "anthropic/claude-3-haiku",

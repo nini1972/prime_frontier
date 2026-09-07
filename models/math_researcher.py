@@ -169,15 +169,15 @@ def run_hypothesis_cycle(model_alias: str = "haiku", domain_id: Optional[str] = 
         system_prompt="You are an elite research mathematician formulating testable conjectures in number theory.",
         model_alias=model_alias,
         temperature=0.2,
-        max_tokens=2000,
+        max_tokens=3500 if "r1" in model_alias else 2000,
     )
 
     if not res["success"]:
         print(f"Error querying model: {res['error']}")
         return {"success": False, "error": res["error"], "domain": domain_id}
 
-    content = res["content"]
-    reasoning = res.get("reasoning", "")
+    content = res.get("content") or res.get("reasoning") or ""
+    reasoning = res.get("reasoning") or ""
 
     # Parse sections
     name_m = re.search(r'##\s*CONJECTURE_NAME:\s*([^\n\r]+)', content)
