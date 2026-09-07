@@ -90,6 +90,10 @@ def harvest_dashboard_data() -> dict:
 def generate_html(data: dict) -> str:
     """Generate modern, responsive, dark-mode Prime Frontier dashboard."""
     json_blob = json.dumps(data)
+    zeta_badges = "".join(
+        f"<span style='background: rgba(0,242,254,0.1); border: 1px solid var(--border-highlight); color: var(--accent-cyan); padding: 0.2rem 0.5rem; border-radius: 6px;'>$\\gamma_{{{i+1}}} = {z:.4f}$</span>"
+        for i, z in enumerate(data['zeta_zeros'])
+    )
     
     html_content = f"""<!DOCTYPE html>
 <html lang="en">
@@ -608,7 +612,7 @@ def generate_html(data: dict) -> str:
                 </p>
                 <h4 style="font-size: 0.95rem; margin-bottom: 0.5rem; color: #fff;">First 10 Non-Trivial Zero Frequencies $\\gamma_k$:</h4>
                 <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; font-family: var(--font-mono); font-size: 0.8rem;">
-                    {"".join(f"<span style='background: rgba(0,242,254,0.1); border: 1px solid var(--border-highlight); color: var(--accent-cyan); padding: 0.2rem 0.5rem; border-radius: 6px;'>$\\gamma_{{{i+1}}} = {z:.4f}$</span>" for i, z in enumerate(data['zeta_zeros']))}
+                    {zeta_badges}
                 </div>
             </div>
 
