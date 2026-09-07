@@ -20,6 +20,8 @@ sys.path.insert(0, BASE_DIR)
 from core.sieve import generate_primes, compute_prime_gaps, compute_gap_statistics, find_maximal_gap_records
 from core.modular_orbits import compute_modular_transitions, compute_residue_autocorrelation
 from core.zeta_harmonics import get_zeta_zeros
+from core.domains import DOMAINS
+from models import knowledge_base as kb
 
 def harvest_dashboard_data() -> dict:
     """Harvest all mathematical metrics, plots, and conjecture records."""
@@ -52,7 +54,27 @@ def harvest_dashboard_data() -> dict:
         "ulam_spiral": "outputs/ulam_spiral.png" if os.path.exists(os.path.join(BASE_DIR, "outputs", "ulam_spiral.png")) else None,
         "sacks_spiral": "outputs/sacks_spiral.png" if os.path.exists(os.path.join(BASE_DIR, "outputs", "sacks_spiral.png")) else None,
     }
-    
+
+    # Merge the full domain registry with knowledge-base coverage stats, so every
+    # research domain shows up in the dashboard even before it has been attempted.
+    agent_world = kb.summarize(kb.load_state())
+    domain_coverage = []
+    for did, domain in DOMAINS.items():
+        s = agent_world["domains"].get(did, {})
+        domain_coverage.append({
+            "id": did,
+            "name": domain.name,
+            "description": domain.description,
+            "attempts": s.get("attempts", 0),
+            "supported": s.get("supported", 0),
+            "falsified": s.get("falsified", 0),
+            "errors": s.get("errors", 0),
+            "timeout": s.get("timeout", 0),
+            "duplicates": s.get("duplicates", 0),
+            "last_run": s.get("last_run"),
+        })
+    agent_world["domain_coverage"] = domain_coverage
+
     return {
         "generated_at": datetime.now().strftime("%B %d, %Y, %H:%M UTC"),
         "stats": stats,
@@ -61,7 +83,8 @@ def harvest_dashboard_data() -> dict:
         "autocorr": autocorr,
         "zeta_zeros": zeta_zeros,
         "conjectures": conjectures,
-        "images": images
+        "images": images,
+        "agent_world": agent_world,
     }
 
 def generate_html(data: dict) -> str:
@@ -670,12 +693,56 @@ def generate_html(data: dict) -> str:
             </p>
         </div>
 
+        <div class="glass-panel" style="margin-bottom: 2rem;">
+            <div class="panel-title"><span>🤖</span> Agent World Control Room</div>
+            <div class="panel-desc">
+                {len(data['agent_world']['domain_coverage'])} research domains, explored autonomously by
+                <code>models/agent_world.py</code>. Coverage-weighted domain selection favors under-explored
+                territory; a self-repair loop asks the model to fix its own broken verification code before
+                giving up; a duplicate-detection index rejects conjectures too similar to ones already tried.
+            </div>
+            <div style="display:flex; gap:1.5rem; flex-wrap:wrap; margin: 0.5rem 0 1.25rem;">
+                <div class="status-pill">🔁 Total Cycles: {data['agent_world']['totals']['attempts']}</div>
+                <div class="status-pill">✅ Supported: {data['agent_world']['totals']['supported']}</div>
+                <div class="status-pill">❌ Falsified: {data['agent_world']['totals']['falsified']}</div>
+                <div class="status-pill">⚠️ Errors/Timeouts: {data['agent_world']['totals']['errors'] + data['agent_world']['totals']['timeout']}</div>
+                <div class="status-pill">🪞 Duplicates Rejected: {data['agent_world']['totals']['duplicates']}</div>
+                <div class="status-pill">🏆 Confirmed Laws: {data['agent_world']['confirmed_laws_count']}</div>
+            </div>
+            <div style="max-height: 320px; overflow-y: auto;">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Research Domain</th>
+                            <th>Attempts</th>
+                            <th>Supported</th>
+                            <th>Falsified</th>
+                            <th>Errors/Timeout</th>
+                            <th>Duplicates</th>
+                            <th>Last Run</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {"".join(f'''<tr>
+                            <td style="color:#fff;">{d['name']}<div style="font-size:0.75rem;color:var(--text-muted);">{d['description']}</div></td>
+                            <td style="font-family: var(--font-mono); color: var(--text-secondary);">{d['attempts']}</td>
+                            <td style="font-family: var(--font-mono); color: var(--accent-emerald);">{d['supported']}</td>
+                            <td style="font-family: var(--font-mono); color: var(--accent-rose);">{d['falsified']}</td>
+                            <td style="font-family: var(--font-mono); color: var(--accent-amber);">{d['errors'] + d['timeout']}</td>
+                            <td style="font-family: var(--font-mono); color: var(--text-muted);">{d['duplicates']}</td>
+                            <td style="font-family: var(--font-mono); color: var(--text-muted); font-size:0.8rem;">{d['last_run'] or '—'}</td>
+                        </tr>''' for d in data['agent_world']['domain_coverage'])}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
         <div id="conjecturesFeed">
             {"".join(f'''
             <div class="conjecture-card">
                 <div class="conj-header">
                     <div>
-                        <span style="font-size: 0.75rem; font-family: var(--font-mono); color: var(--accent-cyan);">{c.get('id', 'CONJ')} • {c.get('timestamp', '')}</span>
+                        <span style="font-size: 0.75rem; font-family: var(--font-mono); color: var(--accent-cyan);">{c.get('id', 'CONJ')} • {c.get('timestamp', '')} • <span style="color: var(--accent-purple);">{DOMAINS[c['domain']].name if c.get('domain') in DOMAINS else 'legacy domain'}</span></span>
                         <div class="conj-title">{c.get('name', 'Conjecture')}</div>
                     </div>
                     <span class="verdict-badge {'verdict-supported' if 'SUPPORTED' in c.get('verdict', '') else 'verdict-falsified'}">{c.get('verdict', 'PENDING')}</span>

@@ -1,0 +1,33 @@
+{
+  "domains": {
+    "gap_dynamics": {
+      "attempts": 1,
+      "supported": 1,
+      "falsified": 0,
+      "errors": 0,
+      "timeout": 0,
+      "duplicates": 0,
+      "last_run": "2026-09-07 23:14:24"
+    },
+    "modular_bias_mod10": {
+      "attempts": 1,
+      "supported": 0,
+      "falsified": 1,
+      "errors": 0,
+      "timeout": 0,
+      "duplicates": 0,
+      "last_run": "2026-09-07 23:14:24"
+    }
+  },
+  "models": {
+    "haiku": {
+      "attempts": 2,
+      "success": 2,
+      "errors": 0
+    }
+  },
+  "confirmed_laws": [],
+  "seen_signatures": [
+    "bound|density|dominates|gap|gaps|other|sexy"
+  ]
+}
