@@ -19,19 +19,37 @@
       "last_run": "2026-09-07 23:14:24"
     },
     "prime_powers": {
-      "attempts": 2,
+      "attempts": 3,
       "supported": 0,
-      "falsified": 1,
+      "falsified": 2,
       "errors": 1,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-09-07 23:23:14"
+      "last_run": "2026-09-08 20:38:51"
+    },
+    "goldbach_partitions": {
+      "attempts": 1,
+      "supported": 0,
+      "falsified": 1,
+      "errors": 0,
+      "timeout": 0,
+      "duplicates": 0,
+      "last_run": "2026-09-08 20:39:20"
+    },
+    "modular_bias_mod30": {
+      "attempts": 1,
+      "supported": 1,
+      "falsified": 0,
+      "errors": 0,
+      "timeout": 0,
+      "duplicates": 0,
+      "last_run": "2026-09-08 20:39:34"
     }
   },
   "models": {
     "haiku": {
-      "attempts": 2,
-      "success": 2,
+      "attempts": 3,
+      "success": 3,
       "errors": 0
     },
     "r1": {
@@ -40,15 +58,30 @@
       "errors": 1
     },
     "qwen_math": {
+      "attempts": 2,
+      "success": 2,
+      "errors": 0
+    },
+    "sonnet": {
       "attempts": 1,
       "success": 1,
       "errors": 0
     }
   },
-  "confirmed_laws": [],
+  "confirmed_laws": [
+    {
+      "id": "PRIME-CONJ-1788892774",
+      "name": "Quadratic Residue Transition Asymmetry",
+      "domain": "modular_bias_mod30",
+      "timestamp": "2026-09-08 20:39:34"
+    }
+  ],
   "seen_signatures": [
     "bound|density|dominates|gap|gaps|other|sexy",
     "166|315|332|about|base|beyond|but|composites|data|decreases|distribution|each|eliminated|empirical|from|given|increases|invariant|new|note|number|observation|odd|sieve|starting|sum|total",
-    "composites|contribution|frac|geq|given|interval|introduced|left|lfloor|new|number|odd|power|rfloor|right|where"
+    "composites|contribution|frac|geq|given|interval|introduced|left|lfloor|new|number|odd|power|rfloor|right|where",
+    "adjusted|approx|approximately|cdot|composite|composites|contribution|density|factor|frac|from|given|introduced|inversely|its|left|leq|new|number|odd|power|proportional|right|specifically|starting|such|suggests",
+    "above|asserting|asymptotic|behavior|bound|bounded|denote|distinct|empirical|enough|even|express|frac|function|given|goldbach|growth|hardy|heuristic|integer|invariant|large|leq|littlewood|logarithmic|motivated|number|our|partitions|predicts|provides|rate|strengthens|sufficiently|sum|true|two|upper|ways|which",
+    "asymmetry|based|begin|bias|cases|cdot|character|chi|consecutive|delta|end|exhibit|favoring|function|measurable|mixed|mod|otherwise|pmod|product|quadratic|represents|residue|residues|same|states|systematic|text|transition|transitions|where"
   ]
 }
