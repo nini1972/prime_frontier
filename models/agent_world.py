@@ -36,7 +36,7 @@ from models.math_researcher import run_hypothesis_cycle
 from models.llm_client import load_api_key
 
 
-def run_world(cycles: int, sleep_s: float, model_aliases, domain_id=None, max_repairs: int = 2) -> None:
+def run_world(cycles: int, sleep_s: float, model_aliases, domain_id=None, max_repairs: int = 2, temperature: float = 0.7) -> None:
     if not load_api_key():
         print("=" * 72)
         print("PRIME FRONTIER AGENT WORLD -- DRY RUN (no OPENROUTER_API_KEY set)")
@@ -51,18 +51,20 @@ def run_world(cycles: int, sleep_s: float, model_aliases, domain_id=None, max_re
     prior_attempts = sum(d.get("attempts", 0) for d in state["domains"].values())
     print(f"[world] Known domains ({len(domains)}): {', '.join(domains)}")
     print(f"[world] Prior attempts recorded in knowledge base: {prior_attempts}")
+    print(f"[world] Speculation Temperature set to: {temperature}")
 
     completed = 0
     try:
         for i in range(1, cycles + 1):
             model_alias = next(model_cycle)
             chosen_domain = domain_id or kb.select_next_domain(state, domains)
-            print(f"\n=== Cycle {i}/{cycles} | domain={chosen_domain} | model={model_alias} ===")
+            print(f"\n=== Cycle {i}/{cycles} | domain={chosen_domain} | model={model_alias} | T={temperature} ===")
             try:
                 rec = run_hypothesis_cycle(
                     model_alias=model_alias,
                     domain_id=chosen_domain,
                     max_repairs=max_repairs,
+                    temperature=temperature,
                 )
             except Exception as e:
                 print(f"[world] Cycle {i} crashed unexpectedly: {e}")
@@ -99,6 +101,8 @@ def main() -> None:
     parser.add_argument("--domain", type=str, default=None,
                         help="Pin every cycle to one domain id instead of letting the explorer pick")
     parser.add_argument("--max-repairs", type=int, default=2, help="Max self-repair attempts per broken script")
+    parser.add_argument("--temperature", type=float, default=0.7,
+                        help="Sampling temperature for radical/speculative conjectures (default: 0.7)")
     args = parser.parse_args()
 
     run_world(
@@ -107,6 +111,7 @@ def main() -> None:
         model_aliases=[m.strip() for m in args.models.split(",") if m.strip()],
         domain_id=args.domain,
         max_repairs=args.max_repairs,
+        temperature=args.temperature,
     )
 
 

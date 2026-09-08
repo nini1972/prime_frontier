@@ -140,7 +140,12 @@ def attempt_repair(code: str, error_output: str, model_alias: str) -> str:
     return fixed if fixed else code
 
 
-def run_hypothesis_cycle(model_alias: str = "haiku", domain_id: Optional[str] = None, max_repairs: int = 2) -> Dict:
+def run_hypothesis_cycle(
+    model_alias: str = "haiku",
+    domain_id: Optional[str] = None,
+    max_repairs: int = 2,
+    temperature: float = 0.7
+) -> Dict:
     """
     Run one full scientific inquiry cycle:
     1. Pick a research domain (explicit, or chosen by the knowledge base's coverage-driven explorer)
@@ -163,12 +168,16 @@ def run_hypothesis_cycle(model_alias: str = "haiku", domain_id: Optional[str] = 
     harvested = domain.harvest()
     prompt = domain.prompt_template.format(**harvested)
 
-    log(f"Querying mathematical reasoning model ({model_alias})...")
+    log(f"Querying mathematical reasoning model ({model_alias}, T={temperature})...")
     res = query_math_model(
         prompt=prompt,
-        system_prompt="You are an elite research mathematician formulating testable conjectures in number theory.",
+        system_prompt=(
+            "You are a visionary mathematical researcher at the Prime Frontier laboratory. "
+            "Formulate bold, non-trivial, speculative conjectures connecting unexpected patterns in number theory. "
+            "Seek deep empirical invariants, asymptotic bounds, or harmonic resonances rather than trivial observations."
+        ),
         model_alias=model_alias,
-        temperature=0.2,
+        temperature=temperature,
         max_tokens=3500 if "r1" in model_alias else 2000,
     )
 
