@@ -1,22 +1,22 @@
 {
   "domains": {
     "gap_dynamics": {
-      "attempts": 1,
-      "supported": 1,
-      "falsified": 0,
+      "attempts": 3,
+      "supported": 2,
+      "falsified": 1,
       "errors": 0,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-09-07 23:14:24"
+      "last_run": "2026-09-08 19:04:56"
     },
     "modular_bias_mod10": {
-      "attempts": 2,
+      "attempts": 3,
       "supported": 0,
       "falsified": 2,
-      "errors": 0,
+      "errors": 1,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-09-08 20:44:51"
+      "last_run": "2026-09-08 19:03:21"
     },
     "prime_powers": {
       "attempts": 3,
@@ -37,22 +37,22 @@
       "last_run": "2026-09-08 20:39:20"
     },
     "modular_bias_mod30": {
-      "attempts": 2,
+      "attempts": 3,
       "supported": 2,
-      "falsified": 0,
+      "falsified": 1,
       "errors": 0,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-09-08 20:44:33"
+      "last_run": "2026-09-08 19:03:39"
     },
     "zeta_harmonics": {
-      "attempts": 2,
+      "attempts": 3,
       "supported": 2,
-      "falsified": 0,
+      "falsified": 1,
       "errors": 0,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-09-08 18:49:39"
+      "last_run": "2026-09-08 19:04:32"
     }
   },
   "models": {
@@ -67,17 +67,23 @@
       "errors": 1
     },
     "qwen_math": {
-      "attempts": 3,
-      "success": 3,
-      "errors": 0
+      "attempts": 5,
+      "success": 4,
+      "errors": 1
     },
     "sonnet": {
-      "attempts": 4,
-      "success": 4,
+      "attempts": 7,
+      "success": 7,
       "errors": 0
     }
   },
   "confirmed_laws": [
+    {
+      "id": "PRIME-CONJ-1788894190",
+      "name": "Harmonic Gap Resonance Conjecture",
+      "domain": "gap_dynamics",
+      "timestamp": "2026-09-08 19:03:10"
+    },
     {
       "id": "PRIME-CONJ-1788893379",
       "name": "Zeta-Prime Gap Resonance Hypothesis",
@@ -113,6 +119,11 @@
     "6413|amplitude|between|coherent|commensurate|consecutive|constructive|cos|creating|decays|delta|denote|exhibits|frac|gamma|gap|gaps|imaginary|interference|langle|left|mean|measurable|noise|non|parts|random|rangle|resonance|riemann|right|signal|slower|spacing|spacings|states|sum|than|trivial|when|where|zero|zeros|zeta",
     "000|100|125|bias|denote|empirical|enhanced|expected|frac|frequency|given|less|lower|mathematically|modulo|more|number|observed|predict|probability|ratio|residue|significantly|specifically|than|transition|uniform",
     "bmod|captures|cascade|cdot|components|consecutive|considered|constant|correction|correlations|decay|denote|deviation|eigenvalues|empirical|entries|equiv|exhibits|follow|frac|from|harmonic|higher|lambda|log|logarithmic|magnitude|mathbb|matrix|modulo|number|operator|order|ordered|pattern|pmod|predictably|radius|randomness|repulsion|residue|sim|specifically|spectral|suggesting|suggests|sum|term|then|transition|uniform|universal|where",
-    "approx|bar|between|coefficient|connections|consecutive|correlation|cos|critical|deep|distribution|exhibit|exists|frac|gamma|gap|gaps|harmonic|height|hypothesis|imaginary|left|log|logarithmic|mean|non|parameter|parts|potentially|properties|reflecting|resonance|riemann|right|scaled|scaling|spacings|spectral|states|such|suggests|sum|themselves|there|trivial|when|where|zeros|zeta"
+    "approx|bar|between|coefficient|connections|consecutive|correlation|cos|critical|deep|distribution|exhibit|exists|frac|gamma|gap|gaps|harmonic|height|hypothesis|imaginary|left|log|logarithmic|mean|non|parameter|parts|potentially|properties|reflecting|resonance|riemann|right|scaled|scaling|spacings|spectral|states|such|suggests|sum|themselves|there|trivial|when|where|zeros|zeta",
+    "among|arithmetic|cdot|combined|compared|condition|contribution|cousin|deep|denote|disproportionate|distribution|exhibit|frac|frequency|gap|gaps|harmonic|index|indicating|large|modulo|numbers|resonance|satisfy|sexy|size|small|sufficiently|suggests|twin|weight",
+    "empirical|invariant",
+    "amplification|bias|capturing|cdot|consecutive|denote|deviation|distribution|effects|equiv|exhibit|follows|frac|from|function|gcd|harmonic|left|magnitude|mathbb|nature|oscillatory|pattern|pmod|propto|residue|right|sin|sine|smaller|spacing|specifically|states|stronger|term|transition|transitions|uniform",
+    "approx|between|cdot|consecutive|constant|converges|denote|factor|frac|gamma|hypothesize|imaginary|increases|infty|left|lim|log|mean|non|part|resonance|riemann|right|scaled|spacing|specific|specifically|sum|trivial|values|when|where|zero|zeta",
+    "alpha|among|approx|cdot|combined|constant|cousin|denote|density|double|exhibit|exists|frac|function|gap|gaps|growth|harmonic|infty|leq|lim|log|logarithmic|number|predicts|rate|relationship|resonance|rho|scaled|sexy|size|specific|such|there|twin|universal"
   ]
 }
