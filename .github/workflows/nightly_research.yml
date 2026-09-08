@@ -9,7 +9,7 @@ on:
       cycles:
         description: 'Number of autonomous research cycles'
         required: false
-        default: '3'
+        default: '5'
       temperature:
         description: 'Speculation temperature'
         required: false
@@ -47,7 +47,7 @@ jobs:
         OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
       run: |
         python -m models.agent_world \
-          --cycles ${{ github.event.inputs.cycles || '3' }} \
+          --cycles ${{ github.event.inputs.cycles || '5' }} \
           --sleep 5 \
           --temperature ${{ github.event.inputs.temperature || '0.75' }} \
           --models ${{ github.event.inputs.models || 'sonnet,qwen_math' }}
