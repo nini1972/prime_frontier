@@ -10,13 +10,13 @@
       "last_run": "2026-09-08 19:04:56"
     },
     "modular_bias_mod10": {
-      "attempts": 3,
+      "attempts": 4,
       "supported": 0,
-      "falsified": 2,
+      "falsified": 3,
       "errors": 1,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-09-08 19:03:21"
+      "last_run": "2026-09-09 02:27:22"
     },
     "prime_powers": {
       "attempts": 3,
@@ -28,31 +28,31 @@
       "last_run": "2026-09-08 20:38:51"
     },
     "goldbach_partitions": {
-      "attempts": 1,
+      "attempts": 2,
       "supported": 0,
-      "falsified": 1,
+      "falsified": 2,
       "errors": 0,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-09-08 20:39:20"
+      "last_run": "2026-09-09 02:27:39"
     },
     "modular_bias_mod30": {
-      "attempts": 3,
-      "supported": 2,
+      "attempts": 4,
+      "supported": 3,
       "falsified": 1,
       "errors": 0,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-09-08 19:03:39"
+      "last_run": "2026-09-09 02:26:42"
     },
     "zeta_harmonics": {
-      "attempts": 3,
+      "attempts": 5,
       "supported": 2,
-      "falsified": 1,
+      "falsified": 3,
       "errors": 0,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-09-08 19:04:32"
+      "last_run": "2026-09-09 02:28:39"
     }
   },
   "models": {
@@ -67,17 +67,23 @@
       "errors": 1
     },
     "qwen_math": {
-      "attempts": 5,
-      "success": 4,
+      "attempts": 7,
+      "success": 6,
       "errors": 1
     },
     "sonnet": {
-      "attempts": 7,
-      "success": 7,
+      "attempts": 10,
+      "success": 10,
       "errors": 0
     }
   },
   "confirmed_laws": [
+    {
+      "id": "PRIME-CONJ-1788920802",
+      "name": "Harmonic Resonance Transition Asymmetry",
+      "domain": "modular_bias_mod30",
+      "timestamp": "2026-09-09 02:26:42"
+    },
     {
       "id": "PRIME-CONJ-1788894190",
       "name": "Harmonic Gap Resonance Conjecture",
@@ -124,6 +130,11 @@
     "empirical|invariant",
     "amplification|bias|capturing|cdot|consecutive|denote|deviation|distribution|effects|equiv|exhibit|follows|frac|from|function|gcd|harmonic|left|magnitude|mathbb|nature|oscillatory|pattern|pmod|propto|residue|right|sin|sine|smaller|spacing|specifically|states|stronger|term|transition|transitions|uniform",
     "approx|between|cdot|consecutive|constant|converges|denote|factor|frac|gamma|hypothesize|imaginary|increases|infty|left|lim|log|mean|non|part|resonance|riemann|right|scaled|spacing|specific|specifically|sum|trivial|values|when|where|zero|zeta",
-    "alpha|among|approx|cdot|combined|constant|cousin|denote|density|double|exhibit|exists|frac|function|gap|gaps|growth|harmonic|infty|leq|lim|log|logarithmic|number|predicts|rate|relationship|resonance|rho|scaled|sexy|size|specific|such|there|twin|universal"
+    "alpha|among|approx|cdot|combined|constant|cousin|denote|density|double|exhibit|exists|frac|function|gap|gaps|growth|harmonic|infty|leq|lim|log|logarithmic|number|predicts|rate|relationship|resonance|rho|scaled|sexy|size|specific|such|there|twin|universal",
+    "amplification|asymmetry|bias|bidirectional|cdot|coefficient|consecutive|denote|difference|directional|display|empirical|equiv|exhibits|factor|frac|from|gcd|harmonic|higher|large|left|log|logarithmic|modulated|modulo|pmod|probability|ratios|relative|residue|resonance|right|specifically|stronger|sum|transition|transitions|when|where",
+    "alpha|approx|approximated|attraction|based|can|captures|cdot|consecutive|cos|data|effect|empirical|enhanced|frac|from|function|given|harmonic|hypothesize|left|modeled|modulo|observed|parameter|patterns|probability|quantitatively|repulsion|residue|right|specifically|strength|transitioning|transitions|using|where",
+    "asserts|below|bound|cannot|cdot|counts|denote|deviation|even|exhibit|factor|fall|far|frac|fundamental|geq|goldbach|hardy|have|heuristic|integer|large|littlewood|logarithmic|lower|more|number|partition|partitions|predicts|ratio|resilience|sufficiently|than|they|too",
+    "approx|between|consider|denote|exists|frac|gamma|gap|gaps|given|imaginary|ldots|mean|non|numbers|parts|resonance|riemann|sequence|spacing|text|their|there|trivial|zero|zeros|zeta",
+    "amplitude|compared|cos|cosine|counts|cumulative|denote|enhancement|evaluated|exhibit|frac|frequency|gamma|gap|gaps|harmonic|height|heights|hypothesis|imaginary|left|log|logarithmic|modulation|non|part|posits|random|resonance|riemann|right|sequences|should|show|specifically|sum|systematic|through|transforms|trivial|weighted|when|where|zero|zeros|zeta"
   ]
 }
