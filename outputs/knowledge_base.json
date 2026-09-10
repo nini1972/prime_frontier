@@ -10,40 +10,40 @@
       "last_run": "2026-09-08 19:04:56"
     },
     "modular_bias_mod10": {
-      "attempts": 4,
+      "attempts": 5,
       "supported": 0,
-      "falsified": 3,
+      "falsified": 4,
       "errors": 1,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-09-09 02:27:22"
+      "last_run": "2026-09-10 02:27:21"
     },
     "prime_powers": {
-      "attempts": 3,
+      "attempts": 5,
       "supported": 0,
-      "falsified": 2,
-      "errors": 1,
+      "falsified": 3,
+      "errors": 2,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-09-08 20:38:51"
+      "last_run": "2026-09-10 02:29:53"
     },
     "goldbach_partitions": {
-      "attempts": 2,
+      "attempts": 3,
       "supported": 0,
+      "falsified": 3,
+      "errors": 0,
+      "timeout": 0,
+      "duplicates": 0,
+      "last_run": "2026-09-10 02:27:43"
+    },
+    "modular_bias_mod30": {
+      "attempts": 5,
+      "supported": 3,
       "falsified": 2,
       "errors": 0,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-09-09 02:27:39"
-    },
-    "modular_bias_mod30": {
-      "attempts": 4,
-      "supported": 3,
-      "falsified": 1,
-      "errors": 0,
-      "timeout": 0,
-      "duplicates": 0,
-      "last_run": "2026-09-09 02:26:42"
+      "last_run": "2026-09-10 02:29:15"
     },
     "zeta_harmonics": {
       "attempts": 5,
@@ -67,14 +67,14 @@
       "errors": 1
     },
     "qwen_math": {
-      "attempts": 7,
-      "success": 6,
+      "attempts": 9,
+      "success": 8,
       "errors": 1
     },
     "sonnet": {
-      "attempts": 10,
-      "success": 10,
-      "errors": 0
+      "attempts": 13,
+      "success": 12,
+      "errors": 1
     }
   },
   "confirmed_laws": [
@@ -135,6 +135,11 @@
     "alpha|approx|approximated|attraction|based|can|captures|cdot|consecutive|cos|data|effect|empirical|enhanced|frac|from|function|given|harmonic|hypothesize|left|modeled|modulo|observed|parameter|patterns|probability|quantitatively|repulsion|residue|right|specifically|strength|transitioning|transitions|using|where",
     "asserts|below|bound|cannot|cdot|counts|denote|deviation|even|exhibit|factor|fall|far|frac|fundamental|geq|goldbach|hardy|have|heuristic|integer|large|littlewood|logarithmic|lower|more|number|partition|partitions|predicts|ratio|resilience|sufficiently|than|they|too",
     "approx|between|consider|denote|exists|frac|gamma|gap|gaps|given|imaginary|ldots|mean|non|numbers|parts|resonance|riemann|sequence|spacing|text|their|there|trivial|zero|zeros|zeta",
-    "amplitude|compared|cos|cosine|counts|cumulative|denote|enhancement|evaluated|exhibit|frac|frequency|gamma|gap|gaps|harmonic|height|heights|hypothesis|imaginary|left|log|logarithmic|modulation|non|part|posits|random|resonance|riemann|right|sequences|should|show|specifically|sum|systematic|through|transforms|trivial|weighted|when|where|zero|zeros|zeta"
+    "amplitude|compared|cos|cosine|counts|cumulative|denote|enhancement|evaluated|exhibit|frac|frequency|gamma|gap|gaps|harmonic|height|heights|hypothesis|imaginary|left|log|logarithmic|modulation|non|part|posits|random|resonance|riemann|right|sequences|should|show|specifically|sum|systematic|through|transforms|trivial|weighted|when|where|zero|zeros|zeta",
+    "arithmetic|autocorrelation|between|captures|classes|consecutive|constant|correction|correlations|decay|denote|diffusive|emerges|encodes|excess|factor|frac|from|fundamental|harmonic|interplay|lag|large|local|log|logarithmic|mechanism|modulo|nature|negative|number|oscillations|reflects|repulsion|residue|residues|rho|sign|sim|some|spacing|sqrt|states|structure|sufficiently|theorem|universal|where|while",
+    "approximately|cdot|convergence|denote|estimate|even|frac|geq|goldbach|half|hardy|heuristic|holds|inequality|integer|least|littlewood|number|partitions|posits|proportional|should|suggests|threshold",
+    "5772|action|approx|cdot|composites|constant|decay|denote|denser|disproportionately|due|each|efficiency|eliminated|euler|exhibits|follows|frac|from|gamma|harmonic|having|higher|interval|large|leq|log|logarithmic|mascheroni|multiples|new|number|odd|pattern|power|ratio|resonance|sieve|sieving|smaller|sqrt|starting|structure|sufficiently|suggests|their|where",
+    "attraction|between|bias|can|classes|data|denote|deviations|distribution|enhanced|exhibit|from|geq|grounded|hypothesize|mid|mod|modulo|non|number|observed|pairs|probabilities|probability|repulsion|residue|residues|set|showing|significant|specific|specifically|strongest|take|transition|uniform|values|where",
+    "alpha|composite|composites|contribution|decay|denote|disproportionate|dominance|eliminated|elimination|few|follows|frac|from|geq|harmonic|hierarchy|influence|interval|large|law|leq|like|maintaining|new|number|odd|pattern|power|predictable|ratio|ratios|satisfy|sieve|smallest|starting|successive|sufficiently|suggests|sum|where"
   ]
 }
