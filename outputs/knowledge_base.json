@@ -1,13 +1,13 @@
 {
   "domains": {
     "gap_dynamics": {
-      "attempts": 3,
+      "attempts": 4,
       "supported": 2,
-      "falsified": 1,
+      "falsified": 2,
       "errors": 0,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-09-08 19:04:56"
+      "last_run": "2026-09-11 02:28:03"
     },
     "modular_bias_mod10": {
       "attempts": 5,
@@ -19,31 +19,31 @@
       "last_run": "2026-09-10 02:27:21"
     },
     "prime_powers": {
-      "attempts": 5,
+      "attempts": 6,
       "supported": 0,
-      "falsified": 3,
+      "falsified": 4,
       "errors": 2,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-09-10 02:29:53"
+      "last_run": "2026-09-11 02:27:28"
     },
     "goldbach_partitions": {
-      "attempts": 3,
-      "supported": 0,
+      "attempts": 5,
+      "supported": 1,
+      "falsified": 4,
+      "errors": 0,
+      "timeout": 0,
+      "duplicates": 0,
+      "last_run": "2026-09-11 02:29:02"
+    },
+    "modular_bias_mod30": {
+      "attempts": 6,
+      "supported": 3,
       "falsified": 3,
       "errors": 0,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-09-10 02:27:43"
-    },
-    "modular_bias_mod30": {
-      "attempts": 5,
-      "supported": 3,
-      "falsified": 2,
-      "errors": 0,
-      "timeout": 0,
-      "duplicates": 0,
-      "last_run": "2026-09-10 02:29:15"
+      "last_run": "2026-09-11 02:29:25"
     },
     "zeta_harmonics": {
       "attempts": 5,
@@ -67,17 +67,23 @@
       "errors": 1
     },
     "qwen_math": {
-      "attempts": 9,
-      "success": 8,
+      "attempts": 11,
+      "success": 10,
       "errors": 1
     },
     "sonnet": {
-      "attempts": 13,
-      "success": 12,
+      "attempts": 16,
+      "success": 15,
       "errors": 1
     }
   },
   "confirmed_laws": [
+    {
+      "id": "PRIME-CONJ-1789093742",
+      "name": "Sublinear Growth of Maximum Goldbach Partitions",
+      "domain": "goldbach_partitions",
+      "timestamp": "2026-09-11 02:29:02"
+    },
     {
       "id": "PRIME-CONJ-1788920802",
       "name": "Harmonic Resonance Transition Asymmetry",
@@ -140,6 +146,11 @@
     "approximately|cdot|convergence|denote|estimate|even|frac|geq|goldbach|half|hardy|heuristic|holds|inequality|integer|least|littlewood|number|partitions|posits|proportional|should|suggests|threshold",
     "5772|action|approx|cdot|composites|constant|decay|denote|denser|disproportionately|due|each|efficiency|eliminated|euler|exhibits|follows|frac|from|gamma|harmonic|having|higher|interval|large|leq|log|logarithmic|mascheroni|multiples|new|number|odd|pattern|power|ratio|resonance|sieve|sieving|smaller|sqrt|starting|structure|sufficiently|suggests|their|where",
     "attraction|between|bias|can|classes|data|denote|deviations|distribution|enhanced|exhibit|from|geq|grounded|hypothesize|mid|mod|modulo|non|number|observed|pairs|probabilities|probability|repulsion|residue|residues|set|showing|significant|specific|specifically|strongest|take|transition|uniform|values|where",
-    "alpha|composite|composites|contribution|decay|denote|disproportionate|dominance|eliminated|elimination|few|follows|frac|from|geq|harmonic|hierarchy|influence|interval|large|law|leq|like|maintaining|new|number|odd|pattern|power|predictable|ratio|ratios|satisfy|sieve|smallest|starting|successive|sufficiently|suggests|sum|where"
+    "alpha|composite|composites|contribution|decay|denote|disproportionate|dominance|eliminated|elimination|few|follows|frac|from|geq|harmonic|hierarchy|influence|interval|large|law|leq|like|maintaining|new|number|odd|pattern|power|predictable|ratio|ratios|satisfy|sieve|smallest|starting|successive|sufficiently|suggests|sum|where",
+    "approx|approximately|cdot|composites|constant|decay|decays|denote|density|diminishing|efficiency|eliminated|equal|frac|from|grow|harmonic|harmonically|interval|large|larger|leq|log|modulated|multiples|new|normalized|number|odd|point|power|quadratic|reflecting|sieve|sqrt|starting|states|sufficiently|suggests|universal|where",
+    "135|approaches|approx|based|both|constant|data|defined|denote|density|empirical|frac|grows|hypothesize|infty|large|lim|log|number|pairs|sexy|specific|specifically|states|where",
+    "abundance|approx|around|between|bounded|captures|cdot|constant|contributing|counting|counts|denote|density|effective|even|exhibits|factor|frac|function|goldbach|interplay|large|leq|local|modulation|number|oscillation|partition|partitions|ratio|regulated|specifically|sufficiently|suggesting|universal|variations|versus",
+    "any|asymptotically|bounded|but|denote|does|even|fast|frac|function|goldbach|grow|grows|growth|integer|left|leq|max|maximum|not|number|partitions|rather|right|specifically|sublinear|sublinearly|suggests|value",
+    "amplification|belongs|bias|bmod|cascade|cdot|consecutive|constructive|corresponds|create|denote|differences|equiv|exhibits|factor|frac|gcd|growth|interference|lattice|left|log|mathcal|modulo|observed|occur|pmod|probability|quadratic|residue|resonance|right|set|specific|squares|text|transition|transitions|uniform|when|where|which"
   ]
 }
