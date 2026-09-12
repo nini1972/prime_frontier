@@ -10,13 +10,13 @@
       "last_run": "2026-09-11 02:28:03"
     },
     "modular_bias_mod10": {
-      "attempts": 5,
-      "supported": 0,
+      "attempts": 6,
+      "supported": 1,
       "falsified": 4,
       "errors": 1,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-09-10 02:27:21"
+      "last_run": "2026-09-12 02:27:54"
     },
     "prime_powers": {
       "attempts": 6,
@@ -28,31 +28,31 @@
       "last_run": "2026-09-11 02:27:28"
     },
     "goldbach_partitions": {
-      "attempts": 5,
-      "supported": 1,
+      "attempts": 6,
+      "supported": 2,
       "falsified": 4,
       "errors": 0,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-09-11 02:29:02"
+      "last_run": "2026-09-12 02:26:40"
     },
     "modular_bias_mod30": {
+      "attempts": 8,
+      "supported": 4,
+      "falsified": 4,
+      "errors": 0,
+      "timeout": 0,
+      "duplicates": 0,
+      "last_run": "2026-09-12 02:28:13"
+    },
+    "zeta_harmonics": {
       "attempts": 6,
       "supported": 3,
       "falsified": 3,
       "errors": 0,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-09-11 02:29:25"
-    },
-    "zeta_harmonics": {
-      "attempts": 5,
-      "supported": 2,
-      "falsified": 3,
-      "errors": 0,
-      "timeout": 0,
-      "duplicates": 0,
-      "last_run": "2026-09-09 02:28:39"
+      "last_run": "2026-09-12 02:27:25"
     }
   },
   "models": {
@@ -67,17 +67,41 @@
       "errors": 1
     },
     "qwen_math": {
-      "attempts": 11,
-      "success": 10,
+      "attempts": 13,
+      "success": 12,
       "errors": 1
     },
     "sonnet": {
-      "attempts": 16,
-      "success": 15,
+      "attempts": 19,
+      "success": 18,
       "errors": 1
     }
   },
   "confirmed_laws": [
+    {
+      "id": "PRIME-CONJ-1789180093",
+      "name": "Arithmetic Progression Modular Resonance",
+      "domain": "modular_bias_mod30",
+      "timestamp": "2026-09-12 02:28:13"
+    },
+    {
+      "id": "PRIME-CONJ-1789180074",
+      "name": "Prime Residue Transition Asymmetry",
+      "domain": "modular_bias_mod10",
+      "timestamp": "2026-09-12 02:27:54"
+    },
+    {
+      "id": "PRIME-CONJ-1789180045",
+      "name": "Zeta-Prime Gap Resonance Hypothesis",
+      "domain": "zeta_harmonics",
+      "timestamp": "2026-09-12 02:27:25"
+    },
+    {
+      "id": "PRIME-CONJ-1789180000",
+      "name": "Goldbach Partition Density Oscillation Bound",
+      "domain": "goldbach_partitions",
+      "timestamp": "2026-09-12 02:26:40"
+    },
     {
       "id": "PRIME-CONJ-1789093742",
       "name": "Sublinear Growth of Maximum Goldbach Partitions",
@@ -151,6 +175,11 @@
     "135|approaches|approx|based|both|constant|data|defined|denote|density|empirical|frac|grows|hypothesize|infty|large|lim|log|number|pairs|sexy|specific|specifically|states|where",
     "abundance|approx|around|between|bounded|captures|cdot|constant|contributing|counting|counts|denote|density|effective|even|exhibits|factor|frac|function|goldbach|interplay|large|leq|local|modulation|number|oscillation|partition|partitions|ratio|regulated|specifically|sufficiently|suggesting|universal|variations|versus",
     "any|asymptotically|bounded|but|denote|does|even|fast|frac|function|goldbach|grow|grows|growth|integer|left|leq|max|maximum|not|number|partitions|rather|right|specifically|sublinear|sublinearly|suggests|value",
-    "amplification|belongs|bias|bmod|cascade|cdot|consecutive|constructive|corresponds|create|denote|differences|equiv|exhibits|factor|frac|gcd|growth|interference|lattice|left|log|mathcal|modulo|observed|occur|pmod|probability|quadratic|residue|resonance|right|set|specific|squares|text|transition|transitions|uniform|when|where|which"
+    "amplification|belongs|bias|bmod|cascade|cdot|consecutive|constructive|corresponds|create|denote|differences|equiv|exhibits|factor|frac|gcd|growth|interference|lattice|left|log|mathcal|modulo|observed|occur|pmod|probability|quadratic|residue|resonance|right|set|specific|squares|text|transition|transitions|uniform|when|where|which",
+    "absolute|approx|average|behavior|bound|bounds|change|constant|delta|denote|density|deviation|deviations|even|frac|geq|goldbach|hardy|heuristic|infty|large|leq|limsup|littlewood|normalized|number|oscillation|oscillatory|partition|partitions|rate|relative|satisfies|sufficiently|sum|where",
+    "approx|bias|can|captures|cdot|class|classes|consecutive|consider|denote|deviation|empirical|epsilon|frac|frequency|from|function|hypothesize|mod|modeled|modular|modulo|number|probability|product|proportional|propto|refined|refinement|residue|residues|sequence|specifically|term|transition|uniformity|where",
+    "amplitude|approx|bounded|characteristic|coefficient|constant|cos|decay|exhibits|frac|gamma|gap|hypothesis|imaginary|langle|left|leq|log|mean|near|non|oscillatory|part|rangle|resonance|riemann|right|some|sqrt|states|sum|trivial|universal|where|zero|zeta",
+    "asymmetry|attracted|attraction|data|denote|exhibit|given|mod|modulo|motivated|number|observed|pattern|phenomena|probabilities|probability|repelled|repulsion|residue|specific|states|transition|where",
+    "125|alpha|approx|arithmetic|bmod|cdot|compatibility|consecutive|correspond|denote|deviations|dissonant|empirical|enhanced|equiv|exhibit|forming|frac|from|gcd|harmonic|higher|index|low|mathcal|max|memory|modular|parameter|patterns|pmod|probabilities|probability|progression|progressions|residues|resonance|satisfies|sign|specifically|states|strength|suppressed|text|transition|transitions|uniform|values|where|while"
   ]
 }
