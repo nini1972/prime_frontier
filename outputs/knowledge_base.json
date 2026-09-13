@@ -1,22 +1,22 @@
 {
   "domains": {
     "gap_dynamics": {
-      "attempts": 4,
+      "attempts": 7,
       "supported": 2,
-      "falsified": 2,
+      "falsified": 5,
       "errors": 0,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-09-11 02:28:03"
+      "last_run": "2026-09-13 02:30:04"
     },
     "modular_bias_mod10": {
-      "attempts": 6,
+      "attempts": 7,
       "supported": 1,
-      "falsified": 4,
+      "falsified": 5,
       "errors": 1,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-09-12 02:27:54"
+      "last_run": "2026-09-13 02:29:50"
     },
     "prime_powers": {
       "attempts": 6,
@@ -37,13 +37,13 @@
       "last_run": "2026-09-12 02:26:40"
     },
     "modular_bias_mod30": {
-      "attempts": 8,
+      "attempts": 9,
       "supported": 4,
-      "falsified": 4,
+      "falsified": 5,
       "errors": 0,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-09-12 02:28:13"
+      "last_run": "2026-09-13 02:28:23"
     },
     "zeta_harmonics": {
       "attempts": 6,
@@ -67,13 +67,13 @@
       "errors": 1
     },
     "qwen_math": {
-      "attempts": 13,
-      "success": 12,
+      "attempts": 15,
+      "success": 14,
       "errors": 1
     },
     "sonnet": {
-      "attempts": 19,
-      "success": 18,
+      "attempts": 22,
+      "success": 21,
       "errors": 1
     }
   },
@@ -180,6 +180,11 @@
     "approx|bias|can|captures|cdot|class|classes|consecutive|consider|denote|deviation|empirical|epsilon|frac|frequency|from|function|hypothesize|mod|modeled|modular|modulo|number|probability|product|proportional|propto|refined|refinement|residue|residues|sequence|specifically|term|transition|uniformity|where",
     "amplitude|approx|bounded|characteristic|coefficient|constant|cos|decay|exhibits|frac|gamma|gap|hypothesis|imaginary|langle|left|leq|log|mean|near|non|oscillatory|part|rangle|resonance|riemann|right|some|sqrt|states|sum|trivial|universal|where|zero|zeta",
     "asymmetry|attracted|attraction|data|denote|exhibit|given|mod|modulo|motivated|number|observed|pattern|phenomena|probabilities|probability|repelled|repulsion|residue|specific|states|transition|where",
-    "125|alpha|approx|arithmetic|bmod|cdot|compatibility|consecutive|correspond|denote|deviations|dissonant|empirical|enhanced|equiv|exhibit|forming|frac|from|gcd|harmonic|higher|index|low|mathcal|max|memory|modular|parameter|patterns|pmod|probabilities|probability|progression|progressions|residues|resonance|satisfies|sign|specifically|states|strength|suppressed|text|transition|transitions|uniform|values|where|while"
+    "125|alpha|approx|arithmetic|bmod|cdot|compatibility|consecutive|correspond|denote|deviations|dissonant|empirical|enhanced|equiv|exhibit|forming|frac|from|gcd|harmonic|higher|index|low|mathcal|max|memory|modular|parameter|patterns|pmod|probabilities|probability|progression|progressions|residues|resonance|satisfies|sign|specifically|states|strength|suppressed|text|transition|transitions|uniform|values|where|while",
+    "618|alpha|approx|cdot|combined|conjugate|considered|constant|cousin|deep|denote|density|distribution|dominates|even|exists|favors|frac|frequencies|function|gap|gaps|geq|golden|harmonic|mathbf|number|ratio|reciprocal|reflecting|resonance|rho|sexy|small|smaller|states|such|suggests|sum|their|there|total|twin|universal|weight|weighted|when|where",
+    "bias|certain|class|classes|expected|from|given|higher|hypothesize|least|lower|modular|modulo|not|others|pairs|probability|refinement|residue|significantly|specifically|times|transition|uniform",
+    "alpha|approx|captures|combined|compared|constant|cousin|deep|denote|density|disproportionate|distribution|empirical|even|exhibit|exists|frac|function|gap|gaps|harmonic|observation|resonance|sexy|small|states|such|suggesting|sum|there|twin|universal|weight",
+    "between|bias|biased|can|consecutive|enhanced|equiv|exhibit|formulated|influenced|mathematically|modulo|non|pmod|posits|probabilities|probability|properties|quadratic|residue|residues|specifically|then|towards|transition|transitions|while",
+    "alpha|among|approaching|approx|cdot|constant|count|deep|denote|exhibit|frac|frequency|gap|gaps|harmonic|hierarchy|large|left|leq|multiplicative|normalized|ratio|ratios|reflecting|relationship|resonance|right|satisfy|size|small|structure|sufficiently|suggests|twin|universal|when|where"
   ]
 }
