@@ -28,31 +28,31 @@
       "last_run": "2026-09-11 02:27:28"
     },
     "goldbach_partitions": {
-      "attempts": 6,
+      "attempts": 7,
       "supported": 2,
-      "falsified": 4,
-      "errors": 0,
-      "timeout": 0,
-      "duplicates": 0,
-      "last_run": "2026-09-12 02:26:40"
-    },
-    "modular_bias_mod30": {
-      "attempts": 9,
-      "supported": 4,
       "falsified": 5,
       "errors": 0,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-09-13 02:28:23"
+      "last_run": "2026-09-14 02:31:50"
     },
-    "zeta_harmonics": {
-      "attempts": 6,
-      "supported": 3,
-      "falsified": 3,
+    "modular_bias_mod30": {
+      "attempts": 12,
+      "supported": 5,
+      "falsified": 7,
       "errors": 0,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-09-12 02:27:25"
+      "last_run": "2026-09-14 02:31:33"
+    },
+    "zeta_harmonics": {
+      "attempts": 7,
+      "supported": 3,
+      "falsified": 4,
+      "errors": 0,
+      "timeout": 0,
+      "duplicates": 0,
+      "last_run": "2026-09-14 02:30:48"
     }
   },
   "models": {
@@ -67,17 +67,23 @@
       "errors": 1
     },
     "qwen_math": {
-      "attempts": 15,
-      "success": 14,
+      "attempts": 17,
+      "success": 16,
       "errors": 1
     },
     "sonnet": {
-      "attempts": 22,
-      "success": 21,
+      "attempts": 25,
+      "success": 24,
       "errors": 1
     }
   },
   "confirmed_laws": [
+    {
+      "id": "PRIME-CONJ-1789353093",
+      "name": "Enhanced Modular Repulsion Hypothesis",
+      "domain": "modular_bias_mod30",
+      "timestamp": "2026-09-14 02:31:33"
+    },
     {
       "id": "PRIME-CONJ-1789180093",
       "name": "Arithmetic Progression Modular Resonance",
@@ -185,6 +191,11 @@
     "bias|certain|class|classes|expected|from|given|higher|hypothesize|least|lower|modular|modulo|not|others|pairs|probability|refinement|residue|significantly|specifically|times|transition|uniform",
     "alpha|approx|captures|combined|compared|constant|cousin|deep|denote|density|disproportionate|distribution|empirical|even|exhibit|exists|frac|function|gap|gaps|harmonic|observation|resonance|sexy|small|states|such|suggesting|sum|there|twin|universal|weight",
     "between|bias|biased|can|consecutive|enhanced|equiv|exhibit|formulated|influenced|mathematically|modulo|non|pmod|posits|probabilities|probability|properties|quadratic|residue|residues|specifically|then|towards|transition|transitions|while",
-    "alpha|among|approaching|approx|cdot|constant|count|deep|denote|exhibit|frac|frequency|gap|gaps|harmonic|hierarchy|large|left|leq|multiplicative|normalized|ratio|ratios|reflecting|relationship|resonance|right|satisfy|size|small|structure|sufficiently|suggests|twin|universal|when|where"
+    "alpha|among|approaching|approx|cdot|constant|count|deep|denote|exhibit|frac|frequency|gap|gaps|harmonic|hierarchy|large|left|leq|multiplicative|normalized|ratio|ratios|reflecting|relationship|resonance|right|satisfy|size|small|structure|sufficiently|suggests|twin|universal|when|where",
+    "alpha|amplification|approx|attraction|beta|bias|cases|cdot|character|classes|consecutive|controls|coprime|correlated|correspond|decay|distance|distances|equiv|exhibits|extreme|frac|left|mathbb|maximum|min|minimum|modular|modulo|observed|parameter|pmod|probability|quadratic|rate|reduced|repulsion|residue|respectively|right|should|specifically|structure|systematic|then|transition|where",
+    "approx|approximately|between|consecutive|considered|correlation|data|denote|empirical|equal|frac|function|gamma|harmonic|imaginary|left|log|mean|montgomery|motivated|non|number|pair|part|posits|provided|riemann|right|spacing|sum|trivial|where|zero|zeros|zeta",
+    "bias|cascade|cdot|character|chi|consecutive|correlated|enhanced|equiv|exhibit|expectation|frac|function|left|legendre|pairs|pmod|probability|quadratic|relative|repulsion|residue|right|should|show|states|symbol|systematic|transition|transitions|uniform|where|while",
+    "another|being|congruent|consecutive|consider|denote|denoted|enhanced|equiv|followed|frac|from|given|hypothesis|hypothesize|leq|minimized|mod|modular|modulo|neq|number|probability|quad|repulsion|sequence|specifically|text|total|transition|transitions|when",
+    "alpha|approx|approximately|asymptotic|bound|cdot|constant|denote|even|exhibits|exists|factor|frac|geq|goldbach|hardy|harmonic|heuristic|infty|integer|large|liminf|littlewood|lower|number|partitions|ratio|resonance|stronger|such|sufficiently|suggests|than|there|universal"
   ]
 }
