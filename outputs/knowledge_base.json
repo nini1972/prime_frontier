@@ -28,22 +28,22 @@
       "last_run": "2026-09-17 02:28:56"
     },
     "goldbach_partitions": {
-      "attempts": 8,
-      "supported": 2,
-      "falsified": 6,
+      "attempts": 11,
+      "supported": 3,
+      "falsified": 8,
       "errors": 0,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-09-15 02:27:58"
+      "last_run": "2026-09-18 02:30:22"
     },
     "modular_bias_mod30": {
-      "attempts": 14,
+      "attempts": 16,
       "supported": 5,
-      "falsified": 9,
+      "falsified": 11,
       "errors": 0,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-09-16 02:28:38"
+      "last_run": "2026-09-18 02:29:09"
     },
     "zeta_harmonics": {
       "attempts": 10,
@@ -67,17 +67,23 @@
       "errors": 1
     },
     "qwen_math": {
-      "attempts": 23,
-      "success": 22,
+      "attempts": 25,
+      "success": 24,
       "errors": 1
     },
     "sonnet": {
-      "attempts": 34,
-      "success": 33,
+      "attempts": 37,
+      "success": 36,
       "errors": 1
     }
   },
   "confirmed_laws": [
+    {
+      "id": "PRIME-CONJ-1789698565",
+      "name": "Prime Gap Resonance in Goldbach Partitions",
+      "domain": "goldbach_partitions",
+      "timestamp": "2026-09-18 02:29:25"
+    },
     {
       "id": "PRIME-CONJ-1789612090",
       "name": "Zeta-Prime Gap Resonance Conjecture",
@@ -235,6 +241,11 @@
     "approx|approximately|asymptotically|average|cdot|certain|chosen|constant|frac|gamma|gap|harmonic|hypothesize|imaginary|langle|log|mean|non|number|parts|proportional|rangle|resonance|riemann|spacing|specifically|such|sum|threshold|trivial|where|zeros|zeta",
     "act|amplify|amplitude|between|coherent|compute|connection|correlations|cos|deep|denote|discrete|distribution|exhibit|fourier|frac|frequencies|gamma|gap|gaps|growth|imaginary|irregularities|left|lfloor|like|locations|non|oscillations|part|periods|reciprocal|reflecting|resonance|resulting|rfloor|right|sequence|should|specifically|states|sum|systematic|trivial|tuning|when|zero|zeros|zeta",
     "approx|average|bar|between|consecutive|considered|correlation|delta|denote|follow|frac|gamma|gap|geometric|gue|harmonic|harmonically|imaginary|interval|log|matrix|mean|montgomery|non|number|pair|part|propose|random|related|resonance|riemann|spacing|spacings|specific|specifically|statistics|suggests|sum|trivial|unfolded|where|zero|zeros|zeta",
-    "absolute|approx|around|bounded|cdot|coefficient|composites|constant|converges|decay|denote|density|deviation|each|efficiency|eliminated|exhibits|frac|from|harmonic|its|large|left|leq|lfloor|log|logarithmic|new|normalized|number|odd|oscillation|power|rfloor|right|sieve|sieving|sqrt|starting|sufficiently|suggests|universal|when|where"
+    "absolute|approx|around|bounded|cdot|coefficient|composites|constant|converges|decay|denote|density|deviation|each|efficiency|eliminated|exhibits|frac|from|harmonic|its|large|left|leq|lfloor|log|logarithmic|new|normalized|number|odd|oscillation|power|rfloor|right|sieve|sieving|sqrt|starting|sufficiently|suggests|universal|when|where",
+    "amplification|cdot|character|chi|compared|consecutive|deep|distribution|enhanced|exhibit|frac|interaction|jacobi|left|modulo|patterns|pmod|probability|quadratic|reciprocity|reflects|residue|residues|right|show|states|suppression|symbol|those|transition|transitions|uniform|where|while",
+    "alpha|attraction|but|can|captures|cdot|classes|consecutive|constant|cos|data|effect|effects|empirical|enhanced|expected|follow|frac|from|function|given|harmonic|hypothesize|incorporates|inversely|left|magnitude|modeled|modular|modulo|negative|not|numbers|pattern|positive|probabilities|probability|proportional|repulsion|residue|resonance|right|small|specific|specifically|strength|term|transition|uniform|where",
+    "absolute|around|bounded|cdot|constant|counting|denote|density|even|exhibits|frac|function|gap|goldbach|infty|left|leq|limsup|log|mean|number|oscillations|overline|partition|partitions|prod|resonance|rho|right|slowly|some|specifically|sqrt|states|sum|varying|weighted|where",
+    "approx|based|can|constant|convergence|converges|data|denote|density|empirical|estimate|even|expressed|frac|goldbach|grows|hardy|heuristic|hypothesize|infty|integer|lim|littlewood|mathematically|mean|number|observed|partition|partitions|ratio|sum|where",
+    "amplitude|approx|arithmetic|around|bounded|capture|cdot|constant|converges|corrections|decay|deep|denote|density|distributions|even|exhibits|frac|goldbach|grows|hardy|heuristic|large|left|leq|like|limiting|littlewood|logarithmic|normalized|number|oscillation|oscillations|partition|partitions|rho|right|roughly|sequence|specifically|sqrt|structure|sufficiently|suggests|universal|where|while"
   ]
 }
