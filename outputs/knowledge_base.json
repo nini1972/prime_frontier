@@ -1,22 +1,22 @@
 {
   "domains": {
     "gap_dynamics": {
-      "attempts": 10,
-      "supported": 3,
+      "attempts": 11,
+      "supported": 4,
       "falsified": 7,
       "errors": 0,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-09-16 02:26:58"
+      "last_run": "2026-09-19 02:27:33"
     },
     "modular_bias_mod10": {
-      "attempts": 10,
-      "supported": 1,
+      "attempts": 11,
+      "supported": 2,
       "falsified": 8,
       "errors": 1,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-09-16 02:28:55"
+      "last_run": "2026-09-19 02:27:05"
     },
     "prime_powers": {
       "attempts": 9,
@@ -28,31 +28,31 @@
       "last_run": "2026-09-17 02:28:56"
     },
     "goldbach_partitions": {
-      "attempts": 11,
+      "attempts": 12,
       "supported": 3,
-      "falsified": 8,
+      "falsified": 9,
       "errors": 0,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-09-18 02:30:22"
+      "last_run": "2026-09-19 02:26:12"
     },
     "modular_bias_mod30": {
-      "attempts": 16,
+      "attempts": 17,
       "supported": 5,
-      "falsified": 11,
+      "falsified": 12,
       "errors": 0,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-09-18 02:29:09"
+      "last_run": "2026-09-19 02:25:51"
     },
     "zeta_harmonics": {
-      "attempts": 10,
-      "supported": 4,
+      "attempts": 11,
+      "supported": 5,
       "falsified": 6,
       "errors": 0,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-09-17 02:28:39"
+      "last_run": "2026-09-19 02:26:29"
     }
   },
   "models": {
@@ -67,17 +67,35 @@
       "errors": 1
     },
     "qwen_math": {
-      "attempts": 25,
-      "success": 24,
+      "attempts": 27,
+      "success": 26,
       "errors": 1
     },
     "sonnet": {
-      "attempts": 37,
-      "success": 36,
+      "attempts": 40,
+      "success": 39,
       "errors": 1
     }
   },
   "confirmed_laws": [
+    {
+      "id": "PRIME-CONJ-1789784853",
+      "name": "Harmonic Gap Resonance Conjecture",
+      "domain": "gap_dynamics",
+      "timestamp": "2026-09-19 02:27:33"
+    },
+    {
+      "id": "PRIME-CONJ-1789784825",
+      "name": "Enhanced Residue Transition Bias",
+      "domain": "modular_bias_mod10",
+      "timestamp": "2026-09-19 02:27:05"
+    },
+    {
+      "id": "PRIME-CONJ-1789784789",
+      "name": "Zeta-Prime Gap Resonance Conjecture",
+      "domain": "zeta_harmonics",
+      "timestamp": "2026-09-19 02:26:29"
+    },
     {
       "id": "PRIME-CONJ-1789698565",
       "name": "Prime Gap Resonance in Goldbach Partitions",
@@ -246,6 +264,11 @@
     "alpha|attraction|but|can|captures|cdot|classes|consecutive|constant|cos|data|effect|effects|empirical|enhanced|expected|follow|frac|from|function|given|harmonic|hypothesize|incorporates|inversely|left|magnitude|modeled|modular|modulo|negative|not|numbers|pattern|positive|probabilities|probability|proportional|repulsion|residue|resonance|right|small|specific|specifically|strength|term|transition|uniform|where",
     "absolute|around|bounded|cdot|constant|counting|denote|density|even|exhibits|frac|function|gap|goldbach|infty|left|leq|limsup|log|mean|number|oscillations|overline|partition|partitions|prod|resonance|rho|right|slowly|some|specifically|sqrt|states|sum|varying|weighted|where",
     "approx|based|can|constant|convergence|converges|data|denote|density|empirical|estimate|even|expressed|frac|goldbach|grows|hardy|heuristic|hypothesize|infty|integer|lim|littlewood|mathematically|mean|number|observed|partition|partitions|ratio|sum|where",
-    "amplitude|approx|arithmetic|around|bounded|capture|cdot|constant|converges|corrections|decay|deep|denote|density|distributions|even|exhibits|frac|goldbach|grows|hardy|heuristic|large|left|leq|like|limiting|littlewood|logarithmic|normalized|number|oscillation|oscillations|partition|partitions|rho|right|roughly|sequence|specifically|sqrt|structure|sufficiently|suggests|universal|where|while"
+    "amplitude|approx|arithmetic|around|bounded|capture|cdot|constant|converges|corrections|decay|deep|denote|density|distributions|even|exhibits|frac|goldbach|grows|hardy|heuristic|large|left|leq|like|limiting|littlewood|logarithmic|normalized|number|oscillation|oscillations|partition|partitions|rho|right|roughly|sequence|specifically|sqrt|structure|sufficiently|suggests|universal|where|while",
+    "amplification|behavior|beyond|bias|cdot|character|chi|clustering|concordant|consecutive|correlation|effect|enhanced|equiv|exhibit|exhibits|frac|hypothesis|jacobi|left|lemke|mathbb|mid|modulo|oliver|pmod|product|quadratic|residue|right|soundararajan|specifically|strong|suggests|symbol|transition|where",
+    "asymptotic|based|below|bounded|constant|data|denote|density|empirical|even|frac|geq|goldbach|hypothesize|infty|integer|large|liminf|number|partition|partitions|positive|propose|ratio|specifically|sufficiently|where",
+    "absolute|amplitude|between|cdot|constant|constructive|cos|coupling|deep|distribution|exhibits|frac|frequencies|function|gamma|gap|harmonic|imaginary|interference|irregularities|large|left|lfloor|local|log|non|parts|reflects|resonance|rfloor|riemann|right|spectral|sqrt|states|sufficiently|sum|trivial|where|zeros|zeta",
+    "any|attracted|bias|consecutive|consider|data|denote|denoted|empirical|enhanced|exhibit|formally|frac|from|left|less|mod|modulo|number|numbers|probability|repelled|residue|right|sequence|shows|specifically|strongly|than|their|transition|transitioning|transitions|while",
+    "alpha|approx|arising|asymptotic|beta|captures|convergence|correction|corrections|denote|density|distribution|exhibits|frac|from|gap|harmonic|index|irregularities|left|log|logarithmic|normalized|oscillatory|represents|resonance|right|states|sum|term|where"
   ]
 }
