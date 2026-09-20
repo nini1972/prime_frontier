@@ -10,31 +10,31 @@
       "last_run": "2026-09-19 02:27:33"
     },
     "modular_bias_mod10": {
-      "attempts": 11,
-      "supported": 2,
+      "attempts": 12,
+      "supported": 3,
       "falsified": 8,
       "errors": 1,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-09-19 02:27:05"
+      "last_run": "2026-09-20 02:29:07"
     },
     "prime_powers": {
-      "attempts": 9,
+      "attempts": 10,
       "supported": 2,
-      "falsified": 5,
+      "falsified": 6,
       "errors": 2,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-09-17 02:28:56"
+      "last_run": "2026-09-20 02:28:22"
     },
     "goldbach_partitions": {
-      "attempts": 12,
-      "supported": 3,
-      "falsified": 9,
+      "attempts": 14,
+      "supported": 4,
+      "falsified": 10,
       "errors": 0,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-09-19 02:26:12"
+      "last_run": "2026-09-20 02:29:24"
     },
     "modular_bias_mod30": {
       "attempts": 17,
@@ -67,17 +67,29 @@
       "errors": 1
     },
     "qwen_math": {
-      "attempts": 27,
-      "success": 26,
+      "attempts": 28,
+      "success": 27,
       "errors": 1
     },
     "sonnet": {
-      "attempts": 40,
-      "success": 39,
+      "attempts": 43,
+      "success": 42,
       "errors": 1
     }
   },
   "confirmed_laws": [
+    {
+      "id": "PRIME-CONJ-1789871347",
+      "name": "Prime Residue Transition Asymmetry",
+      "domain": "modular_bias_mod10",
+      "timestamp": "2026-09-20 02:29:07"
+    },
+    {
+      "id": "PRIME-CONJ-1789871278",
+      "name": "Prime Gap Goldbach Resonance",
+      "domain": "goldbach_partitions",
+      "timestamp": "2026-09-20 02:27:58"
+    },
     {
       "id": "PRIME-CONJ-1789784853",
       "name": "Harmonic Gap Resonance Conjecture",
@@ -269,6 +281,10 @@
     "asymptotic|based|below|bounded|constant|data|denote|density|empirical|even|frac|geq|goldbach|hypothesize|infty|integer|large|liminf|number|partition|partitions|positive|propose|ratio|specifically|sufficiently|where",
     "absolute|amplitude|between|cdot|constant|constructive|cos|coupling|deep|distribution|exhibits|frac|frequencies|function|gamma|gap|harmonic|imaginary|interference|irregularities|large|left|lfloor|local|log|non|parts|reflects|resonance|rfloor|riemann|right|spectral|sqrt|states|sufficiently|sum|trivial|where|zeros|zeta",
     "any|attracted|bias|consecutive|consider|data|denote|denoted|empirical|enhanced|exhibit|formally|frac|from|left|less|mod|modulo|number|numbers|probability|repelled|residue|right|sequence|shows|specifically|strongly|than|their|transition|transitioning|transitions|while",
-    "alpha|approx|arising|asymptotic|beta|captures|convergence|correction|corrections|denote|density|distribution|exhibits|frac|from|gap|harmonic|index|irregularities|left|log|logarithmic|normalized|oscillatory|represents|resonance|right|states|sum|term|where"
+    "alpha|approx|arising|asymptotic|beta|captures|convergence|correction|corrections|denote|density|distribution|exhibits|frac|from|gap|harmonic|index|irregularities|left|log|logarithmic|normalized|oscillatory|represents|resonance|right|states|sum|term|where",
+    "approx|bound|cdot|constant|containing|denote|density|even|exhibits|frac|gamma|gap|goldbach|harmonic|large|left|length|leq|lfloor|number|partition|partitions|resonance|rfloor|rho|right|size|sliding|some|sqrt|sufficiently|text|universal|var|variance|weighted|where|windows",
+    "across|between|bound|captures|cdot|composites|decay|deep|denote|efficiency|eliminated|exhibit|frac|from|geometric|harmonic|influence|interval|its|large|leq|lfloor|line|log|new|number|odd|power|quadratic|relationship|resonance|rfloor|sieve|sieving|sqrt|starting|sufficiently|threshold|universal|values",
+    "asymmetry|based|data|denote|empirical|exhibit|followed|from|likely|mathematically|mod|more|observe|probabilities|probability|residue|residues|reverse|specific|specifically|state|than|transition|transitions",
+    "analogue|approx|approximately|asserts|baseline|below|bound|cannot|cdot|constant|correction|density|drop|even|exhibits|fluctuate|fluctuations|frac|function|fundamental|geq|goldbach|governed|hardy|heuristic|infty|integers|large|left|littlewood|logarithmic|lower|may|minus|partition|resonance|right|significantly|sim|specifically|sqrt|sufficiently|term|twin|vanishes|where|while"
   ]
 }
