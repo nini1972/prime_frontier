@@ -10,13 +10,13 @@
       "last_run": "2026-09-23 02:28:57"
     },
     "modular_bias_mod10": {
-      "attempts": 13,
+      "attempts": 15,
       "supported": 3,
-      "falsified": 9,
+      "falsified": 11,
       "errors": 1,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-09-23 02:29:15"
+      "last_run": "2026-09-24 02:29:03"
     },
     "prime_powers": {
       "attempts": 13,
@@ -28,13 +28,13 @@
       "last_run": "2026-09-23 02:28:13"
     },
     "goldbach_partitions": {
-      "attempts": 17,
+      "attempts": 18,
       "supported": 6,
-      "falsified": 11,
+      "falsified": 12,
       "errors": 0,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-09-22 02:28:18"
+      "last_run": "2026-09-24 02:28:36"
     },
     "modular_bias_mod30": {
       "attempts": 19,
@@ -46,13 +46,13 @@
       "last_run": "2026-09-21 03:04:17"
     },
     "zeta_harmonics": {
-      "attempts": 14,
-      "supported": 6,
+      "attempts": 16,
+      "supported": 7,
       "falsified": 8,
       "errors": 0,
       "timeout": 0,
-      "duplicates": 0,
-      "last_run": "2026-09-23 02:28:29"
+      "duplicates": 1,
+      "last_run": "2026-09-24 02:28:08"
     }
   },
   "models": {
@@ -67,17 +67,23 @@
       "errors": 1
     },
     "qwen_math": {
-      "attempts": 34,
-      "success": 33,
+      "attempts": 36,
+      "success": 35,
       "errors": 1
     },
     "sonnet": {
-      "attempts": 52,
-      "success": 51,
+      "attempts": 55,
+      "success": 53,
       "errors": 1
     }
   },
   "confirmed_laws": [
+    {
+      "id": "PRIME-CONJ-1790216872",
+      "name": "Prime-Zero Spacing Resonance",
+      "domain": "zeta_harmonics",
+      "timestamp": "2026-09-24 02:27:52"
+    },
     {
       "id": "PRIME-CONJ-1790130509",
       "name": "Zeta-Prime Gap Resonance Conjecture",
@@ -324,6 +330,10 @@
     "bounded|cdot|constant|density|equal|frac|geq|integer|interval|leq|less|log|number|positive|power|powers|relative|states|such|than|where",
     "constructive|cos|denote|distribution|exhibits|frac|function|gamma|gap|harmonic|imaginary|interference|intervals|langle|large|left|mean|non|occurring|parts|rangle|related|resonance|riemann|right|specific|states|sufficiently|sum|trivial|when|where|zero|zeros|zeta",
     "approx|asymptotically|between|cdot|consecutive|constant|denote|frac|gap|gaps|harmonic|left|mean|number|proportional|proportionality|resonance|right|sum|where",
-    "asymptotically|behavior|bias|cdot|corrections|creates|creating|cumulative|damping|decays|denote|deviation|due|effect|envelope|equiv|excess|exhibits|faster|frac|from|indicator|left|local|log|logarithmic|mathbf|number|oscillation|oscillatory|pmod|predicts|random|repulsion|residue|right|short|sqrt|sum|tau|term|than|theorem|transition|transitions|uniform|valid|walk|weaker|while"
+    "asymptotically|behavior|bias|cdot|corrections|creates|creating|cumulative|damping|decays|denote|deviation|due|effect|envelope|equiv|excess|exhibits|faster|frac|from|indicator|left|local|log|logarithmic|mathbf|number|oscillation|oscillatory|pmod|predicts|random|repulsion|residue|right|short|sqrt|sum|tau|term|than|theorem|transition|transitions|uniform|valid|walk|weaker|while",
+    "693|amplitude|approx|approximately|cdot|constant|correlations|decay|decays|denote|distribution|equiv|exponentially|frac|fundamental|half|indicator|lag|lambda|length|life|mathbf|memory|omega|oscillation|patterns|pmod|reflecting|residue|sim|states|suggests|sum|text|transition|unit|universal|where",
+    "approx|asymptotically|bar|between|certain|connection|consecutive|considered|constant|deep|denote|distribution|frac|function|gamma|gap|hypothesize|imaginary|largest|log|mean|non|numbers|parts|proportional|resonance|riemann|spacing|specifically|suggests|threshold|trivial|where|zero|zeros|zeta",
+    "approx|approximately|bound|bounded|constant|denote|deviation|estimate|even|exists|frac|from|given|goldbach|hardy|its|large|left|leq|littlewood|number|partitions|right|specifically|sqrt|such|sufficiently|suggests|there",
+    "arithmetic|asymptotic|autocorrelation|cdot|constant|correlations|damping|decay|decays|deep|denote|density|effect|equiv|exponentially|follows|frac|geq|harmonic|indicator|law|left|log|logarithmically|mathbf|pmod|predicts|rather|represents|repulsion|residue|rho|right|satisfies|sim|some|states|structure|suggesting|sum|tau|than|transition|where"
   ]
 }
