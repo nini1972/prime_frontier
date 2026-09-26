@@ -1,31 +1,31 @@
 {
   "domains": {
     "gap_dynamics": {
-      "attempts": 14,
+      "attempts": 16,
       "supported": 5,
-      "falsified": 9,
+      "falsified": 11,
       "errors": 0,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-09-23 02:28:57"
+      "last_run": "2026-09-26 02:27:48"
     },
     "modular_bias_mod10": {
-      "attempts": 15,
+      "attempts": 16,
       "supported": 3,
-      "falsified": 11,
+      "falsified": 12,
       "errors": 1,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-09-24 02:29:03"
+      "last_run": "2026-09-26 02:26:21"
     },
     "prime_powers": {
-      "attempts": 15,
+      "attempts": 16,
       "supported": 4,
-      "falsified": 9,
+      "falsified": 10,
       "errors": 2,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-09-25 02:28:10"
+      "last_run": "2026-09-26 02:26:39"
     },
     "goldbach_partitions": {
       "attempts": 19,
@@ -37,13 +37,13 @@
       "last_run": "2026-09-25 02:27:00"
     },
     "modular_bias_mod30": {
-      "attempts": 20,
-      "supported": 5,
+      "attempts": 21,
+      "supported": 6,
       "falsified": 15,
       "errors": 0,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-09-25 02:27:53"
+      "last_run": "2026-09-26 02:27:32"
     },
     "zeta_harmonics": {
       "attempts": 17,
@@ -67,17 +67,23 @@
       "errors": 1
     },
     "qwen_math": {
-      "attempts": 38,
-      "success": 36,
+      "attempts": 40,
+      "success": 38,
       "errors": 1
     },
     "sonnet": {
-      "attempts": 58,
-      "success": 56,
+      "attempts": 61,
+      "success": 59,
       "errors": 1
     }
   },
   "confirmed_laws": [
+    {
+      "id": "PRIME-CONJ-1790389652",
+      "name": "Enhanced Modular Bias Conjecture",
+      "domain": "modular_bias_mod30",
+      "timestamp": "2026-09-26 02:27:32"
+    },
     {
       "id": "PRIME-CONJ-1790303290",
       "name": "Prime Power Sieve Dominance Threshold",
@@ -350,6 +356,11 @@
     "1000|base|bound|captures|cdot|composites|decay|deep|denote|density|dominance|dominate|efficiency|eliminated|empirical|frac|from|geq|harmonic|hierarchy|integers|interval|inversely|leq|lfloor|log|logarithmic|multiplicative|new|number|observation|odd|power|process|ratio|ratios|reflecting|related|rfloor|satisfy|sieve|smaller|sqrt|starting|structure|their|weight",
     "approx|between|characteristic|coefficient|cos|critical|exists|frac|gamma|gap|gaps|harmonic|imaginary|indicating|left|log|mean|non|parts|properties|resonance|riemann|right|scale|several|spacings|spectral|states|such|sum|text|there|threshold|trivial|where|zero|zeros|zeta",
     "approx|approximated|begin|bias|can|cases|cdot|character|chi|classes|consecutive|consider|defined|end|enhanced|equiv|exhibit|frac|from|given|greater|inversely|modulo|non|pattern|pmod|probabilities|probability|proportional|quadratic|residue|specifically|sum|text|than|transition|transitioning|transitions|where|which",
-    "already|approx|ascending|composite|composites|crossed|cumulative|denote|dominance|eliminate|eliminated|eratosthenes|exists|frac|fraction|geq|hierarchy|integers|large|ldots|least|leq|log|logarithmic|mechanics|multiples|not|number|odd|order|out|power|revealing|sieve|smaller|such|sufficiently|suggests|sum|text|there|threshold|total|universal|where"
+    "already|approx|ascending|composite|composites|crossed|cumulative|denote|dominance|eliminate|eliminated|eratosthenes|exists|frac|fraction|geq|hierarchy|integers|large|ldots|least|leq|log|logarithmic|mechanics|multiples|not|number|odd|order|out|power|revealing|sieve|smaller|such|sufficiently|suggests|sum|text|there|threshold|total|universal|where",
+    "cdot|considered|contribution|cousin|creates|denote|density|disproportionate|even|exhibit|frac|frequencies|function|gap|gaps|harmonic|mathbf|number|pattern|reciprocal|relative|resonance|rho|sexy|size|small|specific|states|suggests|sum|text|total|twin|weighted|when|where",
+    "000|02838|09669|100|approx|attraction|autocorrelation|being|cdot|consecutive|data|empirical|excess|exhibit|extend|frac|given|hypothesize|lag|larger|left|modular|modulo|more|negative|observed|patterns|repulsion|residue|right|set|significantly|similar|specifically|sum|than|transitions|will",
+    "approx|being|cdot|coefficient|coefficients|composites|contribute|denote|dominant|eliminated|exhibit|frac|from|harmonic|interval|large|larger|left|leq|less|log|new|number|odd|power|predicts|process|proportionally|resonance|right|sieve|sieving|sqrt|starting|states|structure|sufficiently|term|where",
+    "bias|classes|consider|denote|enhanced|equiv|frac|given|greater|higher|modular|modulo|more|number|pmod|probability|ratio|residue|set|significantly|specifically|states|than|transition|uniform|which",
+    "085|approx|cdot|considered|critical|denote|density|divisible|exhibit|exists|form|frac|function|gap|gaps|harmonic|indicator|large|mathbf|multiplicative|not|number|predominantly|resonance|rho|size|specific|states|structure|such|sum|tau|there|they|threshold|total|where"
   ]
 }
