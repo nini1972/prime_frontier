@@ -10,13 +10,13 @@
       "last_run": "2026-09-30 02:31:29"
     },
     "modular_bias_mod10": {
-      "attempts": 19,
+      "attempts": 20,
       "supported": 3,
-      "falsified": 15,
+      "falsified": 16,
       "errors": 1,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-09-30 02:32:14"
+      "last_run": "2026-10-01 02:38:20"
     },
     "prime_powers": {
       "attempts": 17,
@@ -28,31 +28,31 @@
       "last_run": "2026-09-30 02:33:26"
     },
     "goldbach_partitions": {
-      "attempts": 19,
+      "attempts": 20,
       "supported": 6,
-      "falsified": 12,
+      "falsified": 13,
       "errors": 0,
       "timeout": 0,
       "duplicates": 1,
-      "last_run": "2026-09-25 02:27:00"
+      "last_run": "2026-10-01 02:37:52"
     },
     "modular_bias_mod30": {
-      "attempts": 27,
+      "attempts": 29,
       "supported": 9,
-      "falsified": 17,
+      "falsified": 19,
       "errors": 0,
       "timeout": 0,
       "duplicates": 1,
-      "last_run": "2026-09-30 02:33:48"
+      "last_run": "2026-10-01 02:38:48"
     },
     "zeta_harmonics": {
-      "attempts": 22,
-      "supported": 9,
+      "attempts": 23,
+      "supported": 10,
       "falsified": 11,
       "errors": 0,
       "timeout": 0,
       "duplicates": 2,
-      "last_run": "2026-09-30 02:32:39"
+      "last_run": "2026-10-01 02:39:06"
     }
   },
   "models": {
@@ -67,17 +67,23 @@
       "errors": 1
     },
     "qwen_math": {
-      "attempts": 48,
-      "success": 44,
+      "attempts": 50,
+      "success": 46,
       "errors": 2
     },
     "sonnet": {
-      "attempts": 73,
-      "success": 70,
+      "attempts": 76,
+      "success": 73,
       "errors": 1
     }
   },
   "confirmed_laws": [
+    {
+      "id": "PRIME-CONJ-1790822346",
+      "name": "Prime Gap Resonance with Zeta Zero Spacings",
+      "domain": "zeta_harmonics",
+      "timestamp": "2026-10-01 02:39:06"
+    },
     {
       "id": "PRIME-CONJ-1790649057",
       "name": "Zeta-Prime Gap Resonance Conjecture",
@@ -409,6 +415,11 @@
     "attraction|autocorrelation|being|consecutive|data|denote|empirical|enhanced|equiv|excess|exhibits|followed|further|given|higher|hypothesize|lag|lower|measure|modular|modulo|pattern|pmod|probability|propose|quantitative|repulsion|residue|significantly|specific|specifically|than|transitions|uniform|using",
     "arithmetic|connecting|correlation|cos|critical|deep|distribution|exists|frac|function|gamma|gap|gaps|hypothesis|imaginary|indicates|irregularities|langle|large|left|means|non|parts|rangle|resonance|respective|riemann|right|states|structure|such|sufficiently|sum|there|threshold|trivial|where|zeros|zeta",
     "approx|asymptotically|base|bounded|composites|consider|constant|eliminated|factor|factors|frac|geq|leq|new|number|odd|power|powers|ratio|resonance|set|sqrt|starting|states|sum|text|their",
-    "alpha|amplification|approx|between|bias|cdot|character|consecutive|constant|create|equiv|factor|frac|jacobi|left|lemke|log|logarithmic|modular|oliver|pmod|predicts|probabilities|quadratic|relationships|residue|residues|right|satisfy|some|soundararajan|states|symbol|transition|universal|where"
+    "alpha|amplification|approx|between|bias|cdot|character|consecutive|constant|create|equiv|factor|frac|jacobi|left|lemke|log|logarithmic|modular|oliver|pmod|predicts|probabilities|quadratic|relationships|residue|residues|right|satisfy|some|soundararajan|states|symbol|transition|universal|where",
+    "amplification|between|cdot|character|chi|classes|concordant|consecutive|correlated|deeper|delta|distribution|equiv|exhibit|exhibits|expectation|frac|jacobi|left|mathbb|mid|modulo|multiplicative|pairs|pmod|preference|probability|product|quadratic|reflecting|residue|right|some|structure|subtle|suggests|symbol|systematic|threshold|transition|transitions|valid|where",
+    "approx|approximated|based|can|cdot|close|constants|data|empirical|even|function|goldbach|grows|growth|hypothesize|number|partitions|polynomial|propose|relationship|root|smooth|smoothly|specifically|square|suggesting|way|where",
+    "alpha|approx|arithmetic|autocorrelation|bmod|but|capturing|constant|corrections|correlations|damping|decay|delta|denote|deviations|distribution|empirical|exponentially|factor|faster|follows|frac|from|hat|indicator|lag|law|log|logarithmic|mathbf|oscillation|polynomially|power|predicts|probability|range|residue|rho|short|sim|slower|states|structure|sum|than|transition|uniform|where",
+    "attraction|bias|classes|consecutive|denoted|enhanced|exhibits|expected|from|higher|lower|modular|modulo|numbers|pattern|probability|repulsion|residue|significantly|specific|specifically|than|transition|uniform",
+    "alignment|anomalous|between|beyond|cdot|constructive|correlation|cos|delta|exhibits|expectations|frac|frequencies|function|gamma|gap|gaps|harmonic|imaginary|interference|langle|left|mean|measures|non|parts|patterns|random|rangle|resonance|riemann|right|spacing|spacings|sqrt|states|sum|trivial|where|zero|zeros|zeta"
   ]
 }
