@@ -1,13 +1,13 @@
 {
   "domains": {
     "gap_dynamics": {
-      "attempts": 22,
+      "attempts": 23,
       "supported": 5,
-      "falsified": 16,
+      "falsified": 17,
       "errors": 1,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-10-02 02:29:21"
+      "last_run": "2026-10-03 02:34:41"
     },
     "modular_bias_mod10": {
       "attempts": 22,
@@ -19,13 +19,13 @@
       "last_run": "2026-10-02 02:32:38"
     },
     "prime_powers": {
-      "attempts": 17,
+      "attempts": 18,
       "supported": 4,
-      "falsified": 11,
+      "falsified": 12,
       "errors": 2,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-09-30 02:33:26"
+      "last_run": "2026-10-03 02:34:23"
     },
     "goldbach_partitions": {
       "attempts": 21,
@@ -37,22 +37,22 @@
       "last_run": "2026-10-02 02:30:28"
     },
     "modular_bias_mod30": {
-      "attempts": 29,
-      "supported": 9,
-      "falsified": 19,
+      "attempts": 31,
+      "supported": 10,
+      "falsified": 20,
       "errors": 0,
       "timeout": 0,
       "duplicates": 1,
-      "last_run": "2026-10-01 02:38:48"
+      "last_run": "2026-10-03 02:33:22"
     },
     "zeta_harmonics": {
-      "attempts": 24,
+      "attempts": 25,
       "supported": 10,
-      "falsified": 12,
+      "falsified": 13,
       "errors": 0,
       "timeout": 0,
       "duplicates": 2,
-      "last_run": "2026-10-02 02:30:06"
+      "last_run": "2026-10-03 02:33:41"
     }
   },
   "models": {
@@ -67,17 +67,23 @@
       "errors": 1
     },
     "qwen_math": {
-      "attempts": 52,
-      "success": 48,
+      "attempts": 54,
+      "success": 50,
       "errors": 2
     },
     "sonnet": {
-      "attempts": 79,
-      "success": 76,
+      "attempts": 82,
+      "success": 79,
       "errors": 1
     }
   },
   "confirmed_laws": [
+    {
+      "id": "PRIME-CONJ-1790994802",
+      "name": "Enhanced Modular Repulsion and Attraction in Prime Transitions",
+      "domain": "modular_bias_mod30",
+      "timestamp": "2026-10-03 02:33:22"
+    },
     {
       "id": "PRIME-CONJ-1790822346",
       "name": "Prime Gap Resonance with Zeta Zero Spacings",
@@ -425,6 +431,11 @@
     "approximately|consider|deep|delta|denote|distribution|frac|gamma|harmonic|imaginary|mean|non|normalized|part|reflecting|resonance|riemann|spacing|spacings|sum|trivial|variance|zero|zeros|zeta",
     "amplitude|around|baseline|cdot|counting|decay|denote|density|even|exhibits|frac|function|gap|geq|goldbach|governed|growing|harmonic|irregularities|large|left|log|number|oscillations|partition|partitions|prod|resonance|rho|right|sequence|sin|slowly|specifically|sqrt|states|sufficiently|text|theta|weighted|where",
     "4th|approx|approximately|consider|coprime|correction|denote|equal|frac|from|gcd|harmonic|harmonics|mod|modulo|neq|not|number|plus|probabilities|residue|residues|specifically|substack|sum|term|transition|where",
-    "alpha|approx|autocorrelation|autocorrelations|beta|bmod|cdot|coefficient|consecutive|cos|damped|damping|decay|denote|empirical|exhibit|fold|follows|frequency|function|fundamental|harmonic|lag|lags|modulo|near|omega|oscillation|oscillations|oscillatory|parameters|pattern|period|periodic|phi|predicts|primary|pseudo|quarter|rate|reflecting|repulsion|residue|residues|rho|same|satisfy|secondary|structure|suggests|symmetry|transition|transitions|underlying|where"
+    "alpha|approx|autocorrelation|autocorrelations|beta|bmod|cdot|coefficient|consecutive|cos|damped|damping|decay|denote|empirical|exhibit|fold|follows|frequency|function|fundamental|harmonic|lag|lags|modulo|near|omega|oscillation|oscillations|oscillatory|parameters|pattern|period|periodic|phi|predicts|primary|pseudo|quarter|rate|reflecting|repulsion|residue|residues|rho|same|satisfy|secondary|structure|suggests|symmetry|transition|transitions|underlying|where",
+    "amplification|amplifying|both|cdot|character|chi|consecutive|effect|equiv|exhibit|frac|higher|jacobi|larger|left|mathbb|mid|mod|non|pmod|prob|probabilities|product|quadratic|residue|residues|right|specifically|symbol|systematically|text|than|those|transition|transitions|using|where",
+    "attracted|attraction|based|broader|but|certain|compared|consider|data|denote|different|effects|either|empirical|enhanced|exhibit|exists|expected|given|greater|hypothesize|isolated|less|mod|modular|modulo|more|not|number|observe|pairs|part|pattern|precisely|probabilities|probability|repelled|repulsion|residue|sequence|set|significantly|specifically|strong|strongly|such|than|there|transition|transitions|uniform|where",
+    "6366|aligns|approx|baseline|considered|content|deviate|exhibit|frac|frequency|from|fundamental|gamma|gap|gaps|harmonic|imaginary|langle|left|mean|non|number|parameter|parts|random|rangle|resonance|riemann|right|should|significantly|sin|spacing|spacings|states|sum|text|trivial|where|zero|zeros|zeta",
+    "approx|approximately|base|constant|density|equal|formally|frac|geq|given|independent|interval|invariance|leq|less|log|number|power|powers|proportional|sqrt|states|text|than|where",
+    "avg|baseline|cdot|compared|considered|creating|denote|density|divisibility|enhanced|equiv|exceed|exhibit|factor|frac|frequency|function|gap|gaps|harmonic|hypothesis|indicator|leq|logarithmic|mathbf|multiples|number|pattern|pmod|raw|related|resonance|rho|should|specifically|sqrt|states|structure|sum|text|their|weight|weighted|where|which"
   ]
 }
