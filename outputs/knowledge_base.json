@@ -10,13 +10,13 @@
       "last_run": "2026-10-03 02:34:41"
     },
     "modular_bias_mod10": {
-      "attempts": 22,
+      "attempts": 23,
       "supported": 3,
-      "falsified": 18,
+      "falsified": 19,
       "errors": 1,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-10-02 02:32:38"
+      "last_run": "2026-10-05 02:38:54"
     },
     "prime_powers": {
       "attempts": 20,
@@ -28,31 +28,31 @@
       "last_run": "2026-10-04 03:06:55"
     },
     "goldbach_partitions": {
-      "attempts": 22,
+      "attempts": 24,
       "supported": 6,
+      "falsified": 17,
+      "errors": 0,
+      "timeout": 0,
+      "duplicates": 1,
+      "last_run": "2026-10-05 02:40:01"
+    },
+    "modular_bias_mod30": {
+      "attempts": 32,
+      "supported": 10,
+      "falsified": 21,
+      "errors": 0,
+      "timeout": 0,
+      "duplicates": 1,
+      "last_run": "2026-10-05 02:40:20"
+    },
+    "zeta_harmonics": {
+      "attempts": 28,
+      "supported": 10,
       "falsified": 15,
       "errors": 0,
       "timeout": 0,
-      "duplicates": 1,
-      "last_run": "2026-10-04 03:06:10"
-    },
-    "modular_bias_mod30": {
-      "attempts": 31,
-      "supported": 10,
-      "falsified": 20,
-      "errors": 0,
-      "timeout": 0,
-      "duplicates": 1,
-      "last_run": "2026-10-03 02:33:22"
-    },
-    "zeta_harmonics": {
-      "attempts": 27,
-      "supported": 10,
-      "falsified": 14,
-      "errors": 0,
-      "timeout": 0,
       "duplicates": 3,
-      "last_run": "2026-10-04 03:06:38"
+      "last_run": "2026-10-05 02:39:20"
     }
   },
   "models": {
@@ -67,13 +67,13 @@
       "errors": 1
     },
     "qwen_math": {
-      "attempts": 56,
-      "success": 51,
+      "attempts": 58,
+      "success": 53,
       "errors": 2
     },
     "sonnet": {
-      "attempts": 85,
-      "success": 82,
+      "attempts": 88,
+      "success": 85,
       "errors": 1
     }
   },
@@ -440,6 +440,11 @@
     "approaches|cdot|compared|composites|contribution|contributions|convergence|density|efficiency|eliminated|euler|frac|from|function|infty|interval|inverse|large|leq|lim|new|normalized|number|odd|phi|power|predicts|ratio|relative|rho|satisfy|sieve|sqrt|square|starting|sufficiently|totient|weighted",
     "approx|approximately|between|consecutive|denote|equal|exists|frac|gamma|gap|hypothesize|imaginary|interval|mean|non|number|parts|resonance|riemann|spacing|specifically|sum|text|there|trivial|values|zero|zeros|zeta",
     "alpha|approx|asserts|asymptotic|averaged|cdot|constant|converges|deep|denote|density|despite|deviation|distribution|even|exists|fluctuations|frac|from|goldbach|infty|its|leq|limsup|local|mean|normalized|number|oscillation|partition|partitions|regularity|rho|states|such|suggesting|sum|there|time|universal|value|within",
-    "approx|become|cascade|composites|correction|denote|density|efficiency|efficient|eliminated|eliminating|frac|from|governed|increasingly|interval|large|larger|left|leq|lfloor|log|logarithmic|maximum|new|number|odd|power|ratio|relative|rfloor|right|satisfies|sqrt|starting|sufficiently|suggests|term|their|theoretical"
+    "approx|become|cascade|composites|correction|denote|density|efficiency|efficient|eliminated|eliminating|frac|from|governed|increasingly|interval|large|larger|left|leq|lfloor|log|logarithmic|maximum|new|number|odd|power|ratio|relative|rfloor|right|satisfies|sqrt|starting|sufficiently|suggests|term|their|theoretical",
+    "alpha|amplitude|approx|attraction|between|bmod|cdot|circle|circular|constant|cos|decay|delta|denote|deviation|deviations|distance|excess|exhibit|exponent|frac|from|function|harmonic|have|left|maximum|mod|negative|opposite|oscillation|positive|predicts|probability|repulsion|residue|residues|respect|right|same|sim|states|text|transition|transitions|uniformity|valid|where|while",
+    "approx|between|consecutive|delta|denote|denoted|frac|gamma|gap|gaps|harmonic|imaginary|left|log|mean|non|part|related|relation|resonance|riemann|right|spacing|sum|through|trivial|values|where|zero|zeta",
+    "absolute|approx|arithmetic|bounded|captures|cdot|constant|decay|deep|delta|denote|density|deviation|deviations|distributions|empirical|even|exhibits|frac|from|goldbach|grows|hardy|heuristic|integer|large|leq|like|littlewood|logarithmic|logarithmically|multiplicative|normalized|number|oscillation|oscillations|pair|partitions|phenomenon|reflecting|roughly|sequence|should|some|structure|sufficiently|text|their|trend|var|variance|while",
+    "any|below|bound|bounded|can|cdot|density|even|expressed|form|frac|function|geq|goldbach|integer|left|mathematically|number|partition|partitions|right",
+    "alpha|approx|attraction|beta|between|bias|cdot|consecutive|constants|correlation|empirical|enhanced|equiv|exhibits|frac|gap|jacobi|left|measures|mod|modular|modulo|non|pairs|pmod|predicts|proximity|quadratic|repulsion|residue|residues|right|show|symbol|text|transition|transitions|weight|where|while"
   ]
 }
