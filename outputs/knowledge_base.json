@@ -1,13 +1,13 @@
 {
   "domains": {
     "gap_dynamics": {
-      "attempts": 24,
+      "attempts": 26,
       "supported": 5,
-      "falsified": 18,
+      "falsified": 20,
       "errors": 1,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-10-06 02:32:09"
+      "last_run": "2026-10-07 02:37:10"
     },
     "modular_bias_mod10": {
       "attempts": 24,
@@ -19,22 +19,22 @@
       "last_run": "2026-10-06 02:30:36"
     },
     "prime_powers": {
-      "attempts": 22,
+      "attempts": 23,
       "supported": 4,
-      "falsified": 16,
+      "falsified": 17,
       "errors": 2,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-10-06 02:32:27"
+      "last_run": "2026-10-07 02:36:14"
     },
     "goldbach_partitions": {
-      "attempts": 24,
-      "supported": 6,
+      "attempts": 25,
+      "supported": 7,
       "falsified": 17,
       "errors": 0,
       "timeout": 0,
       "duplicates": 1,
-      "last_run": "2026-10-05 02:40:01"
+      "last_run": "2026-10-07 02:37:30"
     },
     "modular_bias_mod30": {
       "attempts": 33,
@@ -46,13 +46,13 @@
       "last_run": "2026-10-06 02:31:22"
     },
     "zeta_harmonics": {
-      "attempts": 28,
+      "attempts": 29,
       "supported": 10,
-      "falsified": 15,
+      "falsified": 16,
       "errors": 0,
       "timeout": 0,
       "duplicates": 3,
-      "last_run": "2026-10-05 02:39:20"
+      "last_run": "2026-10-07 02:35:38"
     }
   },
   "models": {
@@ -67,17 +67,23 @@
       "errors": 1
     },
     "qwen_math": {
-      "attempts": 60,
-      "success": 55,
+      "attempts": 62,
+      "success": 57,
       "errors": 2
     },
     "sonnet": {
-      "attempts": 91,
-      "success": 88,
+      "attempts": 94,
+      "success": 91,
       "errors": 1
     }
   },
   "confirmed_laws": [
+    {
+      "id": "PRIME-CONJ-1791340650",
+      "name": "Goldbach Partition Density Oscillation Bound",
+      "domain": "goldbach_partitions",
+      "timestamp": "2026-10-07 02:37:30"
+    },
     {
       "id": "PRIME-CONJ-1790994802",
       "name": "Enhanced Modular Repulsion and Attraction in Prime Transitions",
@@ -450,6 +456,11 @@
     "attraction|belong|consecutive|consider|denote|effect|equiv|exists|given|modulo|number|pmod|probability|repulsion|residues|set|significant|such|there|transition|which",
     "absolute|approx|assumptions|captures|cdot|composites|constant|convergence|denote|densities|density|distribution|each|eliminated|eliminates|empirical|expected|frac|from|interval|large|left|leq|lfloor|log|meaning|new|normalized|number|observation|odd|power|rfloor|rho|right|roughly|satisfy|sieve|sqrt|starting|sufficiently|sum|under|uniform|where|which",
     "also|among|asymptotically|cousin|density|enhanced|factor|formally|frac|greater|infty|lim|number|states|such|than|twin",
-    "618|alpha|approx|asymptotic|captures|cdot|combined|composites|conjugate|correction|critical|denote|density|dominance|effects|eliminated|eliminates|exists|frac|from|geq|golden|hierarchy|interval|large|larger|least|left|leq|log|logarithmic|many|new|number|odd|power|ratio|right|sieve|smallest|sqrt|starting|states|such|sufficiently|sum|term|text|there|threshold"
+    "618|alpha|approx|asymptotic|captures|cdot|combined|composites|conjugate|correction|critical|denote|density|dominance|effects|eliminated|eliminates|exists|frac|from|geq|golden|hierarchy|interval|large|larger|least|left|leq|log|logarithmic|many|new|number|odd|power|ratio|right|sieve|smallest|sqrt|starting|states|such|sufficiently|sum|term|text|there|threshold",
+    "behavior|between|coupling|deep|denote|density|distribution|frac|gamma|gap|gaps|growth|harmonic|hypothesis|imaginary|large|left|lfloor|log|logarithmic|measure|non|normalized|oscillatory|part|resonance|rfloor|riemann|right|scaled|sin|sqrt|states|sufficiently|suggesting|sum|their|trivial|weighted|zero|zeros|zeta",
+    "alpha|approaches|approx|base|composite|composites|constant|denoted|density|eliminated|equal|frac|increases|influence|less|new|number|odd|power|ratio|sqrt|starting|than|where",
+    "amplitude|approx|around|asymptotic|bounded|constant|denote|density|derived|empirical|exhibits|frac|from|gap|harmonic|left|leq|logarithmic|mean|observed|oscillation|resonance|rho|right|sqrt|states|statistics|sum|where",
+    "between|consecutive|denote|equiv|frac|gap|gaps|greater|harmonic|higher|hypothesize|mathematically|multiples|number|pmod|ratio|resonance|significantly|specifically|such|text|than|total",
+    "absolute|asserts|average|based|behavior|bound|bounded|constant|constraint|counts|delta|denote|density|deviate|deviation|distribution|empirical|estimate|even|frac|from|fundamental|geq|goldbach|hardy|harmonic|heuristic|individual|infty|irregularities|large|leq|limsup|littlewood|may|mean|normalized|number|observed|oscillation|oscillatory|partition|partitions|prediction|ratio|remains|satisfies|significantly|specifically|sufficiently|suggesting|sum|where|while"
   ]
 }
