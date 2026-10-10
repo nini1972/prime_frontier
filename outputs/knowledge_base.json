@@ -10,13 +10,13 @@
       "last_run": "2026-10-09 02:37:02"
     },
     "modular_bias_mod10": {
-      "attempts": 25,
+      "attempts": 27,
       "supported": 4,
-      "falsified": 20,
+      "falsified": 22,
       "errors": 1,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-10-08 02:34:12"
+      "last_run": "2026-10-10 02:34:41"
     },
     "prime_powers": {
       "attempts": 24,
@@ -28,22 +28,22 @@
       "last_run": "2026-10-08 02:34:35"
     },
     "goldbach_partitions": {
-      "attempts": 27,
+      "attempts": 28,
       "supported": 7,
-      "falsified": 18,
+      "falsified": 19,
       "errors": 1,
       "timeout": 0,
       "duplicates": 1,
-      "last_run": "2026-10-08 02:34:58"
+      "last_run": "2026-10-10 02:35:14"
     },
     "modular_bias_mod30": {
-      "attempts": 36,
+      "attempts": 38,
       "supported": 11,
-      "falsified": 23,
+      "falsified": 25,
       "errors": 0,
       "timeout": 0,
       "duplicates": 2,
-      "last_run": "2026-10-09 02:36:43"
+      "last_run": "2026-10-10 02:35:34"
     },
     "zeta_harmonics": {
       "attempts": 30,
@@ -67,13 +67,13 @@
       "errors": 1
     },
     "qwen_math": {
-      "attempts": 66,
-      "success": 60,
+      "attempts": 68,
+      "success": 62,
       "errors": 2
     },
     "sonnet": {
-      "attempts": 100,
-      "success": 96,
+      "attempts": 103,
+      "success": 99,
       "errors": 2
     }
   },
@@ -494,6 +494,11 @@
     "amplification|amplified|bias|bmod|classes|equiv|expected|frequency|magnitude|mathbb|mod|modular|modulo|non|pmod|quadratic|residue|residues|respectively|specifically|substack|sum|transition|uniform|when|where",
     "alignment|analytic|approx|arithmetic|average|below|between|but|cdot|connection|constant|deep|distance|each|exhibit|frac|from|function|gamma|hypothesis|imaginary|increase|its|leq|lfloor|log|magnitude|manifesting|measures|min|minimum|nearest|non|part|persistent|positions|reflecting|resonance|rfloor|riemann|sim|some|states|sum|they|trivial|weak|zero|zeros|zeta",
     "attraction|consecutive|data|denote|empirical|enhanced|equiv|geq|given|higher|hypothesize|leq|lower|mod|modular|modulo|number|probability|repulsion|residues|significantly|specifically|than|transition|uniform",
-    "amplitude|approx|captures|constant|convergence|corrections|cos|denote|distributions|exhibits|frac|gamma|gap|harmonic|index|left|logarithmic|omega|oscillation|oscillatory|periodicity|resonance|right|sqrt|states|sum|universal|where"
+    "amplitude|approx|captures|constant|convergence|corrections|cos|denote|distributions|exhibits|frac|gamma|gap|harmonic|index|left|logarithmic|omega|oscillation|oscillatory|periodicity|resonance|right|sqrt|states|sum|universal|where",
+    "amplify|attraction|beyond|bias|both|cdot|certain|character|chi|consecutive|correlated|create|diff|distribution|exhibit|extending|frac|harmonic|have|jacobi|known|left|lemke|mechanism|modular|modulo|occur|oliver|others|patterns|pmod|principle|probability|product|quadratic|residue|residues|resonances|right|same|soundararajan|specifically|structure|suppressing|symbol|systematic|transitions|underlying|where|while",
+    "approx|approximately|asymmetry|between|can|consecutive|consider|denote|difference|equiv|followed|from|left|modulo|number|pairs|pmod|probabilities|probability|quantified|relation|residue|residues|right|significant|specific|states|suggests|transition|transitioning|transitions",
+    "autocorrelation|between|consecutive|constant|correlation|decay|decays|denote|excess|follows|frac|harmonic|lag|lags|left|log|manner|modulo|negative|pattern|predict|predictable|repulsion|residue|residues|rho|right|sim|small|specifically|sqrt|suggests|universal|weakening|where",
+    "approx|approximately|asymptotically|based|cdot|constant|density|empirical|estimate|even|exists|frac|goldbach|heuristic|hypothesize|integers|large|mean|number|partition|partitions|proportional|provided|specifically|such|sufficiently|there",
+    "alpha|approx|attraction|beta|bias|cdot|character|chi|coefficient|consecutive|correlated|correlation|delta|exhibit|frac|jacobi|kronecker|left|pmod|probabilities|quadratic|repulsion|residue|residues|resonance|respectively|right|self|states|structure|symbol|systematic|transition|transitions|where"
   ]
 }
