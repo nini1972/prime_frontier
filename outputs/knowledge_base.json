@@ -19,40 +19,40 @@
       "last_run": "2026-10-10 02:34:41"
     },
     "prime_powers": {
-      "attempts": 25,
+      "attempts": 26,
       "supported": 4,
-      "falsified": 19,
+      "falsified": 20,
       "errors": 2,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-10-11 02:37:16"
+      "last_run": "2026-10-12 02:46:19"
     },
     "goldbach_partitions": {
-      "attempts": 30,
+      "attempts": 31,
       "supported": 8,
-      "falsified": 20,
+      "falsified": 21,
       "errors": 1,
       "timeout": 0,
       "duplicates": 1,
-      "last_run": "2026-10-11 02:37:57"
+      "last_run": "2026-10-12 02:45:21"
     },
     "modular_bias_mod30": {
-      "attempts": 40,
+      "attempts": 41,
       "supported": 13,
-      "falsified": 25,
+      "falsified": 26,
       "errors": 0,
       "timeout": 0,
       "duplicates": 2,
-      "last_run": "2026-10-11 02:37:01"
+      "last_run": "2026-10-12 02:45:38"
     },
     "zeta_harmonics": {
-      "attempts": 30,
-      "supported": 10,
+      "attempts": 32,
+      "supported": 12,
       "falsified": 17,
       "errors": 0,
       "timeout": 0,
       "duplicates": 3,
-      "last_run": "2026-10-09 02:36:05"
+      "last_run": "2026-10-12 02:46:02"
     }
   },
   "models": {
@@ -67,17 +67,29 @@
       "errors": 1
     },
     "qwen_math": {
-      "attempts": 70,
-      "success": 64,
+      "attempts": 72,
+      "success": 66,
       "errors": 2
     },
     "sonnet": {
-      "attempts": 106,
-      "success": 102,
+      "attempts": 109,
+      "success": 105,
       "errors": 2
     }
   },
   "confirmed_laws": [
+    {
+      "id": "PRIME-CONJ-1791773162",
+      "name": "Harmonic Spacing Resonance",
+      "domain": "zeta_harmonics",
+      "timestamp": "2026-10-12 02:46:02"
+    },
+    {
+      "id": "PRIME-CONJ-1791773099",
+      "name": "Zeta-Prime Gap Resonance Hypothesis",
+      "domain": "zeta_harmonics",
+      "timestamp": "2026-10-12 02:44:59"
+    },
     {
       "id": "PRIME-CONJ-1791686277",
       "name": "Goldbach Partition Density Oscillation Conjecture",
@@ -522,6 +534,11 @@
     "consider|denote|denoted|enhanced|expected|hypothesis|hypothesize|leq|lower|mid|modulo|next|number|probability|repulsion|residual|residues|respectively|significantly|specifically|states|than|transition|uniform|where",
     "between|cdot|composites|connection|contribution|convergence|converges|creating|deep|density|each|eliminated|frac|from|harmonic|infty|interval|inverse|large|left|leq|lfloor|lim|new|normalized|number|odd|power|proportional|rfloor|rho|right|series|sieve|sqrt|starting|states|sufficiently|suggests|sum|weight",
     "below|bounded|cdot|constant|denote|density|even|form|frac|function|geq|goldbach|hypothesize|integer|integers|large|number|partition|partitions|positive|specifically|states|sufficiently|suitable|where",
-    "absolute|around|average|behavior|bounded|constant|denote|density|despite|even|exhibits|fluctuations|frac|goldbach|hardy|heuristic|infty|its|large|left|limsup|littlewood|local|maintains|moving|normalized|number|oscillation|oscillatory|overline|partition|partitions|prediction|regularity|respect|rho|right|size|specifically|sqrt|statistical|sufficiently|suggests|sum|trend|variance|where|window"
+    "absolute|around|average|behavior|bounded|constant|denote|density|despite|even|exhibits|fluctuations|frac|goldbach|hardy|heuristic|infty|its|large|left|limsup|littlewood|local|maintains|moving|normalized|number|oscillation|oscillatory|overline|partition|partitions|prediction|regularity|respect|rho|right|size|specifically|sqrt|statistical|sufficiently|suggests|sum|trend|variance|where|window",
+    "amplitude|approx|between|bounded|captures|cdot|coefficient|constant|corresponding|cos|decay|deep|diminishing|exhibits|frac|frequencies|gamma|gap|gaps|harmonic|hypothesis|imaginary|infty|irregularities|left|leq|lfloor|log|logarithmically|non|oscillation|parts|relationship|resonance|resonate|rfloor|riemann|right|some|sqrt|states|strength|suggesting|sum|trivial|universal|zero|zeros|zeta",
+    "asymptotic|cdot|correction|count|even|factor|faster|frac|geq|goldbach|grows|growth|hardy|heuristic|includes|inequality|large|left|littlewood|logarithmic|number|partition|partitions|right|satisfies|sufficiently|suggests|term|than",
+    "bias|character|chi|consecutive|correlated|dissonance|enhanced|equiv|exhibit|expectation|frac|harmony|jacobi|left|mathbb|modular|pmod|probabilities|product|quadratic|relative|residue|right|specifically|states|suppressed|symbol|systematic|systematically|transition|transitions|uniform|where|while",
+    "average|between|bounded|consecutive|consider|constant|cos|delta|denote|difference|frac|function|gamma|harmonic|imaginary|infty|large|leq|lim|mean|multiple|non|part|range|resonance|riemann|small|spacing|specifically|sum|trivial|value|where|zero|zeta",
+    "approx|base|cascade|cdot|composites|counts|decay|denote|density|eliminate|eliminated|elimination|exhibit|follow|frac|from|gaps|geometric|harmonic|interval|inversely|large|larger|left|modulated|new|next|number|odd|pattern|power|predicts|primality|proportional|rates|ratio|ratios|right|sieve|squared|starting|states|structure|sufficiently|their|weights|where"
   ]
 }
