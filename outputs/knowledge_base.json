@@ -1,22 +1,22 @@
 {
   "domains": {
     "gap_dynamics": {
-      "attempts": 28,
-      "supported": 7,
-      "falsified": 20,
+      "attempts": 30,
+      "supported": 8,
+      "falsified": 21,
       "errors": 1,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-10-09 02:37:02"
+      "last_run": "2026-10-13 02:41:08"
     },
     "modular_bias_mod10": {
-      "attempts": 27,
-      "supported": 4,
-      "falsified": 22,
+      "attempts": 29,
+      "supported": 5,
+      "falsified": 23,
       "errors": 1,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-10-10 02:34:41"
+      "last_run": "2026-10-13 02:40:06"
     },
     "prime_powers": {
       "attempts": 26,
@@ -37,13 +37,13 @@
       "last_run": "2026-10-12 02:45:21"
     },
     "modular_bias_mod30": {
-      "attempts": 41,
+      "attempts": 42,
       "supported": 13,
-      "falsified": 26,
+      "falsified": 27,
       "errors": 0,
       "timeout": 0,
       "duplicates": 2,
-      "last_run": "2026-10-12 02:45:38"
+      "last_run": "2026-10-13 02:40:25"
     },
     "zeta_harmonics": {
       "attempts": 32,
@@ -67,17 +67,29 @@
       "errors": 1
     },
     "qwen_math": {
-      "attempts": 72,
-      "success": 66,
+      "attempts": 74,
+      "success": 68,
       "errors": 2
     },
     "sonnet": {
-      "attempts": 109,
-      "success": 105,
+      "attempts": 112,
+      "success": 108,
       "errors": 2
     }
   },
   "confirmed_laws": [
+    {
+      "id": "PRIME-CONJ-1791859242",
+      "name": "Sexy Prime Dominance Conjecture",
+      "domain": "gap_dynamics",
+      "timestamp": "2026-10-13 02:40:42"
+    },
+    {
+      "id": "PRIME-CONJ-1791859206",
+      "name": "Short-Range Prime Residue Attraction",
+      "domain": "modular_bias_mod10",
+      "timestamp": "2026-10-13 02:40:06"
+    },
     {
       "id": "PRIME-CONJ-1791773162",
       "name": "Harmonic Spacing Resonance",
@@ -539,6 +551,11 @@
     "asymptotic|cdot|correction|count|even|factor|faster|frac|geq|goldbach|grows|growth|hardy|heuristic|includes|inequality|large|left|littlewood|logarithmic|number|partition|partitions|right|satisfies|sufficiently|suggests|term|than",
     "bias|character|chi|consecutive|correlated|dissonance|enhanced|equiv|exhibit|expectation|frac|harmony|jacobi|left|mathbb|modular|pmod|probabilities|product|quadratic|relative|residue|right|specifically|states|suppressed|symbol|systematic|systematically|transition|transitions|uniform|where|while",
     "average|between|bounded|consecutive|consider|constant|cos|delta|denote|difference|frac|function|gamma|harmonic|imaginary|infty|large|leq|lim|mean|multiple|non|part|range|resonance|riemann|small|spacing|specifically|sum|trivial|value|where|zero|zeta",
-    "approx|base|cascade|cdot|composites|counts|decay|denote|density|eliminate|eliminated|elimination|exhibit|follow|frac|from|gaps|geometric|harmonic|interval|inversely|large|larger|left|modulated|new|next|number|odd|pattern|power|predicts|primality|proportional|rates|ratio|ratios|right|sieve|squared|starting|states|structure|sufficiently|their|weights|where"
+    "approx|base|cascade|cdot|composites|counts|decay|denote|density|eliminate|eliminated|elimination|exhibit|follow|frac|from|gaps|geometric|harmonic|interval|inversely|large|larger|left|modulated|new|next|number|odd|pattern|power|predicts|primality|proportional|rates|ratio|ratios|right|sieve|squared|starting|states|structure|sufficiently|their|weights|where",
+    "alternating|approx|approximately|attraction|autocorrelation|behavior|bmod|cdot|characteristic|constant|corr|correlations|cos|creating|damped|decay|denote|exhibit|follows|frac|function|golden|harmonic|left|oscillatory|pattern|period|phi|ratio|related|repulsion|residue|right|scaling|sqrt|suggests|text|weak|where|zones",
+    "attraction|denote|equiv|expected|formally|given|having|higher|mid|next|not|number|pmod|probability|range|residue|short|significantly|specific|specifically|than|uniform",
+    "alpha|attraction|cdot|enhanced|equiv|exhibit|exp|frac|function|higher|jacobi|left|legendre|lower|mathbb|mid|modulo|non|pmod|probabilities|probability|propto|quadratic|repulsion|residue|resonance|right|should|show|specifically|states|structure|symbol|text|transition|transitions|where|while",
+    "000|100|among|any|between|consecutive|cousin|denote|dominance|frequency|gap|gaps|greater|number|numbers|occurs|sexy|states|strictly|suggests|than|times|twin",
+    "amplitude|approx|constant|convergence|cos|denote|density|distribution|exhibits|frac|frequency|fundamental|gap|harmonic|irregularities|left|log|logarithmic|omega|oscillatory|phase|phi|related|resonance|rho|right|sqrt|states|sum|where"
   ]
 }
