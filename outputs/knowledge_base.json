@@ -46,13 +46,13 @@
       "last_run": "2026-10-14 02:26:42"
     },
     "zeta_harmonics": {
-      "attempts": 34,
+      "attempts": 36,
       "supported": 14,
-      "falsified": 17,
-      "errors": 0,
+      "falsified": 18,
+      "errors": 1,
       "timeout": 0,
       "duplicates": 3,
-      "last_run": "2026-10-15 02:27:12"
+      "last_run": "2026-10-16 02:26:42"
     }
   },
   "models": {
@@ -67,9 +67,9 @@
       "errors": 1
     },
     "qwen_math": {
-      "attempts": 78,
-      "success": 72,
-      "errors": 2
+      "attempts": 80,
+      "success": 73,
+      "errors": 3
     },
     "sonnet": {
       "attempts": 118,
@@ -589,6 +589,8 @@
     "any|bounded|constant|density|frac|function|geq|hypothesize|integer|integers|leq|number|positive|power|powers|ratio|specifically|states|such|total|where",
     "amplitude|approx|around|bounded|cdot|constant|decay|denote|density|even|exhibits|frac|geq|goldbach|integer|large|left|leq|limiting|normalized|number|oscillation|oscillations|partitions|proportional|rho|right|sequence|some|specifically|sufficiently|universal",
     "approx|asymptotically|average|between|cdot|chosen|comparable|consecutive|correlation|denote|difference|frac|gamma|gap|gaps|have|imaginary|log|non|numbers|parts|range|related|riemann|spacing|specific|specifically|such|sum|trivial|where|zero|zeros|zeta",
-    "attractive|bmod|cdot|correlate|correlation|correlations|denote|exhibit|frac|function|gap|gaps|harmonic|indicator|inversely|larger|log|mathbf|observed|occur|ordering|phi|preferentially|probabilities|related|repulsive|residue|resonance|smaller|states|sum|transition|transitions|weighted|where|while"
+    "attractive|bmod|cdot|correlate|correlation|correlations|denote|exhibit|frac|function|gap|gaps|harmonic|indicator|inversely|larger|log|mathbf|observed|occur|ordering|phi|preferentially|probabilities|related|repulsive|residue|resonance|smaller|states|sum|transition|transitions|weighted|where|while",
+    "approx|constant|converges|euler|frac|gamma|harmonic|hypothesize|imaginary|increases|left|log|mascheroni|mean|non|parts|resonance|riemann|right|spacing|spacings|specific|specifically|sum|trivial|value|where|zeros|zeta",
+    "asymptotically|between|consecutive|constant|correlation|delta|denote|frac|gamma|gap|gaps|hypothesize|imaginary|infty|lim|mean|non|number|part|proportional|riemann|spacing|specifically|sum|test|trivial|where|will|zero|zeros|zeta"
   ]
 }

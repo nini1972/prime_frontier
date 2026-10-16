@@ -1,5 +1,35 @@
 [
   {
+    "id": "PRIME-CONJ-1792117602",
+    "timestamp": "2026-10-16 02:26:42",
+    "model": "qwen/qwen-2.5-72b-instruct",
+    "domain": "zeta_harmonics",
+    "name": "Prime Gap-Riemann Zero Spacing Correlation",
+    "formulation": "Let \\(\\gamma_k\\) denote the imaginary part of the \\(k\\)-th non-trivial Riemann zeta zero. Let \\(p_n\\) denote the \\(n\\)-th prime number. We conjecture that the mean spacing between consecutive prime gaps \\(g_n = p_{n+1} - p_n\\) and the mean spacing between consecutive Riemann zeta zeros \\(\\Delta \\gamma_k = \\gamma_{k+1} - \\gamma_k\\) are asymptotically proportional. Specifically, we hypothesize that:\n\\[\n\\lim_{N \\to \\infty} \\frac{\\frac{1}{N} \\sum_{n=1}^{N} g_n}{\\frac{1}{N} \\sum_{k=1}^{N} \\Delta \\gamma_k} = C\n\\]\nwhere \\(C\\) is a constant. For the first 15 non-trivial Riemann zeta zeros, we will test this conjecture with \\(C = 2\\).",
+    "target": "The ratio of the mean spacing between prime gaps to the mean spacing between Riemann zeta zero spacings should be approximately 2.",
+    "reasoning": "Direct derivation",
+    "code": "import numpy as np\nfrom core.sieve import generate_primes, compute_prime_gaps\nfrom mpmath import findroot\n\n# First 15 non-trivial Riemann zeta zeros\ngamma_k = [14.1347, 21.022, 25.0109, 30.4249, 32.9351, 37.5862, 40.9187, 43.3271, 48.0052, 49.7738, 52.9703, 56.4462, 59.347, 60.8318, 65.1125]\n\n# Compute the spacings between consecutive Riemann zeta zeros\ndelta_gamma_k = np.diff(gamma_k)\n\n# Generate the first 15 primes\nprimes = generate_primes(50)\nprime_gaps = compute_prime_gaps(primes)\n\n# Compute the mean spacing between prime gaps and Riemann zeta zero spacings\nmean_prime_gap = np.mean(prime_gaps)\nmean_zero_spacing = np.mean(delta_gamma_k)\n\n# Compute the ratio\nratio = mean_prime_gap / mean_zero_spacing\n\n# Print the result\nprint(f\"Mean Prime Gap: {mean_prime_gap}\")\nprint(f\"Mean Riemann Zero Spacing: {mean_zero_spacing}\")\nprint(f\"Ratio (Mean Prime Gap / Mean Riemann Zero Spacing): {ratio}\")\n\n# Check if the ratio is approximately 2\nif np.isclose(ratio, 2, atol=0.1):\n    print(\"VERDICT: SUPPORTED\")\nelse:\n    print(\"VERDICT: FALSIFIED\")",
+    "verdict": "EMPIRICALLY FALSIFIED",
+    "output": "Mean Prime Gap: 3.2142857142857144\nMean Riemann Zero Spacing: 3.6412714285714283\nRatio (Mean Prime Gap / Mean Riemann Zero Spacing): 0.8827371914833517\nVERDICT: FALSIFIED",
+    "elapsed_s": 0.13,
+    "repairs_attempted": 0
+  },
+  {
+    "id": "PRIME-CONJ-1792117574",
+    "timestamp": "2026-10-16 02:26:14",
+    "model": "qwen/qwen-2.5-72b-instruct",
+    "domain": "zeta_harmonics",
+    "name": "Gamma Spacing Harmonic Resonance",
+    "formulation": "Let \\(\\gamma_k\\) be the imaginary parts of the non-trivial Riemann zeta zeros. Define the mean spacing \\(d = \\frac{1}{n-1} \\sum_{k=1}^{n-1} (\\gamma_{k+1} - \\gamma_k)\\). We conjecture that the harmonic mean of the spacings \\(H_n\\) converges to a specific value as \\(n\\) increases. Specifically, we hypothesize that:\n\\[\nH_n = \\frac{n-1}{\\sum_{k=1}^{n-1} \\frac{1}{\\gamma_{k+1} - \\gamma_k}} \\approx \\frac{2\\pi}{\\log \\left( \\frac{2\\pi n}{e^\\gamma} \\right)}\n\\]\nwhere \\(\\gamma\\) is the Euler-Mascheroni constant.",
+    "target": "The harmonic mean \\(H_n\\) of the first 15 spacings should be within 5% of the predicted value \\(\\frac{2\\pi}{\\log \\left( \\frac{2\\pi \\cdot 15}{e^\\gamma} \\right)}\\).",
+    "reasoning": "Direct derivation",
+    "code": "import numpy as np\nfrom mpmath import mp\n\n# Define the first 15 imaginary parts of the non-trivial Riemann zeta zeros\ngamma = np.array([14.1347, 21.022, 25.0109, 30.4249, 32.9351, 37.5862, 40.9187, 43.3271, 48.0052, 49.7738, 52.9703, 56.4462, 59.3471, 60.8318, 65.1125])\n\n# Compute the spacings\nspacings = np.diff(gamma)\n\n# Compute the harmonic mean of the spacings\nH_n = len(spacings) / np.sum(1 / spacings)\n\n# Euler-Mascheroni constant\ngamma_euler = mp.euler\n\n# Compute the predicted value\nn = 15\npredicted_value = (2 * np.pi) / np.log((2 * np.pi * n) / np.exp(gamma_euler))\n\n# Check if the harmonic mean is within 5% of the predicted value\ntolerance = 0.05\nif np.abs(H_n - predicted_value) <= tolerance * predicted_value:\n    verdict = 'SUPPORTED'\nelse:\n    verdict = 'FALSIFIED'\n\nprint(f'VERDICT: {verdict}')\nprint(f'Harmonic Mean: {H_n}')\nprint(f'Predicted Value: {predicted_value}')",
+    "verdict": "EXECUTION ERROR (code 1)",
+    "output": "Traceback (most recent call last):\n  File \"/home/runner/work/prime_frontier/prime_frontier/outputs/_temp_verify.py\", line 21, in <module>\n    predicted_value = (2 * np.pi) / np.log((2 * np.pi * n) / np.exp(gamma_euler))\n                                                             ^^^^^^^^^^^^^^^^^^^\nTypeError: loop of ufunc does not support argument 0 of type constant which has no callable exp method",
+    "elapsed_s": 0.13,
+    "repairs_attempted": 1
+  },
+  {
     "id": "PRIME-CONJ-1792031248",
     "timestamp": "2026-10-15 02:27:28",
     "model": "anthropic/claude-sonnet-4",
