@@ -1,5 +1,35 @@
 [
   {
+    "id": "PRIME-CONJ-1792203971",
+    "timestamp": "2026-10-17 02:26:11",
+    "model": "qwen/qwen-2.5-72b-instruct",
+    "domain": "modular_bias_mod30",
+    "name": "Enhanced Modular Bias Modulo 30",
+    "formulation": "Let \\( p_n \\) and \\( p_{n+1} \\) be consecutive prime numbers. Define the residue classes modulo 30 as \\( R = \\{1, 7, 11, 13, 17, 19, 23, 29\\} \\). We conjecture that the transition probability from residue class \\( r_i \\) to \\( r_j \\) is not uniform and exhibits a specific bias pattern. Specifically, we hypothesize that the transition from \\( r_i = 29 \\) to \\( r_j = 29 \\) is significantly less likely than the expected uniform probability of 12.5%, and the transition from \\( r_i = 7 \\) to \\( r_j = 11 \\) is significantly more likely than the expected uniform probability of 12.5%.",
+    "target": "The transition probability from \\( r_i = 29 \\) to \\( r_j = 29 \\) is less than 5%, and the transition probability from \\( r_i = 7 \\) to \\( r_j = 11 \\) is greater than 25%.",
+    "reasoning": "Direct derivation",
+    "code": "import numpy as np\nfrom core.sieve import generate_primes, compute_prime_gaps\n\n# Generate the first 100,000 primes\nprimes = generate_primes(100000)\n\n# Compute the residues modulo 30\nresidues = np.array([p % 30 for p in primes])\n\n# Compute the transitions between consecutive residues\ntransitions = [(residues[i], residues[i + 1]) for i in range(len(residues) - 1)]\n\n# Count the occurrences of each transition\ntransition_counts = {}\nfor r1, r2 in transitions:\n    if (r1, r2) in transition_counts:\n        transition_counts[(r1, r2)] += 1\n    else:\n        transition_counts[(r1, r2)] = 1\n\n# Total number of transitions\ntotal_transitions = len(transitions)\n\n# Compute the transition probabilities\ntransition_probabilities = {k: v / total_transitions for k, v in transition_counts.items()}\n\n# Check the specific transitions\ntransition_29_to_29_prob = transition_probabilities.get((29, 29), 0)\ntransition_7_to_11_prob = transition_probabilities.get((7, 11), 0)\n\n# Print the results\nprint(f\"Transition probability (29, 29): {transition_29_to_29_prob:.2%}\")\nprint(f\"Transition probability (7, 11): {transition_7_to_11_prob:.2%}\")\n\n# Verify the hypothesis\nif transition_29_to_29_prob < 0.05 and transition_7_to_11_prob > 0.25:\n    print(\"VERDICT: SUPPORTED\")\nelse:\n    print(\"VERDICT: FALSIFIED\")",
+    "verdict": "SKIPPED (DUPLICATE OF PRIOR RESEARCH)",
+    "output": "",
+    "elapsed_s": 0.0,
+    "repairs_attempted": 0
+  },
+  {
+    "id": "PRIME-CONJ-1792203917",
+    "timestamp": "2026-10-17 02:25:17",
+    "model": "qwen/qwen-2.5-72b-instruct",
+    "domain": "prime_powers",
+    "name": "Prime Power Influence on Composite Density",
+    "formulation": "Let \\( p \\) be a base prime number such that \\( p \\leq \\sqrt{N} \\). Define \\( C_p \\) as the number of new odd composites eliminated by \\( p \\) starting at \\( p^2 \\). We conjecture that the ratio \\( \\frac{C_p}{p} \\) is approximately constant for all base primes \\( p \\leq \\sqrt{N} \\).",
+    "target": "The average value of \\( \\frac{C_p}{p} \\) for all base primes \\( p \\leq \\sqrt{N} \\) is within 10% of the value for the smallest prime \\( p = 3 \\).",
+    "reasoning": "Direct derivation",
+    "code": "from core.sieve import generate_primes\nimport numpy as np\n\n# Define the range N\nN = 1000\nsqrt_N = int(np.sqrt(N))\n\n# Generate base primes up to sqrt(N)\nbase_primes = generate_primes(sqrt_N)\n\n# Define the number of new odd composites eliminated by each base prime\ncomposites_eliminated = {\n    3: 166, 5: 66, 7: 37, 11: 20, 13: 16, 17: 10\n}\n\n# Calculate the ratio C_p / p for each base prime\nratios = [composites_eliminated[p] / p for p in base_primes if p in composites_eliminated]\n\n# Calculate the average ratio\naverage_ratio = np.mean(ratios)\n\n# Calculate the ratio for the smallest prime p = 3\nratio_p3 = composites_eliminated[3] / 3\n\n# Check if the average ratio is within 10% of the ratio for p = 3\nthreshold = 0.10\nif np.abs(average_ratio - ratio_p3) / ratio_p3 <= threshold:\n    verdict = 'SUPPORTED'\nelse:\n    verdict = 'FALSIFIED'\n\n# Print the verdict and the quantitative evidence\nprint(f'VERDICT: {verdict}')\nprint(f'Average ratio: {average_ratio:.4f}')\nprint(f'Ratio for p=3: {ratio_p3:.4f}')\nprint(f'Difference: {np.abs(average_ratio - ratio_p3) / ratio_p3 * 100:.2f}%')",
+    "verdict": "EMPIRICALLY FALSIFIED",
+    "output": "VERDICT: FALSIFIED\nAverage ratio: 12.9094\nRatio for p=3: 55.3333\nDifference: 76.67%",
+    "elapsed_s": 0.08,
+    "repairs_attempted": 0
+  },
+  {
     "id": "PRIME-CONJ-1792117602",
     "timestamp": "2026-10-16 02:26:42",
     "model": "qwen/qwen-2.5-72b-instruct",
