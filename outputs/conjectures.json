@@ -1,5 +1,35 @@
 [
   {
+    "id": "PRIME-CONJ-1792290464",
+    "timestamp": "2026-10-18 02:27:44",
+    "model": "qwen/qwen-2.5-72b-instruct",
+    "domain": "gap_dynamics",
+    "name": "Sexy Prime Density Hypothesis",
+    "formulation": "Let \\( p_n \\) denote the \\( n \\)-th prime number, and let \\( g_n = p_{n+1} - p_n \\) be the gap between consecutive primes. Define \\( S(N) \\) as the number of sexy primes (primes with a gap of 6) among the first \\( N \\) primes. We conjecture that the density of sexy primes is asymptotically proportional to the density of twin primes and cousin primes, but with a higher frequency. Specifically, we hypothesize that:\n\\[ \\lim_{N \\to \\infty} \\frac{S(N)}{N} \\approx \\frac{1}{\\ln(p_N)} \\]\n\nThis conjecture suggests that the frequency of sexy primes is approximately inversely proportional to the natural logarithm of the \\( N \\)-th prime.",
+    "target": "For the first 100,000 primes, the number of sexy primes \\( S(100,000) \\) should be approximately:",
+    "reasoning": "Direct derivation",
+    "code": "import numpy as np\nfrom core.sieve import generate_primes, compute_prime_gaps\n\n# Generate the first 100,000 primes\nprimes = generate_primes(100000)\n\n# Compute the prime gaps\ngaps = compute_prime_gaps(primes)\n\n# Count the number of sexy primes (gaps of 6)\nsexy_primes_count = np.sum(gaps == 6)\n\n# Calculate the predicted number of sexy primes\npredicted_sexy_primes = 100000 / np.log(primes[-1])\n\n# Print the results\nprint(f\"Observed number of sexy primes: {sexy_primes_count}\")\nprint(f\"Predicted number of sexy primes: {predicted_sexy_primes:.2f}\")\n\n# Determine if the conjecture is supported or falsified\nif np.isclose(sexy_primes_count, predicted_sexy_primes, atol=1000):\n    print(\"VERDICT: SUPPORTED\")\nelse:\n    print(\"VERDICT: FALSIFIED\")",
+    "verdict": "EMPIRICALLY FALSIFIED",
+    "output": "Observed number of sexy primes: 1940\nPredicted number of sexy primes: 8685.96\nVERDICT: FALSIFIED",
+    "elapsed_s": 0.1,
+    "repairs_attempted": 1
+  },
+  {
+    "id": "PRIME-CONJ-1792290375",
+    "timestamp": "2026-10-18 02:26:15",
+    "model": "qwen/qwen-2.5-72b-instruct",
+    "domain": "modular_bias_mod10",
+    "name": "Enhanced Prime Modular Transition Repulsion",
+    "formulation": "Let \\( p_n \\) denote the \\( n \\)-th prime number, and let \\( p_n \\mod 10 \\) be the residue of \\( p_n \\) modulo 10. We observe that consecutive primes exhibit a repulsion effect for the same residue modulo 10. Specifically, the probability \\( P(p_n \\mod 10 = k \\mid p_{n-1} \\mod 10 = k) \\) is significantly lower than the expected uniform probability of \\( \\frac{1}{4} = 0.25 \\).\n\nWe conjecture that the repulsion effect is not only present for the immediate consecutive prime but also extends to the next prime. Formally, we hypothesize that:\n\\[ P(p_{n+1} \\mod 10 = k \\mid p_n \\mod 10 = k \\text{ and } p_{n-1} \\mod 10 = k) < P(p_{n+1} \\mod 10 = k \\mid p_n \\mod 10 = k) \\]\nfor any residue \\( k \\in \\{1, 3, 7, 9\\} \\).",
+    "target": "We aim to test the hypothesis that the probability of a prime having the same residue modulo 10 as the two preceding primes is less than the probability of it having the same residue as the immediately preceding prime. Specifically, we expect:",
+    "reasoning": "Direct derivation",
+    "code": "import numpy as np\nfrom core.sieve import generate_primes, compute_prime_gaps\n\ndef test_conjecture(primes, threshold):\n    # Compute residues modulo 10\n    residues = np.array(primes) % 10\n    \n    # Initialize counters\n    count_same_residue = 0\n    count_same_double_residue = 0\n    \n    # Iterate through primes and count occurrences\n    for i in range(2, len(primes)):\n        if residues[i-1] == residues[i]:\n            count_same_residue += 1\n            if residues[i-2] == residues[i]:\n                count_same_double_residue += 1\n    \n    # Calculate probabilities\n    prob_same_residue = count_same_residue / (len(primes) - 1)\n    prob_same_double_residue = count_same_double_residue / count_same_residue\n    \n    # Print results\n    print(f\"Probability of same residue: {prob_same_residue:.4f}\")\n    print(f\"Probability of same double residue: {prob_same_double_residue:.4f}\")\n    \n    # Verify hypothesis\n    if prob_same_double_residue < threshold:\n        print(f\"VERDICT: SUPPORTED\")\n    else:\n        print(f\"VERDICT: FALSIFIED\")\n\n# Generate the first 100,000 primes\nprimes = generate_primes(100000)\n\n# Test the conjecture\ntest_conjecture(primes, 0.164)",
+    "verdict": "EMPIRICALLY SUPPORTED",
+    "output": "Probability of same residue: 0.1391\nProbability of same double residue: 0.0862\nVERDICT: SUPPORTED",
+    "elapsed_s": 0.11,
+    "repairs_attempted": 0
+  },
+  {
     "id": "PRIME-CONJ-1792203971",
     "timestamp": "2026-10-17 02:26:11",
     "model": "qwen/qwen-2.5-72b-instruct",
