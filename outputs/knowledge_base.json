@@ -10,13 +10,13 @@
       "last_run": "2026-10-18 02:27:44"
     },
     "modular_bias_mod10": {
-      "attempts": 31,
-      "supported": 7,
+      "attempts": 32,
+      "supported": 8,
       "falsified": 23,
       "errors": 1,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-10-18 02:26:15"
+      "last_run": "2026-10-19 02:29:25"
     },
     "prime_powers": {
       "attempts": 29,
@@ -28,13 +28,13 @@
       "last_run": "2026-10-17 02:25:17"
     },
     "goldbach_partitions": {
-      "attempts": 33,
+      "attempts": 34,
       "supported": 8,
-      "falsified": 23,
+      "falsified": 24,
       "errors": 1,
       "timeout": 0,
       "duplicates": 1,
-      "last_run": "2026-10-15 02:26:42"
+      "last_run": "2026-10-19 02:29:49"
     },
     "modular_bias_mod30": {
       "attempts": 44,
@@ -67,8 +67,8 @@
       "errors": 1
     },
     "qwen_math": {
-      "attempts": 84,
-      "success": 76,
+      "attempts": 86,
+      "success": 78,
       "errors": 3
     },
     "sonnet": {
@@ -78,6 +78,12 @@
     }
   },
   "confirmed_laws": [
+    {
+      "id": "PRIME-CONJ-1792376965",
+      "name": "Residue Transition Asymmetry in Prime Sequences",
+      "domain": "modular_bias_mod10",
+      "timestamp": "2026-10-19 02:29:25"
+    },
     {
       "id": "PRIME-CONJ-1792290375",
       "name": "Enhanced Prime Modular Transition Repulsion",
@@ -600,6 +606,8 @@
     "asymptotically|between|consecutive|constant|correlation|delta|denote|frac|gamma|gap|gaps|hypothesize|imaginary|infty|lim|mean|non|number|part|proportional|riemann|spacing|specifically|sum|test|trivial|where|will|zero|zeros|zeta",
     "approximately|base|composite|composites|constant|density|eliminated|frac|influence|leq|new|number|odd|power|ratio|sqrt|starting|such",
     "also|any|but|consecutive|denote|effect|enhanced|exhibit|expected|extends|formally|frac|hypothesize|immediate|lower|mid|mod|modular|modulo|next|not|number|observe|only|present|probability|repulsion|residue|same|significantly|specifically|text|than|transition|uniform",
-    "among|approx|approximately|asymptotically|between|but|consecutive|cousin|denote|density|frac|frequency|gap|higher|hypothesis|hypothesize|infty|inversely|lim|logarithm|natural|number|proportional|sexy|specifically|suggests|twin"
+    "among|approx|approximately|asymptotically|between|but|consecutive|cousin|denote|density|frac|frequency|gap|higher|hypothesis|hypothesize|infty|inversely|lim|logarithm|natural|number|proportional|sexy|specifically|suggests|twin",
+    "asymmetry|attraction|can|data|denote|difference|empirical|ending|equiv|followed|from|left|less|pmod|probabilities|probability|quantified|relationship|repulsion|residue|right|sequences|significant|strong|suggests|than|there|these|transition|transitioning|transitions",
+    "below|bounded|cdot|density|especially|estimate|even|form|frac|function|geq|goldbach|hardy|heuristic|increases|integer|large|littlewood|log|more|number|partition|partitions|rapidly|suggests|than"
   ]
 }
