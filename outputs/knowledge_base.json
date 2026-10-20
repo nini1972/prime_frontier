@@ -19,22 +19,22 @@
       "last_run": "2026-10-19 02:29:25"
     },
     "prime_powers": {
-      "attempts": 29,
+      "attempts": 30,
       "supported": 5,
-      "falsified": 22,
+      "falsified": 23,
       "errors": 2,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-10-17 02:25:17"
+      "last_run": "2026-10-20 02:25:39"
     },
     "goldbach_partitions": {
-      "attempts": 34,
+      "attempts": 35,
       "supported": 8,
       "falsified": 24,
       "errors": 1,
       "timeout": 0,
-      "duplicates": 1,
-      "last_run": "2026-10-19 02:29:49"
+      "duplicates": 2,
+      "last_run": "2026-10-20 02:26:14"
     },
     "modular_bias_mod30": {
       "attempts": 44,
@@ -67,8 +67,8 @@
       "errors": 1
     },
     "qwen_math": {
-      "attempts": 86,
-      "success": 78,
+      "attempts": 88,
+      "success": 79,
       "errors": 3
     },
     "sonnet": {
@@ -608,6 +608,7 @@
     "also|any|but|consecutive|denote|effect|enhanced|exhibit|expected|extends|formally|frac|hypothesize|immediate|lower|mid|mod|modular|modulo|next|not|number|observe|only|present|probability|repulsion|residue|same|significantly|specifically|text|than|transition|uniform",
     "among|approx|approximately|asymptotically|between|but|consecutive|cousin|denote|density|frac|frequency|gap|higher|hypothesis|hypothesize|infty|inversely|lim|logarithm|natural|number|proportional|sexy|specifically|suggests|twin",
     "asymmetry|attraction|can|data|denote|difference|empirical|ending|equiv|followed|from|left|less|pmod|probabilities|probability|quantified|relationship|repulsion|residue|right|sequences|significant|strong|suggests|than|there|these|transition|transitioning|transitions",
-    "below|bounded|cdot|density|especially|estimate|even|form|frac|function|geq|goldbach|hardy|heuristic|increases|integer|large|littlewood|log|more|number|partition|partitions|rapidly|suggests|than"
+    "below|bounded|cdot|density|especially|estimate|even|form|frac|function|geq|goldbach|hardy|heuristic|increases|integer|large|littlewood|log|more|number|partition|partitions|rapidly|suggests|than",
+    "approx|cdot|constant|decays|density|exponentially|frac|integer|interval|inversely|left|leq|number|positive|power|powers|proportional|right|states|such|where"
   ]
 }

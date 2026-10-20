@@ -1,5 +1,35 @@
 [
   {
+    "id": "PRIME-CONJ-1792463174",
+    "timestamp": "2026-10-20 02:26:14",
+    "model": "qwen/qwen-2.5-72b-instruct",
+    "domain": "goldbach_partitions",
+    "name": "Asymptotic Goldbach Partition Density",
+    "formulation": "Let \\( g(n) \\) denote the number of Goldbach partitions of an even integer \\( n \\). We conjecture that for sufficiently large \\( n \\), the density of \\( g(n) \\) relative to the Hardy-Littlewood heuristic estimate \\( \\frac{n}{2 (\\ln n)^2} \\) is bounded below by a constant \\( C \\). Specifically, we propose:\n\\[\n\\liminf_{n \\to \\infty} \\frac{g(n)}{\\frac{n}{2 (\\ln n)^2}} \\geq C > 0\n\\]\nwhere \\( C = 0.5 \\) is a conjectured lower bound.",
+    "target": "For all even \\( n \\geq 4 \\), the ratio \\( \\frac{g(n)}{\\frac{n}{2 (\\ln n)^2}} \\) should be greater than or equal to 0.5.",
+    "reasoning": "Direct derivation",
+    "code": "import numpy as np\nfrom core.sieve import generate_primes\n\ndef goldbach_partitions(n, primes):\n    count = 0\n    for p in primes:\n        if p > n // 2:\n            break\n        if n - p in primes:\n            count += 1\n    return count\n\ndef test_conjecture(max_n=20000, threshold=0.5):\n    primes = set(generate_primes(max_n))\n    for n in range(4, max_n + 1, 2):\n        g_n = goldbach_partitions(n, primes)\n        heuristic_estimate = n / (2 * (np.log(n) ** 2))\n        ratio = g_n / heuristic_estimate\n        if ratio < threshold:\n            print(f'VERDICT: FALSIFIED at n={n}, g(n)={g_n}, heuristic={heuristic_estimate:.2f}, ratio={ratio:.2f}')\n            return\n    print(f'VERDICT: SUPPORTED. All ratios are >= {threshold}')\n\ntest_conjecture()",
+    "verdict": "SKIPPED (DUPLICATE OF PRIOR RESEARCH)",
+    "output": "",
+    "elapsed_s": 0.0,
+    "repairs_attempted": 0
+  },
+  {
+    "id": "PRIME-CONJ-1792463139",
+    "timestamp": "2026-10-20 02:25:39",
+    "model": "qwen/qwen-2.5-72b-instruct",
+    "domain": "prime_powers",
+    "name": "Prime Power Density Conjecture",
+    "formulation": "Let \\( p \\) be a prime number, and let \\( k \\) be a positive integer such that \\( p^k \\leq N \\). Define \\( d(p, k) \\) as the density of prime powers \\( p^k \\) in the interval \\([1, N]\\). The conjecture states that the density \\( d(p, k) \\) is inversely proportional to the prime \\( p \\) and exponentially decays with \\( k \\):\n\\[ d(p, k) \\approx \\frac{C}{p} \\cdot \\left( \\frac{1}{p} \\right)^{k-1} \\]\nwhere \\( C \\) is a constant.",
+    "target": "For \\( N = 1000 \\), the density \\( d(p, k) \\) of prime powers \\( p^k \\) in the interval \\([1, 1000]\\) should satisfy:",
+    "reasoning": "Direct derivation",
+    "code": "import numpy as np\nfrom core.sieve import generate_primes\n\ndef calculate_density(N, p, k):\n    prime_powers = [p**i for i in range(2, k+1) if p**i <= N]\n    density = len(prime_powers) / N\n    return density\n\ndef test_conjecture(N):\n    primes = generate_primes(int(np.sqrt(N)))\n    threshold_passed = True\n    for p in primes:\n        k = 2\n        while p**k <= N:\n            density = calculate_density(N, p, k)\n            threshold = (1 / p) * (1 / p)**(k-1)\n            if density > threshold:\n                threshold_passed = False\n                print(f\"Conjecture falsified for p = {p}, k = {k}: density = {density}, threshold = {threshold}\")\n            k += 1\n    if threshold_passed:\n        print(f\"VERDICT: SUPPORTED\")\n    else:\n        print(f\"VERDICT: FALSIFIED\")\n\n# Test the conjecture for N = 1000\ntest_conjecture(1000)",
+    "verdict": "EMPIRICALLY FALSIFIED",
+    "output": "Conjecture falsified for p = 2, k = 8: density = 0.007, threshold = 0.00390625\nConjecture falsified for p = 2, k = 9: density = 0.008, threshold = 0.001953125\nConjecture falsified for p = 3, k = 6: density = 0.005, threshold = 0.0013717421124828527\nConjecture falsified for p = 5, k = 4: density = 0.003, threshold = 0.0016000000000000005\nVERDICT: FALSIFIED",
+    "elapsed_s": 0.11,
+    "repairs_attempted": 0
+  },
+  {
     "id": "PRIME-CONJ-1792376989",
     "timestamp": "2026-10-19 02:29:49",
     "model": "qwen/qwen-2.5-72b-instruct",
