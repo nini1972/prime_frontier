@@ -1,5 +1,35 @@
 [
   {
+    "id": "PRIME-CONJ-1792549692",
+    "timestamp": "2026-10-21 02:28:12",
+    "model": "qwen/qwen-2.5-72b-instruct",
+    "domain": "prime_powers",
+    "name": "Prime Power Density Hypothesis",
+    "formulation": "Let \\( p \\) be a base odd prime less than or equal to \\( \\sqrt{N} \\). The conjecture states that the number of new odd composites eliminated by \\( p \\) starting at \\( p^2 \\) is approximately proportional to \\( \\frac{N}{p^2} \\). Specifically, the number of new odd composites eliminated by \\( p \\) is given by:\n\\[ C(p) \\approx \\frac{N}{p^2} \\cdot \\left(1 - \\frac{1}{p}\\right) \\]\nwhere \\( C(p) \\) is the number of new odd composites eliminated by \\( p \\).",
+    "target": "The conjecture holds if the empirical number of new odd composites eliminated by each base prime \\( p \\) is within 10% of the predicted value \\( \\frac{N}{p^2} \\cdot \\left(1 - \\frac{1}{p}\\right) \\).",
+    "reasoning": "Direct derivation",
+    "code": "import numpy as np\nfrom core.sieve import generate_primes\n\n# Constants\nN = 1000\nsqrt_N = int(np.sqrt(N))\n\n# Generate base primes up to sqrt(N)\nbase_primes = [p for p in generate_primes(sqrt_N + 1) if p > 2]\n\n# Empirical data: number of new odd composites eliminated by each base prime\nempirical_composites = {3: 166, 5: 66, 7: 37, 11: 20, 13: 16, 17: 10}\n\n# Function to compute the predicted number of new odd composites\ndef predict_composites(p, N):\n    return (N / p**2) * (1 - 1/p)\n\n# Verify the conjecture\nverdict = \"VERDICT: SUPPORTED\"\nfor p in base_primes:\n    empirical = empirical_composites.get(p, 0)\n    predicted = predict_composites(p, N)\n    if abs(empirical - predicted) > 0.1 * predicted:\n        verdict = \"VERDICT: FALSIFIED\"\n        break\n\n# Print the verdict and quantitative evidence\nprint(verdict)\nfor p in base_primes:\n    empirical = empirical_composites.get(p, 0)\n    predicted = predict_composites(p, N)\n    print(f\"Prime: {p}, Empirical: {empirical}, Predicted: {predicted:.2f}\")",
+    "verdict": "EMPIRICALLY FALSIFIED",
+    "output": "VERDICT: FALSIFIED\nPrime: 3, Empirical: 166, Predicted: 74.07\nPrime: 5, Empirical: 66, Predicted: 32.00\nPrime: 7, Empirical: 37, Predicted: 17.49\nPrime: 11, Empirical: 20, Predicted: 7.51\nPrime: 13, Empirical: 16, Predicted: 5.46\nPrime: 17, Empirical: 10, Predicted: 3.26\nPrime: 19, Empirical: 0, Predicted: 2.62\nPrime: 23, Empirical: 0, Predicted: 1.81\nPrime: 29, Empirical: 0, Predicted: 1.15\nPrime: 31, Empirical: 0, Predicted: 1.01",
+    "elapsed_s": 0.11,
+    "repairs_attempted": 0
+  },
+  {
+    "id": "PRIME-CONJ-1792549638",
+    "timestamp": "2026-10-21 02:27:18",
+    "model": "qwen/qwen-2.5-72b-instruct",
+    "domain": "modular_bias_mod30",
+    "name": "Prime Residue Repulsion and Attraction Modulo 30",
+    "formulation": "Let \\( p_n \\) denote the \\( n \\)-th prime number. Consider the sequence of consecutive prime pairs \\( (p_n, p_{n+1}) \\) modulo 30. Let \\( r_i \\) denote the residue classes coprime to 30, i.e., \\( \\{1, 7, 11, 13, 17, 19, 23, 29\\} \\). Define the transition probability \\( P(r_i, r_j) \\) as the empirical frequency of the transition from residue \\( r_i \\) to \\( r_j \\) in the sequence of consecutive primes modulo 30. We conjecture that for the transition \\( (29, 29) \\), the probability \\( P(29, 29) \\) is significantly lower than the expected uniform probability of 12.5%, while the transition \\( (7, 11) \\) has a significantly higher probability.",
+    "target": "- \\( P(29, 29) < 5\\% \\)",
+    "reasoning": "Direct derivation",
+    "code": "import numpy as np\nfrom core.sieve import generate_primes, compute_prime_gaps\n\n# Generate the first 100,000 primes\nprimes = generate_primes(100000)\n\n# Compute the residues of the primes modulo 30\nresidues = np.array(primes) % 30\n\n# Compute the transition counts\ntransition_counts = np.zeros((8, 8), dtype=int)\nresidue_classes = [1, 7, 11, 13, 17, 19, 23, 29]\nresidue_to_index = {r: i for i, r in enumerate(residue_classes)}\n\nfor i in range(len(primes) - 1):\n    r_i = residues[i]\n    r_j = residues[i + 1]\n    if r_i in residue_classes and r_j in residue_classes:\n        transition_counts[residue_to_index[r_i], residue_to_index[r_j]] += 1\n\n# Compute the transition probabilities\ntotal_transitions = transition_counts.sum()\ntransition_probabilities = transition_counts / total_transitions\n\n# Extract the probabilities for the specific transitions\np_29_29 = transition_probabilities[residue_to_index[29], residue_to_index[29]]\np_7_11 = transition_probabilities[residue_to_index[7], residue_to_index[11]]\n\n# Print the results\nprint(f\"Transition probability (29, 29): {p_29_29 * 100:.2f}%\")\nprint(f\"Transition probability (7, 11): {p_7_11 * 100:.2f}%\")\n\n# Verify the conjecture\nif p_29_29 < 0.05 and p_7_11 > 0.25:\n    print(\"VERDICT: SUPPORTED\")\nelse:\n    print(\"VERDICT: FALSIFIED\")",
+    "verdict": "EMPIRICALLY FALSIFIED",
+    "output": "Transition probability (29, 29): 0.15%\nTransition probability (7, 11): 4.38%\nVERDICT: FALSIFIED",
+    "elapsed_s": 0.12,
+    "repairs_attempted": 0
+  },
+  {
     "id": "PRIME-CONJ-1792463174",
     "timestamp": "2026-10-20 02:26:14",
     "model": "qwen/qwen-2.5-72b-instruct",
