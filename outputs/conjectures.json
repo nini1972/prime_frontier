@@ -1,5 +1,35 @@
 [
   {
+    "id": "PRIME-CONJ-1792636267",
+    "timestamp": "2026-10-22 02:31:07",
+    "model": "qwen/qwen-2.5-72b-instruct",
+    "domain": "modular_bias_mod30",
+    "name": "Enhanced Modulo-30 Transition Bias",
+    "formulation": "Let \\( p_n \\) be the \\( n \\)-th prime number. Consider the residue classes modulo 30, which are \\(\\{1, 7, 11, 13, 17, 19, 23, 29\\}\\). Define the transition probability \\( T(a, b) \\) as the probability that \\( p_{n+1} \\equiv b \\pmod{30} \\) given \\( p_n \\equiv a \\pmod{30} \\). The conjecture is that the transition \\( T(7, 11) \\) is significantly more likely than the expected uniform transition probability of 12.5%, and the transition \\( T(29, 29) \\) is significantly less likely than the expected uniform transition probability of 12.5%.\n\nSpecifically, we conjecture:\n\\[ T(7, 11) > 15\\% \\]\n\\[ T(29, 29) < 10\\% \\]",
+    "target": "The transition probability \\( T(7, 11) \\) should be greater than 15%, and the transition probability \\( T(29, 29) \\) should be less than 10%.",
+    "reasoning": "Direct derivation",
+    "code": "import numpy as np\nfrom core.sieve import generate_primes, compute_prime_gaps\n\n# Generate the first 100,000 primes\nprimes = generate_primes(100000)\n\n# Compute the residues modulo 30\nresidues = np.array(primes) % 30\n\n# Compute the transition counts\ntransition_counts = np.zeros((8, 8), dtype=int)\nresidue_classes = [1, 7, 11, 13, 17, 19, 23, 29]\nresidue_indices = {residue: i for i, residue in enumerate(residue_classes)}\n\nfor i in range(len(residues) - 1):\n    a = residues[i]\n    b = residues[i + 1]\n    if a in residue_indices and b in residue_indices:\n        transition_counts[residue_indices[a], residue_indices[b]] += 1\n\n# Compute the transition probabilities\ntotal_transitions = transition_counts.sum()\ntransition_probabilities = transition_counts / total_transitions\n\n# Extract the specific transition probabilities\nT_7_11 = transition_probabilities[residue_indices[7], residue_indices[11]]\nT_29_29 = transition_probabilities[residue_indices[29], residue_indices[29]]\n\n# Print the results and the verdict\nprint(f\"T(7, 11): {T_7_11 * 100:.2f}%\")\nprint(f\"T(29, 29): {T_29_29 * 100:.2f}%\")\n\n# Check the conjecture\nif T_7_11 > 0.15 and T_29_29 < 0.10:\n    print(\"VERDICT: SUPPORTED\")\nelse:\n    print(\"VERDICT: FALSIFIED\")",
+    "verdict": "SKIPPED (DUPLICATE OF PRIOR RESEARCH)",
+    "output": "",
+    "elapsed_s": 0.0,
+    "repairs_attempted": 0
+  },
+  {
+    "id": "PRIME-CONJ-1792636087",
+    "timestamp": "2026-10-22 02:28:07",
+    "model": "qwen/qwen-2.5-72b-instruct",
+    "domain": "zeta_harmonics",
+    "name": "Prime Gap Resonance Conjecture",
+    "formulation": "Let \\(\\gamma_k\\) denote the imaginary part of the \\(k\\)-th non-trivial Riemann zeta zero. Consider the mean spacing between consecutive \\(\\gamma_k\\) values, denoted as \\(\\Delta\\). The conjecture states that the mean prime gap \\(G\\) in the range of primes up to \\(x\\), where \\(x\\) is the largest prime less than or equal to \\(\\exp(\\gamma_k)\\), is approximately proportional to \\(\\Delta\\). Mathematically, this can be expressed as:\n\\[ G \\approx C \\cdot \\Delta \\]\nwhere \\(C\\) is a constant. Specifically, we hypothesize that \\(C \\approx 1\\).",
+    "target": "The mean prime gap \\(G\\) in the range of primes up to \\(x = \\exp(\\gamma_k)\\) for the first 5 \\(\\gamma_k\\) values should be within 10% of the mean spacing \\(\\Delta = 3.6413\\).",
+    "reasoning": "Direct derivation",
+    "code": "import numpy as np\nfrom core.sieve import generate_primes, compute_prime_gaps\nfrom mpmath import exp\n\n# Given data\ngamma_k = [14.1347, 21.022, 25.0109, 30.4249, 32.9351]\nmean_spacing = 3.6413\n\n# Function to compute mean prime gap up to exp(gamma)\ndef mean_prime_gap(gamma):\n    x = int(exp(gamma))\n    primes = generate_primes(x)\n    prime_gaps = compute_prime_gaps(primes)\n    return np.mean(prime_gaps)\n\n# Compute mean prime gaps for each gamma_k\nmean_gaps = [mean_prime_gap(gamma) for gamma in gamma_k]\n\n# Check if the mean prime gaps are within 10% of the mean spacing\ntolerance = 0.1\nsupported = all(abs(gap - mean_spacing) / mean_spacing <= tolerance for gap in mean_gaps)\n\n# Print the verdict\nverdict = 'SUPPORTED' if supported else 'FALSIFIED'\nprint(f'VERDICT: {verdict}')\nprint(f'Mean spacings: {mean_spacing}')\nprint(f'Computed mean prime gaps: {mean_gaps}')",
+    "verdict": "EXECUTION ERROR (code 1)",
+    "output": "Traceback (most recent call last):\n  File \"/home/runner/work/prime_frontier/prime_frontier/outputs/_temp_verify.py\", line 20, in <module>\n    mean_gaps = [mean_prime_gap(gamma) for gamma in gamma_k]\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/prime_frontier/prime_frontier/outputs/_temp_verify.py\", line 20, in <listcomp>\n    mean_gaps = [mean_prime_gap(gamma) for gamma in gamma_k]\n                 ^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/prime_frontier/prime_frontier/outputs/_temp_verify.py\", line 15, in mean_prime_gap\n    primes = generate_primes(x)\n             ^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/prime_frontier/prime_frontier/core/sieve.py\", line 22, in generate_primes\n    is_prime = np.ones(limit + 1, dtype=bool)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/numpy/_core/numeric.py\", line 232, in ones\n    a = empty(shape, dtype, order, device=device)\n",
+    "elapsed_s": 6.86,
+    "repairs_attempted": 1
+  },
+  {
     "id": "PRIME-CONJ-1792549692",
     "timestamp": "2026-10-21 02:28:12",
     "model": "qwen/qwen-2.5-72b-instruct",
