@@ -21,11 +21,11 @@ from typing import Dict, Optional, Tuple
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
 
 DEFAULT_MODELS = {
-    "r1": "deepseek/deepseek-r1-distill-llama-70b",
-    "r1_full": "deepseek/deepseek-r1",
+    "r1": "deepseek/deepseek-r1-0528",
+    "r1_full": "deepseek/deepseek-r1-0528",
     "qwen_math": "qwen/qwen-2.5-72b-instruct",
-    "sonnet": "anthropic/claude-sonnet-4",
-    "haiku": "anthropic/claude-3-haiku"
+    "sonnet": "anthropic/claude-sonnet-4.5",
+    "haiku": "anthropic/claude-haiku-4.5"
 }
 
 def load_api_key() -> str:
