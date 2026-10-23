@@ -10,22 +10,22 @@
       "last_run": "2026-10-23 02:27:41"
     },
     "modular_bias_mod10": {
-      "attempts": 33,
+      "attempts": 34,
       "supported": 8,
       "falsified": 24,
-      "errors": 1,
-      "timeout": 0,
-      "duplicates": 0,
-      "last_run": "2026-10-23 20:57:42"
-    },
-    "prime_powers": {
-      "attempts": 33,
-      "supported": 5,
-      "falsified": 26,
       "errors": 2,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-10-23 20:53:53"
+      "last_run": "2026-10-23 21:13:46"
+    },
+    "prime_powers": {
+      "attempts": 34,
+      "supported": 5,
+      "falsified": 26,
+      "errors": 3,
+      "timeout": 0,
+      "duplicates": 0,
+      "last_run": "2026-10-23 21:17:10"
     },
     "goldbach_partitions": {
       "attempts": 36,
@@ -37,22 +37,22 @@
       "last_run": "2026-10-23 02:28:09"
     },
     "modular_bias_mod30": {
-      "attempts": 47,
+      "attempts": 49,
       "supported": 13,
-      "falsified": 30,
+      "falsified": 32,
       "errors": 0,
       "timeout": 0,
       "duplicates": 4,
-      "last_run": "2026-10-23 02:28:38"
+      "last_run": "2026-10-23 21:14:53"
     },
     "zeta_harmonics": {
-      "attempts": 37,
-      "supported": 14,
+      "attempts": 38,
+      "supported": 15,
       "falsified": 18,
       "errors": 2,
       "timeout": 0,
       "duplicates": 3,
-      "last_run": "2026-10-22 02:28:07"
+      "last_run": "2026-10-23 21:16:37"
     }
   },
   "models": {
@@ -67,17 +67,23 @@
       "errors": 1
     },
     "qwen_math": {
-      "attempts": 96,
-      "success": 85,
-      "errors": 4
+      "attempts": 98,
+      "success": 86,
+      "errors": 5
     },
     "sonnet": {
-      "attempts": 121,
-      "success": 116,
-      "errors": 2
+      "attempts": 124,
+      "success": 118,
+      "errors": 3
     }
   },
   "confirmed_laws": [
+    {
+      "id": "PRIME-CONJ-1792790197",
+      "name": "Zeta Zero Spacing and Prime Gap Autocorrelation Resonance",
+      "domain": "zeta_harmonics",
+      "timestamp": "2026-10-23 21:16:37"
+    },
     {
       "id": "PRIME-CONJ-1792376965",
       "name": "Residue Transition Asymmetry in Prime Sequences",
@@ -635,6 +641,11 @@
     "composite|elimination|power|rate::composites|converges|eliminated|eliminates|frac|given|hypothesize|increases|infty|inversely|leq|lim|log|logarithm|new|number|odd|proportional|rate|ratio|specific|specifically|sqrt|starting|suggests|value|which",
     "entropy|residue|transition::above|attraction|bounded|consecutive|denote|distribution|entropy|equiv|followed|have|lead|leq|less|log|matrix|modulo|more|observed|pmod|predictable|probability|random|range|repulsion|residue|short|specific|structure|suggests|sum|than|threshold|transition|transitions|uniform|which|would",
     "entropy|minimization|residue|transition::compared|consecutive|constant|defined|distribution|entropy|epsilon|frac|from|hypothesize|log|lower|matrix|minimized|modulo|positive|probability|residue|same|shannon|significantly|small|specifically|sum|text|than|transition|transitioning|transitions|uniform|where|would",
-    "entropy|residue|stabilization|transition::0000|7538|approx|around|based|bounded|consecutive|constant|converges|defined|delta|deviation|distribution|empirical|entropy|from|higher|hypothesize|increases|log|matrix|modulo|number|observations|positive|probability|residue|shannon|significantly|small|specific|specifically|stabilizes|stable|such|sum|text|than|transition|transitioning|uniform|value|where|would"
+    "entropy|residue|stabilization|transition::0000|7538|approx|around|based|bounded|consecutive|constant|converges|defined|delta|deviation|distribution|empirical|entropy|from|higher|hypothesize|increases|log|matrix|modulo|number|observations|positive|probability|residue|shannon|significantly|small|specific|specifically|stabilizes|stable|such|sum|text|than|transition|transitioning|uniform|value|where|would",
+    "gap|hierarchy|residue|spectral|transitions::accumulating|act|asymptotic|barriers|becomes|beta|between|bias|biases|boundaries|boundary|closer|correlated|correlation|deep|demonstrating|denote|directional|distance|each|effects|empirical|escape|exhibit|extend|frac|from|gap|geq|have|hierarchical|hierarchy|higher|increases|indicating|interior|intuition|larger|like|lower|max|memory|min|minimal|modular|modulo|more|near|negative|ordering|physical|probability|profiles|rank|ratio|reflective|residue|residues|revealing|rho|routes|samples|satisfies|should|sigma|smoother|spearman|specifically|spectral|strengthen|strong|stronger|structure|sum|thus|transition|variance|variances|walk|where",
+    "oscillation|residue|transition::between|bounded|considered|constant|denote|difference|equiv|exhibits|frac|function|given|left|log|logarithm|number|oscillation|pattern|pmod|probabilities|probability|residues|right|sequence|should|specific|specifically|transition|where",
+    "asymmetry|cyclic|decay|harmonic|residue|transition::across|alpha|approach|arranged|ascending|asymmetry|between|bias|cdot|circular|const|correlation|cyc|cyclic|decay|decays|denote|directional|distance|distant|empirical|exhibit|exhibits|exponent|fit|frac|from|furthermore|geq|harmonic|law|log|mean|minimum|modulated|modulo|multiple|nearby|negative|order|ordering|pairs|power|predict|probability|rank|reflects|represents|residue|residues|rho|rms|root|satisfy|scales|sequence|should|sim|spearman|specifically|sqrt|square|strong|stronger|structure|sum|symmetry|text|transition|treating|when|where|while|wraparound|yield",
+    "autocorrelation|gap|resonance|spacing|zero|zeta::autocorrelation|bar|between|certain|computed|constant|ell|exhibits|frac|gamma|gaps|imaginary|lag|left|leq|lfloor|log|max|mean|non|parts|relationship|resonant|rfloor|riemann|right|spacing|specifically|sqrt|states|these|trivial|when|where|zeros|zeta",
+    "conservation|law|momentum|power|sieve::1000|alpha|base|beta|cdot|composite|composites|conservation|constants|content|contribution|count|depth|double|each|eliminated|elimination|exhibits|frac|geq|grows|independent|individual|information|intuition|its|law|left|leq|linking|log|logarithmic|macroscopic|mathcal|mechanics|microscopic|momentum|new|normalized|number|odd|physical|posits|predictably|ratio|right|scale|scaling|sieve|specifically|sqrt|starting|sum|text|total|universal|weighted|where"
   ]
 }
