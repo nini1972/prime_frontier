@@ -102,61 +102,71 @@ def query_math_model(
         "X-Title": "Prime Frontier Mathematics Engine"
     }
     
-    req = urllib.request.Request(
-        OPENROUTER_URL,
-        data=json.dumps(payload).encode("utf-8"),
-        headers=headers,
-        method="POST"
-    )
-    
     t0 = time.time()
-    try:
-        with urllib.request.urlopen(req, timeout=timeout) as response:
-            res_data = json.loads(response.read().decode("utf-8"))
-            elapsed = time.time() - t0
-            
-            choice = res_data.get("choices", [{}])[0]
-            msg = choice.get("message", {})
-            content = msg.get("content") or ""
-            reasoning = msg.get("reasoning") or ""
-            
-            # DeepSeek R1 exposes reasoning either via message.reasoning or <think> tags
-            if not reasoning and "<think>" in content and "</think>" in content:
-                parts = content.split("</think>")
-                reasoning = parts[0].replace("<think>", "").strip()
-                content = parts[1].strip()
+    max_retries = 3
+    last_err = None
+    for attempt in range(max_retries):
+        req = urllib.request.Request(
+            OPENROUTER_URL,
+            data=json.dumps(payload).encode("utf-8"),
+            headers=headers,
+            method="POST"
+        )
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as response:
+                res_data = json.loads(response.read().decode("utf-8"))
+                elapsed = time.time() - t0
                 
-            # If content is empty but reasoning is present, fallback to reasoning
-            if not content and reasoning:
-                content = reasoning
+                choice = res_data.get("choices", [{}])[0]
+                msg = choice.get("message", {})
+                content = msg.get("content") or ""
+                reasoning = msg.get("reasoning") or ""
                 
+                # DeepSeek R1 exposes reasoning either via message.reasoning or <think> tags
+                if not reasoning and "<think>" in content and "</think>" in content:
+                    parts = content.split("</think>")
+                    reasoning = parts[0].replace("<think>", "").strip()
+                    content = parts[1].strip()
+                    
+                # If content is empty but reasoning is present, fallback to reasoning
+                if not content and reasoning:
+                    content = reasoning
+                    
+                return {
+                    "content": content,
+                    "reasoning": reasoning,
+                    "model": model_id,
+                    "latency_s": round(elapsed, 2),
+                    "success": True,
+                    "error": None
+                }
+        except urllib.error.HTTPError as e:
+            err_msg = e.read().decode("utf-8", errors="ignore")
+            last_err = f"HTTP {e.code}: {err_msg}"
+            if e.code in (429, 500, 502, 503, 504) and attempt < max_retries - 1:
+                time.sleep(4 * (attempt + 1))
+                continue
             return {
-                "content": content,
-                "reasoning": reasoning,
+                "content": "",
+                "reasoning": None,
                 "model": model_id,
-                "latency_s": round(elapsed, 2),
-                "success": True,
-                "error": None
+                "latency_s": round(time.time() - t0, 2),
+                "success": False,
+                "error": last_err
             }
-    except urllib.error.HTTPError as e:
-        err_msg = e.read().decode("utf-8", errors="ignore")
-        return {
-            "content": "",
-            "reasoning": None,
-            "model": model_id,
-            "latency_s": round(time.time() - t0, 2),
-            "success": False,
-            "error": f"HTTP {e.code}: {err_msg}"
-        }
-    except Exception as e:
-        return {
-            "content": "",
-            "reasoning": None,
-            "model": model_id,
-            "latency_s": round(time.time() - t0, 2),
-            "success": False,
-            "error": str(e)
-        }
+        except Exception as e:
+            last_err = str(e)
+            if attempt < max_retries - 1:
+                time.sleep(3 * (attempt + 1))
+                continue
+            return {
+                "content": "",
+                "reasoning": None,
+                "model": model_id,
+                "latency_s": round(time.time() - t0, 2),
+                "success": False,
+                "error": last_err
+            }
 
 if __name__ == "__main__":
     print("Testing LLM Client connectivity...")

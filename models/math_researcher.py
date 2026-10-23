@@ -41,8 +41,44 @@ mathematical conjecture about prime numbers, but it failed to run correctly.
 {error}
 
 Fix the bug and return the corrected, complete, self-contained script. Keep the same conjecture and
-intent, just make it run correctly. It must still print 'VERDICT: SUPPORTED' or 'VERDICT: FALSIFIED'.
+intent, just make it run correctly.
+Note core utility return signatures if used:
+- generate_primes(limit: int) -> np.ndarray
+- compute_modular_transitions(primes, mod=10) -> dict with keys "residues", "transition_matrix" (2D list of probabilities), "transition_counts" (2D list), "expected_uniform"
+- goldbach_partition_counts(limit: int) -> dict {{even_n: count}}
+- get_zeta_zeros(count: int) -> list of floats
+It must still print 'VERDICT: SUPPORTED' or 'VERDICT: FALSIFIED'.
 Return ONLY the corrected script as a single Python code block, with no other commentary.
+"""
+
+REFINEMENT_PROMPT_TEMPLATE = """Your initial mathematical conjecture in domain '{domain_id}' was tested against empirical prime data and FALSIFIED:
+
+--- INITIAL CONJECTURE ---
+Name: {name}
+Formulation: {formulation}
+Target: {target}
+
+--- VERIFICATION SCRIPT ---
+```python
+{code}
+```
+
+--- EMPIRICAL OUTPUT (COUNTER-EVIDENCE) ---
+{output}
+
+Scientific Refinement Task:
+Use the exact numerical observations in the empirical output above to diagnose why your initial bound, scaling exponent, or functional form failed.
+Formulate a REFINED, mathematically non-trivial conjecture that captures the true empirical behavior, and write a new verification script that tests your refined law across MULTIPLE scales (including a larger out-of-sample scale than the initial script, to prevent trivial overfitting).
+Do NOT formulate a trivial tautology; the refined hypothesis must still be a genuine, sharp quantitative law.
+
+Format your output strictly as:
+## CONJECTURE_NAME: <distinctive title for the calibrated law>
+## MATHEMATICAL_FORMULATION: <LaTeX formula and rigorous explanation incorporating the empirical calibration>
+## HYPOTHESIS_TARGET: <exact quantitative threshold across multiple scales>
+## PYTHON_VERIFICATION:
+```python
+# Self-contained python script testing across multiple scales and printing 'VERDICT: SUPPORTED' or 'VERDICT: FALSIFIED'
+```
 """
 
 def extract_code_block(text: str) -> str:
@@ -52,16 +88,39 @@ def extract_code_block(text: str) -> str:
         return match.group(1).strip()
     return ""
 
+def parse_conjecture_sections(content: str) -> Dict[str, str]:
+    """Parse structured sections (name, formulation, target, code) without single-line truncation."""
+    name_m = re.search(r'##\s*CONJECTURE_NAME:\s*([^\n\r]+)', content)
+    name = name_m.group(1).strip() if name_m else "Empirical Prime Invariant"
+
+    form_m = re.search(r'##\s*MATHEMATICAL_FORMULATION:\s*([\s\S]*?)(?:##|\Z)', content)
+    formulation = form_m.group(1).strip() if form_m else content[:400]
+
+    target_m = re.search(r'##\s*HYPOTHESIS_TARGET:\s*([\s\S]*?)(?:##|```|\Z)', content)
+    target = target_m.group(1).strip() if target_m else "Quantitative validation"
+
+    code = extract_code_block(content)
+    return {
+        "name": name,
+        "formulation": formulation,
+        "target": target,
+        "code": code,
+    }
+
 def execute_verification_script(code: str, timeout_sec: int = 45) -> Dict:
-    """Safely execute generated verification code with pre-imported fast sieve helpers and capture stdout/verdict."""
+    """Safely execute generated verification code with pre-imported fast domain helpers and capture stdout/verdict."""
     test_script_path = os.path.join(OUTPUTS_DIR, "_temp_verify.py")
     os.makedirs(OUTPUTS_DIR, exist_ok=True)
     
-    # Prepend project root to sys.path and provide core sieve utilities
+    # Prepend project root to sys.path and provide all core domain utilities
     preamble = (
-        "import sys, os\n"
+        "import sys, os, math\n"
+        "import numpy as np\n"
         f"sys.path.insert(0, {repr(BASE_DIR)})\n"
-        "from core.sieve import generate_primes, compute_prime_gaps, compute_gap_statistics\n"
+        "from core.sieve import generate_primes, compute_prime_gaps, compute_gap_statistics, find_maximal_gap_records\n"
+        "from core.modular_orbits import compute_modular_transitions, compute_residue_autocorrelation\n"
+        "from core.goldbach import goldbach_partition_counts, goldbach_stats\n"
+        "from core.zeta_harmonics import get_zeta_zeros, exact_psi, approximate_psi_riemann\n"
     )
     full_code = preamble + code
 
@@ -140,19 +199,62 @@ def attempt_repair(code: str, error_output: str, model_alias: str) -> str:
     return fixed if fixed else code
 
 
+def attempt_refinement(
+    domain_id: str,
+    name: str,
+    formulation: str,
+    target: str,
+    code: str,
+    empirical_output: str,
+    model_alias: str,
+    temperature: float = 0.5,
+) -> Optional[Dict[str, str]]:
+    """
+    1-Step Scientific Refinement Loop:
+    Feed empirical falsification output back to the reasoning model so it can calibrate
+    its conjecture around the observed numerical reality and test across multiple scales.
+    """
+    prompt = REFINEMENT_PROMPT_TEMPLATE.format(
+        domain_id=domain_id,
+        name=name,
+        formulation=formulation[:1200],
+        target=target[:400],
+        code=code[:2000],
+        output=empirical_output[:1200],
+    )
+    res = query_math_model(
+        prompt=prompt,
+        system_prompt=(
+            "You are a senior experimental number theorist calibrating a falsified hypothesis "
+            "using empirical counter-evidence. Formulate a sharp, multi-scale mathematical law."
+        ),
+        model_alias=model_alias,
+        temperature=max(0.2, min(temperature, 0.6)),
+        max_tokens=3000 if "r1" in model_alias else 2000,
+    )
+    if not res["success"]:
+        return None
+    content = res.get("content") or res.get("reasoning") or ""
+    parsed = parse_conjecture_sections(content)
+    if not parsed["code"]:
+        return None
+    return parsed
+
+
 def run_hypothesis_cycle(
     model_alias: str = "haiku",
     domain_id: Optional[str] = None,
     max_repairs: int = 2,
-    temperature: float = 0.7
+    temperature: float = 0.7,
+    enable_refinement: bool = True,
 ) -> Dict:
     """
     Run one full scientific inquiry cycle:
     1. Pick a research domain (explicit, or chosen by the knowledge base's coverage-driven explorer)
-    2. Gather fresh empirical data for that domain (core/domains.py)
+    2. Gather fresh empirical data for that domain (core/domains.py) + inject Prior Domain Memory
     3. Prompt reasoning model (Claude / Qwen / DeepSeek) for a novel conjecture
     4. Extract & execute its Python verification script, self-repairing on execution errors
-    5. Reject near-duplicates of prior conjectures using the knowledge base
+    5. On empirical falsification, run a 1-step Scientific Refinement loop to calibrate the law
     6. Save the conjecture, empirical verdict, and updated knowledge-base coverage stats
     """
     state = kb.load_state()
@@ -164,9 +266,14 @@ def run_hypothesis_cycle(
         print(f"[{datetime.now().strftime('%H:%M:%S')}] {msg}", flush=True)
 
     log(f"Domain selected: {domain.name} ({domain_id})")
-    log("Gathering baseline empirical data...")
+    log("Gathering baseline empirical data & prior domain memory...")
     harvested = domain.harvest()
-    prompt = domain.prompt_template.format(**harvested)
+    base_prompt = domain.prompt_template.format(**harvested)
+    memory_block = kb.build_domain_memory_prompt(domain_id, CONJECTURES_FILE)
+    if memory_block and "Your task:" in base_prompt:
+        prompt = base_prompt.replace("Your task:", f"{memory_block}\nYour task:", 1)
+    else:
+        prompt = base_prompt + memory_block
 
     log(f"Querying mathematical reasoning model ({model_alias}, T={temperature})...")
     res = query_math_model(
@@ -188,20 +295,15 @@ def run_hypothesis_cycle(
     content = res.get("content") or res.get("reasoning") or ""
     reasoning = res.get("reasoning") or ""
 
-    # Parse sections
-    name_m = re.search(r'##\s*CONJECTURE_NAME:\s*([^\n\r]+)', content)
-    name = name_m.group(1).strip() if name_m else "Empirical Prime Invariant"
-
-    form_m = re.search(r'##\s*MATHEMATICAL_FORMULATION:\s*([\s\S]*?)(?:##|\Z)', content)
-    formulation = form_m.group(1).strip() if form_m else content[:400]
-
-    target_m = re.search(r'##\s*HYPOTHESIS_TARGET:\s*([^\n\r]+)', content)
-    target = target_m.group(1).strip() if target_m else "Quantitative validation"
-
-    code = extract_code_block(content)
+    parsed = parse_conjecture_sections(content)
+    name = parsed["name"]
+    formulation = parsed["formulation"]
+    target = parsed["target"]
+    code = parsed["code"]
     log(f"Conjectured: {name}")
 
     repairs_attempted = 0
+    refined_from = None
     if kb.is_duplicate(state, name, formulation):
         log("Rejected: too similar to a previously explored conjecture. Skipping execution.")
         verif = {
@@ -225,6 +327,42 @@ def run_hypothesis_cycle(
                     break
                 code = repaired_code
                 verif = execute_verification_script(code)
+
+            # 1-Step Scientific Refinement Loop if falsified with clean empirical data
+            if (
+                enable_refinement
+                and verif["verdict"] == "EMPIRICALLY FALSIFIED"
+                and verif["output"]
+            ):
+                log("Initial hypothesis falsified. Running 1-step scientific refinement using empirical counter-evidence...")
+                refined = attempt_refinement(
+                    domain_id=domain_id,
+                    name=name,
+                    formulation=formulation,
+                    target=target,
+                    code=code,
+                    empirical_output=verif["output"],
+                    model_alias=model_alias,
+                    temperature=temperature,
+                )
+                if refined and not kb.is_duplicate(state, refined["name"], refined["formulation"]):
+                    refined_verif = execute_verification_script(refined["code"])
+                    if _needs_repair(refined_verif["verdict"]) and repairs_attempted < max_repairs:
+                        repairs_attempted += 1
+                        fixed_ref = attempt_repair(refined["code"], refined_verif["output"], model_alias)
+                        if fixed_ref.strip() != refined["code"].strip():
+                            refined["code"] = fixed_ref
+                            refined_verif = execute_verification_script(refined["code"])
+                    if not _needs_repair(refined_verif["verdict"]):
+                        kb.remember_signature(state, name, formulation)
+                        refined_from = name
+                        name = refined["name"]
+                        formulation = refined["formulation"]
+                        target = refined["target"]
+                        code = refined["code"]
+                        verif = refined_verif
+                        log(f"Refined Conjecture: {name} -> {verif['verdict']}")
+
         log(f"Verification Result: {verif['verdict']}")
         kb.remember_signature(state, name, formulation)
 
@@ -242,6 +380,7 @@ def run_hypothesis_cycle(
         "output": verif["output"],
         "elapsed_s": verif["elapsed_s"],
         "repairs_attempted": repairs_attempted,
+        "refined_from": refined_from,
     }
 
     kb.record_result(state, domain_id, model_alias, verif["verdict"])

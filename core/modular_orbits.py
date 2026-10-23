@@ -27,6 +27,7 @@ def compute_modular_transitions(primes: np.ndarray, mod: int = 10) -> Dict:
     Compute transition probability matrix between consecutive primes modulo `mod`.
     For mod=10, considers coprime residues [1, 3, 7, 9].
     """
+    primes = np.asarray(primes)
     # Filter primes that are coprime to mod (exclude 2, 5 for mod 10)
     coprimes = [r for r in range(1, mod) if math.gcd(r, mod) == 1]
     r_to_idx = {r: i for i, r in enumerate(coprimes)}
@@ -68,6 +69,7 @@ def compute_residue_autocorrelation(primes: np.ndarray, mod: int = 10, max_lag: 
     Compute the autocorrelation of the indicator I(p_n == p_{n+k} mod mod)
     to measure how many steps the short-term prime memory persists.
     """
+    primes = np.asarray(primes)
     valid = primes[primes > mod] % mod
     coprimes = [r for r in range(1, mod) if math.gcd(r, mod) == 1]
     valid = valid[np.isin(valid, coprimes)]

@@ -67,26 +67,126 @@ def _fingerprint(text: str) -> str:
     return "|".join(tokens)
 
 
-def is_duplicate(state: Dict, name: str, formulation: str, overlap_threshold: float = 0.6) -> bool:
-    """Check whether a proposed conjecture is too similar to a previously seen one (Jaccard token overlap)."""
-    candidate = set(_fingerprint(f"{name} {formulation}").split("|"))
-    candidate.discard("")
-    if not candidate:
+def _token_set(text: str) -> set:
+    fp = _fingerprint(text)
+    s = set(fp.split("|")) if fp else set()
+    s.discard("")
+    return s
+
+
+def is_duplicate(state: Dict, name: str, formulation: str, overlap_threshold: float = 0.50) -> bool:
+    """
+    Two-tier near-duplicate detector:
+      1. High title token overlap (>= 0.75) paired with moderate formulation overlap (>= 0.30), OR
+      2. Overall token Jaccard overlap >= overlap_threshold (default 0.50).
+    Supports both structured 'title_fp::body_fp' signatures and legacy flat signatures.
+    """
+    cand_title = _token_set(name)
+    cand_body = _token_set(formulation)
+    cand_all = cand_title | cand_body
+    if not cand_all:
         return False
+
     for sig in state.get("seen_signatures", []):
-        existing = set(sig.split("|"))
-        existing.discard("")
-        if not existing:
+        if "::" in sig:
+            t_str, b_str = sig.split("::", 1)
+            ex_title = set(t_str.split("|")) - {""}
+            ex_body = set(b_str.split("|")) - {""}
+            ex_all = ex_title | ex_body
+            if cand_title and ex_title:
+                title_ov = len(cand_title & ex_title) / max(1, len(cand_title | ex_title))
+                body_ov = len(cand_all & ex_all) / max(1, len(cand_all | ex_all))
+                if title_ov >= 0.75 and body_ov >= 0.30:
+                    return True
+        else:
+            ex_all = set(sig.split("|")) - {""}
+
+        if not ex_all:
             continue
-        overlap = len(candidate & existing) / max(1, len(candidate | existing))
+        overlap = len(cand_all & ex_all) / max(1, len(cand_all | ex_all))
         if overlap >= overlap_threshold:
             return True
+
     return False
 
 
 def remember_signature(state: Dict, name: str, formulation: str) -> None:
-    state.setdefault("seen_signatures", []).append(_fingerprint(f"{name} {formulation}"))
+    sig = f"{_fingerprint(name)}::{_fingerprint(formulation)}"
+    state.setdefault("seen_signatures", []).append(sig)
     state["seen_signatures"] = state["seen_signatures"][-500:]  # keep bounded
+
+
+def build_domain_memory_prompt(
+    domain_id: str,
+    conjectures_file: Optional[str] = None,
+    max_confirmed: int = 6,
+    max_falsified: int = 5,
+) -> str:
+    """
+    Build a dynamic 'Prior Domain Memory' prompt block from past runs in `domain_id`
+    so the reasoning model sees already-confirmed laws and learns from recent falsifications
+    instead of operating with context blindness.
+    """
+    if conjectures_file is None:
+        conjectures_file = os.path.join(BASE_DIR, "outputs", "conjectures.json")
+    if not os.path.exists(conjectures_file):
+        return ""
+    try:
+        with open(conjectures_file, "r", encoding="utf-8") as f:
+            all_conjs = json.load(f)
+    except Exception:
+        return ""
+
+    domain_conjs = [c for c in all_conjs if c.get("domain") == domain_id]
+    if not domain_conjs:
+        return ""
+
+    confirmed = []
+    seen_conf_names = set()
+    for c in domain_conjs:
+        if "SUPPORTED" in (c.get("verdict") or "").upper():
+            nm = (c.get("name") or "").strip().lower()
+            if nm not in seen_conf_names:
+                seen_conf_names.add(nm)
+                confirmed.append(c)
+                if len(confirmed) >= max_confirmed:
+                    break
+
+    falsified = []
+    seen_fals_names = set()
+    for c in domain_conjs:
+        if "FALSIFIED" in (c.get("verdict") or "").upper():
+            nm = (c.get("name") or "").strip().lower()
+            if nm not in seen_fals_names:
+                seen_fals_names.add(nm)
+                falsified.append(c)
+                if len(falsified) >= max_falsified:
+                    break
+    seen_names = []
+    for c in domain_conjs:
+        n = (c.get("name") or "").strip()
+        if n and n not in seen_names:
+            seen_names.append(n)
+
+    lines = ["\n--- PRIOR DOMAIN MEMORY (ACCUMULATED LABORATORY KNOWLEDGE) ---"]
+    if confirmed:
+        lines.append("Already Confirmed Laws in this Domain (DO NOT re-propose these; build deeper extensions or explore orthogonal invariants):")
+        for c in confirmed:
+            tgt = (c.get("target") or "").replace("\n", " ").strip()[:160]
+            lines.append(f"  * [CONFIRMED] {c.get('name')}: {tgt}")
+
+    if falsified:
+        lines.append("\nRecently Falsified Hypotheses in this Domain (Learn from their empirical counter-evidence below; do not repeat failed bounds):")
+        for c in falsified:
+            tgt = (c.get("target") or "").replace("\n", " ").strip()[:140]
+            out_lines = [ln.strip() for ln in (c.get("output") or "").splitlines() if ln.strip() and "VERDICT:" not in ln]
+            empirical_hint = " | ".join(out_lines[-2:])[:160] if out_lines else "Threshold violated"
+            lines.append(f"  * [FALSIFIED] {c.get('name')} (Target: {tgt}) -> Empirical output: {empirical_hint}")
+
+    if seen_names:
+        lines.append(f"\nPreviously used titles in this domain (choose a completely distinct topic & title): {', '.join(seen_names[:12])}")
+    lines.append("--- END PRIOR DOMAIN MEMORY ---\n")
+    return "\n".join(lines)
 
 
 def record_result(state: Dict, domain_id: str, model_alias: str, verdict: str) -> None:

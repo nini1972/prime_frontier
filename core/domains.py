@@ -43,19 +43,33 @@ class Domain:
 OUTPUT_FORMAT_INSTRUCTIONS = """
 Your task:
 Formulate ONE novel, mathematically precise conjecture or predictive heuristic grounded in the data above.
+If a 'Prior Domain Memory' section is provided below, do NOT repeat already-confirmed laws or previously falsified titles; instead, formulate an orthogonal hypothesis or calibrate a deeper multi-scale law using lessons from past falsifications.
 Then, write a self-contained Python script to test and either support or falsify your conjecture empirically.
-IMPORTANT: Execution must complete in under 5 seconds. Do not use slow trial division.
-You can directly import and use the fast project utilities:
-    from core.sieve import generate_primes, compute_prime_gaps
-Do not import third-party packages other than numpy and mpmath.
+IMPORTANT:
+- Execution must complete in under 10 seconds. Do not use slow trial division.
+- Test your conjecture across multiple scales (e.g., comparing N_1 < N_2 < N_3 or testing on an out-of-sample prime range) rather than merely echoing numbers already stated in the prompt.
+- You can directly import and use any of the fast project utilities (note exact return signatures):
+    from core.sieve import generate_primes, compute_prime_gaps, compute_gap_statistics, find_maximal_gap_records
+        # generate_primes(limit: int) -> np.ndarray of primes <= limit
+        # compute_prime_gaps(primes) -> np.ndarray of consecutive gaps
+    from core.modular_orbits import compute_modular_transitions, compute_residue_autocorrelation
+        # compute_modular_transitions(primes, mod=10) -> dict with keys:
+        #   "residues" (list), "transition_matrix" (2D list of row-normalized probabilities),
+        #   "transition_counts" (2D list), "expected_uniform" (float)
+        # compute_residue_autocorrelation(primes, mod=10, max_lag=15) -> dict {{lag_int: excess_float}}
+    from core.goldbach import goldbach_partition_counts, goldbach_stats
+        # goldbach_partition_counts(limit: int) -> dict {{even_n: g_n_count}}
+    from core.zeta_harmonics import get_zeta_zeros, exact_psi, approximate_psi_riemann
+        # get_zeta_zeros(count: int = 50) -> list of float imaginary parts gamma_k
+- Do not import third-party packages other than numpy and mpmath.
 
 Format your output strictly as:
-## CONJECTURE_NAME: <concise title>
+## CONJECTURE_NAME: <concise, distinctive title — avoid generic names like 'Harmonic Gap Resonance Conjecture'>
 ## MATHEMATICAL_FORMULATION: <LaTeX formula and rigorous explanation>
-## HYPOTHESIS_TARGET: <what exact quantitative threshold must hold>
+## HYPOTHESIS_TARGET: <what exact quantitative threshold must hold across scales>
 ## PYTHON_VERIFICATION:
 ```python
-# Self-contained python script that prints 'VERDICT: SUPPORTED' or 'VERDICT: FALSIFIED' along with quantitative evidence
+# Self-contained python script that prints quantitative evidence and ends with 'VERDICT: SUPPORTED' or 'VERDICT: FALSIFIED'
 ```
 """
 

@@ -11,6 +11,7 @@ import sys
 import os
 import json
 import math
+import html
 from datetime import datetime
 
 # Ensure project root is in path
@@ -89,11 +90,83 @@ def harvest_dashboard_data() -> dict:
 
 def generate_html(data: dict) -> str:
     """Generate modern, responsive, dark-mode Prime Frontier dashboard."""
-    json_blob = json.dumps(data)
     zeta_badges = "".join(
         f"<span style='background: rgba(0,242,254,0.1); border: 1px solid var(--border-highlight); color: var(--accent-cyan); padding: 0.2rem 0.5rem; border-radius: 6px;'>$\\gamma_{{{i+1}}} = {z:.4f}$</span>"
         for i, z in enumerate(data['zeta_zeros'])
     )
+
+    conjectures = data.get("conjectures", [])
+    total_conjs = len(conjectures)
+    supported_conjs = sum(1 for c in conjectures if "SUPPORTED" in (c.get("verdict") or "").upper())
+    falsified_conjs = sum(1 for c in conjectures if "FALSIFIED" in (c.get("verdict") or "").upper())
+    other_conjs = total_conjs - supported_conjs - falsified_conjs
+
+    domain_options_list = ['<option value="ALL">All Research Domains</option>']
+    for did, dom in DOMAINS.items():
+        domain_options_list.append(f'<option value="{html.escape(did)}">{html.escape(dom.name)}</option>')
+    domain_options_html = "".join(domain_options_list)
+
+    cards_list = []
+    for c in conjectures:
+        verdict_raw = c.get("verdict") or "PENDING"
+        verdict_up = verdict_raw.upper()
+        if "SUPPORTED" in verdict_up:
+            v_cat = "SUPPORTED"
+            v_class = "verdict-supported"
+        elif "FALSIFIED" in verdict_up:
+            v_cat = "FALSIFIED"
+            v_class = "verdict-falsified"
+        else:
+            v_cat = "OTHER"
+            v_class = "verdict-other"
+
+        dom_id = c.get("domain") or "legacy"
+        dom_label = DOMAINS[dom_id].name if dom_id in DOMAINS else "Legacy Domain"
+        c_id = html.escape(str(c.get("id", "CONJ")))
+        c_ts = html.escape(str(c.get("timestamp", "")))
+        c_name = html.escape(str(c.get("name", "Conjecture")))
+        c_model = html.escape(str(c.get("model", "")))
+        c_code = html.escape(str(c.get("code", "")))
+        c_output = html.escape(str(c.get("output", "")))
+        c_formulation = c.get("formulation") or ""
+        c_target = c.get("target") or ""
+        refined_from = c.get("refined_from")
+        refined_badge = (
+            f'<div style="font-size:0.75rem; color:var(--accent-amber); margin-top:0.2rem;">'
+            f'🔬 Calibrated via 1-step Scientific Refinement from: <i>{html.escape(str(refined_from))}</i></div>'
+            if refined_from else ""
+        )
+
+        cards_list.append(f"""
+            <div class="conjecture-card" data-verdict="{v_cat}" data-domain="{html.escape(str(dom_id))}">
+                <div class="conj-header">
+                    <div>
+                        <span style="font-size: 0.75rem; font-family: var(--font-mono); color: var(--accent-cyan);">{c_id} • {c_ts} • <span style="color: var(--accent-purple);">{html.escape(dom_label)}</span></span>
+                        <div class="conj-title">{c_name}</div>
+                        {refined_badge}
+                    </div>
+                    <span class="verdict-badge {v_class}">{html.escape(verdict_raw)}</span>
+                </div>
+                <div style="margin-bottom: 0.75rem; font-size: 0.9rem; color: #cbd5e1;">
+                    <b>Formulation:</b> {c_formulation}
+                </div>
+                <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">
+                    <b>Target:</b> {c_target} • Model: <code>{c_model}</code>
+                </div>
+                <div class="code-box">{c_code}</div>
+                <div style="margin-top: 0.5rem; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-emerald);">
+                    <b>Execution Output:</b> {c_output}
+                </div>
+            </div>""")
+
+    if cards_list:
+        conjecture_cards_html = "".join(cards_list)
+    else:
+        conjecture_cards_html = (
+            '<div class="glass-panel" style="text-align: center; padding: 3rem;">'
+            '<p style="color: var(--text-muted);">No conjectures generated yet. Run models/math_researcher.py to begin autonomous inquiry cycles.</p>'
+            '</div>'
+        )
     
     html_content = f"""<!DOCTYPE html>
 <html lang="en">
@@ -458,6 +531,58 @@ def generate_html(data: dict) -> str:
             border: 1px solid rgba(244, 63, 94, 0.3);
         }}
 
+        .verdict-other {{
+            background: rgba(245, 158, 11, 0.15);
+            color: var(--accent-amber);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+        }}
+
+        .filter-bar {{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            padding: 1rem 1.25rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: 14px;
+        }}
+
+        .filter-chip {{
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-glass);
+            color: var(--text-secondary);
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            padding: 0.45rem 0.9rem;
+            border-radius: 9999px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }}
+
+        .filter-chip:hover, .filter-chip.active {{
+            background: rgba(0, 242, 254, 0.15);
+            border-color: var(--border-highlight);
+            color: #fff;
+        }}
+
+        .filter-input {{
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px solid var(--border-glass);
+            color: var(--text-primary);
+            font-family: var(--font-main);
+            font-size: 0.85rem;
+            padding: 0.45rem 0.85rem;
+            border-radius: 8px;
+            outline: none;
+        }}
+
+        .filter-input:focus {{
+            border-color: var(--border-highlight);
+        }}
+
         .code-box {{
             background: rgba(0, 0, 0, 0.45);
             border: 1px solid var(--border-glass);
@@ -741,39 +866,53 @@ def generate_html(data: dict) -> str:
             </div>
         </div>
 
-        <div id="conjecturesFeed">
-            {"".join(f'''
-            <div class="conjecture-card">
-                <div class="conj-header">
-                    <div>
-                        <span style="font-size: 0.75rem; font-family: var(--font-mono); color: var(--accent-cyan);">{c.get('id', 'CONJ')} • {c.get('timestamp', '')} • <span style="color: var(--accent-purple);">{DOMAINS[c['domain']].name if c.get('domain') in DOMAINS else 'legacy domain'}</span></span>
-                        <div class="conj-title">{c.get('name', 'Conjecture')}</div>
-                    </div>
-                    <span class="verdict-badge {'verdict-supported' if 'SUPPORTED' in c.get('verdict', '') else 'verdict-falsified'}">{c.get('verdict', 'PENDING')}</span>
-                </div>
-                <div style="margin-bottom: 0.75rem; font-size: 0.9rem; color: #cbd5e1;">
-                    <b>Formulation:</b> {c.get('formulation', '')}
-                </div>
-                <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">
-                    <b>Target:</b> {c.get('target', '')} • Model: <code>{c.get('model', '')}</code>
-                </div>
-                <div class="code-box">{c.get('code', '')}</div>
-                <div style="margin-top: 0.5rem; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-emerald);">
-                    <b>Execution Output:</b> {c.get('output', '')}
-                </div>
+        <div class="filter-bar">
+            <div style="display:flex; gap:0.5rem; flex-wrap:wrap;" id="verdictFilterGroup">
+                <button class="filter-chip active" data-filter="ALL" onclick="setVerdictFilter('ALL', this)">All ({total_conjs})</button>
+                <button class="filter-chip" data-filter="SUPPORTED" onclick="setVerdictFilter('SUPPORTED', this)">🏆 Confirmed Laws ({supported_conjs})</button>
+                <button class="filter-chip" data-filter="FALSIFIED" onclick="setVerdictFilter('FALSIFIED', this)">❌ Falsified ({falsified_conjs})</button>
+                <button class="filter-chip" data-filter="OTHER" onclick="setVerdictFilter('OTHER', this)">🪞 Duplicates / Errors ({other_conjs})</button>
             </div>
-            ''' for c in data['conjectures']) if data['conjectures'] else '<div class="glass-panel" style="text-align: center; padding: 3rem;"><p style="color: var(--text-muted);">No conjectures generated yet. Run models/math_researcher.py to begin autonomous inquiry cycles.</p></div>'}
+            <div style="display:flex; gap:0.6rem; flex-wrap:wrap; align-items:center;">
+                <select id="domainFilterSelect" class="filter-input" onchange="applyConjectureFilters()">
+                    {domain_options_html}
+                </select>
+                <input type="text" id="conjSearchInput" class="filter-input" placeholder="Search title, formula, model..." oninput="applyConjectureFilters()" style="min-width:220px;">
+            </div>
+        </div>
+
+        <div id="conjecturesFeed">
+            {conjecture_cards_html}
         </div>
     </div>
 
     <footer>
         <p>Prime Frontier — Mathematical Reverse-Engineering & Prediction Laboratory</p>
-        <p style="margin-top: 0.5rem; font-family: var(--font-mono); font-size: 0.75rem;">Compiled with SymPy, mpmath & NumPy • Powered by DeepSeek R1 & Qwen 2.5 Math</p>
+        <p style="margin-top: 0.5rem; font-family: var(--font-mono); font-size: 0.75rem;">Compiled with SymPy, mpmath & NumPy • Powered by Claude Sonnet 4.5, DeepSeek R1 & Qwen 2.5 Math</p>
     </footer>
 </div>
 
 <script>
-    const PRIME_DATA = {json_blob};
+    let currentVerdictFilter = 'ALL';
+
+    function setVerdictFilter(verdict, btnEl) {{
+        currentVerdictFilter = verdict;
+        document.querySelectorAll('#verdictFilterGroup .filter-chip').forEach(b => b.classList.remove('active'));
+        if (btnEl) btnEl.classList.add('active');
+        applyConjectureFilters();
+    }}
+
+    function applyConjectureFilters() {{
+        const domVal = (document.getElementById('domainFilterSelect') || {{value: 'ALL'}}).value;
+        const query = ((document.getElementById('conjSearchInput') || {{value: ''}}).value || '').toLowerCase().trim();
+        const cards = document.querySelectorAll('#conjecturesFeed .conjecture-card');
+        cards.forEach(card => {{
+            const vMatch = (currentVerdictFilter === 'ALL') || (card.getAttribute('data-verdict') === currentVerdictFilter);
+            const dMatch = (domVal === 'ALL') || (card.getAttribute('data-domain') === domVal);
+            const tMatch = !query || card.innerText.toLowerCase().includes(query);
+            card.style.display = (vMatch && dMatch && tMatch) ? '' : 'none';
+        }});
+    }}
 
     function switchTab(tabId) {{
         document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -793,7 +932,9 @@ def generate_html(data: dict) -> str:
             renderMathInElement(document.body, {{
                 delimiters: [
                     {{left: '$$', right: '$$', display: true}},
-                    {{left: '$', right: '$', display: false}}
+                    {{left: '\\\\[', right: '\\\\]', display: true}},
+                    {{left: '$', right: '$', display: false}},
+                    {{left: '\\\\(', right: '\\\\)', display: false}}
                 ],
                 throwOnError : false
             }});
