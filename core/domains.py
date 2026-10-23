@@ -54,8 +54,9 @@ IMPORTANT:
         # compute_prime_gaps(primes) -> np.ndarray of consecutive gaps
     from core.modular_orbits import compute_modular_transitions, compute_residue_autocorrelation
         # compute_modular_transitions(primes, mod=10) -> dict with keys:
-        #   "residues" (list), "transition_matrix" (2D list of row-normalized probabilities),
-        #   "transition_counts" (2D list), "expected_uniform" (float)
+        #   "residues" (list of K coprime residues, e.g. [1,3,7,9] for mod=10 or 8 residues for mod=30),
+        #   "transition_matrix" (K x K 2D list indexed 0..K-1 matching the order of "residues", NOT indexed by raw residue value),
+        #   "transition_counts" (K x K 2D list), "expected_uniform" (float)
         # compute_residue_autocorrelation(primes, mod=10, max_lag=15) -> dict {{lag_int: excess_float}}
     from core.goldbach import goldbach_partition_counts, goldbach_stats
         # goldbach_partition_counts(limit: int) -> dict {{even_n: g_n_count}}

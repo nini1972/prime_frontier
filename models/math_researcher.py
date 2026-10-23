@@ -191,7 +191,7 @@ def attempt_repair(code: str, error_output: str, model_alias: str) -> str:
         system_prompt="You are a meticulous Python debugger fixing a broken numerical verification script.",
         model_alias=model_alias,
         temperature=0.1,
-        max_tokens=2000,
+        max_tokens=3500,
     )
     if not res["success"]:
         return code
@@ -230,7 +230,7 @@ def attempt_refinement(
         ),
         model_alias=model_alias,
         temperature=max(0.2, min(temperature, 0.6)),
-        max_tokens=3000 if "r1" in model_alias else 2000,
+        max_tokens=4000,
     )
     if not res["success"]:
         return None
@@ -285,7 +285,7 @@ def run_hypothesis_cycle(
         ),
         model_alias=model_alias,
         temperature=temperature,
-        max_tokens=3500 if "r1" in model_alias else 2000,
+        max_tokens=4000,
     )
 
     if not res["success"]:
