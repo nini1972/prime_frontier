@@ -1,13 +1,13 @@
 {
   "domains": {
     "gap_dynamics": {
-      "attempts": 35,
-      "supported": 8,
+      "attempts": 36,
+      "supported": 9,
       "falsified": 25,
       "errors": 1,
       "timeout": 0,
       "duplicates": 1,
-      "last_run": "2026-10-23 02:27:41"
+      "last_run": "2026-10-24 02:26:19"
     },
     "modular_bias_mod10": {
       "attempts": 34,
@@ -19,31 +19,31 @@
       "last_run": "2026-10-23 21:13:46"
     },
     "prime_powers": {
-      "attempts": 34,
+      "attempts": 35,
       "supported": 5,
       "falsified": 26,
       "errors": 3,
-      "timeout": 0,
+      "timeout": 1,
       "duplicates": 0,
-      "last_run": "2026-10-23 21:17:10"
+      "last_run": "2026-10-24 02:32:10"
     },
     "goldbach_partitions": {
-      "attempts": 36,
-      "supported": 8,
+      "attempts": 37,
+      "supported": 9,
       "falsified": 25,
       "errors": 1,
       "timeout": 0,
       "duplicates": 2,
-      "last_run": "2026-10-23 02:28:09"
+      "last_run": "2026-10-24 02:25:45"
     },
     "modular_bias_mod30": {
-      "attempts": 49,
+      "attempts": 51,
       "supported": 13,
-      "falsified": 32,
+      "falsified": 34,
       "errors": 0,
       "timeout": 0,
       "duplicates": 4,
-      "last_run": "2026-10-23 21:14:53"
+      "last_run": "2026-10-24 02:29:53"
     },
     "zeta_harmonics": {
       "attempts": 38,
@@ -67,17 +67,29 @@
       "errors": 1
     },
     "qwen_math": {
-      "attempts": 98,
-      "success": 86,
+      "attempts": 100,
+      "success": 88,
       "errors": 5
     },
     "sonnet": {
-      "attempts": 124,
-      "success": 118,
-      "errors": 3
+      "attempts": 127,
+      "success": 120,
+      "errors": 4
     }
   },
   "confirmed_laws": [
+    {
+      "id": "PRIME-CONJ-1792808779",
+      "name": "Prime Gap Autocorrelation Conjecture",
+      "domain": "gap_dynamics",
+      "timestamp": "2026-10-24 02:26:19"
+    },
+    {
+      "id": "PRIME-CONJ-1792808745",
+      "name": "Goldbach Partition Mod-4 Dichotomy Law",
+      "domain": "goldbach_partitions",
+      "timestamp": "2026-10-24 02:25:45"
+    },
     {
       "id": "PRIME-CONJ-1792790197",
       "name": "Zeta Zero Spacing and Prime Gap Autocorrelation Resonance",
@@ -646,6 +658,15 @@
     "oscillation|residue|transition::between|bounded|considered|constant|denote|difference|equiv|exhibits|frac|function|given|left|log|logarithm|number|oscillation|pattern|pmod|probabilities|probability|residues|right|sequence|should|specific|specifically|transition|where",
     "asymmetry|cyclic|decay|harmonic|residue|transition::across|alpha|approach|arranged|ascending|asymmetry|between|bias|cdot|circular|const|correlation|cyc|cyclic|decay|decays|denote|directional|distance|distant|empirical|exhibit|exhibits|exponent|fit|frac|from|furthermore|geq|harmonic|law|log|mean|minimum|modulated|modulo|multiple|nearby|negative|order|ordering|pairs|power|predict|probability|rank|reflects|represents|residue|residues|rho|rms|root|satisfy|scales|sequence|should|sim|spearman|specifically|sqrt|square|strong|stronger|structure|sum|symmetry|text|transition|treating|when|where|while|wraparound|yield",
     "autocorrelation|gap|resonance|spacing|zero|zeta::autocorrelation|bar|between|certain|computed|constant|ell|exhibits|frac|gamma|gaps|imaginary|lag|left|leq|lfloor|log|max|mean|non|parts|relationship|resonant|rfloor|riemann|right|spacing|specifically|sqrt|states|these|trivial|when|where|zeros|zeta",
-    "conservation|law|momentum|power|sieve::1000|alpha|base|beta|cdot|composite|composites|conservation|constants|content|contribution|count|depth|double|each|eliminated|elimination|exhibits|frac|geq|grows|independent|individual|information|intuition|its|law|left|leq|linking|log|logarithmic|macroscopic|mathcal|mechanics|microscopic|momentum|new|normalized|number|odd|physical|posits|predictably|ratio|right|scale|scaling|sieve|specifically|sqrt|starting|sum|text|total|universal|weighted|where"
+    "conservation|law|momentum|power|sieve::1000|alpha|base|beta|cdot|composite|composites|conservation|constants|content|contribution|count|depth|double|each|eliminated|elimination|exhibits|frac|geq|grows|independent|individual|information|intuition|its|law|left|leq|linking|log|logarithmic|macroscopic|mathcal|mechanics|microscopic|momentum|new|normalized|number|odd|physical|posits|predictably|ratio|right|scale|scaling|sieve|specifically|sqrt|starting|sum|text|total|universal|weighted|where",
+    "asymmetry|goldbach|parity|partition::1000|across|alpha|arithmetic|asymmetry|balance|because|between|both|bound|bounded|but|classes|constraints|count|deeper|density|dirichlet|distribution|equal|equiv|even|exhibit|exhibits|fluctuations|follows|frac|fundamental|furthermore|geq|goldbach|have|integer|into|itself|large|leq|mathbb|may|modulo|non|opposite|pairing|pairs|parity|partition|partitions|persist|pmod|posits|ratio|representations|respectively|same|satisfies|scales|structure|sufficiently|text|theorem|trivial|two|type|universal|var|variance|where",
+    "dichotomy|goldbach|law|mod|partition::000|0001|001|100|1000|10000|25000|5000|across|alpha|analysis|because|both|but|case|critical|data|dichotomy|differs|dominance|each|empirical|equiv|even|excluding|exhibit|frac|geq|goldbach|have|insight|integers|law|leq|mathbb|mod|modulo|multi|must|need|occurs|odd|one|opposite|other|pair|pairs|parity|partitions|perfect|phenomenon|pmod|prediction|previously|refined|requiring|residues|reveals|same|satisfy|scale|scales|separate|since|stark|structure|sum|tested|text|then|trivial|type|universally|unrecognized|var|when|where|windows",
+    "autocorrelation|gap::alpha|approx|autocorrelation|between|constant|decays|exponentially|frac|gap|gaps|geq|given|lag|mean|positive|sum|text|where",
+    "distance|entropy|modular|transition|weighted::across|bar|biases|cdot|circ|circular|classes|content|coprime|correlation|defined|deviations|distance|due|effects|empirical|entropy|examine|exceed|exhibit|frac|from|heterogeneous|higher|indicating|information|inversely|isolation|its|larger|local|log|lower|mathcal|maximum|mean|memory|min|minimum|modular|modulo|more|multiple|nearest|negative|neighbors|neq|patterns|predict|probability|rank|ratio|reflects|related|residue|residues|rho|samples|satisfy|scales|should|spearman|specifically|strengthen|stronger|sum|text|these|transition|uniformity|weight|weighted|where",
+    "convergence|dependent|entropy|law|modular|scale::alpha|amplitude|approx|asymptotic|becomes|beta|bias|bounds|but|circ|classes|computed|constant|convergence|correlation|critical|data|decreases|delta|dependent|effects|empirical|entropy|evolution|evolves|exhibit|exhibits|exponent|frac|from|geq|increases|infty|isolation|large|law|log|mathcal|max|medium|min|modular|modulated|modulo|monotonic|monotonically|more|negative|neq|observations|positive|power|predictions|range|rate|rather|refined|residual|residue|reveals|rho|scale|scales|sim|small|spearman|stabilization|stabilizes|state|static|strengthens|structure|text|than|times|transition|uniform|weak|weight|where|while",
+    "entropy|hierarchy|modular|transition::between|but|decay|decrease|decreases|delta|denote|difference|down|entropy|exhibits|follow|hierarchy|increases|law|matrix|modulo|pattern|power|rate|respect|scales|shannon|should|slows|specific|specifically|steps|successive|transition|where",
+    "entropy|modular|saturation::after|approaches|approx|between|certain|constant|convergence|converges|data|decay|delta|denote|difference|empirical|entropy|follows|frac|hypothesize|increases|infty|large|limiting|log|logarithmic|matrix|modulo|positive|saturates|scale|scales|shannon|specifically|stabilizes|successive|suggests|transition|value|where|zero",
+    "entropy|power|residual|sieve::active|alpha|among|base|being|beta|but|composite|composites|constants|contribution|distributed|dominance|dominate|due|eliminated|elimination|entropy|especially|evenly|exhibits|frac|geq|grows|how|increasing|independent|integer|intuition|large|law|leq|log|logarithmic|low|mathcal|measures|more|new|normalized|number|odd|participate|positive|reflects|residual|scaling|sieve|sim|slower|small|sqrt|starting|states|sufficiently|sum|text|universal|weight|where|work",
+    "entropy|law|power|root|scaling|sieve|square::145|152|2203|2271|290|307|3541|373|424|4435|602|6258|7388|8648|923|9326|active|allowing|alpha|approx|base|because|becomes|beta|better|but|calibration|captures|composite|compounds|constant|contribute|contribution|converge|data|diagnosis|diminishing|distribution|dominance|elimination|empirical|entropy|evenly|examining|exhibits|exponent|faster|frac|gamma|geq|grows|growth|increases|increasing|indicating|initial|integer|interpretation|large|law|leq|log|logarithmic|mathcal|mid|more|normalized|not|number|physical|positive|power|proposed|range|rate|ratio|refined|residual|reveals|scales|scaling|sieve|sim|small|sqrt|states|still|sufficiently|suggests|sum|testing|text|than|uniform|values|weight|where|while"
   ]
 }
