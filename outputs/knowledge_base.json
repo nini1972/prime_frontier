@@ -1,31 +1,31 @@
 {
   "domains": {
     "gap_dynamics": {
-      "attempts": 37,
-      "supported": 9,
+      "attempts": 39,
+      "supported": 11,
       "falsified": 25,
       "errors": 2,
       "timeout": 0,
       "duplicates": 1,
-      "last_run": "2026-10-25 02:28:06"
+      "last_run": "2026-10-26 02:35:04"
     },
     "modular_bias_mod10": {
-      "attempts": 35,
-      "supported": 8,
+      "attempts": 36,
+      "supported": 9,
       "falsified": 25,
       "errors": 2,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-10-25 02:29:57"
+      "last_run": "2026-10-26 02:32:04"
     },
     "prime_powers": {
-      "attempts": 37,
+      "attempts": 38,
       "supported": 6,
-      "falsified": 27,
+      "falsified": 28,
       "errors": 3,
       "timeout": 1,
       "duplicates": 0,
-      "last_run": "2026-10-25 02:31:35"
+      "last_run": "2026-10-26 02:33:10"
     },
     "goldbach_partitions": {
       "attempts": 37,
@@ -46,13 +46,13 @@
       "last_run": "2026-10-24 02:29:53"
     },
     "zeta_harmonics": {
-      "attempts": 39,
+      "attempts": 40,
       "supported": 15,
-      "falsified": 18,
+      "falsified": 19,
       "errors": 2,
       "timeout": 0,
       "duplicates": 4,
-      "last_run": "2026-10-25 02:30:38"
+      "last_run": "2026-10-26 02:36:17"
     }
   },
   "models": {
@@ -67,17 +67,35 @@
       "errors": 1
     },
     "qwen_math": {
-      "attempts": 102,
-      "success": 88,
+      "attempts": 104,
+      "success": 90,
       "errors": 6
     },
     "sonnet": {
-      "attempts": 130,
-      "success": 123,
+      "attempts": 133,
+      "success": 126,
       "errors": 4
     }
   },
   "confirmed_laws": [
+    {
+      "id": "PRIME-CONJ-1792982104",
+      "name": "Prime Gap Modulo 30 Transition Power Law",
+      "domain": "gap_dynamics",
+      "timestamp": "2026-10-26 02:35:04"
+    },
+    {
+      "id": "PRIME-CONJ-1792981924",
+      "name": "Prime Residue Transition Entropy Saturation",
+      "domain": "modular_bias_mod10",
+      "timestamp": "2026-10-26 02:32:04"
+    },
+    {
+      "id": "PRIME-CONJ-1792981860",
+      "name": "Maximal Gap Cram\u00e9r Stability Conjecture",
+      "domain": "gap_dynamics",
+      "timestamp": "2026-10-26 02:31:00"
+    },
     {
       "id": "PRIME-CONJ-1792895238",
       "name": "Prime Power Sieve Residual Capacity Law",
@@ -679,6 +697,15 @@
     "asymmetric|coupling|cross|lag|residue::across|alpha|asym|asymmetric|asymmetry|attraction|attractive|between|beyond|captures|correlations|coupling|cross|decay|deeper|delta|equiv|exhibits|frac|gap|harmonic|immediate|lag|lags|law|lemke|mathbb|measurable|mid|monotonic|multi|multiple|negative|neighbors|oliver|persistence|persistent|persists|phenomenon|pmod|posits|power|psi|remains|repulsion|repulsive|residue|residues|revealing|scale|scales|separation|sign|sim|soundararajan|strong|structure|tested|text|times|transition|transitions|where",
     "asymmetry|bimodal|cross|decay|lag|law|residue::015|025|035|across|amplitude|anomaly|asym|asymmetry|before|behavior|beta|bimodal|captures|cdot|characteristic|consecutive|correlation|coupling|cross|data|decay|decaying|decays|delta|distinct|does|dominant|effect|empirical|equiv|exceptional|exhibits|exp|exponential|exponentially|floor|follow|follows|frac|gaps|geq|higher|instead|interpretation|invariance|lag|lags|law|ldots|left|lemke|length|log|logarithmic|logarithmically|magnitude|mathbb|measure|memory|mid|multi|not|oliver|pattern|persistence|persistent|physical|plateau|power|psi|quad|ratio|ratios|refined|reflecting|regime|relaxation|repulsion|residual|reveal|reveals|right|scale|scales|scaling|sign|simple|slow|soundararajan|stabilizes|structure|suggesting|tau|text|then|toward|transition|two|uniformity|versus|weaker|where|which",
     "cross|law|logarithmic|power|scale|sieve|stabilization::accounts|across|approximately|base|both|captures|cdot|characteristic|coefficient|composite|composites|conjectures|constant|deeper|density|diminishing|due|eliminated|elimination|eliminations|emerges|equal|exhibits|factor|fail|falsified|frac|given|grows|harmonic|hypothesize|invariant|its|ldots|left|leq|log|logarithmic|logarithmically|magnitude|more|new|non|normalized|normalizing|number|odd|omega|power|precisely|predict|range|rationale|ratios|returns|right|scale|scales|scaling|showed|sim|simple|sqrt|stabilization|starting|states|sub|sum|their|theta|uniform|universal|weighted|weighting|where",
-    "asymptotic|law|linear|power|sieve|stabilization::220|252|428|443|476|488|510|804|933|950|964|alpha|approx|approximately|assumed|asymptotic|beta|cdot|coefficient|composite|composites|computing|data|decay|decreasing|diagnosis|eliminated|elimination|empirical|error|exhibits|fitting|frac|geq|given|growth|however|increasing|initial|intercept|leq|linear|log|logarithmic|new|normalized|not|number|odd|omega|pattern|predicting|range|ratio|refined|reformulate|relative|reveals|shows|sim|slope|sqrt|stability|starting|suggests|sum|theta|times|weighted|where"
+    "asymptotic|law|linear|power|sieve|stabilization::220|252|428|443|476|488|510|804|933|950|964|alpha|approx|approximately|assumed|asymptotic|beta|cdot|coefficient|composite|composites|computing|data|decay|decreasing|diagnosis|eliminated|elimination|empirical|error|exhibits|fitting|frac|geq|given|growth|however|increasing|initial|intercept|leq|linear|log|logarithmic|new|normalized|not|number|odd|omega|pattern|predicting|range|ratio|refined|reformulate|relative|reveals|shows|sim|slope|sqrt|stability|starting|suggests|sum|theta|times|weighted|where",
+    "cram|gap|maximal|stability::absolute|after|among|approach|approx|behavior|but|constant|controlled|converge|cram|decreasing|denote|deviations|distinct|distribution|don|events|exhibit|extremal|fluctuate|frac|gap|gaps|hypothesis|intuition|large|left|leq|limiting|logarithmic|logarithmically|manner|maximal|next|normalized|our|physical|posits|progress|ratio|ratios|records|refinement|reflecting|reflects|regime|represent|right|scale|should|shrinking|specifically|stability|successive|sufficiently|suggests|tail|then|through|underlying|variance|when|where|wildly",
+    "divergence|entropy|residue|transition::between|delta|denote|denoted|difference|distribution|diverges|entropy|from|hypothesize|increases|log|logarithmically|matrix|modulo|residue|specifically|sum|text|transition|uniform|where",
+    "entropy|residue|saturation|transition::approx|behavior|between|but|capture|constant|converges|data|delta|denote|denoted|difference|distribution|does|empirical|entropy|from|hypothesize|increase|increases|log|logarithmically|matrix|modulo|not|observe|observed|rather|refine|refined|residue|saturates|specifically|sum|text|therefore|transition|uniform|value|where",
+    "dimension|fractal|law|power|sieve|transition::across|asserting|base|bounds|characterized|composites|consistent|convergence|cumulative|curve|delta|densities|despite|dimension|distribution|eliminated|elimination|estimated|exhibits|frac|fractal|fraction|from|geq|irregularity|left|leq|local|log|logarithmic|maintains|new|number|odd|pattern|power|process|represents|right|satisfies|scale|scales|self|sequence|sieve|sigma|similarity|slope|specifically|sqrt|structure|sum|text|total|traces|transition|universal|variance|varying|via|where",
+    "asymptotic|dimension|fractal|growth|law|sieve|transition::202|627|approach|approaches|approx|asymptotic|before|below|bound|but|calibration|cdot|consecutive|convergence|decades|dimension|does|empirical|estimate|evidence|exhibits|fixed|frac|fractal|from|growth|interval|law|left|leq|linear|local|log|logarithmic|monotonic|not|power|predictions|quad|quantitative|rate|rather|refined|reveals|right|satisfies|scales|scaling|sequence|sieve|sigma|slope|sqrt|stabilize|sum|systematic|test|tested|text|topological|total|toward|transition|variance|where|yields",
+    "equilibrium|gap|modulo|transition::around|between|constant|count|counts|distribution|divided|each|epsilon|exhibit|expected|formally|frac|indices|interval|left|matrix|modulo|number|numbers|positive|possible|ratio|residues|right|set|small|specifically|such|total|transition|transitions|uniform|where|which|will|within",
+    "gap|law|modulo|power|transition::10000|100000|101|103|1991|3447|50000|567|699|alpha|appears|approach|approx|assume|average|based|beta|but|calculating|can|cdot|compute|constant|context|count|data|deviation|does|empirical|estimate|evaluate|expected|exponent|fit|fitting|follow|frac|from|given|grows|hypothesize|instead|law|linear|log|logarithmic|maximum|meaningful|need|negative|not|number|our|physically|points|positive|power|regression|remain|respect|scale|sim|simpler|slope|small|specifically|suggests|sum|thus|transition|uniform|use|using|values|where|which",
+    "coupling|cumulative|density|deviation|oscillation|zero|zeta::approx|asymptotic|between|cdot|connection|constant|couples|coupling|cumulative|deep|denote|density|deviation|distribution|exists|frac|frequencies|from|gamma|harmonic|imaginary|integrated|interval|invariant|kappa|left|leq|log|mangoldt|mean|measures|non|normalized|omega|oscillation|oscillations|parts|posits|predicted|ratio|reflecting|riemann|right|scale|spacing|spacings|sqrt|such|sum|there|through|trivial|universal|von|zero|zeros|zeta",
+    "anti|correlation|cumulative|density|deviation|law|oscillation|zero|zeta::across|amplification|anti|approx|approximately|asymptotic|because|behavior|between|bound|captures|cluster|compression|consistently|constant|convergence|converging|correlation|coupled|coupling|cumulative|deep|deficits|denote|density|deviation|diagnosis|distribution|empirical|exhibits|exists|failed|frac|gamma|imaginary|increases|initial|interpretation|interval|invariant|irregularity|lambda|left|leq|log|logarithmically|mean|measure|more|negative|non|not|observed|omega|oscillation|oscillations|parts|physical|positive|ratio|reciprocal|refined|reflecting|relationship|remarkably|reveals|riemann|right|scale|scales|spacing|spectral|sqrt|stable|such|suggests|sum|systematically|than|their|there|through|tightening|tightly|trivial|universal|when|zero|zeros|zeta"
   ]
 }
