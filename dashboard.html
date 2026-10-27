@@ -448,7 +448,7 @@
                 <span class="status-pill">⚡ Engine: SymPy • mpmath • NumPy</span>
                 <span class="status-pill">🧠 AI: DeepSeek R1 • Qwen 2.5 Math • Claude Sonnet</span>
             </div>
-            <div class="status-pill">October 27, 2026, 02:33 UTC</div>
+            <div class="status-pill">October 27, 2026, 07:46 UTC</div>
         </div>
 
         <div class="header-title-wrap">
@@ -662,11 +662,11 @@
             </div>
             <div style="display:flex; gap:1.5rem; flex-wrap:wrap; margin: 0.5rem 0 1.25rem;">
                 <div class="status-pill">🔁 Total Cycles: 246</div>
-                <div class="status-pill">✅ Supported: 63</div>
-                <div class="status-pill">❌ Falsified: 159</div>
+                <div class="status-pill">✅ Supported: 62</div>
+                <div class="status-pill">❌ Falsified: 160</div>
                 <div class="status-pill">⚠️ Errors/Timeouts: 13</div>
                 <div class="status-pill">🪞 Duplicates Rejected: 11</div>
-                <div class="status-pill">🏆 Confirmed Laws: 62</div>
+                <div class="status-pill">🏆 Confirmed Laws: 61</div>
             </div>
             <div style="max-height: 320px; overflow-y: auto;">
                 <table class="data-table">
@@ -685,9 +685,9 @@
                         <tr>
                             <td style="color:#fff;">Prime Gap Dynamics<div style="font-size:0.75rem;color:var(--text-muted);">Gap distribution, twin/cousin/sexy prime families, Cramer conjecture records.</div></td>
                             <td style="font-family: var(--font-mono); color: var(--text-secondary);">40</td>
-                            <td style="font-family: var(--font-mono); color: var(--accent-emerald);">11</td>
+                            <td style="font-family: var(--font-mono); color: var(--accent-emerald);">10</td>
                             <td style="font-family: var(--font-mono); color: var(--accent-rose);">26</td>
-                            <td style="font-family: var(--font-mono); color: var(--accent-amber);">2</td>
+                            <td style="font-family: var(--font-mono); color: var(--accent-amber);">3</td>
                             <td style="font-family: var(--font-mono); color: var(--text-muted);">1</td>
                             <td style="font-family: var(--font-mono); color: var(--text-muted); font-size:0.8rem;">2026-10-27 02:33:53</td>
                         </tr><tr>
@@ -718,8 +718,8 @@
                             <td style="color:#fff;">Riemann Zeta Harmonics<div style="font-size:0.75rem;color:var(--text-muted);">Non-trivial zeta zero spacing statistics and the explicit formula.</div></td>
                             <td style="font-family: var(--font-mono); color: var(--text-secondary);">41</td>
                             <td style="font-family: var(--font-mono); color: var(--accent-emerald);">15</td>
-                            <td style="font-family: var(--font-mono); color: var(--accent-rose);">19</td>
-                            <td style="font-family: var(--font-mono); color: var(--accent-amber);">3</td>
+                            <td style="font-family: var(--font-mono); color: var(--accent-rose);">20</td>
+                            <td style="font-family: var(--font-mono); color: var(--accent-amber);">2</td>
                             <td style="font-family: var(--font-mono); color: var(--text-muted);">4</td>
                             <td style="font-family: var(--font-mono); color: var(--text-muted); font-size:0.8rem;">2026-10-27 02:28:39</td>
                         </tr><tr>
@@ -739,8 +739,8 @@
         <div class="filter-bar">
             <div style="display:flex; gap:0.5rem; flex-wrap:wrap;" id="verdictFilterGroup">
                 <button class="filter-chip active" data-filter="ALL" onclick="setVerdictFilter('ALL', this)">All (248)</button>
-                <button class="filter-chip" data-filter="SUPPORTED" onclick="setVerdictFilter('SUPPORTED', this)">🏆 Confirmed Laws (63)</button>
-                <button class="filter-chip" data-filter="FALSIFIED" onclick="setVerdictFilter('FALSIFIED', this)">❌ Falsified (159)</button>
+                <button class="filter-chip" data-filter="SUPPORTED" onclick="setVerdictFilter('SUPPORTED', this)">🏆 Confirmed Laws (62)</button>
+                <button class="filter-chip" data-filter="FALSIFIED" onclick="setVerdictFilter('FALSIFIED', this)">❌ Falsified (160)</button>
                 <button class="filter-chip" data-filter="OTHER" onclick="setVerdictFilter('OTHER', this)">🪞 Duplicates / Errors (26)</button>
             </div>
             <div style="display:flex; gap:0.6rem; flex-wrap:wrap; align-items:center;">
@@ -1325,14 +1325,14 @@ Traceback (most recent call last):
 KeyError: 50004
                 </div>
             </div>
-            <div class="conjecture-card" data-verdict="OTHER" data-domain="zeta_harmonics">
+            <div class="conjecture-card" data-verdict="FALSIFIED" data-domain="zeta_harmonics">
                 <div class="conj-header">
                     <div>
                         <span style="font-size: 0.75rem; font-family: var(--font-mono); color: var(--accent-cyan);">PRIME-CONJ-1793068119 • 2026-10-27 02:28:39 • <span style="color: var(--accent-purple);">Riemann Zeta Harmonics</span></span>
                         <div class="conj-title">Zeta-Prime Spectral-Constellation Inverse Scaling Law with Asymptotic Saturation</div>
                         <div style="font-size:0.75rem; color:var(--accent-amber); margin-top:0.2rem;">🔬 Calibrated via 1-step Scientific Refinement from: <i>Zeta Zero Spectral Rigidity and Prime Constellation Density Coupling</i></div>
                     </div>
-                    <span class="verdict-badge verdict-other">TIMEOUT EXCEEDED</span>
+                    <span class="verdict-badge verdict-falsified">EMPIRICALLY FALSIFIED</span>
                 </div>
                 <div style="margin-bottom: 0.75rem; font-size: 0.9rem; color: #cbd5e1;">
                     <b>Formulation:</b> The empirical data reveals that the initial conjecture failed in three critical ways:
@@ -1537,7 +1537,46 @@ if all_tests_pass:
     print(f&quot;  Mean corrected ratio: {np.mean(ratios_corrected):.4f}&quot;)
     print(f&quot;  Std dev corrected ratios: {np.std(ratios_corrected):.4f}&quot;)</div>
                 <div style="margin-top: 0.5rem; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-emerald);">
-                    <b>Execution Output:</b> Computation exceeded 45 seconds.
+                    <b>Execution Output:</b> Computing zeta zeros for refined conjecture test...
+Generated 564 primes up to 4097
+
+================================================================================
+N =   15:
+  γ_N = 65.1125, X = 150
+  √R_N = 0.389281, C(X) = 0.428571
+  Ratio r_N = 0.9083
+  Corrected r_N^corr = 0.6913 (target: 0.93)
+  Deviation from β: 0.2387
+
+N =   30:
+  γ_N = 101.3179, X = 255
+  √R_N = 0.427870, C(X) = 0.462963
+  Ratio r_N = 0.9242
+  Corrected r_N^corr = 0.7394 (target: 0.93)
+  Deviation from β: 0.1906
+
+N =   50:
+  γ_N = 143.1118, X = 386
+  √R_N = 0.451870, C(X) = 0.447368
+  Ratio r_N = 1.0101
+  Corrected r_N^corr = 0.8298 (target: 0.93)
+  Deviation from β: 0.1002
+
+N =  100:
+  γ_N = 236.5242, X = 705
+  √R_N = 0.464659, C(X) = 0.523810
+  Ratio r_N = 0.8871
+  Corrected r_N^corr = 0.7489 (target: 0.93)
+  Deviation from β: 0.1811
+
+N =  200:
+  γ_N = 396.3819, X = 1311
+  √R_N = 0.473406, C(X) = 0.565421
+  Ratio r_N = 0.8373
+  Corrected r_N^corr = 0.7215 (target: 0.93)
+  Deviation from β: 0.2085
+
+N =  500:
                 </div>
             </div>
             <div class="conjecture-card" data-verdict="FALSIFIED" data-domain="zeta_harmonics">
@@ -3750,14 +3789,14 @@ Scale N = 500,000
   Entropies: [&#x27;2.7451&#x27;, &#x27;2.7352&#x27;, &#x27;2.7334&#x27;, &#x27;2.7408&#x27;, &#x27;2.7219&#x27;, 
                 </div>
             </div>
-            <div class="conjecture-card" data-verdict="SUPPORTED" data-domain="gap_dynamics">
+            <div class="conjecture-card" data-verdict="OTHER" data-domain="gap_dynamics">
                 <div class="conj-header">
                     <div>
                         <span style="font-size: 0.75rem; font-family: var(--font-mono); color: var(--accent-cyan);">PRIME-CONJ-1792808779 • 2026-10-24 02:26:19 • <span style="color: var(--accent-purple);">Prime Gap Dynamics</span></span>
                         <div class="conj-title">Prime Gap Autocorrelation Conjecture</div>
                         
                     </div>
-                    <span class="verdict-badge verdict-supported">EMPIRICALLY SUPPORTED</span>
+                    <span class="verdict-badge verdict-other">EXECUTION ERROR (NaN detected in numerical output)</span>
                 </div>
                 <div style="margin-bottom: 0.75rem; font-size: 0.9rem; color: #cbd5e1;">
                     <b>Formulation:</b> \[ \text{For primes up to } N, \text{ the autocorrelation of prime gaps at lag } k \text{ is given by:} \]

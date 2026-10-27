@@ -146,8 +146,16 @@ def execute_verification_script(code: str, timeout_sec: int = 45) -> Dict:
         output = proc.stdout + proc.stderr
         
         verdict = "INCONCLUSIVE"
+        has_nan = bool(
+            re.search(r'(?<![a-zA-Z0-9_])nan(?![a-zA-Z0-9_])', proc.stdout, re.IGNORECASE)
+            or "Mean of empty slice" in output
+            or "invalid value encountered" in output
+        )
         if "VERDICT: SUPPORTED" in output:
-            verdict = "EMPIRICALLY SUPPORTED"
+            if has_nan:
+                verdict = "EXECUTION ERROR (NaN detected in numerical output; cannot confirm law with NaN values)"
+            else:
+                verdict = "EMPIRICALLY SUPPORTED"
         elif "VERDICT: FALSIFIED" in output:
             verdict = "EMPIRICALLY FALSIFIED"
         elif proc.returncode != 0:

@@ -61,8 +61,8 @@ IMPORTANT:
     from core.goldbach import goldbach_partition_counts, goldbach_stats
         # goldbach_partition_counts(limit: int) -> dict {{even_n: g_n_count}}
     from core.zeta_harmonics import get_zeta_zeros, exact_psi, approximate_psi_riemann
-        # get_zeta_zeros(count: int = 50) -> list of float imaginary parts gamma_k
-- Do not import third-party packages other than numpy and mpmath.
+        # get_zeta_zeros(count: int = 50) -> list of float imaginary parts gamma_k (pre-cached and instantaneous up to count=500)
+- Do not import third-party packages other than numpy, scipy, and mpmath.
 
 Format your output strictly as:
 ## CONJECTURE_NAME: <concise, distinctive title — avoid generic names like 'Harmonic Gap Resonance Conjecture'>

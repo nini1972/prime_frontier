@@ -2,9 +2,9 @@
   "domains": {
     "gap_dynamics": {
       "attempts": 40,
-      "supported": 11,
+      "supported": 10,
       "falsified": 26,
-      "errors": 2,
+      "errors": 3,
       "timeout": 0,
       "duplicates": 1,
       "last_run": "2026-10-27 02:33:53"
@@ -48,9 +48,9 @@
     "zeta_harmonics": {
       "attempts": 41,
       "supported": 15,
-      "falsified": 19,
+      "falsified": 20,
       "errors": 2,
-      "timeout": 1,
+      "timeout": 0,
       "duplicates": 4,
       "last_run": "2026-10-27 02:28:39"
     }
@@ -101,12 +101,6 @@
       "name": "Prime Power Sieve Residual Capacity Law",
       "domain": "prime_powers",
       "timestamp": "2026-10-25 02:27:18"
-    },
-    {
-      "id": "PRIME-CONJ-1792808779",
-      "name": "Prime Gap Autocorrelation Conjecture",
-      "domain": "gap_dynamics",
-      "timestamp": "2026-10-24 02:26:19"
     },
     {
       "id": "PRIME-CONJ-1792808745",
