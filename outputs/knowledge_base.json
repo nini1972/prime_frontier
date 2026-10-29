@@ -10,31 +10,31 @@
       "last_run": "2026-10-27 02:33:53"
     },
     "modular_bias_mod10": {
-      "attempts": 38,
+      "attempts": 39,
       "supported": 9,
-      "falsified": 27,
+      "falsified": 28,
       "errors": 2,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-10-28 02:23:33"
+      "last_run": "2026-10-29 02:27:57"
     },
     "prime_powers": {
-      "attempts": 39,
+      "attempts": 40,
       "supported": 6,
-      "falsified": 29,
+      "falsified": 30,
       "errors": 3,
       "timeout": 1,
       "duplicates": 0,
-      "last_run": "2026-10-28 02:24:40"
+      "last_run": "2026-10-29 02:26:02"
     },
     "goldbach_partitions": {
-      "attempts": 39,
+      "attempts": 40,
       "supported": 9,
       "falsified": 27,
       "errors": 1,
       "timeout": 0,
-      "duplicates": 2,
-      "last_run": "2026-10-28 02:21:02"
+      "duplicates": 3,
+      "last_run": "2026-10-29 02:28:15"
     },
     "modular_bias_mod30": {
       "attempts": 54,
@@ -46,13 +46,13 @@
       "last_run": "2026-10-28 02:25:57"
     },
     "zeta_harmonics": {
-      "attempts": 41,
+      "attempts": 43,
       "supported": 15,
-      "falsified": 20,
+      "falsified": 21,
       "errors": 2,
       "timeout": 0,
-      "duplicates": 4,
-      "last_run": "2026-10-27 02:28:39"
+      "duplicates": 5,
+      "last_run": "2026-10-29 02:29:16"
     }
   },
   "models": {
@@ -67,13 +67,13 @@
       "errors": 1
     },
     "qwen_math": {
-      "attempts": 108,
+      "attempts": 110,
       "success": 93,
       "errors": 7
     },
     "sonnet": {
-      "attempts": 139,
-      "success": 131,
+      "attempts": 142,
+      "success": 134,
       "errors": 5
     }
   },
@@ -719,6 +719,12 @@
     "composite|elimination|power|resonance::approx|base|composite|composites|eliminated|elimination|factor|frac|given|left|leq|lfloor|log|new|number|odd|range|resonance|rfloor|right|satisfies|sqrt|starting|tolerance",
     "composite|correction|elimination|logarithmic|power|resonance::1000|10000|100000|1000000|10000000|approx|base|cdot|composite|composites|eliminated|elimination|factor|frac|given|left|leq|lfloor|log|must|new|number|odd|range|resonance|rfloor|right|satisfies|satisfy|sqrt|starting|target|tolerance",
     "clustering|modulo|residue|spectral|transition::across|alignment|attraction|average|bias|bipartition|cdot|character|class|cluster|clustering|clusters|compute|consider|consistent|corresponding|cross|decomposition|denote|deviation|dominance|each|eigenvalue|eigenvector|empirical|exceeds|fiedler|frac|from|geq|has|hidden|into|intra|its|jaccard|lambda|largest|ldots|least|matrix|members|modulo|one|partition|phi|probability|quadratic|remains|residue|residues|reveals|same|scale|scales|score|second|sgn|sharing|similarity|similarly|spectral|stability|structure|such|sum|symmetrized|text|times|transition|two|uniform|vector|where|within",
-    "bias|collapse|concentration|dependent|law|modulo|residue|scale|spectral|transitions::alpha|approx|assignment|average|avg|becomes|beta|between|bias|bipartition|but|calibrated|causing|cdot|cdots|class|cluster|clusters|collapse|complements|compute|computed|concentrates|concentration|consistent|cross|decay|decays|decomposition|degenerate|delta|denote|dependent|descending|eigenvalue|eigenvalues|empirical|energy|exhibits|fiedler|flip|frac|from|gamma|gap|geq|governed|instability|internal|intra|jaccard|lambda|law|ldots|matrix|may|measured|modulo|normalized|one|order|pre|principle|probability|ratio|ratios|remains|residue|residues|rho|satisfies|scale|scales|second|sgn|sim|spectral|stability|structure|sum|symmetrized|symmetry|text|threshold|times|total|transition|unstable|using|vector|via|where"
+    "bias|collapse|concentration|dependent|law|modulo|residue|scale|spectral|transitions::alpha|approx|assignment|average|avg|becomes|beta|between|bias|bipartition|but|calibrated|causing|cdot|cdots|class|cluster|clusters|collapse|complements|compute|computed|concentrates|concentration|consistent|cross|decay|decays|decomposition|degenerate|delta|denote|dependent|descending|eigenvalue|eigenvalues|empirical|energy|exhibits|fiedler|flip|frac|from|gamma|gap|geq|governed|instability|internal|intra|jaccard|lambda|law|ldots|matrix|may|measured|modulo|normalized|one|order|pre|principle|probability|ratio|ratios|remains|residue|residues|rho|satisfies|scale|scales|second|sgn|sim|spectral|stability|structure|sum|symmetrized|symmetry|text|threshold|times|total|transition|unstable|using|vector|via|where",
+    "law|partition|power|sieve|spectral::1000|among|any|base|bound|bounded|cdot|ceiling|composite|composites|contributes|corrected|count|coverage|cumulative|depths|distribution|dominating|double|each|eliminated|entropy|excessively|exp|exponentially|frac|from|function|furthermore|geq|grows|its|ldots|left|leq|lfloor|log|logarithm|logarithmic|mathcal|modulated|must|new|normalized|number|odd|oddcomp|participating|partition|posits|preventing|psi|rfloor|right|satisfies|satisfy|sieve|single|spectral|sqrt|square|starting|sum|text|total|valid|weight|where",
+    "adaptive|coverage|entropy|law|power|refined|scaling|sieve::100|1000|10000|8452|9159|9248|9329|account|adaptive|alpha|among|available|base|because|beta|bound|but|calibrated|capture|capturing|cdot|composites|concentration|constants|contributions|coverage|decaying|depths|diagnosis|diminishing|doesn|early|efficiency|eliminated|empirical|entropy|eta|exp|exponential|failed|form|frac|fraction|geq|grow|grows|growth|hold|initial|intermediate|large|larger|law|left|leq|lfloor|like|linear|log|mathcal|medium|multi|must|observed|occur|odd|oddcomp|out|overestimating|points|psi|quadratic|quartile|rapidly|rate|rather|refined|replacing|required|returns|rfloor|right|sample|scale|sieve|sigmoid|slower|small|sqrt|sub|suggesting|super|term|tested|text|than|times|too|total|valid|validity|values|violations|where",
+    "gap|residue|spectral|transition::across|architecture|asymptotic|attractive|away|bimodal|bound|bounded|captured|captures|chain|characterized|configurations|constant|creating|different|dominant|drift|dynamical|dynamics|eigenvalue|eigenvalues|empirical|entries|equilibrium|equiv|exhibits|fast|forces|frac|frobenius|from|gap|geq|guarantees|index|indicates|intuition|invariant|lambda|large|largest|lower|magnitude|makes|markov|matrix|measures|mid|min|modulo|near|non|normalization|omega|operate|ordering|part|perron|physical|pmod|posits|possess|real|relaxation|remaining|repulsion|repulsive|residue|robust|satisfies|scale|scales|second|slow|smaller|smallest|spectral|spread|stability|stationary|stochastic|structure|theorem|third|timescale|timescales|toward|transition|two|universal|very|where|zero",
+    "collapse|complex|dominance|eigenvalue|spectral::000000|003|008|133|136|137|165|173|185|alpha|always|angle|approx|architecture|arctan|argument|asymptotic|because|beta|changes|collapse|compares|complex|conjectured|conjugate|conjugates|convergence|data|delta|distinct|dominance|dominant|eigenvalue|eigenvalues|empirical|entries|equiv|exactly|exhibits|frac|frobenius|fundamentally|gamma|gap|geq|how|index|infty|initially|key|lambda|law|limit|matrix|measures|mid|min|mode|modulo|multi|negative|not|observations|omega|oscillatory|pair|perron|phase|pmod|power|psi|radians|radius|ratio|real|refined|repulsion|reveals|rho|satisfies|scale|second|smallest|spectral|sqrt|stability|text|theta|third|transition|where",
+    "constellation|coupling|density|entropy|spacing|zero|zeta::100|200|618|alpha|approx|balance|bar|become|captures|cdot|clusters|conjectures|conjugate|consecutive|constant|constellation|constellations|count|coupling|deep|delta|density|distributed|dual|entropy|exhibit|explicit|formula|frac|gamma|gap|golden|harmonic|higher|inverse|law|lceil|left|leq|log|lower|mangoldt|max|mean|more|nature|non|normalized|power|preserving|ratio|rceil|reflecting|rho|riemann|right|spacing|spacings|sparser|sum|text|their|tight|trivial|tuple|uniformly|universal|von|where|window|zero|zeros|zeta",
+    "anti|constellation|coupling|density|entropy|inversion|sign|spacing|zero|zeta::absolute|additive|analysis|anti|approx|approximately|arithmetic|around|bar|because|become|before|beta|between|bounds|but|calibration|cdot|constellation|constellations|contributions|corrected|correction|correlation|coupling|critical|data|deep|definition|delta|density|empirical|entropy|epsilon|error|exhibits|expansion|formula|formulation|frac|gamma|harmonic|higher|however|interpretation|irregular|law|lceil|left|lfloor|linear|log|logarithmic|lower|maintaining|making|mathcal|max|measure|modified|more|multi|multiplicative|negative|normalized|original|oscillate|physical|produces|rather|rceil|refined|refinement|reflects|relationship|reveals|rfloor|rho|right|scale|shannon|shows|sign|spacing|spacings|sparser|spectral|standard|states|strength|structures|sum|summation|tension|than|tolerance|true|universal|values|where|window|yields|zero|zeros|zeta"
   ]
 }
