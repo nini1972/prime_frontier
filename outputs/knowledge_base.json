@@ -1,13 +1,13 @@
 {
   "domains": {
     "gap_dynamics": {
-      "attempts": 40,
+      "attempts": 41,
       "supported": 10,
-      "falsified": 26,
+      "falsified": 27,
       "errors": 3,
       "timeout": 0,
       "duplicates": 1,
-      "last_run": "2026-10-27 02:33:53"
+      "last_run": "2026-10-30 02:20:56"
     },
     "modular_bias_mod10": {
       "attempts": 39,
@@ -19,22 +19,22 @@
       "last_run": "2026-10-29 02:27:57"
     },
     "prime_powers": {
-      "attempts": 40,
-      "supported": 6,
+      "attempts": 41,
+      "supported": 7,
       "falsified": 30,
       "errors": 3,
       "timeout": 1,
       "duplicates": 0,
-      "last_run": "2026-10-29 02:26:02"
+      "last_run": "2026-10-30 02:23:36"
     },
     "goldbach_partitions": {
-      "attempts": 40,
+      "attempts": 41,
       "supported": 9,
       "falsified": 27,
-      "errors": 1,
+      "errors": 2,
       "timeout": 0,
       "duplicates": 3,
-      "last_run": "2026-10-29 02:28:15"
+      "last_run": "2026-10-30 02:24:29"
     },
     "modular_bias_mod30": {
       "attempts": 54,
@@ -46,13 +46,13 @@
       "last_run": "2026-10-28 02:25:57"
     },
     "zeta_harmonics": {
-      "attempts": 43,
+      "attempts": 45,
       "supported": 15,
       "falsified": 21,
       "errors": 2,
-      "timeout": 0,
+      "timeout": 2,
       "duplicates": 5,
-      "last_run": "2026-10-29 02:29:16"
+      "last_run": "2026-10-30 02:26:15"
     }
   },
   "models": {
@@ -67,17 +67,23 @@
       "errors": 1
     },
     "qwen_math": {
-      "attempts": 110,
+      "attempts": 112,
       "success": 93,
-      "errors": 7
+      "errors": 9
     },
     "sonnet": {
-      "attempts": 142,
-      "success": 134,
-      "errors": 5
+      "attempts": 145,
+      "success": 136,
+      "errors": 6
     }
   },
   "confirmed_laws": [
+    {
+      "id": "PRIME-CONJ-1793327016",
+      "name": "Prime Power Sieve Cross-Harmonic Interference Law",
+      "domain": "prime_powers",
+      "timestamp": "2026-10-30 02:23:36"
+    },
     {
       "id": "PRIME-CONJ-1792982104",
       "name": "Prime Gap Modulo 30 Transition Power Law",
@@ -725,6 +731,14 @@
     "gap|residue|spectral|transition::across|architecture|asymptotic|attractive|away|bimodal|bound|bounded|captured|captures|chain|characterized|configurations|constant|creating|different|dominant|drift|dynamical|dynamics|eigenvalue|eigenvalues|empirical|entries|equilibrium|equiv|exhibits|fast|forces|frac|frobenius|from|gap|geq|guarantees|index|indicates|intuition|invariant|lambda|large|largest|lower|magnitude|makes|markov|matrix|measures|mid|min|modulo|near|non|normalization|omega|operate|ordering|part|perron|physical|pmod|posits|possess|real|relaxation|remaining|repulsion|repulsive|residue|robust|satisfies|scale|scales|second|slow|smaller|smallest|spectral|spread|stability|stationary|stochastic|structure|theorem|third|timescale|timescales|toward|transition|two|universal|very|where|zero",
     "collapse|complex|dominance|eigenvalue|spectral::000000|003|008|133|136|137|165|173|185|alpha|always|angle|approx|architecture|arctan|argument|asymptotic|because|beta|changes|collapse|compares|complex|conjectured|conjugate|conjugates|convergence|data|delta|distinct|dominance|dominant|eigenvalue|eigenvalues|empirical|entries|equiv|exactly|exhibits|frac|frobenius|fundamentally|gamma|gap|geq|how|index|infty|initially|key|lambda|law|limit|matrix|measures|mid|min|mode|modulo|multi|negative|not|observations|omega|oscillatory|pair|perron|phase|pmod|power|psi|radians|radius|ratio|real|refined|repulsion|reveals|rho|satisfies|scale|second|smallest|spectral|sqrt|stability|text|theta|third|transition|where",
     "constellation|coupling|density|entropy|spacing|zero|zeta::100|200|618|alpha|approx|balance|bar|become|captures|cdot|clusters|conjectures|conjugate|consecutive|constant|constellation|constellations|count|coupling|deep|delta|density|distributed|dual|entropy|exhibit|explicit|formula|frac|gamma|gap|golden|harmonic|higher|inverse|law|lceil|left|leq|log|lower|mangoldt|max|mean|more|nature|non|normalized|power|preserving|ratio|rceil|reflecting|rho|riemann|right|spacing|spacings|sparser|sum|text|their|tight|trivial|tuple|uniformly|universal|von|where|window|zero|zeros|zeta",
-    "anti|constellation|coupling|density|entropy|inversion|sign|spacing|zero|zeta::absolute|additive|analysis|anti|approx|approximately|arithmetic|around|bar|because|become|before|beta|between|bounds|but|calibration|cdot|constellation|constellations|contributions|corrected|correction|correlation|coupling|critical|data|deep|definition|delta|density|empirical|entropy|epsilon|error|exhibits|expansion|formula|formulation|frac|gamma|harmonic|higher|however|interpretation|irregular|law|lceil|left|lfloor|linear|log|logarithmic|lower|maintaining|making|mathcal|max|measure|modified|more|multi|multiplicative|negative|normalized|original|oscillate|physical|produces|rather|rceil|refined|refinement|reflects|relationship|reveals|rfloor|rho|right|scale|shannon|shows|sign|spacing|spacings|sparser|spectral|standard|states|strength|structures|sum|summation|tension|than|tolerance|true|universal|values|where|window|yields|zero|zeros|zeta"
+    "anti|constellation|coupling|density|entropy|inversion|sign|spacing|zero|zeta::absolute|additive|analysis|anti|approx|approximately|arithmetic|around|bar|because|become|before|beta|between|bounds|but|calibration|cdot|constellation|constellations|contributions|corrected|correction|correlation|coupling|critical|data|deep|definition|delta|density|empirical|entropy|epsilon|error|exhibits|expansion|formula|formulation|frac|gamma|harmonic|higher|however|interpretation|irregular|law|lceil|left|lfloor|linear|log|logarithmic|lower|maintaining|making|mathcal|max|measure|modified|more|multi|multiplicative|negative|normalized|original|oscillate|physical|produces|rather|rceil|refined|refinement|reflects|relationship|reveals|rfloor|rho|right|scale|shannon|shows|sign|spacing|spacings|sparser|spectral|standard|states|strength|structures|sum|summation|tension|than|tolerance|true|universal|values|where|window|yields|zero|zeros|zeta",
+    "gap|oscillation|parity::approx|asymptotic|beyond|bias|both|bounded|class|consecutive|consistently|critical|cross|deep|distribution|dominate|early|equiv|even|excess|exhibits|exists|fluctuate|frac|function|gap|gaps|geq|instability|interval|leq|lie|matures|may|mod|multiples|negative|non|not|otherwise|parity|pmod|positive|predicts|psi|reflects|regime|remains|residue|reversal|same|satisfy|scale|sign|since|small|stability|stabilizes|stabilizing|structural|such|there|transitions|where|yield|yielding",
+    "decay|excess|gap|law|logarithmic|parity::132|161|254|513|908|after|already|approach|approx|approximate|asymptotic|because|becomes|behavior|calibrating|calibration|captures|constants|convergence|critical|curvature|data|decay|diagnosis|empirical|equiv|excess|exhibits|failed|form|frac|from|function|gap|geq|grows|increases|infty|initial|instead|law|left|leq|less|limit|log|logarithmic|monotonic|monotonically|multi|negative|not|observed|order|parity|pmod|point|predicts|psi|rate|refined|right|scale|second|show|solving|stabilize|structure|suggesting|term|they|toward|two|values|where|yields|zero",
+    "gap|oscillation|ratio|spacings|zero|zeta::absolute|average|bar|behavior|between|bounded|consecutive|constant|delta|denote|deviation|deviations|exhibits|frac|from|function|gamma|gap|gaps|hypothesize|imaginary|its|left|leq|log|logarithmic|mean|non|number|oscillatory|part|ratio|riemann|right|sequence|spacing|specific|specifically|sum|terms|trivial|value|where|zero|zeros|zeta",
+    "gap|oscillation|ratio|refined|spacings|zero|zeta::absolute|accounts|average|bar|behavior|between|bounded|consecutive|constant|data|delta|denote|deviation|deviations|empirical|exhibits|frac|from|function|gamma|gap|gaps|growth|hypothesize|imaginary|its|left|leq|log|logarithmic|mean|modified|non|number|observed|oscillatory|part|rate|ratio|refinement|riemann|right|sequence|slower|spacing|specific|specifically|sum|terms|trivial|value|where|zero|zeros|zeta",
+    "cross|harmonic|interference|law|power|sieve::act|aggregate|alpha|approx|base|becomes|both|bound|cap|captures|cdot|composite|composites|constant|count|counts|cross|decay|decaying|decreases|density|diminishing|disjoint|distinct|eliminate|eliminated|elimination|empirical|exhibits|filters|frac|grows|harmonic|increasingly|independent|individual|interference|intuition|large|larger|ldots|leq|log|logarithmic|mathcal|measure|more|observation|odd|orthogonal|overlap|physical|polynomially|product|quasi|ranges|ratio|refined|respective|satisfying|scales|set|sets|sieve|sieves|sieving|space|sqrt|starting|sufficiently|sum|super|their|universal|where",
+    "frequency|goldbach|partition|residue::asymptotically|coprime|denote|equiv|even|fixed|formally|frac|given|goldbach|infty|integer|integers|lim|mean|modulo|modulus|number|partitions|pmod|residue|residues|same|set|states|sum|where",
+    "density|lock|phase|quadruplet|spacing|variance|zero|zeta::approx|bar|become|bound|cdot|connects|consecutive|constant|constellations|corresponding|count|delta|density|domain|exhibits|four|frac|frequency|gamma|gue|indicates|interval|left|leq|lfloor|like|locked|log|logarithmically|low|mean|more|non|normalized|phase|posits|product|proportionally|quadruplet|quadruplets|range|rarity|relation|repulsion|rfloor|riemann|right|rigidity|scaling|scarcer|spaced|spacing|spacings|spectral|suggesting|sum|text|their|tight|tightens|trivial|uniformly|universal|variance|when|where|zeros|zeta",
+    "coupling|decay|density|law|logarithmic|power|quadruplet|variance|zero|zeta::100|alpha|approx|arithmetic|bar|because|become|becomes|both|bound|but|cdot|connects|consecutive|constellation|coupling|data|decay|decaying|decrease|decreases|decreasing|deeper|delta|density|diagnosis|empirical|exhibits|failed|faster|fitting|frac|fractional|gamma|initial|larger|law|left|leq|lfloor|log|logarithm|logarithmic|magnitude|more|non|normalized|observed|orders|posits|power|product|proposed|quadruplet|quadruplets|range|rarer|rather|ratio|ratios|refined|reflects|regular|relationship|reveals|rfloor|riemann|right|scaling|shows|sim|spacing|spacings|spectral|statistics|structure|suggests|sum|text|than|their|through|trivial|variance|zero|zeros|zeta"
   ]
 }
