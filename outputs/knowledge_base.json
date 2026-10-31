@@ -10,31 +10,31 @@
       "last_run": "2026-10-30 02:20:56"
     },
     "modular_bias_mod10": {
-      "attempts": 39,
+      "attempts": 40,
       "supported": 9,
-      "falsified": 28,
+      "falsified": 29,
       "errors": 2,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-10-29 02:27:57"
+      "last_run": "2026-10-31 02:28:52"
     },
     "prime_powers": {
-      "attempts": 41,
+      "attempts": 42,
       "supported": 7,
-      "falsified": 30,
+      "falsified": 31,
       "errors": 3,
       "timeout": 1,
       "duplicates": 0,
-      "last_run": "2026-10-30 02:23:36"
+      "last_run": "2026-10-31 02:21:54"
     },
     "goldbach_partitions": {
-      "attempts": 41,
-      "supported": 9,
+      "attempts": 42,
+      "supported": 10,
       "falsified": 27,
       "errors": 2,
       "timeout": 0,
       "duplicates": 3,
-      "last_run": "2026-10-30 02:24:29"
+      "last_run": "2026-10-31 02:16:54"
     },
     "modular_bias_mod30": {
       "attempts": 54,
@@ -46,13 +46,13 @@
       "last_run": "2026-10-28 02:25:57"
     },
     "zeta_harmonics": {
-      "attempts": 45,
+      "attempts": 47,
       "supported": 15,
-      "falsified": 21,
+      "falsified": 23,
       "errors": 2,
       "timeout": 2,
       "duplicates": 5,
-      "last_run": "2026-10-30 02:26:15"
+      "last_run": "2026-10-31 02:29:58"
     }
   },
   "models": {
@@ -67,17 +67,23 @@
       "errors": 1
     },
     "qwen_math": {
-      "attempts": 112,
-      "success": 93,
+      "attempts": 114,
+      "success": 95,
       "errors": 9
     },
     "sonnet": {
-      "attempts": 145,
-      "success": 136,
+      "attempts": 148,
+      "success": 139,
       "errors": 6
     }
   },
   "confirmed_laws": [
+    {
+      "id": "PRIME-CONJ-1793413014",
+      "name": "Goldbach Partition Dyadic Cascade Saturation Conjecture",
+      "domain": "goldbach_partitions",
+      "timestamp": "2026-10-31 02:16:54"
+    },
     {
       "id": "PRIME-CONJ-1793327016",
       "name": "Prime Power Sieve Cross-Harmonic Interference Law",
@@ -739,6 +745,16 @@
     "cross|harmonic|interference|law|power|sieve::act|aggregate|alpha|approx|base|becomes|both|bound|cap|captures|cdot|composite|composites|constant|count|counts|cross|decay|decaying|decreases|density|diminishing|disjoint|distinct|eliminate|eliminated|elimination|empirical|exhibits|filters|frac|grows|harmonic|increasingly|independent|individual|interference|intuition|large|larger|ldots|leq|log|logarithmic|mathcal|measure|more|observation|odd|orthogonal|overlap|physical|polynomially|product|quasi|ranges|ratio|refined|respective|satisfying|scales|set|sets|sieve|sieves|sieving|space|sqrt|starting|sufficiently|sum|super|their|universal|where",
     "frequency|goldbach|partition|residue::asymptotically|coprime|denote|equiv|even|fixed|formally|frac|given|goldbach|infty|integer|integers|lim|mean|modulo|modulus|number|partitions|pmod|residue|residues|same|set|states|sum|where",
     "density|lock|phase|quadruplet|spacing|variance|zero|zeta::approx|bar|become|bound|cdot|connects|consecutive|constant|constellations|corresponding|count|delta|density|domain|exhibits|four|frac|frequency|gamma|gue|indicates|interval|left|leq|lfloor|like|locked|log|logarithmically|low|mean|more|non|normalized|phase|posits|product|proportionally|quadruplet|quadruplets|range|rarity|relation|repulsion|rfloor|riemann|right|rigidity|scaling|scarcer|spaced|spacing|spacings|spectral|suggesting|sum|text|their|tight|tightens|trivial|uniformly|universal|variance|when|where|zeros|zeta",
-    "coupling|decay|density|law|logarithmic|power|quadruplet|variance|zero|zeta::100|alpha|approx|arithmetic|bar|because|become|becomes|both|bound|but|cdot|connects|consecutive|constellation|coupling|data|decay|decaying|decrease|decreases|decreasing|deeper|delta|density|diagnosis|empirical|exhibits|failed|faster|fitting|frac|fractional|gamma|initial|larger|law|left|leq|lfloor|log|logarithm|logarithmic|magnitude|more|non|normalized|observed|orders|posits|power|product|proposed|quadruplet|quadruplets|range|rarer|rather|ratio|ratios|refined|reflects|regular|relationship|reveals|rfloor|riemann|right|scaling|shows|sim|spacing|spacings|spectral|statistics|structure|suggests|sum|text|than|their|through|trivial|variance|zero|zeros|zeta"
+    "coupling|decay|density|law|logarithmic|power|quadruplet|variance|zero|zeta::100|alpha|approx|arithmetic|bar|because|become|becomes|both|bound|but|cdot|connects|consecutive|constellation|coupling|data|decay|decaying|decrease|decreases|decreasing|deeper|delta|density|diagnosis|empirical|exhibits|failed|faster|fitting|frac|fractional|gamma|initial|larger|law|left|leq|lfloor|log|logarithm|logarithmic|magnitude|more|non|normalized|observed|orders|posits|power|product|proposed|quadruplet|quadruplets|range|rarer|rather|ratio|ratios|refined|reflects|regular|relationship|reveals|rfloor|riemann|right|scaling|shows|sim|spacing|spacings|spectral|statistics|structure|suggests|sum|text|than|their|through|trivial|variance|zero|zeros|zeta",
+    "cascade|goldbach|multiplicative|partition::1000|absolute|across|any|approx|asserts|block|blocks|cap|captures|cascade|cdot|coefficient|coefficients|compute|constant|densities|density|dyadic|each|empirical|even|exhibit|fluctuations|frac|geq|goldbach|growing|growth|index|integer|interval|into|kappa|large|ldots|left|leq|lfloor|local|log|mathbb|max|maximum|observation|partition|polynomial|rfloor|rho|right|satisfies|scale|scales|self|similar|slower|sqrt|sublinear|sufficiently|sum|than|variance|where|within",
+    "cascade|dyadic|goldbach|partition|saturation::1000|256|4918|512|achieved|achieves|across|additionally|any|approx|approximately|because|block|blocks|bounded|but|cap|captures|cascade|cdot|coefficient|coefficients|compute|constant|corresponding|decay|density|diagnosis|dyadic|each|empirical|even|exhibit|exhibits|exists|factor|failed|fluctuations|frac|furthermore|geq|goldbach|growth|hypothesis|incorrect|independent|indicating|initial|integer|intermediate|interval|into|invariant|kappa|lambda|large|ldots|left|leq|lfloor|limit|local|log|mathbb|max|maximum|may|multi|near|observation|observed|partition|rather|reach|refined|regime|remains|rfloor|rho|right|satisfies|satisfy|saturation|scale|scales|slow|small|specifically|sqrt|structure|sub|sublinear|such|sufficiently|sum|tested|than|there|three|too|universal|upper|was|where|within",
+    "gradient|law|power|resonance|sieve::approx|approximately|average|bar|base|close|composites|constant|corresponding|each|eliminated|frac|given|gradient|its|leq|log|new|number|odd|resonance|should|sqrt|starting|states|sum|where",
+    "law|power|resonance|scaling|sieve::1000|10000|100000|1000000|530266|689389|844477|910735|alpha|approx|average|bar|base|beta|but|can|close|composites|constant|constants|corresponding|data|determined|does|each|eliminated|empirical|find|fit|follows|form|frac|from|given|gradient|growth|its|leq|log|logarithmic|logarithmically|new|not|number|observed|odd|points|rather|refine|refined|remain|resonance|scales|specifically|sqrt|starting|states|suggest|suggests|sum|therefore|these|values|where",
+    "coupling|entropy|gap|inverse|logarithmic|modulation|spacing|variance|zero|zeta::arithmetic|bar|between|cdot|chaos|conservation|constant|correlate|coupling|delta|denote|disorder|distinct|empirical|entropy|epsilon|exists|frac|gamma|gap|gaps|geq|growth|height|high|imaginary|infty|intuition|inverse|inversely|law|left|leq|lfloor|log|logarithmic|low|mathcal|mean|modulated|non|normalized|parts|phi|physical|probability|product|rate|reflects|regularity|rfloor|riemann|right|rigidity|scale|scaled|set|shannon|should|spacing|spacings|spectral|stabilizing|sum|there|trivial|universal|values|variance|when|where|zero|zeros|zeta",
+    "asymptotic|coupling|entropy|growth|law|linear|spectral|zeta::176|200|371|530|982|alpha|approaching|approx|arithmetic|asymptotic|bar|beta|both|but|captures|cdot|coefficient|coherently|confirms|constant|correlation|counting|coupled|coupling|data|delta|denote|dependent|disorder|does|empirical|entropy|exhibits|exists|falsified|fit|frac|function|gamma|gap|gaps|grows|growth|height|imaginary|increases|instead|intercept|interpretation|left|leq|lfloor|linear|log|logarithmic|mathcal|modulated|non|normalized|not|observed|original|parameter|parts|physical|predictions|preserving|product|psi|range|rate|rather|refined|reflects|regime|reveals|rfloor|riemann|right|rmt|scale|scaling|shannon|sim|slope|slowly|spacing|spacings|specifically|spectral|stabilization|stabilize|sum|systems|than|their|there|trend|trivial|variance|when|where|while|zero|zeros|zeta",
+    "asymmetric|momentum|residue|transition::asymmetry|consecutive|defined|delta|denote|difference|equiv|exhibits|expected|followed|hypothesize|momentum|pmod|probabilities|probability|residue|specific|specifically|text|transitions|uniform|where",
+    "asymmetric|correction|logarithmic|momentum|residue|transition::asymmetry|consecutive|constant|correction|defined|delta|denote|determined|difference|equiv|exhibits|expected|followed|frac|hypothesize|log|logarithmic|momentum|pmod|probabilities|probability|residue|specific|specifically|text|transitions|uniform|where",
+    "asymptotic|coupling|density|spacing|triplet|variance|zero|zeta::858|analogue|approx|arithmetic|asymptotic|balance|bar|become|cdot|compensates|constant|constellation|count|coupling|deep|delta|denote|density|exhibits|exists|frac|gamma|geq|hardy|higher|imaginary|increasing|inverse|irregular|kappa|left|leq|lfloor|littlewood|log|maintaining|mean|more|non|normalized|parts|prediction|product|reflects|relationship|rfloor|rho|riemann|right|sigma|spacing|spacings|specifically|spectral|stability|such|sum|there|threshold|triplets|trivial|twin|universal|variance|when|where|zero|zeros|zeta",
+    "coupling|decay|density|dependent|law|power|scale|spacing|triplet|variance|zeta::858|alpha|amplitude|approaching|approx|arithmetic|bar|between|both|capture|cdot|connection|constant|count|coupling|critical|data|decay|decays|decreases|deep|delta|denote|density|dependent|due|empirical|epsilon|exhibits|exponent|fluctuations|frac|gamma|geq|governed|gue|imaginary|increases|interpretation|kappa|law|laws|left|leq|lfloor|log|logarithmic|matrix|monotonic|multi|must|non|normalized|not|number|parts|physical|power|predictions|product|quad|random|refined|relationship|represents|revealing|reveals|rfloor|rho|riemann|right|root|scale|scaling|sigma|spacing|spectral|square|stability|strength|strong|suggests|sum|their|theory|thinning|threshold|triplet|triplets|trivial|universal|variance|where|zeros|zeta"
   ]
 }
