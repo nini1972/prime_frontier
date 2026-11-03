@@ -107,7 +107,7 @@ def parse_conjecture_sections(content: str) -> Dict[str, str]:
         "code": code,
     }
 
-def execute_verification_script(code: str, timeout_sec: int = 45) -> Dict:
+def execute_verification_script(code: str, timeout_sec: int = 120) -> Dict:
     """Safely execute generated verification code with pre-imported fast domain helpers and capture stdout/verdict."""
     test_script_path = os.path.join(OUTPUTS_DIR, "_temp_verify.py")
     os.makedirs(OUTPUTS_DIR, exist_ok=True)

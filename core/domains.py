@@ -46,7 +46,7 @@ Formulate ONE novel, mathematically precise conjecture or predictive heuristic g
 If a 'Prior Domain Memory' section is provided below, do NOT repeat already-confirmed laws or previously falsified titles; instead, formulate an orthogonal hypothesis or calibrate a deeper multi-scale law using lessons from past falsifications.
 Then, write a self-contained Python script to test and either support or falsify your conjecture empirically.
 IMPORTANT:
-- Execution must complete in under 10 seconds. Do not use slow trial division.
+- Execution must complete in under 60 seconds (hard timeout: 120s). Use vectorized NumPy operations instead of slow Python loops over millions of elements.
 - Test your conjecture across multiple scales (e.g., comparing N_1 < N_2 < N_3 or testing on an out-of-sample prime range) rather than merely echoing numbers already stated in the prompt.
 - You can directly import and use any of the fast project utilities (note exact return signatures):
     from core.sieve import generate_primes, compute_prime_gaps, compute_gap_statistics, find_maximal_gap_records
@@ -57,11 +57,12 @@ IMPORTANT:
         #   "residues" (list of K coprime residues, e.g. [1,3,7,9] for mod=10 or 8 residues for mod=30),
         #   "transition_matrix" (K x K 2D list indexed 0..K-1 matching the order of "residues", NOT indexed by raw residue value),
         #   "transition_counts" (K x K 2D list), "expected_uniform" (float)
+        #   NOTE: If iterating over primes manually for modulo `mod`, ALWAYS filter `primes = primes[primes > mod]` first so prime factors of `mod` (like 2 and 5) are excluded!
         # compute_residue_autocorrelation(primes, mod=10, max_lag=15) -> dict {{lag_int: excess_float}}
     from core.goldbach import goldbach_partition_counts, goldbach_stats
-        # goldbach_partition_counts(limit: int) -> dict {{even_n: g_n_count}}
+        # goldbach_partition_counts(limit: int) -> dict {{even_n: g_n_count}} (FFT-accelerated up to limit=500,000)
     from core.zeta_harmonics import get_zeta_zeros, exact_psi, approximate_psi_riemann
-        # get_zeta_zeros(count: int = 50) -> list of float imaginary parts gamma_k (pre-cached and instantaneous up to count=500)
+        # get_zeta_zeros(count: int = 50) -> list of float imaginary parts gamma_k (pre-cached and instantaneous up to count=1000)
 - Do not import third-party packages other than numpy, scipy, and mpmath.
 
 Format your output strictly as:

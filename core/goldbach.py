@@ -17,13 +17,22 @@ from core.sieve import generate_primes
 
 
 def goldbach_partition_counts(limit: int) -> Dict[int, int]:
-    """Compute g(n) for every even n in [4, limit]."""
+    """Compute g(n) for every even n in [4, limit] (uses fast FFT convolution for large limits)."""
     if limit < 4:
         return {}
 
     primes = generate_primes(limit)
     is_prime = np.zeros(limit + 1, dtype=bool)
     is_prime[primes] = True
+
+    if limit > 20_000:
+        fft_len = 1 << (2 * limit + 1).bit_length()
+        spec = np.fft.rfft(is_prime.astype(np.float64), n=fft_len)
+        ordered_pairs = np.rint(np.fft.irfft(spec * spec, n=fft_len)[: limit + 1]).astype(np.int64)
+        evens = np.arange(4, limit + 1, 2)
+        diag = is_prime[evens // 2].astype(np.int64)
+        g_vals = (ordered_pairs[evens] + diag) // 2
+        return {int(n): int(g) for n, g in zip(evens, g_vals)}
 
     counts: Dict[int, int] = {}
     for n in range(4, limit + 1, 2):
