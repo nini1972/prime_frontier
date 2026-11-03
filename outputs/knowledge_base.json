@@ -10,22 +10,22 @@
       "last_run": "2026-11-02 02:27:56"
     },
     "modular_bias_mod10": {
-      "attempts": 42,
+      "attempts": 43,
       "supported": 9,
       "falsified": 31,
-      "errors": 2,
+      "errors": 3,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-11-02 02:29:33"
+      "last_run": "2026-11-03 02:22:13"
     },
     "prime_powers": {
-      "attempts": 44,
+      "attempts": 46,
       "supported": 7,
-      "falsified": 32,
+      "falsified": 33,
       "errors": 4,
       "timeout": 1,
-      "duplicates": 0,
-      "last_run": "2026-11-01 02:22:17"
+      "duplicates": 1,
+      "last_run": "2026-11-03 02:23:18"
     },
     "goldbach_partitions": {
       "attempts": 43,
@@ -37,22 +37,22 @@
       "last_run": "2026-11-02 02:19:10"
     },
     "modular_bias_mod30": {
-      "attempts": 56,
+      "attempts": 57,
       "supported": 13,
-      "falsified": 38,
+      "falsified": 39,
       "errors": 1,
       "timeout": 0,
       "duplicates": 4,
-      "last_run": "2026-11-02 02:25:25"
+      "last_run": "2026-11-03 02:21:06"
     },
     "zeta_harmonics": {
-      "attempts": 48,
+      "attempts": 49,
       "supported": 15,
       "falsified": 24,
       "errors": 2,
-      "timeout": 2,
+      "timeout": 3,
       "duplicates": 5,
-      "last_run": "2026-11-01 02:23:23"
+      "last_run": "2026-11-03 02:19:05"
     }
   },
   "models": {
@@ -67,14 +67,14 @@
       "errors": 1
     },
     "qwen_math": {
-      "attempts": 118,
+      "attempts": 120,
       "success": 98,
-      "errors": 10
+      "errors": 11
     },
     "sonnet": {
-      "attempts": 154,
-      "success": 145,
-      "errors": 6
+      "attempts": 157,
+      "success": 147,
+      "errors": 7
     }
   },
   "confirmed_laws": [
@@ -774,6 +774,12 @@
     "gap|harmonic|stability|sum::approx|approximately|between|cdot|consecutive|constant|frac|gap|gaps|harmonic|ldots|limit|log|logarithm|numbers|proportional|sequence|states|sum|where",
     "gap|harmonic|law|power|sum::approx|based|between|cdot|consecutive|constants|data|empirical|frac|gap|gaps|harmonic|hypothesize|law|ldots|limit|log|numbers|power|refined|scales|sequence|states|sum|where",
     "cascade|entropy|gap|modulated|repulsion|transition|triadic::alpha|approx|bar|cascade|cdot|consecutive|constant|coupling|decays|defined|dependent|empirical|entropy|equiv|events|exhibits|exponentially|frac|gap|independent|langle|left|linear|log|manner|mathbb|mathcal|mean|modulated|modulates|modulo|naive|parameter|pmod|posits|predicted|probabilities|rangle|rarer|repulsion|residue|right|same|satisfies|scale|shannon|signature|slower|sqrt|standard|structure|sum|super|suppression|text|than|transition|transitions|triadic|where",
-    "accumulation|entropy|gap|law|logarithmic|persistence|triadic::accounting|accumulate|accumulation|across|approx|approximately|bar|beta|bounds|but|captures|cdot|consistent|constant|correlation|coupling|data|decay|deficit|delta|density|difference|distribution|empirical|entropy|equiv|events|evidence|exhibit|exhibits|expected|exponentially|fixed|forall|frac|frequency|function|fundamental|gap|geq|give|grows|growth|independence|interpretation|invariant|law|linear|log|logarithmic|mathbb|mathcal|modular|modulated|modulo|more|naive|normalized|not|observe|occur|persistence|persists|physical|pmod|precisely|property|proportional|quad|rate|rather|refined|reflects|represents|residue|residues|reveals|roughly|same|scale|scales|scaling|shows|sim|since|structural|structure|sum|super|suppressed|suppression|text|than|transitions|triadic|under|weighting|when|where"
+    "accumulation|entropy|gap|law|logarithmic|persistence|triadic::accounting|accumulate|accumulation|across|approx|approximately|bar|beta|bounds|but|captures|cdot|consistent|constant|correlation|coupling|data|decay|deficit|delta|density|difference|distribution|empirical|entropy|equiv|events|evidence|exhibit|exhibits|expected|exponentially|fixed|forall|frac|frequency|function|fundamental|gap|geq|give|grows|growth|independence|interpretation|invariant|law|linear|log|logarithmic|mathbb|mathcal|modular|modulated|modulo|more|naive|normalized|not|observe|occur|persistence|persists|physical|pmod|precisely|property|proportional|quad|rate|rather|refined|reflects|represents|residue|residues|reveals|roughly|same|scale|scales|scaling|shows|sim|since|structural|structure|sum|super|suppressed|suppression|text|than|transitions|triadic|under|weighting|when|where",
+    "anti|curvature|gap|order|resonance|second|skewness|spacing|zero|zeta::100|10n|200|500|acceleration|across|anti|asymmetry|bar|bound|bounds|cdot|changes|complementary|consecutive|correlates|corresponding|coupling|curvature|delta|distribution|exhibits|frac|gamma|gap|gaps|hypothesis|inversely|irregularity|kappa|left|leq|lfloor|log|mean|measuring|normalized|order|posits|product|psi|reflecting|reflects|relationship|resonance|rfloor|riemann|right|rigidity|satisfies|scales|second|skewness|spacing|spacings|specifically|spectral|spectrum|sqrt|statistical|sum|their|universal|upper|versus|where|windows|zero|zeros|zeta",
+    "cascade|character|quadratic|residue|transitions|triple::above|absolute|across|amplification|asymmetry|average|begin|bias|bmod|cascade|cases|cdot|character|chi|classes|compound|consecutive|coprime|denote|denotes|deviation|dominance|elevated|end|equiv|exhibits|frac|from|function|geq|have|hetero|homo|homogeneous|jacobi|left|magnitude|mathcal|mixed|mod|modulo|non|observed|otherwise|persistent|pmod|probability|quadratic|ratio|remain|residue|residues|right|same|scale|scales|share|should|since|specifically|sum|symbol|systematically|text|then|three|times|transition|transitions|triple|triples|uniform|where",
+    "character|inverse|quadratic|suppression|transitions|triple::065|alpha|among|approx|beta|bias|bmod|but|calibration|cdot|character|characters|classes|classify|consecutive|coprime|data|delta|denote|dependent|deviation|diagnosis|due|empirical|exhibit|follows|frac|from|functionals|gradual|growth|hetero|heterogeneous|homo|homogeneity|homogeneous|increased|index|initial|into|inverse|larger|law|left|log|logarithmic|mathcal|mixed|mixing|mod|non|opposite|partition|predicted|probability|quadratic|ratio|refined|reflecting|relative|residue|residues|respectively|rho|right|scale|scales|scaling|sets|shows|statistical|sum|supp|suppression|systematic|text|transition|transitions|triple|triples|weakening|where|yields",
+    "echo|law|residue|transition::attraction|compared|echo|effect|equiv|exhibit|exhibits|form|geq|having|higher|influenced|long|mathematically|mid|modulo|pmod|posits|probabilities|probability|range|repulsion|residue|same|short|specifically|states|strong|transition|when|where",
+    "decay|law|power|sieve|spectral::aggregate|alpha|approx|base|become|beta|bound|but|cdot|coefficient|composite|composites|constants|contribution|count|coverage|cumulative|decay|decays|denote|density|depth|effective|eliminated|elimination|energy|frac|from|geq|given|grows|hierarchical|independent|intuition|larger|ldots|left|leq|log|logarithmic|logarithmically|mathcal|measures|multiples|new|odd|physical|polynomially|power|reflecting|relative|right|satisfies|sequence|sieve|sieving|sigma|spacing|specifically|spectral|sqrt|starting|structure|sum|super|their|then|theoretical|universal|upper|weighted|where",
+    "accumulation|law|power|quadratic|sieve|spectral::189|2641|729|accumulation|approx|base|bound|cdot|coefficient|composites|constants|converges|count|data|denote|density|diagnosis|eliminated|empirical|failure|faster|frac|from|gamma|geq|given|grows|growth|initial|kappa|lambda|ldots|left|leq|log|logarithmic|mathcal|more|much|new|normalized|observing|odd|pattern|precisely|quadratic|ratio|ratios|refined|refinement|reveals|right|sequence|sigma|sim|some|spectral|sqrt|starting|suggests|sum|testing|than|then|universal|upper|where"
   ]
 }
