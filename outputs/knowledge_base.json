@@ -1,13 +1,13 @@
 {
   "domains": {
     "gap_dynamics": {
-      "attempts": 44,
+      "attempts": 45,
       "supported": 10,
-      "falsified": 30,
+      "falsified": 31,
       "errors": 3,
       "timeout": 0,
       "duplicates": 1,
-      "last_run": "2026-11-04 02:22:15"
+      "last_run": "2026-11-05 02:20:28"
     },
     "modular_bias_mod10": {
       "attempts": 43,
@@ -28,31 +28,31 @@
       "last_run": "2026-11-04 02:19:26"
     },
     "goldbach_partitions": {
-      "attempts": 45,
+      "attempts": 46,
       "supported": 10,
-      "falsified": 29,
+      "falsified": 30,
       "errors": 2,
       "timeout": 0,
       "duplicates": 4,
-      "last_run": "2026-11-04 02:21:08"
+      "last_run": "2026-11-05 02:18:33"
     },
     "modular_bias_mod30": {
-      "attempts": 58,
+      "attempts": 60,
       "supported": 13,
-      "falsified": 40,
+      "falsified": 41,
       "errors": 1,
       "timeout": 0,
-      "duplicates": 4,
-      "last_run": "2026-11-04 02:17:52"
+      "duplicates": 5,
+      "last_run": "2026-11-05 02:22:17"
     },
     "zeta_harmonics": {
-      "attempts": 49,
+      "attempts": 50,
       "supported": 15,
       "falsified": 27,
       "errors": 2,
       "timeout": 0,
-      "duplicates": 5,
-      "last_run": "2026-11-03 02:19:05"
+      "duplicates": 6,
+      "last_run": "2026-11-05 02:20:59"
     }
   },
   "models": {
@@ -67,13 +67,13 @@
       "errors": 1
     },
     "qwen_math": {
-      "attempts": 122,
+      "attempts": 124,
       "success": 99,
       "errors": 11
     },
     "sonnet": {
-      "attempts": 160,
-      "success": 150,
+      "attempts": 163,
+      "success": 153,
       "errors": 7
     }
   },
@@ -788,6 +788,12 @@
     "correlation|gap|goldbach|partition::alpha|average|bar|beta|between|cdot|consecutive|constants|correlated|count|data|denote|determined|empirical|even|formally|gap|geq|given|goldbach|integer|integers|interval|number|partition|partitions|positively|range|satisfies|such|where",
     "correlation|enhanced|gap|goldbach|partition::100|140|accurately|alpha|average|bar|based|behavior|beta|between|but|capture|cdot|consecutive|constants|correlated|count|data|denote|determined|empirical|even|form|formally|functional|gap|geq|given|goldbach|hypothesize|integer|integers|interval|log|more|nuanced|number|observations|partition|partitions|positively|range|refine|satisfies|set|specifically|where",
     "entropy|gap|law|scaling|spectral::alpha|being|beta|both|cdot|coefficient|correction|count|cram|density|disorder|distinct|distribution|diversity|double|empirical|entropy|evolve|exhibits|expect|frac|gap|gaps|geq|governed|grows|hierarchical|iterated|large|law|log|logarithm|logarithmic|magnitude|manner|mathcal|measures|modulated|number|observed|observing|posits|predictable|predictably|primary|probability|reflecting|scaling|secondary|set|specifically|spectral|structure|sufficiently|sum|term|text|their|theorem|values|where",
-    "deceleration|entropy|gap|law|logarithmic|saturation::additive|alpha|alternative|amplitude|approximately|baseline|become|cdot|coefficient|compressed|compression|constant|correction|cube|data|decelerates|delta|distinct|diversity|does|dominant|double|effect|emergence|empirical|entropy|epsilon|evidence|exhibits|exponent|follow|follows|form|frac|gamma|gap|gaps|geq|grows|growth|increases|indicating|instead|law|log|logarithm|logarithmic|magnitude|mathcal|new|not|offset|pattern|power|probability|rate|refined|reflects|reveals|root|saturating|saturation|scaling|set|simple|simplified|sparser|spectral|sqrt|square|strongly|sublinearly|sum|supports|term|text|values|where"
+    "deceleration|entropy|gap|law|logarithmic|saturation::additive|alpha|alternative|amplitude|approximately|baseline|become|cdot|coefficient|compressed|compression|constant|correction|cube|data|decelerates|delta|distinct|diversity|does|dominant|double|effect|emergence|empirical|entropy|epsilon|evidence|exhibits|exponent|follow|follows|form|frac|gamma|gap|gaps|geq|grows|growth|increases|indicating|instead|law|log|logarithm|logarithmic|magnitude|mathcal|new|not|offset|pattern|power|probability|rate|refined|reflects|reveals|root|saturating|saturation|scaling|set|simple|simplified|sparser|spectral|sqrt|square|strongly|sublinearly|sum|supports|term|text|values|where",
+    "goldbach|law|moment|partition|second|universality::500|across|analogous|approx|approximation|asserts|behavior|beyond|bound|capture|cdot|confirmed|constant|critical|density|deviations|diverse|exhibits|exists|failure|fluctuation|frac|geq|goldbach|growth|hardy|heuristic|independent|invariant|large|law|laws|left|littlewood|mathbb|matrix|mean|moment|moments|motivated|normalized|observed|oscillation|partitions|phenomena|power|random|rather|right|scale|scales|second|sizes|spectral|stability|statistics|structure|such|sufficiently|suggests|sum|text|than|theory|there|twin|universal|universality|variance|when|where|window",
+    "correction|goldbach|hardy|law|littlewood|moment|normalized|partition|scaling::2000|30000|500|accounts|after|alpha|approx|approximately|approximation|asymptotics|because|beta|bias|calibrated|capturing|causing|cdot|constant|corr|corrected|correction|counts|empirical|evidence|expected|factor|failed|fluctuation|frac|from|geq|goldbach|hardy|heuristic|indicates|inflated|insight|intrinsic|key|large|left|littlewood|logarithmic|lower|mathbb|mean|missing|moment|normalized|observation|order|original|overline|partition|partitions|rather|ratio|refined|reflects|removing|representing|reveals|right|satisfies|scaling|second|sizes|squared|standard|structure|sufficiently|sum|systematic|systematically|terms|text|than|true|twin|underestimates|underestimation|universal|using|where|window",
+    "correction|gap|logarithmic|scaling|variance::alpha|approx|bar|beta|bounded|but|captures|cdot|classical|correction|distribution|empirical|exhibits|exponents|faster|frac|gap|gaps|geq|grows|growth|have|heuristics|increasing|law|left|leq|log|logarithm|logarithmic|mean|modulated|monotonically|near|normalized|number|observations|positive|posits|power|proportional|quadratic|rate|ratio|right|roughness|satisfy|scale|scales|scaling|should|show|slightly|square|sub|subquadratic|suggest|sum|term|than|theorem|variance|where",
+    "gap|law|linear|logarithmic|scaling|variance::alpha|approx|approximately|bar|before|behavior|beta|but|cdot|coefficient|consecutive|constant|contrary|correction|data|decay|decrease|decreases|does|dominant|empirical|equivalently|evidence|exhibits|exponents|fitted|follows|frac|fundamentally|gap|geq|grows|growth|implies|increases|indicate|initial|insight|itself|key|large|leq|linear|linearly|log|logarithmic|making|mischaracterized|modulated|monotonically|near|nearly|normalized|not|offset|power|propto|quadratically|range|rate|rather|ratio|refined|reformulation|reveals|scale|scales|scaling|shows|sim|slowly|subquadratically|suggests|sum|test|than|times|variance|varying|very|where",
+    "bipartite|imbalance|law|residue|spectral|transitions::125|across|analyzed|asymptotic|based|behavior|between|bias|bipartite|bound|classes|consecutive|cross|cup|dominance|empirical|equiv|exhibit|exhibits|follows|frac|from|geq|growth|hidden|high|imbalance|increases|infty|into|intra|lim|low|mathcal|matrix|memory|modular|modulo|monotonic|number|omega|partition|partitions|phi|pmod|posits|probabilities|ratio|residue|residues|revealing|scales|sets|spectral|stronger|structure|sum|systematically|text|than|their|transition|transitions|two|value|within",
+    "asymptotic|bipartite|convergence|dominance|inverse|law|spectral::affinity|alpha|approach|approx|asymmetry|asymptotic|based|bipartite|both|bounded|captures|cdot|classes|closer|convergence|converges|cross|data|decay|defined|deviation|deviations|diagnosis|dominance|dominate|each|empirical|epsilon|estimate|exhibit|exhibits|fluctuations|follows|frac|from|genuine|geq|growth|had|high|infty|initial|interpretation|intra|inverse|inverted|law|left|leq|lim|limiting|low|mathematical|mod|monotonic|monotonicity|number|omega|partition|power|previously|psi|ratio|refined|residue|reveals|right|satisfies|share|shows|sim|small|spectral|statistical|stronger|structural|suggesting|systematically|text|than|theoretic|tolerance|toward|transitions|uniformity|value|weak|where|within|zero"
   ]
 }
