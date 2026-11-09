@@ -1,13 +1,13 @@
 {
   "domains": {
     "gap_dynamics": {
-      "attempts": 49,
-      "supported": 10,
+      "attempts": 50,
+      "supported": 11,
       "falsified": 35,
       "errors": 3,
       "timeout": 0,
       "duplicates": 1,
-      "last_run": "2026-11-08 02:20:20"
+      "last_run": "2026-11-09 02:21:53"
     },
     "modular_bias_mod10": {
       "attempts": 46,
@@ -28,31 +28,31 @@
       "last_run": "2026-11-08 02:19:07"
     },
     "goldbach_partitions": {
-      "attempts": 47,
-      "supported": 11,
+      "attempts": 48,
+      "supported": 12,
       "falsified": 30,
       "errors": 2,
       "timeout": 0,
       "duplicates": 4,
-      "last_run": "2026-11-07 02:17:08"
+      "last_run": "2026-11-09 02:19:06"
     },
     "modular_bias_mod30": {
-      "attempts": 63,
+      "attempts": 64,
       "supported": 13,
-      "falsified": 44,
+      "falsified": 45,
       "errors": 1,
       "timeout": 0,
       "duplicates": 5,
-      "last_run": "2026-11-08 02:24:14"
+      "last_run": "2026-11-09 02:23:11"
     },
     "zeta_harmonics": {
-      "attempts": 52,
-      "supported": 15,
-      "falsified": 28,
+      "attempts": 54,
+      "supported": 16,
+      "falsified": 29,
       "errors": 2,
       "timeout": 1,
       "duplicates": 6,
-      "last_run": "2026-11-06 02:26:01"
+      "last_run": "2026-11-09 02:21:17"
     }
   },
   "models": {
@@ -67,17 +67,35 @@
       "errors": 1
     },
     "qwen_math": {
-      "attempts": 130,
-      "success": 103,
+      "attempts": 132,
+      "success": 105,
       "errors": 12
     },
     "sonnet": {
-      "attempts": 172,
-      "success": 161,
+      "attempts": 175,
+      "success": 164,
       "errors": 8
     }
   },
   "confirmed_laws": [
+    {
+      "id": "PRIME-CONJ-1794190913",
+      "name": "Prime Gap Distribution Entropy Law",
+      "domain": "gap_dynamics",
+      "timestamp": "2026-11-09 02:21:53"
+    },
+    {
+      "id": "PRIME-CONJ-1794190778",
+      "name": "Zeta Zero Spacing and Prime Gap Harmonic Resonance with Logarithmic Amplitude Modulation",
+      "domain": "zeta_harmonics",
+      "timestamp": "2026-11-09 02:19:38"
+    },
+    {
+      "id": "PRIME-CONJ-1794190746",
+      "name": "Goldbach Partition Curvature Saturation Law",
+      "domain": "goldbach_partitions",
+      "timestamp": "2026-11-09 02:19:06"
+    },
     {
       "id": "PRIME-CONJ-1794018252",
       "name": "Prime Residue Transition Harmonic Repulsion",
@@ -832,6 +850,14 @@
     "momentum|quadratic|residue|transition::cdot|constants|data|defined|denotes|determined|equiv|exhibits|from|hypothesize|index|left|mid|modulo|momentum|pmod|probability|quadratic|relationship|residue|residues|right|specific|specifically|sum|transition|transitions|where",
     "correction|logarithmic|momentum|quadratic|residue|transition::behavior|better|capture|cdot|constants|correction|data|defined|determined|empirical|from|incorporating|initial|log|logarithmic|modulo|momentum|observed|quadratic|refine|refined|residues|specifically|term|where",
     "bipartite|character|coherence|modulation|quadratic|transition::alignment|among|amplifies|approx|bias|bipartite|cdot|character|chi|coherence|creates|cross|demonstrating|differs|directional|dominance|each|exhibits|flux|frac|from|geq|half|infty|invariant|jacobi|left|log|logarithmic|lower|mathcal|modulation|modulo|observed|omega|pair|persistent|probability|product|quadratic|ratio|residue|residues|right|scale|sets|shows|significantly|sim|stabilization|sum|symbol|transition|transitions|unweighted|upper|weighted|where",
-    "bipartite|cancellation|jacobi|law|symbol|transitions::005|alpha|approx|arithmetic|balance|balanced|because|between|bipartite|but|cancellation|cdot|character|characters|chi|creating|deeper|delta|deviation|distribution|due|each|empirical|evenly|evidence|exhibit|failure|frac|from|geq|half|implying|induces|jacobi|key|law|left|lower|mathcal|measuring|modulo|near|non|not|observation|occurs|orthogonality|pairs|perfect|product|products|profound|quadratic|quantitative|rather|ratio|refined|refinement|residual|residue|residues|reveals|right|scale|scaling|set|sets|sign|sim|similarly|small|split|strengthens|structure|sum|sums|symbol|symmetry|systematic|transition|transitions|trivial|ultra|upper|vanish|weighted|weighting|when|where|within"
+    "bipartite|cancellation|jacobi|law|symbol|transitions::005|alpha|approx|arithmetic|balance|balanced|because|between|bipartite|but|cancellation|cdot|character|characters|chi|creating|deeper|delta|deviation|distribution|due|each|empirical|evenly|evidence|exhibit|failure|frac|from|geq|half|implying|induces|jacobi|key|law|left|lower|mathcal|measuring|modulo|near|non|not|observation|occurs|orthogonality|pairs|perfect|product|products|profound|quadratic|quantitative|rather|ratio|refined|refinement|residual|residue|residues|reveals|right|scale|scaling|set|sets|sign|sim|similarly|small|split|strengthens|structure|sum|sums|symbol|symmetry|systematic|transition|transitions|trivial|ultra|upper|vanish|weighted|weighting|when|where|within",
+    "curvature|goldbach|partition|stability|theorem::1000|4000|acceleration|approx|asserts|becomes|cdot|constant|counts|curvature|decays|deep|derivative|discrete|equiv|even|exists|frac|function|geq|goldbach|hardy|heuristic|increasingly|its|kappa|large|left|leq|like|littlewood|local|logarithmic|mathbb|measures|normalized|oscillates|partition|pmod|prod|property|rates|revealing|right|second|sigma|sizes|stability|stable|substack|such|sufficiently|sum|there|universal|variance|when|where|while|wildly|window",
+    "curvature|goldbach|law|partition|saturation::1000|4000|alpha|approx|arithmetic|asserts|asymptotic|behavior|but|captures|constant|convergence|converges|curvature|data|decay|decaying|deep|derivative|deviations|diminish|distributions|does|empirical|equiv|essentially|even|exhibits|exists|frac|from|geq|hardy|heuristic|independent|infty|interpretation|intrinsic|irregularity|kappa|large|left|leq|littlewood|local|manifestation|mathbb|normalized|not|only|perfectly|physical|pmod|prod|randomness|rather|refined|reveals|right|saturates|saturation|scale|second|sigma|size|sizes|slow|stability|such|sufficiently|sum|than|there|universal|value|variance|where|window",
+    "amplitude|gap|harmonic|logarithmic|modulation|resonance|spacing|zero|zeta::absolute|approx|bar|between|cdot|constant|correlation|denoted|exhibits|frac|function|gamma|gap|gaps|harmonic|hypothesize|imaginary|left|leq|lfloor|log|logarithmically|mean|modulated|non|numbers|parts|pattern|resonance|rfloor|riemann|right|satisfy|should|spacing|spacings|specific|specifically|sqrt|such|sum|trivial|value|where|zeros|zeta",
+    "asymmetry|constellation|coupling|decay|inverse|kurtosis|spacing|square|zero|zeta::100|1000|200|500|across|approx|asymmetry|bar|both|captures|cdot|central|consecutive|constant|constellation|counts|coupling|decay|delta|distributions|epsilon|frac|gamma|geq|gue|hardy|heaviness|heuristics|horizon|index|intuition|inverse|irregularity|kappa|kurtosis|large|law|left|leq|lfloor|limit|littlewood|log|logarithmically|mean|measures|normalized|obeys|omega|patterns|physical|predicts|product|quadruplet|quadruplets|reflecting|rfloor|riemann|right|scaled|scales|should|spacing|spacings|spectral|sqrt|square|substack|such|sum|tail|text|their|theorem|universal|where|zero|zeros|zeta",
+    "amplification|asymmetry|constellation|kurtosis|law|logarithmic|spacing|zeta::100|alpha|amplification|amplifies|approx|approximately|asymmetry|base|beta|bound|but|calibration|cdot|constant|converging|coupling|data|decay|diagnostic|does|empirical|enhancement|eta|exhibits|exponent|factor|fitting|from|gamma|geq|grows|growth|gue|increases|index|key|kurtosis|law|leq|limit|log|logarithmic|measure|monotonic|normalizes|not|observations|observed|omega|predicted|primary|quadratic|quadruplet|rather|raw|refined|relative|residual|reveals|scaling|spacings|sqrt|suggests|than|where|zero|zeta",
+    "distribution|entropy|gap|law::appears|approx|constant|count|distribution|empirical|entropy|follows|frac|gap|gaps|given|log|logarithmically|number|probability|scales|sequence|shannon|sum|text|times|where",
+    "chirality|distance|enhancement|modular|quadratic|transition|weighted::aligned|alpha|anti|beta|bias|cdot|character|chi|chirality|circular|consecutive|convergence|coprime|decays|dependent|deviate|different|distance|emphasizes|exhibit|frac|from|index|infty|intuition|inverse|jacobi|left|local|mathbb|mathcal|measures|memory|min|modular|modulo|monotonic|opposite|patterns|physical|position|proximity|quadratic|quadratically|remember|residue|residues|right|root|same|should|significantly|square|structure|sum|symbol|systematically|than|their|then|through|transition|transitions|weight|weighted|weighting|where|whether|zero",
+    "asymmetry|bias|character|modular|quadratic|segregation|transition|via::absolute|additionally|alignment|antisymmetric|asymmetry|because|beta|between|bias|biases|calibration|cancellations|captures|causing|cdot|character|characters|chi|chirality|circular|compares|coprime|counter|different|directional|distance|distributed|empirical|equiv|evidence|exhibit|exhibiting|frac|from|however|identically|implies|index|interpretation|jacobi|left|leq|local|magnitude|magnitudes|mathcal|may|measures|min|mod|modulates|modulo|multi|neq|new|opposite|physical|probabilities|quadratic|quantifies|rather|refined|residue|residues|reveals|right|same|scale|segregate|segregation|should|signed|still|stratified|structure|sum|symbol|symmetry|systematically|test|than|then|total|transition|transitions|uniformly|vanishes|vanishing|weighted|where|whether|which"
   ]
 }
