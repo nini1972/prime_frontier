@@ -1,22 +1,22 @@
 {
   "domains": {
     "gap_dynamics": {
-      "attempts": 51,
+      "attempts": 52,
       "supported": 11,
-      "falsified": 36,
+      "falsified": 37,
       "errors": 3,
       "timeout": 0,
       "duplicates": 1,
-      "last_run": "2026-11-10 02:22:36"
+      "last_run": "2026-11-11 02:19:39"
     },
     "modular_bias_mod10": {
-      "attempts": 46,
-      "supported": 10,
+      "attempts": 47,
+      "supported": 11,
       "falsified": 32,
       "errors": 4,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-11-08 02:22:50"
+      "last_run": "2026-11-11 02:21:05"
     },
     "prime_powers": {
       "attempts": 50,
@@ -28,13 +28,13 @@
       "last_run": "2026-11-10 02:17:49"
     },
     "goldbach_partitions": {
-      "attempts": 49,
-      "supported": 12,
-      "falsified": 31,
+      "attempts": 51,
+      "supported": 13,
+      "falsified": 32,
       "errors": 2,
       "timeout": 0,
       "duplicates": 4,
-      "last_run": "2026-11-10 02:19:06"
+      "last_run": "2026-11-11 02:18:49"
     },
     "modular_bias_mod30": {
       "attempts": 65,
@@ -46,13 +46,13 @@
       "last_run": "2026-11-10 02:23:49"
     },
     "zeta_harmonics": {
-      "attempts": 55,
+      "attempts": 56,
       "supported": 16,
       "falsified": 29,
       "errors": 2,
       "timeout": 2,
-      "duplicates": 6,
-      "last_run": "2026-11-10 02:21:43"
+      "duplicates": 7,
+      "last_run": "2026-11-11 02:17:40"
     }
   },
   "models": {
@@ -67,17 +67,29 @@
       "errors": 1
     },
     "qwen_math": {
-      "attempts": 134,
-      "success": 107,
+      "attempts": 136,
+      "success": 108,
       "errors": 12
     },
     "sonnet": {
-      "attempts": 178,
-      "success": 166,
+      "attempts": 181,
+      "success": 169,
       "errors": 9
     }
   },
   "confirmed_laws": [
+    {
+      "id": "PRIME-CONJ-1794363665",
+      "name": "Positive Triadic Phase Return Dominance with Logarithmic Scaling",
+      "domain": "modular_bias_mod10",
+      "timestamp": "2026-11-11 02:21:05"
+    },
+    {
+      "id": "PRIME-CONJ-1794363436",
+      "name": "Goldbach Partition Higher-Moment Collapse Law",
+      "domain": "goldbach_partitions",
+      "timestamp": "2026-11-11 02:17:16"
+    },
     {
       "id": "PRIME-CONJ-1794190913",
       "name": "Prime Gap Distribution Entropy Law",
@@ -867,6 +879,14 @@
     "gap|harmonic|modulo|resonance::around|behavior|constant|determined|epsilon|exhibit|frac|gap|gaps|geq|harmonic|index|left|mod|modulo|must|resonant|right|satisfy|should|small|specific|states|such|sum|threshold|value|where",
     "gap|growth|harmonic|modulo::approx|approximated|around|behavior|can|captures|constant|constants|data|determined|does|empirical|exhibit|formula|formulation|gap|gaps|grows|growth|harmonic|increases|index|instead|log|logarithmically|manner|modulo|not|observed|predictable|refined|resonant|specific|suggests|trend|where",
     "bias|distance|law|residue|stratification|weighted::along|beta|bias|circ|circular|concentrates|concentration|coprime|distance|effect|expectation|exponentially|far|frac|from|index|into|leq|magnitude|mathcal|memory|mid|min|minimal|modular|modulo|monotonically|near|number|omega|ordered|partition|ratio|residue|residues|scale|sequence|specifically|steps|strata|stratified|stratum|strengthens|sum|text|three|transition|transitions|traverse|uniform|universal",
-    "asymptotic|bias|concentration|law|logarithmic|stratified::alpha|amplification|anticipated|approx|asymptotic|because|beta|bias|bounds|calibration|captures|circ|circular|concentration|coprime|diagnosis|distance|dominance|empirical|failed|far|faster|fixed|follows|frac|geq|grows|growth|initial|into|large|law|left|leq|log|logarithmic|mathcal|merely|mid|min|modulo|monotonic|more|much|near|not|omega|partition|precisely|refined|residues|right|sample|scale|sim|strata|stratified|stratum|strengthens|sum|text|than|three|transitions|where|yields"
+    "asymptotic|bias|concentration|law|logarithmic|stratified::alpha|amplification|anticipated|approx|asymptotic|because|beta|bias|bounds|calibration|captures|circ|circular|concentration|coprime|diagnosis|distance|dominance|empirical|failed|far|faster|fixed|follows|frac|geq|grows|growth|initial|into|large|law|left|leq|log|logarithmic|mathcal|merely|mid|min|modulo|monotonic|more|much|near|not|omega|partition|precisely|refined|residues|right|sample|scale|sim|strata|stratified|stratum|strengthens|sum|text|than|three|transitions|where|yields",
+    "goldbach|kurtosis|law|partition|phase|skewness|transition::approx|asymptotic|attractor|baseline|beyond|converges|counts|coupling|critical|crossover|decreases|deviation|distribution|even|excess|exhibits|fixed|fluctuates|fourth|frac|from|gamma|goldbach|governed|grows|hardy|heavy|integers|interpretation|invariance|irregular|kurtosis|leq|littlewood|mathcal|mean|moments|more|partition|partitions|phase|physical|post|pre|psi|quad|ratio|regime|regularized|revealing|rho|scales|scaling|sigma|sim|skewness|small|some|specifically|standard|standardized|sum|tailed|text|third|threshold|tilde|transition|transitions|universal|var|variance|where|window",
+    "collapse|goldbach|higher|law|moment|partition::alpha|amplitude|approx|because|become|behavior|beta|both|causing|cdot|central|collapse|counts|decay|decaying|deviation|diagnosis|distributed|distribution|empirical|epsilon|even|excess|exhibits|exponent|failed|faster|fluctuations|fourth|frac|gamma|gaussian|goldbach|governed|increases|increasingly|initial|integers|interpretation|kurtosis|law|left|lesssim|limit|local|magnitude|manifestation|mean|moment|moments|multi|observed|partition|physical|power|psi|quad|rather|ratio|reference|refined|residual|right|scale|scaling|show|sigma|sim|skewness|sqrt|stabilizing|standard|standardized|sum|systematic|text|than|then|theorem|third|tilde|toward|undergoes|values|vanish|where|window|zero",
+    "extremal|goldbach|law|partition|ratio|universality::1000|4000|across|asserts|band|based|behavior|bounded|cdot|constant|correction|count|counts|designed|despite|distribution|double|even|exists|extrema|extremal|factor|fluctuations|focusing|frac|geq|goldbach|grow|growth|hardy|heuristic|instead|integers|large|laws|leq|littlewood|local|logarithmic|logarithmically|max|min|moment|narrow|normalize|normalized|orthogonal|partition|predicts|previous|prod|properly|psi|ratio|raw|remains|scale|scales|should|sim|sizes|such|sufficiently|suggesting|tail|there|universal|via|volatility|when|where|window",
+    "correction|extremal|goldbach|law|logarithmic|partition|power|ratio|scaling::1000|16000|2000|4000|8000|across|alpha|approx|asserts|because|beta|both|calibrated|calibration|cdot|constant|converges|corrected|counter|data|decreases|dependence|determined|double|empirical|evidence|exists|exponent|extremal|factor|failed|feasible|fitting|fixed|frac|from|geq|grows|growth|increases|initial|insight|invariant|key|law|left|leq|log|logarithmic|max|min|normalization|normalize|not|optimal|phi|power|propto|provides|psi|ratio|refined|relationship|remaining|reveals|right|scale|scales|scaling|should|size|such|suggests|systematically|there|universal|when|where|window",
+    "gap|harmonic|law|modulo|oscillation::amplitude|around|between|bounded|cdot|consecutive|consider|constant|denote|exhibits|frac|gap|gaps|harmonic|index|left|leq|log|mean|mod|modulo|normalized|number|oscillation|periodic|reciprocals|right|sequence|such|sum|value|where",
+    "exclusion|gap|gaps|harmonic|law|modulo|oscillation|zero::amplitude|around|between|bounded|cdot|consecutive|consider|constant|denote|exhibits|frac|gap|gaps|harmonic|index|left|leq|log|mean|mod|modulo|neq|non|normalized|number|oscillation|periodic|reciprocals|right|sequence|substack|such|sum|value|where|zero",
+    "cross|lag|phase|residue|synchronization|triadic::additionally|after|alignment|alpha|also|anti|attraction|begin|beyond|bias|bmod|bound|cases|cdot|change|combined|configurations|consecutive|constant|correlation|creates|cross|deeper|due|each|empirical|end|exhibit|exhibits|expectation|followed|frac|increases|lag|log|logarithmically|manifest|measure|min|modulo|negative|neq|normalized|one|ordered|otherwise|pairwise|persistence|persistent|phase|phenomenon|posits|psi|random|reflects|relative|repulsion|residue|residues|return|returns|same|score|sequence|should|signature|some|specific|specifically|step|strongest|structure|sum|suppressed|synchronization|text|theta|tightening|transitions|triadic|triple|universal|where",
+    "dominance|logarithmic|phase|positive|return|scaling|triadic::before|begin|but|cases|configurations|consecutive|consistent|contrary|corrected|cross|data|empirical|end|evidence|exhibits|favored|frac|hypothesis|initial|interpretation|lag|measure|modulo|neq|normalized|otherwise|pattern|persistence|phase|positive|psi|residues|return|reveals|shows|sum|synchronization|text|theta|triadic|where"
   ]
 }
