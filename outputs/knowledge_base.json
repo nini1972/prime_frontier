@@ -1,22 +1,22 @@
 {
   "domains": {
     "gap_dynamics": {
-      "attempts": 52,
+      "attempts": 53,
       "supported": 11,
-      "falsified": 37,
+      "falsified": 38,
       "errors": 3,
       "timeout": 0,
       "duplicates": 1,
-      "last_run": "2026-11-11 02:19:39"
+      "last_run": "2026-11-12 02:23:07"
     },
     "modular_bias_mod10": {
-      "attempts": 47,
+      "attempts": 49,
       "supported": 11,
-      "falsified": 32,
+      "falsified": 34,
       "errors": 4,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-11-11 02:21:05"
+      "last_run": "2026-11-12 02:21:40"
     },
     "prime_powers": {
       "attempts": 50,
@@ -37,22 +37,22 @@
       "last_run": "2026-11-11 02:18:49"
     },
     "modular_bias_mod30": {
-      "attempts": 65,
-      "supported": 13,
+      "attempts": 66,
+      "supported": 14,
       "falsified": 46,
       "errors": 1,
       "timeout": 0,
       "duplicates": 5,
-      "last_run": "2026-11-10 02:23:49"
+      "last_run": "2026-11-12 02:16:59"
     },
     "zeta_harmonics": {
-      "attempts": 56,
-      "supported": 16,
+      "attempts": 57,
+      "supported": 17,
       "falsified": 29,
       "errors": 2,
       "timeout": 2,
       "duplicates": 7,
-      "last_run": "2026-11-11 02:17:40"
+      "last_run": "2026-11-12 02:18:20"
     }
   },
   "models": {
@@ -67,17 +67,29 @@
       "errors": 1
     },
     "qwen_math": {
-      "attempts": 136,
-      "success": 108,
+      "attempts": 138,
+      "success": 110,
       "errors": 12
     },
     "sonnet": {
-      "attempts": 181,
-      "success": 169,
+      "attempts": 184,
+      "success": 172,
       "errors": 9
     }
   },
   "confirmed_laws": [
+    {
+      "id": "PRIME-CONJ-1794449900",
+      "name": "Refined Zeta Zero Spacing and Prime Gap Harmonic Phase Alignment",
+      "domain": "zeta_harmonics",
+      "timestamp": "2026-11-12 02:18:20"
+    },
+    {
+      "id": "PRIME-CONJ-1794449819",
+      "name": "Residue Distance Harmonic Damping Law with Spectral Threshold",
+      "domain": "modular_bias_mod30",
+      "timestamp": "2026-11-12 02:16:59"
+    },
     {
       "id": "PRIME-CONJ-1794363665",
       "name": "Positive Triadic Phase Return Dominance with Logarithmic Scaling",
@@ -887,6 +899,15 @@
     "gap|harmonic|law|modulo|oscillation::amplitude|around|between|bounded|cdot|consecutive|consider|constant|denote|exhibits|frac|gap|gaps|harmonic|index|left|leq|log|mean|mod|modulo|normalized|number|oscillation|periodic|reciprocals|right|sequence|such|sum|value|where",
     "exclusion|gap|gaps|harmonic|law|modulo|oscillation|zero::amplitude|around|between|bounded|cdot|consecutive|consider|constant|denote|exhibits|frac|gap|gaps|harmonic|index|left|leq|log|mean|mod|modulo|neq|non|normalized|number|oscillation|periodic|reciprocals|right|sequence|substack|such|sum|value|where|zero",
     "cross|lag|phase|residue|synchronization|triadic::additionally|after|alignment|alpha|also|anti|attraction|begin|beyond|bias|bmod|bound|cases|cdot|change|combined|configurations|consecutive|constant|correlation|creates|cross|deeper|due|each|empirical|end|exhibit|exhibits|expectation|followed|frac|increases|lag|log|logarithmically|manifest|measure|min|modulo|negative|neq|normalized|one|ordered|otherwise|pairwise|persistence|persistent|phase|phenomenon|posits|psi|random|reflects|relative|repulsion|residue|residues|return|returns|same|score|sequence|should|signature|some|specific|specifically|step|strongest|structure|sum|suppressed|synchronization|text|theta|tightening|transitions|triadic|triple|universal|where",
-    "dominance|logarithmic|phase|positive|return|scaling|triadic::before|begin|but|cases|configurations|consecutive|consistent|contrary|corrected|cross|data|empirical|end|evidence|exhibits|favored|frac|hypothesis|initial|interpretation|lag|measure|modulo|neq|normalized|otherwise|pattern|persistence|phase|positive|psi|residues|return|reveals|shows|sum|synchronization|text|theta|triadic|where"
+    "dominance|logarithmic|phase|positive|return|scaling|triadic::before|begin|but|cases|configurations|consecutive|consistent|contrary|corrected|cross|data|empirical|end|evidence|exhibits|favored|frac|hypothesis|initial|interpretation|lag|measure|modulo|neq|normalized|otherwise|pattern|persistence|phase|positive|psi|residues|return|reveals|shows|sum|synchronization|text|theta|triadic|where",
+    "damping|distance|harmonic|law|residue|spectral|threshold::125|asymptotic|beta|bias|cdot|circ|circular|classes|coefficient|concentration|convergence|damping|decay|distance|each|exhibits|frac|geq|harmonic|indicating|indices|ldots|magnitude|mean|mid|min|modulo|monotonic|must|ordered|overline|pairs|profile|quad|ratio|residue|residues|rho|satisfy|scale|set|spectral|stability|structure|sum|text|times|transition|weighted|where",
+    "alignment|gap|harmonic|phase|spacing|zero|zeta::100|200|500|alignment|between|consecutive|consider|cos|delta|frac|function|gamma|gap|harmonic|holds|imaginary|inequality|left|leq|lfloor|log|non|number|parts|phase|rfloor|riemann|right|spacing|sqrt|sum|trivial|zeros|zeta",
+    "alignment|gap|harmonic|phase|refined|spacing|zero|zeta::100|1000|200|500|alignment|between|consecutive|consider|cos|delta|different|factor|frac|function|gamma|gap|harmonic|holds|imaginary|incorporating|inequality|left|leq|lfloor|log|logarithmic|non|number|parts|phase|refine|rfloor|riemann|right|scaling|spacing|specifically|sum|threshold|trivial|zeros|zeta",
+    "asymmetric|bimodal|collapse|coupling|gap|residue|variance::after|among|asymmetry|attractive|bar|between|bimodal|bound|clustering|correlate|coupling|decay|deep|denote|deviation|dispersion|equiv|excluding|exhibit|frac|function|gap|gaps|geometry|geq|index|intuition|larger|leq|local|log|logarithmic|mathcal|mean|modular|more|negative|physical|pmod|psi|reflects|repulsive|residue|satisfies|should|sigma|smaller|spacing|standard|structure|substack|sum|tighter|transition|transitions|universal|variance|where|while",
+    "asymmetry|coupling|gap|growth|law|logarithmic|quadratic|residue|scaling::alpha|approx|approximately|asymmetry|bar|beta|bimodal|bounded|bounds|calibration|cdot|coefficient|constraint|correlation|coupling|decay|denote|discovery|empirical|equiv|evidence|exhibits|fit|frac|function|functions|gap|geq|grow|growth|index|indicating|intercept|key|law|leading|leq|linear|log|logarithmic|mathcal|negative|norm|normalized|not|pmod|predictions|psi|quadratic|quadratically|quality|quantitative|quantity|rather|raw|refined|regime|relative|residual|residue|reveals|satisfies|scale|scales|scaling|sigma|sim|slope|stabilization|substack|sum|superlinearly|text|than|universal|where|yields",
+    "attraction|balance|harmonic|repulsion|residue|transition::approaches|approx|attr|attractive|being|constant|denote|followed|follows|frac|harmonic|having|hypothesize|increases|infty|lim|mean|modulo|number|probability|ratio|rep|repulsive|residue|specifically|sum|text|transitions|value|where",
+    "correction|harmonic|logarithmic|ratio|residue|transition::adjusted|approaches|approx|attr|attractive|being|cdot|constant|correction|denote|followed|follows|frac|harmonic|having|hypothesize|increases|infty|left|lim|log|logarithmic|mean|modulo|number|probability|ratio|rep|repulsive|residue|right|specifically|sum|text|transitions|value|where",
+    "coherence|gap|law|localization|modular|phase|spectral::005|015|additive|approx|between|cdot|coherence|compression|constants|coprime|damping|decreasing|deep|deeper|distribution|doubly|equiv|exhibits|frac|function|gap|gaps|harmonic|increases|increasing|independent|index|interpretation|into|lambda|law|left|localization|log|logarithmic|mathbb|mean|modular|modulo|multiplicative|phase|phi|physical|pmod|probe|range|ranges|reflects|relative|residues|resonance|right|sequence|specific|spectral|structure|sum|text|universal|var|variance|where",
+    "asymptotic|damping|gap|law|localization|power|spectral::0015|0065|015|245|alpha|amplitude|approx|architecture|asymptotic|behavior|between|capturing|cdot|characteristic|coefficient|coherence|compared|constraints|correction|correlations|critical|data|decay|development|doubly|empirical|equidistribution|equiv|exhibits|exponent|finite|floor|form|frac|from|function|gap|gaps|hardy|hybrid|index|indicates|induced|initial|interplay|interpretation|irreducible|lambda|law|left|littlewood|localization|log|logarithmic|logarithmically|mathbb|mean|model|modular|modulo|multiplicative|naive|non|observed|phase|phi|physical|pmod|power|prediction|predicts|rapid|rate|refined|reflecting|representing|represents|residual|residues|reveals|right|scale|scales|scaling|show|slower|slowing|small|spectral|strengthens|structural|sub|subtle|sum|systematically|text|transition|tuple|underestimates|values|vanishing|var|variance|where|which"
   ]
 }
