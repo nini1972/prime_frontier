@@ -10,40 +10,40 @@
       "last_run": "2026-11-12 02:23:07"
     },
     "modular_bias_mod10": {
-      "attempts": 49,
+      "attempts": 51,
       "supported": 11,
-      "falsified": 34,
+      "falsified": 35,
       "errors": 4,
       "timeout": 0,
-      "duplicates": 0,
-      "last_run": "2026-11-12 02:21:40"
+      "duplicates": 1,
+      "last_run": "2026-11-13 02:21:42"
     },
     "prime_powers": {
-      "attempts": 50,
-      "supported": 7,
+      "attempts": 51,
+      "supported": 8,
       "falsified": 36,
       "errors": 4,
       "timeout": 1,
       "duplicates": 2,
-      "last_run": "2026-11-10 02:17:49"
+      "last_run": "2026-11-13 02:23:32"
     },
     "goldbach_partitions": {
-      "attempts": 51,
+      "attempts": 52,
       "supported": 13,
-      "falsified": 32,
+      "falsified": 33,
       "errors": 2,
       "timeout": 0,
       "duplicates": 4,
-      "last_run": "2026-11-11 02:18:49"
+      "last_run": "2026-11-13 02:21:03"
     },
     "modular_bias_mod30": {
-      "attempts": 66,
+      "attempts": 67,
       "supported": 14,
-      "falsified": 46,
+      "falsified": 47,
       "errors": 1,
       "timeout": 0,
       "duplicates": 5,
-      "last_run": "2026-11-12 02:16:59"
+      "last_run": "2026-11-13 02:19:10"
     },
     "zeta_harmonics": {
       "attempts": 57,
@@ -67,17 +67,23 @@
       "errors": 1
     },
     "qwen_math": {
-      "attempts": 138,
-      "success": 110,
+      "attempts": 140,
+      "success": 111,
       "errors": 12
     },
     "sonnet": {
-      "attempts": 184,
-      "success": 172,
+      "attempts": 187,
+      "success": 175,
       "errors": 9
     }
   },
   "confirmed_laws": [
+    {
+      "id": "PRIME-CONJ-1794536612",
+      "name": "Prime Power Sieve Multiplicative Capacity Adaptive Decay Law",
+      "domain": "prime_powers",
+      "timestamp": "2026-11-13 02:23:32"
+    },
     {
       "id": "PRIME-CONJ-1794449900",
       "name": "Refined Zeta Zero Spacing and Prime Gap Harmonic Phase Alignment",
@@ -908,6 +914,14 @@
     "attraction|balance|harmonic|repulsion|residue|transition::approaches|approx|attr|attractive|being|constant|denote|followed|follows|frac|harmonic|having|hypothesize|increases|infty|lim|mean|modulo|number|probability|ratio|rep|repulsive|residue|specifically|sum|text|transitions|value|where",
     "correction|harmonic|logarithmic|ratio|residue|transition::adjusted|approaches|approx|attr|attractive|being|cdot|constant|correction|denote|followed|follows|frac|harmonic|having|hypothesize|increases|infty|left|lim|log|logarithmic|mean|modulo|number|probability|ratio|rep|repulsive|residue|right|specifically|sum|text|transitions|value|where",
     "coherence|gap|law|localization|modular|phase|spectral::005|015|additive|approx|between|cdot|coherence|compression|constants|coprime|damping|decreasing|deep|deeper|distribution|doubly|equiv|exhibits|frac|function|gap|gaps|harmonic|increases|increasing|independent|index|interpretation|into|lambda|law|left|localization|log|logarithmic|mathbb|mean|modular|modulo|multiplicative|phase|phi|physical|pmod|probe|range|ranges|reflects|relative|residues|resonance|right|sequence|specific|spectral|structure|sum|text|universal|var|variance|where",
-    "asymptotic|damping|gap|law|localization|power|spectral::0015|0065|015|245|alpha|amplitude|approx|architecture|asymptotic|behavior|between|capturing|cdot|characteristic|coefficient|coherence|compared|constraints|correction|correlations|critical|data|decay|development|doubly|empirical|equidistribution|equiv|exhibits|exponent|finite|floor|form|frac|from|function|gap|gaps|hardy|hybrid|index|indicates|induced|initial|interplay|interpretation|irreducible|lambda|law|left|littlewood|localization|log|logarithmic|logarithmically|mathbb|mean|model|modular|modulo|multiplicative|naive|non|observed|phase|phi|physical|pmod|power|prediction|predicts|rapid|rate|refined|reflecting|representing|represents|residual|residues|reveals|right|scale|scales|scaling|show|slower|slowing|small|spectral|strengthens|structural|sub|subtle|sum|systematically|text|transition|tuple|underestimates|values|vanishing|var|variance|where|which"
+    "asymptotic|damping|gap|law|localization|power|spectral::0015|0065|015|245|alpha|amplitude|approx|architecture|asymptotic|behavior|between|capturing|cdot|characteristic|coefficient|coherence|compared|constraints|correction|correlations|critical|data|decay|development|doubly|empirical|equidistribution|equiv|exhibits|exponent|finite|floor|form|frac|from|function|gap|gaps|hardy|hybrid|index|indicates|induced|initial|interplay|interpretation|irreducible|lambda|law|left|littlewood|localization|log|logarithmic|logarithmically|mathbb|mean|model|modular|modulo|multiplicative|naive|non|observed|phase|phi|physical|pmod|power|prediction|predicts|rapid|rate|refined|reflecting|representing|represents|residual|residues|reveals|right|scale|scales|scaling|show|slower|slowing|small|spectral|strengthens|structural|sub|subtle|sum|systematically|text|transition|tuple|underestimates|values|vanishing|var|variance|where|which",
+    "asymmetry|bipartite|damping|flux|residue|root|square::across|among|asymmetry|attraction|attractive|behavior|bipartite|bipartition|captures|cdot|claim|constant|converges|coprime|cross|damping|delta|diffusive|distance|distribution|dynamics|each|empirical|even|exhibits|flux|follows|frac|from|increases|indexed|into|intrinsic|intuition|key|law|left|log|logarithmic|mathcal|modulo|normalized|observed|odd|offset|partition|patterns|phi|physical|positive|probability|reflecting|reflects|repulsion|residue|residues|respects|right|root|scales|sets|small|space|sqrt|square|stable|sum|transition|transitions|two|type|universal|value|weight|where",
+    "asymmetry|bipartite|decay|flux|logarithmic|negative::alpha|approx|assumption|asymmetry|asymptotic|becomes|before|bipartite|captures|cdot|claims|coefficient|consistency|constant|contradicting|controlled|convergence|correction|data|decaying|definite|delta|drift|empirical|even|exhibiting|exhibits|flux|frac|grows|increases|indexed|infty|initial|key|law|left|less|lim|limit|log|logarithmic|logarithmically|making|mathcal|monotonic|monotonically|negative|normalized|obeys|odd|phi|positive|preferentially|rate|rather|refined|residue|reveals|right|scales|secondary|sign|slow|sqrt|stabilization|sum|systematic|than|transition|where",
+    "entropy|gradient|modular|residue|transition::between|bounded|consecutive|constant|delta|entropy|frac|function|gradient|hypothesize|leq|log|matrix|modulo|scales|shannon|specific|specifically|transition|two|where",
+    "entropy|gradient|modular|refined|residue|transition::approximately|based|behavior|between|bounded|calibrate|capture|consecutive|constant|data|delta|empirical|entropy|follows|frac|function|gradient|hypothesize|leq|log|matrix|modulo|our|refine|refined|scales|shannon|therefore|transition|true|two|where",
+    "compression|eigenvalue|goldbach|law|partition|spectral::1000|across|approach|approx|based|captures|cdot|cdots|complexity|compression|concentrating|consider|construct|correlation|count|covariance|delta|denote|deviation|dimensional|distributed|distribution|dominant|eigenmode|eigenvalues|empirical|energy|even|exhibit|field|fluctuations|frac|geq|goldbach|hardy|heuristic|high|indices|innovation|integers|interference|interpretation|itself|key|lag|lambda|law|laws|ldots|leq|littlewood|live|log|low|mathbb|maximum|min|modes|moment|multi|multiple|normalized|operator|partition|patterns|physical|prior|rather|reflects|scale|single|spectral|sqrt|structure|subspace|sum|sums|testing|than|theta|unlike|where|whether|window",
+    "decay|dominance|goldbach|law|partition|spectral::015|020|035|1000|2000|4000|720|across|alpha|approx|approximately|asymptotic|bound|captures|cdots|complementary|concentration|consider|construct|contrary|correlation|corresponding|count|covariance|data|decay|delta|denote|density|deviation|diagnosis|dimension|distributed|distribution|dominance|dominant|dramatically|driven|eff|effective|eigenmode|eigenvalues|emergence|empirical|energy|even|exhibits|field|finer|fluctuations|frac|geq|global|goldbach|gradual|growth|hardy|heuristic|hypothesized|increases|indicating|infty|initial|integers|interpretation|irregularities|lag|lambda|law|leading|left|leq|littlewood|log|logarithmic|making|mathbb|mode|modes|modulation|multi|normalized|operator|oscillatory|participation|partition|persistent|physical|predicts|primary|produces|ratio|reference|refined|reflects|reveals|right|scale|scales|secondary|small|spectral|sqrt|strong|structure|sum|text|theta|underestimated|vacuous|values|variance|where|window",
+    "capacity|cascade|law|multiplicative|power|sieve::also|base|bound|but|capacity|captures|cascade|cdot|composites|count|cumulative|decay|density|due|each|earlier|effect|effective|efficiency|eliminated|exhibits|factor|frac|geq|given|governed|into|intrinsic|its|large|law|ldots|left|log|logarithmic|loss|magnitude|mathcal|measure|modular|multiplicative|must|new|normalized|normalizes|not|odd|only|ordered|overcome|own|posits|predictable|pressure|prod|progress|reach|reflects|residual|right|set|sieves|sieving|smaller|sparsity|specifically|sqrt|starting|strength|structure|successive|sufficiently|survivors|text|through|upper|where",
+    "adaptive|capacity|decay|law|multiplicative|power|sieve::190|220|249|596|631|701|across|actual|adaptive|additionally|aggregate|alpha|amplifies|around|base|beta|beyond|both|bound|capacity|captures|capturing|cascade|cdot|characteristic|coherence|collective|composites|constant|correction|count|decay|denser|density|dependent|depends|depth|diagnosis|diminishing|disproportionately|early|effect|eliminated|empirical|enhanced|ensures|exhibit|exponent|factor|formulation|frac|geometric|geq|given|have|higher|holds|impact|increases|index|initial|insight|key|large|law|ldots|left|linear|log|logarithmic|lower|magnitude|maintain|maintains|mathcal|mean|multiple|multiplicative|must|new|observing|odd|ordered|orders|phenomena|position|posits|prod|progression|provides|purely|rather|ratio|ratios|reflecting|reflects|relative|require|returns|right|satisfy|scale|scaling|set|shows|sieve|slack|small|sparsity|sqrt|stability|stabilizes|starting|strength|sufficient|sufficiently|systematically|term|text|than|three|tight|too|upper|value|was|weak|where"
   ]
 }
