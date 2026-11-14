@@ -1,13 +1,13 @@
 {
   "domains": {
     "gap_dynamics": {
-      "attempts": 53,
+      "attempts": 54,
       "supported": 11,
-      "falsified": 38,
+      "falsified": 39,
       "errors": 3,
       "timeout": 0,
       "duplicates": 1,
-      "last_run": "2026-11-12 02:23:07"
+      "last_run": "2026-11-14 02:17:49"
     },
     "modular_bias_mod10": {
       "attempts": 51,
@@ -19,13 +19,13 @@
       "last_run": "2026-11-13 02:21:42"
     },
     "prime_powers": {
-      "attempts": 51,
+      "attempts": 52,
       "supported": 8,
-      "falsified": 36,
+      "falsified": 37,
       "errors": 4,
       "timeout": 1,
       "duplicates": 2,
-      "last_run": "2026-11-13 02:23:32"
+      "last_run": "2026-11-14 02:21:53"
     },
     "goldbach_partitions": {
       "attempts": 52,
@@ -37,22 +37,22 @@
       "last_run": "2026-11-13 02:21:03"
     },
     "modular_bias_mod30": {
-      "attempts": 67,
+      "attempts": 68,
       "supported": 14,
-      "falsified": 47,
+      "falsified": 48,
       "errors": 1,
       "timeout": 0,
       "duplicates": 5,
-      "last_run": "2026-11-13 02:19:10"
+      "last_run": "2026-11-14 02:19:39"
     },
     "zeta_harmonics": {
-      "attempts": 57,
-      "supported": 17,
+      "attempts": 59,
+      "supported": 18,
       "falsified": 29,
-      "errors": 2,
+      "errors": 3,
       "timeout": 2,
       "duplicates": 7,
-      "last_run": "2026-11-12 02:18:20"
+      "last_run": "2026-11-14 02:20:23"
     }
   },
   "models": {
@@ -67,17 +67,23 @@
       "errors": 1
     },
     "qwen_math": {
-      "attempts": 140,
-      "success": 111,
-      "errors": 12
+      "attempts": 142,
+      "success": 112,
+      "errors": 13
     },
     "sonnet": {
-      "attempts": 187,
-      "success": 175,
+      "attempts": 190,
+      "success": 178,
       "errors": 9
     }
   },
   "confirmed_laws": [
+    {
+      "id": "PRIME-CONJ-1794622704",
+      "name": "Zeta Zero Spacing and Prime Gap Spectral Entropy Coupling",
+      "domain": "zeta_harmonics",
+      "timestamp": "2026-11-14 02:18:24"
+    },
     {
       "id": "PRIME-CONJ-1794536612",
       "name": "Prime Power Sieve Multiplicative Capacity Adaptive Decay Law",
@@ -922,6 +928,14 @@
     "compression|eigenvalue|goldbach|law|partition|spectral::1000|across|approach|approx|based|captures|cdot|cdots|complexity|compression|concentrating|consider|construct|correlation|count|covariance|delta|denote|deviation|dimensional|distributed|distribution|dominant|eigenmode|eigenvalues|empirical|energy|even|exhibit|field|fluctuations|frac|geq|goldbach|hardy|heuristic|high|indices|innovation|integers|interference|interpretation|itself|key|lag|lambda|law|laws|ldots|leq|littlewood|live|log|low|mathbb|maximum|min|modes|moment|multi|multiple|normalized|operator|partition|patterns|physical|prior|rather|reflects|scale|single|spectral|sqrt|structure|subspace|sum|sums|testing|than|theta|unlike|where|whether|window",
     "decay|dominance|goldbach|law|partition|spectral::015|020|035|1000|2000|4000|720|across|alpha|approx|approximately|asymptotic|bound|captures|cdots|complementary|concentration|consider|construct|contrary|correlation|corresponding|count|covariance|data|decay|delta|denote|density|deviation|diagnosis|dimension|distributed|distribution|dominance|dominant|dramatically|driven|eff|effective|eigenmode|eigenvalues|emergence|empirical|energy|even|exhibits|field|finer|fluctuations|frac|geq|global|goldbach|gradual|growth|hardy|heuristic|hypothesized|increases|indicating|infty|initial|integers|interpretation|irregularities|lag|lambda|law|leading|left|leq|littlewood|log|logarithmic|making|mathbb|mode|modes|modulation|multi|normalized|operator|oscillatory|participation|partition|persistent|physical|predicts|primary|produces|ratio|reference|refined|reflects|reveals|right|scale|scales|secondary|small|spectral|sqrt|strong|structure|sum|text|theta|underestimated|vacuous|values|variance|where|window",
     "capacity|cascade|law|multiplicative|power|sieve::also|base|bound|but|capacity|captures|cascade|cdot|composites|count|cumulative|decay|density|due|each|earlier|effect|effective|efficiency|eliminated|exhibits|factor|frac|geq|given|governed|into|intrinsic|its|large|law|ldots|left|log|logarithmic|loss|magnitude|mathcal|measure|modular|multiplicative|must|new|normalized|normalizes|not|odd|only|ordered|overcome|own|posits|predictable|pressure|prod|progress|reach|reflects|residual|right|set|sieves|sieving|smaller|sparsity|specifically|sqrt|starting|strength|structure|successive|sufficiently|survivors|text|through|upper|where",
-    "adaptive|capacity|decay|law|multiplicative|power|sieve::190|220|249|596|631|701|across|actual|adaptive|additionally|aggregate|alpha|amplifies|around|base|beta|beyond|both|bound|capacity|captures|capturing|cascade|cdot|characteristic|coherence|collective|composites|constant|correction|count|decay|denser|density|dependent|depends|depth|diagnosis|diminishing|disproportionately|early|effect|eliminated|empirical|enhanced|ensures|exhibit|exponent|factor|formulation|frac|geometric|geq|given|have|higher|holds|impact|increases|index|initial|insight|key|large|law|ldots|left|linear|log|logarithmic|lower|magnitude|maintain|maintains|mathcal|mean|multiple|multiplicative|must|new|observing|odd|ordered|orders|phenomena|position|posits|prod|progression|provides|purely|rather|ratio|ratios|reflecting|reflects|relative|require|returns|right|satisfy|scale|scaling|set|shows|sieve|slack|small|sparsity|sqrt|stability|stabilizes|starting|strength|sufficient|sufficiently|systematically|term|text|than|three|tight|too|upper|value|was|weak|where"
+    "adaptive|capacity|decay|law|multiplicative|power|sieve::190|220|249|596|631|701|across|actual|adaptive|additionally|aggregate|alpha|amplifies|around|base|beta|beyond|both|bound|capacity|captures|capturing|cascade|cdot|characteristic|coherence|collective|composites|constant|correction|count|decay|denser|density|dependent|depends|depth|diagnosis|diminishing|disproportionately|early|effect|eliminated|empirical|enhanced|ensures|exhibit|exponent|factor|formulation|frac|geometric|geq|given|have|higher|holds|impact|increases|index|initial|insight|key|large|law|ldots|left|linear|log|logarithmic|lower|magnitude|maintain|maintains|mathcal|mean|multiple|multiplicative|must|new|observing|odd|ordered|orders|phenomena|position|posits|prod|progression|provides|purely|rather|ratio|ratios|reflecting|reflects|relative|require|returns|right|satisfy|scale|scaling|set|shows|sieve|slack|small|sparsity|sqrt|stability|stabilizes|starting|strength|sufficient|sufficiently|systematically|term|text|than|three|tight|too|upper|value|was|weak|where",
+    "autocorrelation|crossing|gap|law|regularity|zero::absolute|alpha|amplitude|any|approx|autocorrelation|beta|cdot|changes|constant|correlations|crosses|crossing|decay|denote|envelope|exhibits|frac|from|function|gap|gaps|governed|invariant|lag|lags|law|lceil|ldots|leq|log|logarithmic|logarithmically|manner|max|maximum|mean|negative|normalized|number|oscillation|oscillations|point|positive|posits|power|rceil|rhythm|satisfies|scale|scaling|sigma|sign|specifically|sqrt|structure|structured|subsequent|sum|then|universal|variance|where|width|window|zero",
+    "autocorrelation|decay|decorrelation|gap|immediate|law|linear|sub::absolute|according|after|amplitude|anti|approx|autocorrelation|bound|cdot|conjectured|consecutive|correlated|correlations|crossing|cumulative|decay|decays|decorrelation|delta|dependent|empirical|envelope|essentially|evidence|exhibit|exponent|frac|function|gamma|gap|gaps|geq|immediate|immediately|initially|integrated|lag|lags|larger|law|ldots|leq|lfloor|log|logarithmic|max|maximum|mean|min|modulation|normalized|occurs|power|prefactor|rather|refined|reflecting|reflects|reveals|rfloor|satisfies|scale|scaling|sets|show|sigma|small|specifically|stronger|sum|text|than|then|tighter|uncorrelated|variance|weakly|where|windows|zero",
+    "coupling|entropy|gap|spacing|spectral|zero|zeta::asymptotically|consider|constant|entropy|follows|frac|gamma|gaps|imaginary|left|leq|lfloor|log|non|normalized|parts|proportional|rfloor|riemann|right|spacings|spectral|sqrt|sum|trivial|where|zero|zeros|zeta",
+    "eigenvalue|law|residue|spectral|stratification|transition::across|alpha|analogous|between|bias|captures|cdot|cdots|computed|consecutive|decay|decomposition|denote|dominant|effect|eigenvalue|eigenvalues|eigenvector|entries|excluding|exhibits|exponent|exponents|frac|from|gap|geq|have|higher|indicating|interpretation|lambda|law|ldots|lemke|leq|low|matrix|memory|mode|modular|modulo|non|oliver|persistence|persists|physical|power|primary|probability|quad|quantifies|rank|rapidly|real|robustly|rows|satisfy|scales|sim|since|soundararajan|spectral|spectrum|stability|stratified|structure|sub|sum|times|transition|trivial|uniform|uniqueness|universal|where|which|yields|zero",
+    "collapse|compression|law|logarithmic|multiplicity|spectral::absolute|approx|bias|block|calibrated|cdot|cdots|circulant|collapse|compression|computed|conjectures|consecutive|consistent|constants|contradicting|decay|decomposition|degeneracy|denote|descending|differences|dominant|eigenvalue|eigenvalues|empirical|entries|excluding|exhibit|exhibits|frac|from|gap|geq|hardy|has|high|highly|indicating|infty|initial|interpretation|key|lambda|large|ldots|leading|left|leq|littlewood|log|logarithmic|magnitude|matrix|mod|modular|modulo|multiple|multiplicity|near|observations|order|persistence|persistent|physical|probability|quad|ratio|real|refined|reflects|relative|residues|right|scales|sim|similar|spectral|spectrum|stratification|structure|suggests|symmetric|times|top|transition|uniform|value|weak|where|while|yields",
+    "convergence|gap|harmonic|phase|spacings|zero|zeta::average|between|cdot|converges|difference|frac|function|gamma|gap|gaps|harmonic|imaginary|increases|left|lfloor|mod|non|part|phase|phases|phi|psi|rfloor|riemann|right|small|specifically|sum|trivial|value|zero|zeros|zeta",
+    "compression|law|power|residual|sieve|stratified::618|across|approx|base|between|capacity|cdot|composites|compression|consecutive|constant|constants|decay|each|efficiency|eliminated|exists|follows|frac|fundamental|geometric|golden|governs|hierarchical|indices|intuition|kappa|lambda|left|leq|lfloor|log|mathematical|min|new|number|odd|optimal|packing|progression|psi|ratio|residual|rfloor|right|scale|scales|self|sieve|similar|specifically|sqrt|starting|strata|stratified|structures|such|sum|test|theory|there|tied|universal|valid|where|which",
+    "asymptotic|convergence|law|residual|sieve|stratified::618|across|alpha|approx|asymptotic|bar|base|because|beta|between|capacity|cdot|composites|compression|consecutive|consistently|constant|converge|convergence|converging|decay|decreasing|dependence|dependent|diagnosis|each|eliminated|empirical|exhibits|failed|follows|frac|furthermore|growth|increasing|indicating|infty|initial|kappa|lambda|law|left|less|lesssim|lfloor|lim|log|logarithmic|mean|min|monotonic|new|not|number|odd|phi|psi|ratio|ratios|refined|reflecting|residual|rfloor|right|satisfies|scale|show|sigma|slowly|specifically|sqrt|starting|strata|stratified|sub|sum|than|unity|universal|value|variance|weak|where"
   ]
 }
