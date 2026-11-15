@@ -1,22 +1,22 @@
 {
   "domains": {
     "gap_dynamics": {
-      "attempts": 54,
+      "attempts": 55,
       "supported": 11,
       "falsified": 39,
       "errors": 3,
       "timeout": 0,
-      "duplicates": 1,
-      "last_run": "2026-11-14 02:17:49"
+      "duplicates": 2,
+      "last_run": "2026-11-15 02:20:55"
     },
     "modular_bias_mod10": {
-      "attempts": 51,
+      "attempts": 52,
       "supported": 11,
-      "falsified": 35,
+      "falsified": 36,
       "errors": 4,
       "timeout": 0,
       "duplicates": 1,
-      "last_run": "2026-11-13 02:21:42"
+      "last_run": "2026-11-15 02:22:09"
     },
     "prime_powers": {
       "attempts": 52,
@@ -28,22 +28,22 @@
       "last_run": "2026-11-14 02:21:53"
     },
     "goldbach_partitions": {
-      "attempts": 52,
+      "attempts": 54,
       "supported": 13,
-      "falsified": 33,
+      "falsified": 34,
       "errors": 2,
       "timeout": 0,
-      "duplicates": 4,
-      "last_run": "2026-11-13 02:21:03"
+      "duplicates": 5,
+      "last_run": "2026-11-15 02:20:33"
     },
     "modular_bias_mod30": {
-      "attempts": 68,
+      "attempts": 69,
       "supported": 14,
-      "falsified": 48,
+      "falsified": 49,
       "errors": 1,
       "timeout": 0,
       "duplicates": 5,
-      "last_run": "2026-11-14 02:19:39"
+      "last_run": "2026-11-15 02:18:50"
     },
     "zeta_harmonics": {
       "attempts": 59,
@@ -67,13 +67,13 @@
       "errors": 1
     },
     "qwen_math": {
-      "attempts": 142,
+      "attempts": 144,
       "success": 112,
       "errors": 13
     },
     "sonnet": {
-      "attempts": 190,
-      "success": 178,
+      "attempts": 193,
+      "success": 181,
       "errors": 9
     }
   },
@@ -936,6 +936,12 @@
     "collapse|compression|law|logarithmic|multiplicity|spectral::absolute|approx|bias|block|calibrated|cdot|cdots|circulant|collapse|compression|computed|conjectures|consecutive|consistent|constants|contradicting|decay|decomposition|degeneracy|denote|descending|differences|dominant|eigenvalue|eigenvalues|empirical|entries|excluding|exhibit|exhibits|frac|from|gap|geq|hardy|has|high|highly|indicating|infty|initial|interpretation|key|lambda|large|ldots|leading|left|leq|littlewood|log|logarithmic|magnitude|matrix|mod|modular|modulo|multiple|multiplicity|near|observations|order|persistence|persistent|physical|probability|quad|ratio|real|refined|reflects|relative|residues|right|scales|sim|similar|spectral|spectrum|stratification|structure|suggests|symmetric|times|top|transition|uniform|value|weak|where|while|yields",
     "convergence|gap|harmonic|phase|spacings|zero|zeta::average|between|cdot|converges|difference|frac|function|gamma|gap|gaps|harmonic|imaginary|increases|left|lfloor|mod|non|part|phase|phases|phi|psi|rfloor|riemann|right|small|specifically|sum|trivial|value|zero|zeros|zeta",
     "compression|law|power|residual|sieve|stratified::618|across|approx|base|between|capacity|cdot|composites|compression|consecutive|constant|constants|decay|each|efficiency|eliminated|exists|follows|frac|fundamental|geometric|golden|governs|hierarchical|indices|intuition|kappa|lambda|left|leq|lfloor|log|mathematical|min|new|number|odd|optimal|packing|progression|psi|ratio|residual|rfloor|right|scale|scales|self|sieve|similar|specifically|sqrt|starting|strata|stratified|structures|such|sum|test|theory|there|tied|universal|valid|where|which",
-    "asymptotic|convergence|law|residual|sieve|stratified::618|across|alpha|approx|asymptotic|bar|base|because|beta|between|capacity|cdot|composites|compression|consecutive|consistently|constant|converge|convergence|converging|decay|decreasing|dependence|dependent|diagnosis|each|eliminated|empirical|exhibits|failed|follows|frac|furthermore|growth|increasing|indicating|infty|initial|kappa|lambda|law|left|less|lesssim|lfloor|lim|log|logarithmic|mean|min|monotonic|new|not|number|odd|phi|psi|ratio|ratios|refined|reflecting|residual|rfloor|right|satisfies|scale|show|sigma|slowly|specifically|sqrt|starting|strata|stratified|sub|sum|than|unity|universal|value|variance|weak|where"
+    "asymptotic|convergence|law|residual|sieve|stratified::618|across|alpha|approx|asymptotic|bar|base|because|beta|between|capacity|cdot|composites|compression|consecutive|consistently|constant|converge|convergence|converging|decay|decreasing|dependence|dependent|diagnosis|each|eliminated|empirical|exhibits|failed|follows|frac|furthermore|growth|increasing|indicating|infty|initial|kappa|lambda|law|left|less|lesssim|lfloor|lim|log|logarithmic|mean|min|monotonic|new|not|number|odd|phi|psi|ratio|ratios|refined|reflecting|residual|rfloor|right|satisfies|scale|show|sigma|slowly|specifically|sqrt|starting|strata|stratified|sub|sum|than|unity|universal|value|variance|weak|where",
+    "bipartite|divergence|flux|logarithmic|modulation|transition::002|across|amplified|approx|asymmetry|based|behavior|bias|cdot|classes|consistent|constant|coprime|creates|cross|decays|directional|embedded|empirical|equiv|exhibits|flux|frac|from|furthermore|geq|governed|into|log|logarithmic|maintain|mathcal|mod|modulation|modulo|must|normalized|order|oscillatory|partition|persistent|phi|pmod|position|posits|probability|psi|quad|residue|residues|satisfy|scales|second|sequence|sets|sigma|sign|slower|structure|sum|text|than|their|these|transition|transitions|two|universal|var|variance|where|within",
+    "bipartite|decay|equilibration|flux|sublogarithmic::0012|0027|008|009|010|022|025|300|582|699|across|additionally|alpha|approx|approximately|asymmetry|behavior|beta|between|bias|bipartite|blocks|bound|calibration|captured|cdot|changing|conservation|consistent|data|decay|decaying|decrease|decreases|directional|dramatically|empirical|equilibration|exhibits|faster|flux|fluxes|frac|from|furthermore|indicating|individual|initial|law|leq|log|logarithmic|magnitude|mathcal|monotonic|much|multi|near|negative|normalized|not|observe|observed|order|orders|oscillation|overestimated|perfect|persistence|persistent|phi|positive|predicted|probabilities|psi|range|refined|required|reveals|satisfies|scale|scales|second|sigma|sign|smaller|sqrt|stochastic|structure|sublogarithmic|systematic|text|than|total|transition|true|two|values|var|variance|where|which|within|yields",
+    "density|goldbach|law|logarithmic|partition|stratification::absolute|approx|band|bands|become|beta|bounded|cdot|coefficient|compression|constant|converges|decays|defined|denotes|density|discrete|distribution|empirical|equiv|even|exhibits|frac|goldbach|grows|hardy|heuristic|increasingly|index|infty|integers|inter|into|its|kappa|leq|littlewood|log|logarithmic|manner|mathbb|measured|normalizes|partition|partitions|pmod|prediction|predicts|quantile|quantity|ratio|ratios|relative|remains|rho|scale|separation|some|specific|specifically|spread|stabilizes|stratification|structure|text|universal|values|var|variation|well|where|while|window",
+    "compression|convergence|density|goldbach|law|logarithmic|partition::10000|100000|145|155|2000|5000|alpha|approach|approx|around|asymptotic|band|behavior|below|beta|but|calibration|capture|captures|cdot|clustering|compression|constant|converge|convergence|decreasing|density|does|empirical|even|evidence|exhibits|frac|from|geometry|geq|goldbach|hardy|have|heuristics|hypothesized|increases|infty|initially|instead|integers|inter|kappa|law|leq|littlewood|log|logarithmic|lower|mathbb|mean|model|monotonic|multi|naive|near|not|observation|partitions|predicted|product|quantile|range|ratio|refine|refined|reflecting|remains|reveals|rho|satisfies|scale|scaled|scaling|slower|stabilizes|stabilizing|stable|tested|text|than|tighter|true|universal|var|variance|where|window|yields",
+    "coupling|gap|resonance|spectral|transition|zero|zeta::134725|across|approx|asymmetry|attr|attractive|averages|between|biases|cdot|consecutive|cos|coupling|cross|deep|distributions|dominating|exhibits|few|four|frac|function|gamma|gap|geq|hierarchy|imaginary|indicates|left|log|mathbb|max|measure|modular|most|non|part|pmod|psi|reflects|rep|repulsive|residue|residues|resonance|riemann|right|same|scaling|signature|specific|spectral|sum|text|transition|transitions|trivial|type|universal|weighted|where|zero|zeros|zeta",
+    "decay|dominance|gap|hierarchy|inverse|transition|weighted|zeta::across|alpha|approx|asymmetry|captures|cdot|compensates|cross|data|decay|dominance|dynamics|empirical|exhibit|exhibits|exponent|frac|gamma|gap|geq|hierarchy|higher|increases|initial|inverse|inverted|law|left|log|mathcal|moderate|multi|normalized|observed|pairs|particularly|pattern|patterns|power|quad|ratio|raw|refined|resonance|reveals|right|scale|scaling|shows|sim|slowly|sqrt|strength|stronger|text|than|transition|universal|universality|values|weighted|where|zero|zeros|zeta"
   ]
 }
