@@ -1,31 +1,31 @@
 {
   "domains": {
     "gap_dynamics": {
-      "attempts": 55,
+      "attempts": 56,
       "supported": 11,
-      "falsified": 39,
+      "falsified": 40,
       "errors": 3,
       "timeout": 0,
       "duplicates": 2,
-      "last_run": "2026-11-15 02:20:55"
+      "last_run": "2026-11-18 02:23:15"
     },
     "modular_bias_mod10": {
-      "attempts": 55,
+      "attempts": 56,
       "supported": 12,
-      "falsified": 38,
+      "falsified": 39,
       "errors": 4,
       "timeout": 0,
       "duplicates": 1,
-      "last_run": "2026-11-17 02:18:55"
+      "last_run": "2026-11-18 02:25:00"
     },
     "prime_powers": {
-      "attempts": 55,
-      "supported": 8,
+      "attempts": 56,
+      "supported": 9,
       "falsified": 40,
       "errors": 4,
       "timeout": 1,
       "duplicates": 2,
-      "last_run": "2026-11-17 02:22:54"
+      "last_run": "2026-11-18 02:19:10"
     },
     "goldbach_partitions": {
       "attempts": 56,
@@ -37,22 +37,22 @@
       "last_run": "2026-11-16 02:25:45"
     },
     "modular_bias_mod30": {
-      "attempts": 71,
+      "attempts": 72,
       "supported": 15,
-      "falsified": 50,
+      "falsified": 51,
       "errors": 1,
       "timeout": 0,
       "duplicates": 5,
-      "last_run": "2026-11-17 02:21:23"
+      "last_run": "2026-11-18 02:18:48"
     },
     "zeta_harmonics": {
-      "attempts": 59,
+      "attempts": 60,
       "supported": 18,
       "falsified": 29,
       "errors": 3,
-      "timeout": 2,
+      "timeout": 3,
       "duplicates": 7,
-      "last_run": "2026-11-14 02:20:23"
+      "last_run": "2026-11-18 02:22:36"
     }
   },
   "models": {
@@ -67,17 +67,23 @@
       "errors": 1
     },
     "qwen_math": {
-      "attempts": 148,
-      "success": 116,
+      "attempts": 150,
+      "success": 118,
       "errors": 13
     },
     "sonnet": {
-      "attempts": 199,
-      "success": 187,
-      "errors": 9
+      "attempts": 202,
+      "success": 189,
+      "errors": 10
     }
   },
   "confirmed_laws": [
+    {
+      "id": "PRIME-CONJ-1794968350",
+      "name": "Prime Power Sieve Residual Autocorrelation Law",
+      "domain": "prime_powers",
+      "timestamp": "2026-11-18 02:19:10"
+    },
     {
       "id": "PRIME-CONJ-1794882083",
       "name": "Modular Transition Residue Pairing Law",
@@ -972,6 +978,14 @@
     "cascade|depth|law|logarithmic|power|sieve::alpha|approx|base|beta|between|captures|cascade|cdot|composite|concentration|constants|contribute|coverage|depth|dominate|each|effective|excluding|exists|frac|furthermore|geq|given|indicating|integers|inversely|its|ldots|leq|level|log|logarithm|logarithmic|mathcal|max|measures|more|odd|ordered|per|power|quantity|ratio|relationship|satisfy|scale|scaling|set|should|sieve|sigma|smaller|specifically|sqrt|structure|sum|text|there|three|total|universal|weighted|where",
     "asymptotic|cascade|concentration|decay|depth|law|power|refined::486|663|actual|approx|asymptotic|base|because|behavior|bound|capture|cascade|cdot|concentration|constants|contradicting|converges|data|decay|decreases|delta|depth|diagnosis|dominance|empirical|excluding|exhibits|failed|fixed|follows|frac|from|gamma|geq|given|growth|infty|initial|law|ldots|leq|linear|log|logarithmic|lower|mathcal|max|monotonicity|multi|normalized|observed|odd|ordered|power|rate|rather|ratio|rationale|refined|refinement|relationship|rho|scale|scaling|set|severely|sigma|sim|small|sqrt|suggests|sum|text|than|threshold|true|underestimated|universal|weighted|where",
     "law|modular|pairing|residue|transition::across|classes|consistent|each|exhibit|exists|given|maximized|mid|modulo|multiple|pairing|probabilities|probability|residue|scales|specific|specifically|structure|such|there|transition|unique",
-    "interference|law|multiplicative|power|sieve|stratified::account|across|acted|after|aggregate|alpha|approx|available|base|beta|capacity|captures|cast|cdot|coefficient|compared|composite|composites|compression|constants|contributions|cumulative|damping|decay|decreasing|denote|density|dominant|due|each|effectiveness|eliminated|euler|exhibits|factors|frac|frequency|from|given|growth|harmonic|have|how|independent|individual|interference|intuition|its|law|ldots|left|like|log|logarithmic|mathcal|measure|modulated|multiples|multiplicative|new|number|odd|omega|ordered|physical|predictably|prod|product|psi|rate|relative|representing|right|scale|scales|shadow|should|sieving|smaller|sqrt|starting|stratified|strength|sum|text|their|through|universal|weighted|where"
+    "interference|law|multiplicative|power|sieve|stratified::account|across|acted|after|aggregate|alpha|approx|available|base|beta|capacity|captures|cast|cdot|coefficient|compared|composite|composites|compression|constants|contributions|cumulative|damping|decay|decreasing|denote|density|dominant|due|each|effectiveness|eliminated|euler|exhibits|factors|frac|frequency|from|given|growth|harmonic|have|how|independent|individual|interference|intuition|its|law|ldots|left|like|log|logarithmic|mathcal|measure|modulated|multiples|multiplicative|new|number|odd|omega|ordered|physical|predictably|prod|product|psi|rate|relative|representing|right|scale|scales|shadow|should|sieving|smaller|sqrt|starting|stratified|strength|sum|text|their|through|universal|weighted|where",
+    "law|oscillation|parity|residue|spectral|transition::alpha|alternating|among|approx|behavior|beta|between|both|captures|cdot|compute|constants|controlled|coprime|correlations|damped|decaying|denote|different|dominant|due|each|eigenvalue|eigenvalues|empirical|encode|even|exhibits|fitting|frac|from|function|grows|harmonic|has|higher|indexed|interference|interpretation|lambda|ldots|left|log|logarithmically|magnitude|markov|matrix|memory|mixing|modes|modular|modulo|omega|operator|order|oscillate|oscillatory|parity|phi|physical|probability|range|reflecting|repulsion|residue|residues|right|scale|sensitive|sequence|short|should|signature|sin|sorted|space|spectral|structure|sum|their|transition|transitions|viewed|where|while",
+    "decay|law|monotonic|parity|residue|spectral|transition::across|among|approx|arithmetic|asymmetry|asymptotic|becomes|before|behavior|beta|bias|but|cdot|consecutive|consistent|constant|constants|convergence|converges|corresponding|decay|deep|distributed|does|dynamics|eigenspectrum|eigenvalues|empirical|encode|even|evidence|exhibits|exist|exponent|frac|function|fundamental|geq|indexed|indicates|indicating|infty|instead|interpretation|lambda|law|left|leq|limiting|log|logarithmically|magnitude|matrix|modes|modulo|monotonic|more|multi|negative|negativity|never|normalized|not|omega|oscillate|parity|persistent|physical|power|psi|quantity|rate|refined|relative|residue|residues|reveals|right|satisfying|scale|scales|scaling|secondary|sequence|sign|sorted|spectral|stability|structural|structure|such|suggests|sum|systematic|there|transition|transitions|uniformly|vanishes|variation|weakens|where",
+    "autocorrelation|law|power|residual|sieve::any|autocorr|autocorrelation|characteristic|consistent|constant|decay|depends|ell|exhibits|exponentially|geq|its|lag|lambda|left|leq|modulo|pattern|powers|rate|residues|right|should|specifically|states|text|where",
+    "bound|cross|density|oscillatory|regularity|scale|spacing|triplet|zero|zeta::100|1000|200|500|anti|arithmetic|between|bound|bounds|captures|cdot|connections|consecutive|constellation|correlated|corresponding|count|coupling|cross|curvature|decays|deep|delta|denote|density|deviation|exists|frac|function|gamma|hypothesis|index|irregularity|left|leq|lfloor|log|measures|mechanism|modulated|must|non|normalized|order|oscillatory|phase|reflecting|regularity|rfloor|rho|riemann|right|satisfy|scale|scales|second|sector|sequences|shifted|sigma|sin|spacing|spacings|specifically|spectral|sqrt|standard|std|structures|sum|test|text|their|there|theta|through|triplet|triplets|trivial|volatility|where|zeros|zeta",
+    "asymptotic|decay|density|law|logarithmic|regularity|scaling|spacing|triplet|zeta::1000|across|adaptive|alpha|approx|asymptotic|behavior|bound|calibration|cdot|clear|coupling|data|decay|delta|denote|dependent|drastically|empirical|equivalently|exhibits|floor|formulation|frac|from|gamma|index|initial|instead|key|large|law|left|leq|lfloor|log|logarithmic|magnitude|monotonic|non|normalized|observations|observed|oscillatory|particularly|phase|power|prevents|refined|regularity|reveals|rfloor|rho|riemann|right|rightarrow|scale|scales|scaling|shifted|show|sigma|sin|small|spacing|std|strength|sum|text|theta|triplets|trivial|underestimated|values|vanishing|where|yields|zeros|zeta",
+    "entropy|gap|law|modulo|transition::approx|entropy|frac|gaps|geq|log|matrix|modulo|residues|satisfy|should|transition|where",
+    "entropy|gap|law|modulo|refined|transition::approx|calibrate|constant|data|empirical|entropy|frac|gaps|geq|log|matrix|modulo|residues|satisfy|should|transition|using|where|will",
+    "bilinear|correlation|cross|decay|gap|lag|modulation|residue::028|097|adjacent|autocorrelation|between|bilinear|bmod|capturing|cdot|characteristic|constant|corrected|correlation|correlations|coupling|creates|cross|decay|distinct|due|effect|ell|excess|faster|frac|from|function|gap|gaps|heterogeneity|how|hypothesis|indicator|initial|interplay|invariant|joint|lag|lags|langle|log|logarithmically|mathbb|mathcal|max|mean|measures|mechanism|memory|modulates|modulator|modulo|multi|normalized|omega|persistence|profile|range|rangle|ratio|rebound|recovery|reflecting|repulsion|residue|short|should|sqrt|stabilize|structure|sum|than|two|universal|weaker|weighted|where"
   ]
 }
