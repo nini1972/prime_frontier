@@ -25,7 +25,8 @@ DEFAULT_MODELS = {
     "r1": "deepseek/deepseek-r1-0528",
     "r1_full": "deepseek/deepseek-r1-0528",
     "deepseek": "deepseek/deepseek-v4.1-flash",
-    "glm": "z-ai/glm-5.2",
+    "glm": "z-ai/glm-5.3-flash",
+    "glm_5_2": "z-ai/glm-5.2",
     "qwen_math": "qwen/qwen-2.5-72b-instruct",
     "qwen3": "qwen/qwen3.8-27b",
     "mimo": "xiaomi/mimo-v2.6-flash",
@@ -33,11 +34,12 @@ DEFAULT_MODELS = {
     "haiku": "anthropic/claude-haiku-4.5",
 }
 
-# Reasoning-heavy models share output token budgets with chain-of-thought (<think> / reasoning),
-# so they require larger max_tokens and longer HTTP timeouts to avoid truncating verification code.
+# Models that emit internal chain-of-thought (`reasoning`) tokens sharing max_tokens.
+# Using max_tokens=16384 + reasoning={"effort": "medium"} ensures ample room for both
+# mathematical derivation and the complete Python verification script.
 REASONING_MODEL_PREFIXES = (
-    "deepseek/deepseek-r1",
-    "z-ai/glm-5",
+    "deepseek/",
+    "z-ai/glm",
     "qwen/qwen3",
     "xiaomi/mimo",
 )
@@ -78,11 +80,11 @@ def query_math_model(
     system_prompt: str = "You are an elite research mathematician specializing in analytic and combinatorial number theory.",
     model_alias: str = "r1",
     temperature: float = 0.2,
-    max_tokens: int = 5000,
-    timeout: int = 150,
+    max_tokens: int = 8192,
+    timeout: int = 180,
 ) -> Dict:
     """
-    Query an OpenRouter reasoning or mathematical model.
+    Query an OpenRouter reasoning or mathematical model with automatic CoT budget protection.
     """
     api_key = load_api_key()
     if not api_key:
@@ -96,19 +98,15 @@ def query_math_model(
         }
 
     model_id = DEFAULT_MODELS.get(model_alias, model_alias)
-    if any(model_id.startswith(pref) for pref in REASONING_MODEL_PREFIXES):
-        max_tokens = max(max_tokens, 8192)
+    is_reasoning = any(model_id.startswith(pref) for pref in REASONING_MODEL_PREFIXES)
+    if model_id.startswith("z-ai/glm-5.2") or model_id.startswith("deepseek/deepseek-r1"):
+        max_tokens = max(max_tokens, 32768)
+        timeout = max(timeout, 300)
+    elif is_reasoning:
+        max_tokens = max(max_tokens, 16384)
         timeout = max(timeout, 240)
-
-    payload = {
-        "model": model_id,
-        "messages": [
-            {"role": "system", "content": system_prompt},
-            {"role": "user", "content": prompt},
-        ],
-        "temperature": temperature,
-        "max_tokens": max_tokens,
-    }
+    else:
+        max_tokens = max(max_tokens, 8192)
 
     headers = {
         "Content-Type": "application/json",
@@ -120,7 +118,29 @@ def query_math_model(
     t0 = time.time()
     max_retries = 3
     last_err = None
+    effort_level = "medium"
+
     for attempt in range(max_retries):
+        sys_msg = system_prompt
+        if attempt > 0 and is_reasoning and effort_level == "low":
+            sys_msg = (
+                system_prompt
+                + "\nCRITICAL: Keep internal thinking concise (<1,200 words) so your final output "
+                "contains all four required sections including the complete ```python verification block."
+            )
+
+        payload = {
+            "model": model_id,
+            "messages": [
+                {"role": "system", "content": sys_msg},
+                {"role": "user", "content": prompt},
+            ],
+            "temperature": temperature,
+            "max_tokens": max_tokens,
+        }
+        if is_reasoning:
+            payload["reasoning"] = {"effort": effort_level}
+
         req = urllib.request.Request(
             OPENROUTER_URL,
             data=json.dumps(payload).encode("utf-8"),
@@ -133,18 +153,26 @@ def query_math_model(
                 elapsed = time.time() - t0
 
                 choice = res_data.get("choices", [{}])[0]
+                finish_reason = choice.get("finish_reason") or ""
                 msg = choice.get("message", {})
-                content = msg.get("content") or ""
-                reasoning = msg.get("reasoning") or ""
+                content = (msg.get("content") or "").strip()
+                reasoning = (msg.get("reasoning") or "").strip()
 
-                # DeepSeek R1 exposes reasoning either via message.reasoning or <think> tags
+                # DeepSeek R1 may emit inline <think>...</think> tags
                 if not reasoning and "<think>" in content and "</think>" in content:
                     parts = content.split("</think>", 1)
                     reasoning = parts[0].replace("<think>", "").strip()
                     content = parts[1].strip()
 
+                # Guard against reasoning token exhaustion leaving `content` empty:
+                # retry immediately with lower reasoning effort rather than dumping raw CoT into content!
                 if not content and reasoning:
-                    content = reasoning
+                    if ("CONJECTURE_NAME" in reasoning and "```" in reasoning) or attempt == max_retries - 1:
+                        content = reasoning
+                    else:
+                        effort_level = "low"
+                        last_err = f"Reasoning exhausted max_tokens (finish_reason={finish_reason}) with empty content"
+                        continue
 
                 return {
                     "content": content,

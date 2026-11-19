@@ -101,25 +101,41 @@ Follow the exact `## CONJECTURE_NAME:`, `## MATHEMATICAL_FORMULATION:`, `## HYPO
 
 
 def extract_code_block(text: str) -> str:
-    """Extract Python code inside triple backticks."""
-    match = re.search(r"```(?:python)?\s*([\s\S]*?)```", text or "")
-    if match:
-        return match.group(1).strip()
+    """Extract the primary Python verification script (preferring the last ```python block)."""
+    py_blocks = re.findall(r"```python\s*([\s\S]*?)```", text or "", re.IGNORECASE)
+    if py_blocks:
+        return py_blocks[-1].strip()
+    any_blocks = re.findall(r"```\w*\s*([\s\S]*?)```", text or "")
+    if any_blocks:
+        return any_blocks[-1].strip()
     return ""
 
 
 def parse_conjecture_sections(content: str) -> Dict[str, str]:
-    """Parse structured sections (name, formulation, target, code) without single-line truncation."""
-    name_m = re.search(r"##\s*CONJECTURE_NAME:\s*([^\n\r]+)", content)
-    name = name_m.group(1).strip() if name_m else "Empirical Prime Invariant"
+    """Parse structured sections (name, formulation, target, code) resilient to markdown variations."""
+    text = content or ""
+    name_m = re.search(
+        r"(?:#{1,4}\s*|\*\*)?CONJECTURE_NAME\s*(?:\*\*)?\s*:\s*([^\n\r*]+)",
+        text,
+        re.IGNORECASE,
+    )
+    name = name_m.group(1).strip().strip("*` ") if name_m else "Empirical Prime Invariant"
 
-    form_m = re.search(r"##\s*MATHEMATICAL_FORMULATION:\s*([\s\S]*?)(?:##|\Z)", content)
-    formulation = form_m.group(1).strip() if form_m else content[:400]
+    form_m = re.search(
+        r"(?:#{1,4}\s*|\*\*)?MATHEMATICAL_FORMULATION\s*(?:\*\*)?\s*:\s*([\s\S]*?)(?=(?:#{1,4}\s*|\*\*)?(?:HYPOTHESIS_TARGET|PYTHON_VERIFICATION)\b|\Z)",
+        text,
+        re.IGNORECASE,
+    )
+    formulation = form_m.group(1).strip() if form_m else text[:400]
 
-    target_m = re.search(r"##\s*HYPOTHESIS_TARGET:\s*([\s\S]*?)(?:##|```|\Z)", content)
-    target = target_m.group(1).strip() if target_m else "Quantitative validation"
+    target_m = re.search(
+        r"(?:#{1,4}\s*|\*\*)?HYPOTHESIS_TARGET\s*(?:\*\*)?\s*:\s*([\s\S]*?)(?=(?:#{1,4}\s*|\*\*)?PYTHON_VERIFICATION\b|```|\Z)",
+        text,
+        re.IGNORECASE,
+    )
+    target = target_m.group(1).strip() if target_m else "Quantitative multi-scale & null-baseline validation"
 
-    code = extract_code_block(content)
+    code = extract_code_block(text)
     return {
         "name": name,
         "formulation": formulation,
@@ -413,6 +429,29 @@ def run_hypothesis_cycle(
     formulation = parsed["formulation"]
     target = parsed["target"]
     code = parsed["code"]
+    if not code or name == "Empirical Prime Invariant":
+        log("Incomplete structured sections or missing code block; requesting concise structured completion...")
+        fmt_res = query_math_model(
+            prompt=(
+                prompt
+                + "\n\nIMPORTANT: Output ALL FOUR sections (`## CONJECTURE_NAME:`, `## MATHEMATICAL_FORMULATION:`, "
+                "`## HYPOTHESIS_TARGET:`, and `## PYTHON_VERIFICATION:` with a complete ```python script) concisely."
+            ),
+            system_prompt=system_prompt,
+            model_alias=model_alias,
+            temperature=max(0.3, temperature - 0.15),
+            max_tokens=8192,
+        )
+        if fmt_res["success"]:
+            fmt_content = fmt_res.get("content") or fmt_res.get("reasoning") or ""
+            fmt_parsed = parse_conjecture_sections(fmt_content)
+            if fmt_parsed["code"]:
+                res = fmt_res
+                reasoning = fmt_res.get("reasoning") or reasoning
+                name = fmt_parsed["name"]
+                formulation = fmt_parsed["formulation"]
+                target = fmt_parsed["target"]
+                code = fmt_parsed["code"]
     log(f"Conjectured: {name}")
 
     # In-cycle novelty retry loop: avoid wasting nightly slots on near-duplicates

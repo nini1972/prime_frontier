@@ -448,7 +448,7 @@
                 <span class="status-pill">⚡ Engine: SymPy • mpmath • NumPy</span>
                 <span class="status-pill">🧠 AI: DeepSeek R1 • Qwen 2.5 Math • Claude Sonnet</span>
             </div>
-            <div class="status-pill">November 19, 2026, 19:00 UTC</div>
+            <div class="status-pill">November 19, 2026, 20:24 UTC</div>
         </div>
 
         <div class="header-title-wrap">
@@ -662,11 +662,11 @@
             </div>
             <div style="display:flex; gap:1.5rem; flex-wrap:wrap; margin: 0.5rem 0 1.25rem;">
                 <div class="status-pill">🔁 Total Cycles: 366</div>
-                <div class="status-pill">✅ Supported: 78</div>
+                <div class="status-pill">✅ Supported: 80</div>
                 <div class="status-pill">❌ Falsified: 241</div>
-                <div class="status-pill">⚠️ Errors/Timeouts: 23</div>
+                <div class="status-pill">⚠️ Errors/Timeouts: 21</div>
                 <div class="status-pill">🪞 Duplicates Rejected: 24</div>
-                <div class="status-pill">🏆 Confirmed Laws: 77</div>
+                <div class="status-pill">🏆 Confirmed Laws: 79</div>
             </div>
             <div style="max-height: 320px; overflow-y: auto;">
                 <table class="data-table">
@@ -741,11 +741,11 @@
                         </tr><tr>
                             <td style="color:#fff;">Möbius, Mertens & Liouville Walks<div style="font-size:0.75rem;color:var(--text-muted);">Squarefree sieve fluctuations, Mertens M(x)/sqrt(x) bounds, and Chowla sign correlations.</div></td>
                             <td style="font-family: var(--font-mono); color: var(--text-secondary);">1</td>
-                            <td style="font-family: var(--font-mono); color: var(--accent-emerald);">0</td>
+                            <td style="font-family: var(--font-mono); color: var(--accent-emerald);">1</td>
                             <td style="font-family: var(--font-mono); color: var(--accent-rose);">0</td>
-                            <td style="font-family: var(--font-mono); color: var(--accent-amber);">1</td>
+                            <td style="font-family: var(--font-mono); color: var(--accent-amber);">0</td>
                             <td style="font-family: var(--font-mono); color: var(--text-muted);">0</td>
-                            <td style="font-family: var(--font-mono); color: var(--text-muted); font-size:0.8rem;">2026-11-19 18:57:40</td>
+                            <td style="font-family: var(--font-mono); color: var(--text-muted); font-size:0.8rem;">2026-11-19 20:20:21</td>
                         </tr><tr>
                             <td style="color:#fff;">Prime k-Tuples & Singular Series<div style="font-size:0.75rem;color:var(--text-muted);">Twin, cousin, sexy, triplet, and quadruplet constellations vs Hardy-Littlewood integrals.</div></td>
                             <td style="font-family: var(--font-mono); color: var(--text-secondary);">1</td>
@@ -757,11 +757,11 @@
                         </tr><tr>
                             <td style="color:#fff;">Friable (y-Smooth) Numbers & P^+(n)<div style="font-size:0.75rem;color:var(--text-muted);">Dickman-de Bruijn smooth density Psi(x, y), largest prime factor laws, and smooth gaps.</div></td>
                             <td style="font-family: var(--font-mono); color: var(--text-secondary);">1</td>
-                            <td style="font-family: var(--font-mono); color: var(--accent-emerald);">0</td>
+                            <td style="font-family: var(--font-mono); color: var(--accent-emerald);">1</td>
                             <td style="font-family: var(--font-mono); color: var(--accent-rose);">0</td>
-                            <td style="font-family: var(--font-mono); color: var(--accent-amber);">1</td>
+                            <td style="font-family: var(--font-mono); color: var(--accent-amber);">0</td>
                             <td style="font-family: var(--font-mono); color: var(--text-muted);">0</td>
-                            <td style="font-family: var(--font-mono); color: var(--text-muted); font-size:0.8rem;">2026-11-19 18:58:24</td>
+                            <td style="font-family: var(--font-mono); color: var(--text-muted); font-size:0.8rem;">2026-11-19 20:21:29</td>
                         </tr>
                     </tbody>
                 </table>
@@ -771,9 +771,9 @@
         <div class="filter-bar">
             <div style="display:flex; gap:0.5rem; flex-wrap:wrap;" id="verdictFilterGroup">
                 <button class="filter-chip active" data-filter="ALL" onclick="setVerdictFilter('ALL', this)">All (368)</button>
-                <button class="filter-chip" data-filter="SUPPORTED" onclick="setVerdictFilter('SUPPORTED', this)">🏆 Confirmed Laws (77)</button>
+                <button class="filter-chip" data-filter="SUPPORTED" onclick="setVerdictFilter('SUPPORTED', this)">🏆 Confirmed Laws (79)</button>
                 <button class="filter-chip" data-filter="FALSIFIED" onclick="setVerdictFilter('FALSIFIED', this)">❌ Falsified (240)</button>
-                <button class="filter-chip" data-filter="OTHER" onclick="setVerdictFilter('OTHER', this)">🪞 Duplicates / Errors (51)</button>
+                <button class="filter-chip" data-filter="OTHER" onclick="setVerdictFilter('OTHER', this)">🪞 Duplicates / Errors (49)</button>
             </div>
             <div style="display:flex; gap:0.6rem; flex-wrap:wrap; align-items:center;">
                 <select id="domainFilterSelect" class="filter-input" onchange="applyConjectureFilters()">
@@ -785,26 +785,264 @@
 
         <div id="conjecturesFeed">
             
-            <div class="conjecture-card" data-verdict="SUPPORTED" data-domain="goldbach_partitions">
+            <div class="conjecture-card" data-verdict="SUPPORTED" data-domain="smooth_numbers">
                 <div class="conj-header">
                     <div>
-                        <span style="font-size: 0.75rem; font-family: var(--font-mono); color: var(--accent-cyan);">PRIME-CONJ-1795114842 • 2026-11-19 19:00:42 • <span style="color: var(--accent-purple);">Goldbach Partition Growth</span></span>
-                        <div class="conj-title">Empirical Prime Invariant</div>
+                        <span style="font-size: 0.75rem; font-family: var(--font-mono); color: var(--accent-cyan);">PRIME-CONJ-1795116089 • 2026-11-19 20:21:29 • <span style="color: var(--accent-purple);">Friable (y-Smooth) Numbers &amp; P^+(n)</span></span>
+                        <div class="conj-title">Dickman Quadratic Maximal-Gap Law</div>
                         
                     </div>
                     <span class="verdict-badge verdict-supported">EMPIRICALLY SUPPORTED</span>
                 </div>
                 <div style="margin-bottom: 0.75rem; font-size: 0.9rem; color: #cbd5e1;">
-                    <b>Formulation:</b> Let me analyze the data and prior work to formulate a novel conjecture.
+                    <b>Formulation:</b> Let \(x\) be large, \(y=x^{1/u}\) with fixed \(u\in(2,3)\), and let  
+\[
+\Psi(x,y)=\#\{1\le n\le x: P^+(n)\le y\},\qquad \rho_u:=\frac{\Psi(x,y)}{x}.
+\]
+Let \(M(x,y)\) be the maximal gap between consecutive \(y\)-smooth integers in \([1,x]\).  
+The proposed heuristic is
+\[
+\boxed{\;
+M(x,y)\;\approx\;\frac{1}{\rho_u}\log\!\left(\frac{\Psi(x,y)^2}{x}\right)
+=\frac{1}{\rho_u}\bigl(\log x+2\log \rho_u\bigr)
+\;}
+\]
+with a relative error expected to be \(O(1/\log x)\) at fixed \(u\).
 
-Key observations:
-- Mean g(n) = 245.84, but naive baseline n/(2ln²n) ≈ 178 at n=40000
-- The singular series correction is important
-- Prior work has explored moments, curvature, volatility, dyadic cascades, mod-4 dichotomy, density oscillations
-- Falsified work includes local smoothness, entropy compression, variance sublinea
+Equivalently, the normalized maximal gap
+\[
+G(x,y):=\rho_u\,M(x,y)
+\]
+should satisfy
+\[
+G(x,y)\approx \log x+2\log\rho_u,
+\]
+not the first-order Poisson/Bernoulli prediction
+\[
+G_{\rm null}(x,y)\approx \log \Psi(x,y)=\log x+\log\rho_u.
+\]
+Thus the law predicts a quadratic Dickman suppression: the maximal smooth gap is smaller than the i.i.d. same-density baseline by roughly
+\[
+\frac{1}{\rho_u}\log(1/\rho_u).
+\]
+
+For the prompt snapshot, \(u=2.6206\), \(\rho_u=36929/240000=0.153871\), so
+\[
+M_{\rm pred}=\frac{1}{0.153871}\log\!\left(\frac{36929^2}{240000}\right)
+\approx 56.18,
+\]
+against the observed \(M=56\), while the null baseline gives
+\[
+M_{\rm null}=\frac{1}{0.153871}\log(36929)\approx 68.3.
+\]
                 </div>
                 <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">
-                    <b>Target:</b> Quantitative validation • Model: <code>z-ai/glm-5.2</code>
+                    <b>Target:</b> Across multiple scales \(x\in\{120000,240000,480000,960000,1440000\}\) with \(u\approx 2.6206\), the actual maximal smooth gap \(M(x,y)\) must satisfy
+\[
+\frac{|M-M_{\rm pred}|}{M}<0.20
+\]
+and must beat the first-order Poisson/Bernoulli baseline:
+\[
+|M-M_{\rm pred}| < 0.5\,|M-M_{\rm null}|,
+\qquad
+M_{\rm null}=\frac{1}{\rho_u}\log \Psi(x,y).
+\]
+If all scales pass both tests, the conjecture is supported. If the relative error passes but the predictor does not beat the null baseline, the result is a trivial density effect. • Model: <code>deepseek/deepseek-v4.1-flash</code>
+                </div>
+                <div class="code-box">import numpy as np
+from core.arithmetic_functions import largest_prime_factor
+
+# Fixed Dickman parameter from the prompt snapshot
+u_fixed = 2.6206
+scales = [120000, 240000, 480000, 960000, 1440000]
+max_x = max(scales)
+
+# Compute largest prime factor array once
+lpf = largest_prime_factor(max_x)
+lpf[1] = 1  # ensure 1 is treated as y-smooth for every y &gt;= 2
+
+def smooth_gap_stats(lpf, x, y):
+    &quot;&quot;&quot;Return (max_gap, smooth_count) for y-smooth integers in [1, x].&quot;&quot;&quot;
+    mask = lpf[1:x+1] &lt;= y
+    idx = np.nonzero(mask)[0] + 1
+    if idx.size &lt; 2:
+        return 0, int(idx.size)
+    gaps = np.diff(idx)
+    return int(gaps.max()), int(idx.size)
+
+all_pass_rel = True
+all_pass_better = True
+
+for x in scales:
+    y = int(round(x ** (1.0 / u_fixed)))
+    M, count = smooth_gap_stats(lpf, x, y)
+    p = count / x
+
+    # Proposed quadratic Dickman predictor
+    M_pred = (1.0 / p) * np.log(count * count / x)
+
+    # First-order Poisson / Bernoulli same-density null baseline
+    M_null = (1.0 / p) * np.log(count)
+
+    rel_pred = abs(M - M_pred) / M if M &gt; 0 else np.inf
+    rel_null = abs(M - M_null) / M if M &gt; 0 else np.inf
+    ratio = abs(M - M_pred) / abs(M - M_null) if abs(M - M_null) &gt; 0 else np.inf
+
+    pass_rel = rel_pred &lt; 0.20
+    pass_better = ratio &lt; 0.5
+
+    if not pass_rel:
+        all_pass_rel = False
+    if not pass_better:
+        all_pass_better = False
+
+    status = &quot;PASS&quot; if (pass_rel and pass_better) else &quot;FAIL&quot;
+    print(
+        f&quot;x={x:7d} y={y:3d} count={count:6d} M={M:3d} &quot;
+        f&quot;M_pred={M_pred:7.3f} M_null={M_null:7.3f} &quot;
+        f&quot;rel_pred={rel_pred:.4f} ratio={ratio:.4f} -&gt; {status}&quot;
+    )
+
+if all_pass_rel and all_pass_better:
+    print(&quot;VERDICT: SUPPORTED&quot;)
+elif all_pass_rel and not all_pass_better:
+    print(&quot;VERDICT: TRIVIAL_NULL&quot;)
+else:
+    print(&quot;VERDICT: FALSIFIED&quot;)</div>
+                <div style="margin-top: 0.5rem; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-emerald);">
+                    <b>Execution Output:</b> x= 120000 y= 87 count= 17995 M= 54 M_pred= 52.684 M_null= 65.337 rel_pred=0.0244 ratio=0.1161 -&gt; PASS
+x= 240000 y=113 count= 36929 M= 56 M_pred= 56.184 M_null= 68.348 rel_pred=0.0033 ratio=0.0149 -&gt; PASS
+x= 480000 y=147 count= 65699 M= 60 M_pred= 66.515 M_null= 81.045 rel_pred=0.1086 ratio=0.3096 -&gt; PASS
+x= 960000 y=192 count=130794 M= 72 M_pred= 71.842 M_null= 86.473 rel_pred=0.0022 ratio=0.0109 -&gt; PASS
+x=1440000 y=224 count=190868 M= 74 M_pred= 76.490 M_null= 91.736 rel_pred=0.0336 ratio=0.1404 -&gt; PASS
+VERDICT: SUPPORTED
+                </div>
+            </div>
+            <div class="conjecture-card" data-verdict="SUPPORTED" data-domain="multiplicative_walk">
+                <div class="conj-header">
+                    <div>
+                        <span style="font-size: 0.75rem; font-family: var(--font-mono); color: var(--accent-cyan);">PRIME-CONJ-1795116021 • 2026-11-19 20:20:21 • <span style="color: var(--accent-purple);">Möbius, Mertens &amp; Liouville Walks</span></span>
+                        <div class="conj-title">Smallest Prime Factor Euler-Product Asymptotic Density Law</div>
+                        <div style="font-size:0.75rem; color:var(--accent-amber); margin-top:0.2rem;">🔬 Calibrated via 1-step Scientific Refinement from: <i>Liouville Logarithmic Cesàro Convergence Hypothesis</i></div>
+                    </div>
+                    <span class="verdict-badge verdict-supported">EMPIRICALLY SUPPORTED</span>
+                </div>
+                <div style="margin-bottom: 0.75rem; font-size: 0.9rem; color: #cbd5e1;">
+                    <b>Formulation:</b> For each integer $n \ge 2$, let $\operatorname{spf}(n) = \min\{p \text{ prime} : p \mid n\}$ denote its least prime factor. By multiplicative sieve inclusion–exclusion, the asymptotic density of integers in $[2, N]$ with $\operatorname{spf}(n) = p$ converges rapidly to the Euler product $\delta(p) = \frac{1}{p}\prod_{q < p,\, q\text{ prime}}\left(1 - \frac{1}{q}\right)$, strictly separating from uniform random prime assignment in total variation distance across scales.
+                </div>
+                <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">
+                    <b>Target:</b> Across scales $N \in \{10^4, 10^5, 10^6\}$ and primes $p \in \{2, 3, 5, 7, 11, 13\}$: maximum pointwise density error $\max_p |\hat{\delta}_N(p) - \delta(p)| \to 0$ ($\le 10^{-5}$ at $N=10^6$) while total-variation distance is at least $10^4\times$ smaller than the uniform random assignment null ($\mathrm{TV}_{\mathrm{null}} \approx 0.429$). • Model: <code>z-ai/glm-5.2</code>
+                </div>
+                <div class="code-box">import numpy as np
+
+def smallest_prime_factor_sieve(limit):
+    &quot;&quot;&quot;Compute smallest prime factor for each integer in [0, limit].&quot;&quot;&quot;
+    spf = np.zeros(limit + 1, dtype=np.int32)
+    spf[2] = 2
+    if limit &gt;= 4:
+        spf[4::2] = 2
+    for i in range(3, limit + 1, 2):
+        if spf[i] == 0:
+            spf[i] = i
+            start = i * i
+            if start &lt;= limit:
+                sl = slice(start, limit + 1, i)
+                spf[sl] = np.where(spf[sl] == 0, i, spf[sl])
+    return spf
+
+def generate_primes(limit):
+    &quot;&quot;&quot;Return array of primes up to limit via Sieve of Eratosthenes.&quot;&quot;&quot;
+    sieve = np.ones(limit + 1, dtype=bool)
+    sieve[0] = sieve[1] = False
+    for i in range(2, int(limit**0.5) + 1):
+        if sieve[i]:
+            sieve[i*i::i] = False
+    return np.where(sieve)[0]
+
+def test_spf_distribution_conjecture():
+    &quot;&quot;&quot;
+    Conjecture: The asymptotic density of positive integers whose smallest
+    prime factor (SPF) equals p is (1/p) * prod_{q &lt; p, q prime}(1 - 1/q).
+
+    Multi-scale empirical test with a uniform-random null baseline.
+    &quot;&quot;&quot;
+    scales = [10**4, 10**5, 10**6]
+    test_primes = [2, 3, 5, 7, 11, 13]
+
+    # Theoretical densities: P(SPF = p) = (1/p) * prod_{q&lt;p}(1 - 1/q)
+    theoretical = {}
+    prod = 1.0
+    for p in [2, 3, 5, 7, 11, 13, 17, 19, 23, 29]:
+        theoretical[p] = (1.0 / p) * prod
+        prod *= (1.0 - 1.0 / p)
+
+    all_pass = True
+
+    for scale in scales:
+        spf = smallest_prime_factor_sieve(scale)
+        n_ints = scale - 1  # count of integers in [2, scale]
+
+        # Empirical SPF densities
+        empirical = {}
+        for p in test_primes:
+            cnt = int(np.count_nonzero(spf[2:scale + 1] == p))
+            empirical[p] = cnt / n_ints
+
+        # Null baseline: uniform random SPF assignment over test_primes
+        rng = np.random.default_rng(42)
+        rand_assign = rng.choice(test_primes, size=n_ints)
+        null_emp = {}
+        for p in test_primes:
+            null_emp[p] = float(np.count_nonzero(rand_assign == p)) / n_ints
+
+        # Deviation metrics
+        max_dev = max(abs(empirical[p] - theoretical[p]) for p in test_primes)
+        null_dev = max(abs(null_emp[p] - theoretical[p]) for p in test_primes)
+        tv = 0.5 * sum(abs(empirical[p] - theoretical[p]) for p in test_primes)
+        null_tv = 0.5 * sum(abs(null_emp[p] - theoretical[p]) for p in test_primes)
+
+        status = &quot;PASS&quot; if max_dev &lt; 0.005 else &quot;FAIL&quot;
+        if status == &quot;FAIL&quot;:
+            all_pass = False
+
+        detail = &quot; | &quot;.join(
+            f&quot;p={p}: {empirical[p]:.4f}/{theoretical[p]:.4f}&quot; for p in test_primes[:4]
+        )
+        print(f&quot;Scale {scale:&gt;8}: max_dev={max_dev:.6f} null_dev={null_dev:.6f} &quot;
+              f&quot;TV={tv:.6f} null_TV={null_tv:.6f} [{status}]&quot;)
+        print(f&quot;           {detail}&quot;)
+
+    if all_pass:
+        print(&quot;VERDICT: SUPPORTED&quot;)
+    else:
+        print(&quot;VERDICT: FALSIFIED&quot;)
+
+if __name__ == &quot;__main__&quot;:
+    test_spf_distribution_conjecture()</div>
+                <div style="margin-top: 0.5rem; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-emerald);">
+                    <b>Execution Output:</b> Scale    10000: max_dev=0.000050 null_dev=0.331883 TV=0.000095 null_TV=0.427787 [PASS]
+           p=2: 0.5001/0.5000 | p=3: 0.1667/0.1667 | p=5: 0.0667/0.0667 | p=7: 0.0381/0.0381
+Scale   100000: max_dev=0.000005 null_dev=0.332968 TV=0.000012 null_TV=0.428872 [PASS]
+           p=2: 0.5000/0.5000 | p=3: 0.1667/0.1667 | p=5: 0.0667/0.0667 | p=7: 0.0381/0.0381
+Scale  1000000: max_dev=0.000001 null_dev=0.333097 TV=0.000001 null_TV=0.429001 [PASS]
+           p=2: 0.5000/0.5000 | p=3: 0.1667/0.1667 | p=5: 0.0667/0.0667 | p=7: 0.0381/0.0381
+VERDICT: SUPPORTED
+                </div>
+            </div>
+            <div class="conjecture-card" data-verdict="SUPPORTED" data-domain="goldbach_partitions">
+                <div class="conj-header">
+                    <div>
+                        <span style="font-size: 0.75rem; font-family: var(--font-mono); color: var(--accent-cyan);">PRIME-CONJ-1795114842 • 2026-11-19 19:00:42 • <span style="color: var(--accent-purple);">Goldbach Partition Growth</span></span>
+                        <div class="conj-title">Goldbach Singular-Series Spearman Rank Superiority over Cramér Null</div>
+                        
+                    </div>
+                    <span class="verdict-badge verdict-supported">EMPIRICALLY SUPPORTED</span>
+                </div>
+                <div style="margin-bottom: 0.75rem; font-size: 0.9rem; color: #cbd5e1;">
+                    <b>Formulation:</b> Let $g(n) = \#\{(p, q) : p \le q \text{ prime},\; p + q = n\}$ denote the Goldbach partition count for even $n \ge 4$, and let the Hardy–Littlewood singular-series predictor be $\widehat{g}_{\mathrm{HL}}(n) = \mathfrak{S}(n)\,\frac{n}{(\ln n)^2}$ with $\mathfrak{S}(n) = 2 C_2 \prod_{p \mid n,\, p > 2} \frac{p - 1}{p - 2}$ and $C_2 \approx 0.6601618$. Across scales $N$, the Spearman rank correlation $\rho_s(g, \widehat{g}_{\mathrm{HL}})$ on true primes strictly exceeds the Cramér random-prime convolution baseline $\rho_s(g_{\mathrm{Cram\acute{e}r}}, \widehat{g}_{\mathrm{HL}})$ because deterministic small-prime divisibility modulates Goldbach’s comet beyond $1/\ln n$ density growth.
+                </div>
+                <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">
+                    <b>Target:</b> Across scales $N \in \{10^3, 5\times 10^3, 2\times 10^4, 5\times 10^4\}$: (1) per-scale rank-correlation margin $\rho_s(g, \widehat{g}_{\mathrm{HL}}) - \rho_s(g_{\mathrm{Cram\acute{e}r}}, \widehat{g}_{\mathrm{HL}}) > 0.05$ at every scale, and (2) mean correlation margin across scales $> 0.10$. • Model: <code>z-ai/glm-5.2</code>
                 </div>
                 <div class="code-box">import numpy as np
 
@@ -1325,56 +1563,6 @@ Zero-mean property: PASS
 Null separation (variance): FAIL
 
 VERDICT: TRIVIAL_NULL
-                </div>
-            </div>
-            <div class="conjecture-card" data-verdict="OTHER" data-domain="smooth_numbers">
-                <div class="conj-header">
-                    <div>
-                        <span style="font-size: 0.75rem; font-family: var(--font-mono); color: var(--accent-cyan);">PRIME-CONJ-1795114704 • 2026-11-19 18:58:24 • <span style="color: var(--accent-purple);">Friable (y-Smooth) Numbers &amp; P^+(n)</span></span>
-                        <div class="conj-title">Empirical Prime Invariant</div>
-                        
-                    </div>
-                    <span class="verdict-badge verdict-other">NO CODE GENERATED</span>
-                </div>
-                <div style="margin-bottom: 0.75rem; font-size: 0.9rem; color: #cbd5e1;">
-                    <b>Formulation:</b> Let me think carefully about this problem.
-
-We have y-smooth integers. We're given data at x=300000, y=151, u=2.5136, Psi=50856, density 0.16952, u^-u reference = 0.098582.
-
-The gap statistics: mean gap = 5.8991 (= 1/0.16952 ≈ 5.899, consistent), max gap = 48.
-
-A natural conjecture: the distribution of gaps between consecutive y-smooth numbers. For a "random" set with density δ, gaps are geometric
-                </div>
-                <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">
-                    <b>Target:</b> Quantitative validation • Model: <code>deepseek/deepseek-v4.1-flash</code>
-                </div>
-                <div class="code-box"></div>
-                <div style="margin-top: 0.5rem; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-emerald);">
-                    <b>Execution Output:</b> 
-                </div>
-            </div>
-            <div class="conjecture-card" data-verdict="OTHER" data-domain="multiplicative_walk">
-                <div class="conj-header">
-                    <div>
-                        <span style="font-size: 0.75rem; font-family: var(--font-mono); color: var(--accent-cyan);">PRIME-CONJ-1795114660 • 2026-11-19 18:57:40 • <span style="color: var(--accent-purple);">Möbius, Mertens &amp; Liouville Walks</span></span>
-                        <div class="conj-title">Empirical Prime Invariant</div>
-                        
-                    </div>
-                    <span class="verdict-badge verdict-other">NO CODE GENERATED</span>
-                </div>
-                <div style="margin-bottom: 0.75rem; font-size: 0.9rem; color: #cbd5e1;">
-                    <b>Formulation:</b> The user wants me to formulate a novel, mathematically precise conjecture about the Möbius and Liouville functions, grounded in the provided data, and then write a Python script to test it.
-
-Let me analyze the data:
-- M(x)/sqrt(x) values: small magnitudes (0.06, -0.23, 0.40), max |M(x)|/sqrt(x) = 0.5671 on [100, 300000]
-- L(x)/sqrt(x) values: larger magnitudes (-0.44, -0.94, -0.18), range [-1.33, 
-                </div>
-                <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">
-                    <b>Target:</b> Quantitative validation • Model: <code>z-ai/glm-5.2</code>
-                </div>
-                <div class="code-box"></div>
-                <div style="margin-top: 0.5rem; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-emerald);">
-                    <b>Execution Output:</b> 
                 </div>
             </div>
             <div class="conjecture-card" data-verdict="OTHER" data-domain="chebyshev_race">
