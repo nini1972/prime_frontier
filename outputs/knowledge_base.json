@@ -10,31 +10,31 @@
       "last_run": "2026-11-18 02:23:15"
     },
     "modular_bias_mod10": {
-      "attempts": 56,
+      "attempts": 57,
       "supported": 12,
-      "falsified": 39,
+      "falsified": 40,
       "errors": 4,
       "timeout": 0,
       "duplicates": 1,
-      "last_run": "2026-11-18 02:25:00"
+      "last_run": "2026-11-19 02:23:43"
     },
     "prime_powers": {
-      "attempts": 56,
+      "attempts": 57,
       "supported": 9,
       "falsified": 40,
       "errors": 4,
       "timeout": 1,
-      "duplicates": 2,
-      "last_run": "2026-11-18 02:19:10"
+      "duplicates": 3,
+      "last_run": "2026-11-19 02:25:15"
     },
     "goldbach_partitions": {
-      "attempts": 56,
+      "attempts": 58,
       "supported": 13,
-      "falsified": 36,
+      "falsified": 38,
       "errors": 2,
       "timeout": 0,
       "duplicates": 5,
-      "last_run": "2026-11-16 02:25:45"
+      "last_run": "2026-11-19 02:21:18"
     },
     "modular_bias_mod30": {
       "attempts": 72,
@@ -46,13 +46,13 @@
       "last_run": "2026-11-18 02:18:48"
     },
     "zeta_harmonics": {
-      "attempts": 60,
+      "attempts": 61,
       "supported": 18,
       "falsified": 29,
       "errors": 3,
       "timeout": 3,
-      "duplicates": 7,
-      "last_run": "2026-11-18 02:22:36"
+      "duplicates": 8,
+      "last_run": "2026-11-19 02:24:31"
     }
   },
   "models": {
@@ -67,13 +67,13 @@
       "errors": 1
     },
     "qwen_math": {
-      "attempts": 150,
-      "success": 118,
+      "attempts": 152,
+      "success": 119,
       "errors": 13
     },
     "sonnet": {
-      "attempts": 202,
-      "success": 189,
+      "attempts": 205,
+      "success": 191,
       "errors": 10
     }
   },
@@ -986,6 +986,12 @@
     "asymptotic|decay|density|law|logarithmic|regularity|scaling|spacing|triplet|zeta::1000|across|adaptive|alpha|approx|asymptotic|behavior|bound|calibration|cdot|clear|coupling|data|decay|delta|denote|dependent|drastically|empirical|equivalently|exhibits|floor|formulation|frac|from|gamma|index|initial|instead|key|large|law|left|leq|lfloor|log|logarithmic|magnitude|monotonic|non|normalized|observations|observed|oscillatory|particularly|phase|power|prevents|refined|regularity|reveals|rfloor|rho|riemann|right|rightarrow|scale|scales|scaling|shifted|show|sigma|sin|small|spacing|std|strength|sum|text|theta|triplets|trivial|underestimated|values|vanishing|where|yields|zeros|zeta",
     "entropy|gap|law|modulo|transition::approx|entropy|frac|gaps|geq|log|matrix|modulo|residues|satisfy|should|transition|where",
     "entropy|gap|law|modulo|refined|transition::approx|calibrate|constant|data|empirical|entropy|frac|gaps|geq|log|matrix|modulo|residues|satisfy|should|transition|using|where|will",
-    "bilinear|correlation|cross|decay|gap|lag|modulation|residue::028|097|adjacent|autocorrelation|between|bilinear|bmod|capturing|cdot|characteristic|constant|corrected|correlation|correlations|coupling|creates|cross|decay|distinct|due|effect|ell|excess|faster|frac|from|function|gap|gaps|heterogeneity|how|hypothesis|indicator|initial|interplay|invariant|joint|lag|lags|langle|log|logarithmically|mathbb|mathcal|max|mean|measures|mechanism|memory|modulates|modulator|modulo|multi|normalized|omega|persistence|profile|range|rangle|ratio|rebound|recovery|reflecting|repulsion|residue|short|should|sqrt|stabilize|structure|sum|than|two|universal|weaker|weighted|where"
+    "bilinear|correlation|cross|decay|gap|lag|modulation|residue::028|097|adjacent|autocorrelation|between|bilinear|bmod|capturing|cdot|characteristic|constant|corrected|correlation|correlations|coupling|creates|cross|decay|distinct|due|effect|ell|excess|faster|frac|from|function|gap|gaps|heterogeneity|how|hypothesis|indicator|initial|interplay|invariant|joint|lag|lags|langle|log|logarithmically|mathbb|mathcal|max|mean|measures|mechanism|memory|modulates|modulator|modulo|multi|normalized|omega|persistence|profile|range|rangle|ratio|rebound|recovery|reflecting|repulsion|residue|short|should|sqrt|stabilize|structure|sum|than|two|universal|weaker|weighted|where",
+    "compression|duality|entropy|goldbach|law|partition::alpha|anti|appropriately|approx|beta|cdot|compression|conservation|constants|correlates|deep|distribution|drift|duality|entropy|even|exhibits|exists|frac|gamma|goldbach|high|independent|integers|interpretation|landscape|law|leq|like|local|log|logarithmic|low|mathbb|normalized|partition|partitions|product|ratio|relationship|relative|revealing|scale|scaled|sum|text|there|thermodynamic|uniform|universal|var|variance|weight|where|window",
+    "compression|dependent|duality|entropy|goldbach|law|partition|scale::1000|5000|absolute|alpha|approximately|because|beta|bilinear|but|captures|cdot|coefficients|compression|conflates|contributions|data|decreases|dependent|drift|effects|empirical|entropy|epsilon|even|exhibits|exponent|failed|formulation|frac|gamma|geq|grows|have|higher|independent|insight|integers|intercept|key|larger|leq|local|log|logarithmic|logarithmically|mathbb|means|more|normalized|not|opposite|original|partition|position|product|rather|ratio|refined|residual|reveals|samples|satisfy|scale|sensitivity|separation|sign|simple|size|space|specifically|stable|structure|sum|text|than|their|two|universal|var|weight|where|window",
+    "goldbach|law|local|partition|smoothness::any|bounded|can|characterized|constant|depend|difference|does|even|function|goldbach|integer|leq|local|mathematically|not|partition|second|should|size|small|smoothness|specifically|where|window",
+    "goldbach|law|local|logarithmic|partition|scaling|smoothness::any|bounded|can|characterized|constant|depend|difference|does|even|function|goldbach|integer|leq|local|log|logarithmic|logarithmically|mathematically|not|partition|scales|second|should|size|small|smoothness|specifically|where|window",
+    "gap|inversion|modulated|phase|residue|shift|spectral|transition::bar|between|bmod|captures|cdot|components|coprime|cos|coupling|density|distribution|exhibits|frac|frequency|gap|high|interplay|inversion|left|log|logarithmic|low|mathcal|matrix|mean|modulated|modulo|oscillations|phase|phi|quad|ratio|residue|right|scale|shift|sin|spectral|sqrt|sum|transition|transitions|weighted|where",
+    "accumulation|degeneracy|gap|linear|phase|residue|spectral::0178|017837|022852|2285|89186|accumulates|accumulator|alpha|approx|asymptotic|beta|bias|bmod|calibration|captures|causing|cdot|collapse|components|corrections|critical|data|degeneracy|delta|density|diagnosis|distribution|due|empirical|exactly|exhibit|exhibits|falsified|frac|from|gap|grows|growth|hidden|identically|law|leading|left|limit|linear|linearly|log|logarithmically|making|mathcal|matrix|measure|mod|modulated|near|negative|normalized|not|original|perfect|phase|phenomena|phi|psi|ratio|refined|residue|residues|reveals|right|scales|sin|sine|spec|spectral|sqrt|strongly|sub|suggests|sum|symmetry|systematic|text|three|times|transition|universal|values|weighted|where"
   ]
 }
