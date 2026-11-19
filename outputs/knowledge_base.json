@@ -28,13 +28,13 @@
       "last_run": "2026-11-19 02:25:15"
     },
     "goldbach_partitions": {
-      "attempts": 58,
-      "supported": 13,
+      "attempts": 59,
+      "supported": 14,
       "falsified": 38,
       "errors": 2,
       "timeout": 0,
       "duplicates": 5,
-      "last_run": "2026-11-19 02:21:18"
+      "last_run": "2026-11-19 19:00:42"
     },
     "modular_bias_mod30": {
       "attempts": 72,
@@ -53,6 +53,42 @@
       "timeout": 3,
       "duplicates": 8,
       "last_run": "2026-11-19 02:24:31"
+    },
+    "chebyshev_race": {
+      "attempts": 1,
+      "supported": 0,
+      "falsified": 1,
+      "errors": 0,
+      "timeout": 0,
+      "duplicates": 0,
+      "last_run": "2026-11-19 18:57:12"
+    },
+    "multiplicative_walk": {
+      "attempts": 1,
+      "supported": 0,
+      "falsified": 0,
+      "errors": 1,
+      "timeout": 0,
+      "duplicates": 0,
+      "last_run": "2026-11-19 18:57:40"
+    },
+    "smooth_numbers": {
+      "attempts": 1,
+      "supported": 0,
+      "falsified": 0,
+      "errors": 1,
+      "timeout": 0,
+      "duplicates": 0,
+      "last_run": "2026-11-19 18:58:24"
+    },
+    "prime_constellations": {
+      "attempts": 1,
+      "supported": 0,
+      "falsified": 1,
+      "errors": 0,
+      "timeout": 0,
+      "duplicates": 0,
+      "last_run": "2026-11-19 19:00:04"
     }
   },
   "models": {
@@ -72,12 +108,28 @@
       "errors": 13
     },
     "sonnet": {
-      "attempts": 205,
-      "success": 191,
+      "attempts": 207,
+      "success": 193,
       "errors": 10
+    },
+    "glm": {
+      "attempts": 2,
+      "success": 1,
+      "errors": 1
+    },
+    "deepseek": {
+      "attempts": 1,
+      "success": 0,
+      "errors": 1
     }
   },
   "confirmed_laws": [
+    {
+      "id": "PRIME-CONJ-1795114842",
+      "name": "Empirical Prime Invariant",
+      "domain": "goldbach_partitions",
+      "timestamp": "2026-11-19 19:00:42"
+    },
     {
       "id": "PRIME-CONJ-1794968350",
       "name": "Prime Power Sieve Residual Autocorrelation Law",
@@ -871,6 +923,13 @@
     "modular_bias_mod10::bilinear|correlation|cross|decay|lag|modulation::028|097|adjacent|autocorrelation|bilinear|bmod|capturing|cdot|characteristic|constant|corrected|correlation|correlations|coupling|creates|cross|decay|distinct|due|effect|ell_1|ell_2|excess|faster|frac|function|g_n|gap|gaps|heterogeneity|how|hypothesis|indicator|initial|interplay|invariant|joint|lag|lags|langle|log|logarithmically|mathbb|mathcal|max|mean|measures|mechanism|memory|modulates|modulator|modulo|multi|normalized|omega|p_n|persistence|profile|r_n|range|rangle|ratio|rebound|recovery|reflecting|repulsion|residue|short|should|sqrt|stabilize|structure|sum|sum_|than|two|universal|weaker|weighted::Cross-Lag Residue Correlation Decay with Bilinear Gap Modulation",
     "goldbach_partitions::compression|dependent|duality|entropy|scale::1000|5000|absolute|alpha|approximately|because|beta_1|beta_2|bilinear|but|c_w|captures|cdot|coefficients|compression|conflates|contributions|data|decreases|dependent|drift|effects|empirical|entropy|epsilon|even|exhibits|exponent|failed|formulation|frac|gamma|geq|grows|h_w|have|higher|independent|insight|integers|intercept|key|larger|leq|local|log|log_|logarithmic|logarithmically|mathbb|means|more|normalized|not|opposite|original|p_n|partition|position|product|rather|ratio|refined|residual|reveals|samples|satisfy|scale|sensitivity|separation|sign|simple|size|space|specifically|stable|structure|sum_|text|than|their|two|universal|var|weight|window::Goldbach Partition Entropy-Compression Scale-Dependent Duality Law",
     "goldbach_partitions::local|logarithmic|smoothness::any|bounded|can|characterized|constant|depend|difference|does|even|function|goldbach|integer|leq|local|log|logarithmic|logarithmically|mathematically|not|partition|scales|second|should|size|small|smoothness|specifically|window::Goldbach Partition Local Smoothness Law with Logarithmic Scaling",
-    "modular_bias_mod10::accumulation|degeneracy|linear|phase|spectral::0178|017837|022852|2285|89186|accumulates|accumulator|alpha|approx|asymptotic|beta|bias|bmod|calibration|captures|causing|cdot|collapse|components|corrections|critical|data|degeneracy|delta_|density|diagnosis|distribution|due|empirical|exactly|exhibit|exhibits|falsified|frac|g_i|gap|grows|growth|hidden|identically|law|leading|left|limit|linear|linearly|log|logarithmically|making|mathcal|matrix|measure|mod|modulated|near|negative|normalized|not|original|p_i|perfect|phase|phenomena|phi|psi|ratio|refined|residue|residues|reveals|right|scales|sin|sine|spec|spectral|sqrt|strongly|sub|suggests|sum_|symmetry|systematic|text|three|times|transition|universal|values|weighted::Prime Residue Spectral Degeneracy with Linear Gap-Phase Accumulation"
+    "modular_bias_mod10::accumulation|degeneracy|linear|phase|spectral::0178|017837|022852|2285|89186|accumulates|accumulator|alpha|approx|asymptotic|beta|bias|bmod|calibration|captures|causing|cdot|collapse|components|corrections|critical|data|degeneracy|delta_|density|diagnosis|distribution|due|empirical|exactly|exhibit|exhibits|falsified|frac|g_i|gap|grows|growth|hidden|identically|law|leading|left|limit|linear|linearly|log|logarithmically|making|mathcal|matrix|measure|mod|modulated|near|negative|normalized|not|original|p_i|perfect|phase|phenomena|phi|psi|ratio|refined|residue|residues|reveals|right|scales|sin|sine|spec|spectral|sqrt|strongly|sub|suggests|sum_|symmetry|systematic|text|three|times|transition|universal|values|weighted::Prime Residue Spectral Degeneracy with Linear Gap-Phase Accumulation",
+    "chebyshev_race::bias|saturation|spectral::577|600000|absent|approx|arithmetic|baseline|behave|beta_|bias|both|c_1|c_2|chebyshev|chi_4|constant|correction|cram|data|decay|decays|delta|density|drawn|empirical|exhibits|factor|frac|gamma_1|growing|independently|infty|its|lead|logarithmic|logarithmically|mathbb|mean|model|non|normalized|null|persistent|positive|quad|quadratic|race|random|related|remaining|residue|rubinstein|sarnak|saturation|scaled|should|shows|sigma|signal|slowly|specifically|spectral|sqrt|stabilizes|statistic|text|trivial|unbiased|universal|variance|walk|while|zero::Chebyshev Race Bias Spectral Saturation Law",
+    "chebyshev_race::bias|cram|decay|oscillatory|separation::above|approx|arithmetic|around|attractor|below|beta_|bias|but|cdot|chebyshev|chi_4|compressed|constant|cos|cram|critical|decay|delta|discrete|driven|elevation|exhibits|fluctuations|frac|gamma_1|imaginary|irregular|lead|left|local|mathbb|mean|model|monotonic|non|normalized|null|oscillations|oscillatory|part|persistent|phase|phi|race|random|refined|right|rubinstein|sarnak|satisfies|scales|separation|sigma|sigma_0|signal|significantly|specifically|spectrum|sqrt|stable|statistic|std|text|trivial|true|variance|zero::Chebyshev Race Bias Oscillatory Decay with Cram\u00e9r Separation Law",
+    "multiplicative_walk::invariant::100|300000|5671|about|analyze|bius|data|formulate|functions|grounded|larger|liouville|magnitudes|mathematically|max|novel|precise|provided|python|range|script|small|sqrt|test|then|user|values|wants|write::Empirical Prime Invariant",
+    "smooth_numbers::invariant::098582|151|16952|300000|50856|5136|899|8991|about|carefully|consecutive|consistent|data|density|distribution|gap|gaps|geometric|given|have|integers|max|mean|natural|numbers|problem|psi|random|reference|set|smooth|statistics|think::Empirical Prime Invariant",
+    "prime_constellations::asymmetric|bias|correction|series|singular|triplet::0677|827|883|against|approx|arising|asymmetry|avoids|baseline|better|bias|both|can|certain|classes|collisions|constant|constellations|contrast|contribution|control|counts|cram|creates|data|decays|denote|diameter|differential|divisibility|empirical|encoding|equal|equidistributed|excess|expectation|explanation|favorably|frac|frequency|governed|has|have|hitting|left|like|log|logarithmic|logarithmically|mechanistic|mod|model|modular|modulo|more|naive|null|occur|order|pattern|patterns|persistent|pi_|poisson|predicts|properties|random|ratio|residue|respectively|right|second|separates|series|should|shows|sieving|singular|slightly|small|specifically|symmetric|systematic|than|these|triplet|triplets|uniform|universal|while::Asymmetric Triplet Bias Law with Singular-Series Correction",
+    "prime_constellations::class|convergence|oscillation|stabilized|triplet|variance::958|actually|asymptotically|average|because|below|bias|biases|both|bounded|but|cancel|captures|cdot|class|comparable|competing|constant|contradicting|controls|convergence|converges|correction|cram|create|data|decay|delta|delta_|dependent|differential|direction|distinguishable|distributions|does|driven|dyadic|effect|empirical|equal|equally|exceed|excess|exhibits|explanation|failed|fluctuations|follow|frac|framework|geq|hardy|have|identical|indicating|infty|initial|insight|instead|key|larger|law|left|leq|lim_|littlewood|log|logarithmic|mathfrak|mean|mechanistic|modular|modulo|monotonic|monotonically|multi|must|noise|normalization|normalized|not|null|oscillate|oscillations|oscillatory|patterns|pi_|probable|prod_|products|quad|random|rather|ratio|ratios|real|refined|residue|reveals|rho|right|running|scale|scales|separation|series|showed|simple|singular|small|some|specific|specifically|sqrt|stabilization|stabilizes|structured|sum_|systematic|text|than|transient|true|unity|var|variance|via|was|zero::Prime Triplet Residue-Class Oscillation Law with Variance-Stabilized Convergence",
+    "goldbach_partitions::invariant::178|245|2ln|40000|analyze|baseline|but|cascades|compression|correction|curvature|data|density|dichotomy|dyadic|entropy|explored|falsified|formulate|has|important|includes|key|local|mean|mod|moments|naive|novel|observations|oscillations|prior|series|singular|smoothness|sublinea|variance|volatility|work::Empirical Prime Invariant"
   ]
 }
