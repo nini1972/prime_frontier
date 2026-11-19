@@ -2,24 +2,18 @@
 """
 models/agent_world.py - Prime Frontier Agent World Orchestrator
 
-Turns math_researcher.py's single-shot "one conjecture per run" script into a
-persistent, self-directed, multi-domain research world:
+Turns math_researcher.py's single-shot inquiry into a persistent, self-directed,
+multi-domain mathematical research world across 10 number-theory domains:
 
-  Explorer    -> picks the least-explored research domain
-                 (knowledge_base.select_next_domain)
-  Conjecturer -> queries a reasoning model for a novel, testable conjecture
-                 grounded in that domain's freshly harvested data
-  Skeptic     -> executes the generated verification script; on execution
-                 errors, asks the model to repair its own code (bounded
-                 retries) instead of just logging a failure
+  Explorer    -> picks the least-explored research domain without repeating a
+                 domain within the same batch (`knowledge_base.select_next_domain`)
+  Conjecturer -> queries a mathematical reasoning model for a novel conjecture
+                 grounded in freshly harvested empirical data + Domain Memory
+  Skeptic     -> enforces AST anti-tautology + Null-Baseline gates, executes the
+                 verification script, self-repairs broken code, and runs 1-step
+                 Scientific Refinement on falsified hypotheses
   Archivist   -> saves the verdict to outputs/conjectures.json and updates
-                 outputs/knowledge_base.json so future cycles avoid repeats
-                 and steer toward under-explored territory
-
-Usage:
-    python -m models.agent_world --cycles 10 --sleep 5 --models haiku,sonnet
-    python -m models.agent_world --cycles 1 --domain modular_bias_mod10
-    python -m models.agent_world --cycles 20 --sleep 0 --models r1,qwen_math,sonnet,haiku
+                 outputs/knowledge_base.json
 """
 
 import argparse
@@ -36,7 +30,14 @@ from models.math_researcher import run_hypothesis_cycle
 from models.llm_client import load_api_key
 
 
-def run_world(cycles: int, sleep_s: float, model_aliases, domain_id=None, max_repairs: int = 2, temperature: float = 0.7) -> None:
+def run_world(
+    cycles: int,
+    sleep_s: float,
+    model_aliases,
+    domain_id=None,
+    max_repairs: int = 2,
+    temperature: float = 0.75,
+) -> None:
     if not load_api_key():
         print("=" * 72)
         print("PRIME FRONTIER AGENT WORLD -- DRY RUN (no OPENROUTER_API_KEY set)")
@@ -54,10 +55,18 @@ def run_world(cycles: int, sleep_s: float, model_aliases, domain_id=None, max_re
     print(f"[world] Speculation Temperature set to: {temperature}")
 
     completed = 0
+    visited_in_batch = []
     try:
         for i in range(1, cycles + 1):
             model_alias = next(model_cycle)
-            chosen_domain = domain_id or kb.select_next_domain(state, domains)
+            if domain_id:
+                chosen_domain = domain_id
+            else:
+                if len(visited_in_batch) >= len(domains):
+                    visited_in_batch.clear()
+                chosen_domain = kb.select_next_domain(state, domains, exclude=visited_in_batch)
+                visited_in_batch.append(chosen_domain)
+
             print(f"\n=== Cycle {i}/{cycles} | domain={chosen_domain} | model={model_alias} | T={temperature} ===")
             try:
                 rec = run_hypothesis_cycle(
@@ -70,7 +79,7 @@ def run_world(cycles: int, sleep_s: float, model_aliases, domain_id=None, max_re
                 print(f"[world] Cycle {i} crashed unexpectedly: {e}")
                 rec = None
 
-            state = kb.load_state()  # reload: the cycle persisted its own updates
+            state = kb.load_state()
             completed += 1
             if rec and rec.get("success", True) is not False:
                 print(f"[world] -> {rec.get('name')}: {rec.get('verdict')}")
@@ -80,29 +89,34 @@ def run_world(cycles: int, sleep_s: float, model_aliases, domain_id=None, max_re
             if i < cycles and sleep_s > 0:
                 time.sleep(sleep_s)
     except KeyboardInterrupt:
-        print(f"\n[world] Interrupted by user after {completed}/{cycles} cycles. State is saved incrementally, nothing lost.")
+        print(f"\n[world] Interrupted by user after {completed}/{cycles} cycles. State is saved incrementally.")
 
     print("\n[world] Run complete. Knowledge base summary:")
     summary = kb.summarize(state)
-    for d, s in summary["domains"].items():
-        print(f"  {d:24s} attempts={s['attempts']:3d} supported={s['supported']:2d} "
-              f"falsified={s['falsified']:2d} errors={s['errors']:2d} timeout={s['timeout']:2d} "
-              f"duplicates={s['duplicates']:2d}")
+    for d in domains:
+        s = summary["domains"].get(d, {"attempts": 0, "supported": 0, "falsified": 0, "errors": 0, "timeout": 0, "duplicates": 0})
+        print(
+            f"  {d:24s} attempts={s['attempts']:3d} supported={s['supported']:2d} "
+            f"falsified={s['falsified']:2d} errors={s['errors']:2d} timeout={s['timeout']:2d} "
+            f"duplicates={s['duplicates']:2d}"
+        )
     print(f"  {'TOTAL':24s} {summary['totals']}")
     print(f"[world] Confirmed laws so far: {summary['confirmed_laws_count']}")
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Prime Frontier autonomous agent world orchestrator")
-    parser.add_argument("--cycles", type=int, default=3, help="Number of research cycles to run")
+    parser.add_argument("--cycles", type=int, default=5, help="Number of research cycles to run")
     parser.add_argument("--sleep", type=float, default=5.0, help="Seconds to sleep between cycles")
-    parser.add_argument("--models", type=str, default="haiku",
-                        help="Comma-separated model aliases to rotate through (haiku,sonnet,r1,qwen_math,r1_full)")
-    parser.add_argument("--domain", type=str, default=None,
-                        help="Pin every cycle to one domain id instead of letting the explorer pick")
+    parser.add_argument(
+        "--models",
+        type=str,
+        default="sonnet,glm,deepseek",
+        help="Comma-separated model aliases to rotate through (sonnet,glm,deepseek,r1,qwen_math,qwen3,mimo,haiku)",
+    )
+    parser.add_argument("--domain", type=str, default=None, help="Pin every cycle to one domain id")
     parser.add_argument("--max-repairs", type=int, default=2, help="Max self-repair attempts per broken script")
-    parser.add_argument("--temperature", type=float, default=0.7,
-                        help="Sampling temperature for radical/speculative conjectures (default: 0.7)")
+    parser.add_argument("--temperature", type=float, default=0.75, help="Sampling temperature (default: 0.75)")
     args = parser.parse_args()
 
     run_world(

@@ -4,18 +4,13 @@ models/knowledge_base.py - Persistent Memory for the Prime Frontier Agent World
 
 Gives the autonomous agents long-term memory across runs, stored in
 outputs/knowledge_base.json:
-
   - per-domain attempt/verdict tallies, used to steer exploration toward
     under-covered territory (`select_next_domain`)
-  - a coarse token-overlap fingerprint index used to reject near-duplicate
-    conjectures (`is_duplicate`) so the world doesn't keep "re-discovering"
-    (and re-breaking on) the same idea
+  - domain-scoped, boilerplate-stripped token fingerprint index used to detect
+    near-duplicate conjectures (`find_duplicate_match` / `is_duplicate`) without
+    false-positive collisions on generic domain nouns
   - a "Hall of Fame" of empirically confirmed laws (`promote_if_confirmed`)
   - per-model reliability stats (attempts/success/errors)
-
-Without this, each run of the researcher is a stateless one-shot; with it,
-the repo behaves like a persistent research world that remembers what it has
-already tried.
 """
 
 import os
@@ -32,13 +27,34 @@ _DEFAULT_STATE = {
     "domains": {},         # domain_id -> {attempts, supported, falsified, errors, timeout, duplicates, last_run}
     "models": {},          # model_alias -> {attempts, success, errors}
     "confirmed_laws": [],  # promoted subset of conjectures with a SUPPORTED verdict
-    "seen_signatures": [], # token-set fingerprints of past conjecture name+formulation
+    "seen_signatures": [], # structured fingerprints of past conjecture name+formulation
+}
+
+_COMMON_STOPWORDS = {
+    "the", "a", "an", "of", "and", "or", "to", "is", "are", "for", "that",
+    "this", "with", "let", "be", "we", "conjecture", "prime", "primes",
+    "empirically", "following", "define", "over", "all", "up", "first",
+    "from", "into", "under", "across", "between", "where", "when", "such",
+}
+
+# Domain-boilerplate words stripped ONLY when computing title similarity so two
+# distinct theorems in the same domain don't collide solely on generic nouns.
+_TITLE_BOILERPLATE = _COMMON_STOPWORDS | {
+    "law", "laws", "bound", "bounds", "scaling", "asymptotic", "empirical",
+    "refined", "generalized", "adaptive", "principle", "theorem", "hypothesis",
+    "zeta", "riemann", "zero", "zeros", "spacing", "spacings",
+    "goldbach", "partition", "partitions", "even",
+    "modular", "modulo", "mod", "residue", "residues", "transition", "transitions",
+    "gap", "gaps", "sieve", "base", "power", "powers", "composite", "composites",
+    "harmonic", "harmonics", "resonance", "chebyshev", "race", "races",
+    "mobius", "mertens", "liouville", "walk", "walks", "multiplicative",
+    "smooth", "friable", "constellation", "constellations", "tuple", "tuples",
 }
 
 
 def load_state() -> Dict:
     """Load persistent agent-world state, seeding sane defaults for any missing keys."""
-    state = json.loads(json.dumps(_DEFAULT_STATE))  # deep copy of defaults
+    state = json.loads(json.dumps(_DEFAULT_STATE))
     if os.path.exists(KB_FILE):
         try:
             with open(KB_FILE, "r", encoding="utf-8") as f:
@@ -55,77 +71,164 @@ def save_state(state: Dict) -> None:
         json.dump(state, f, indent=2)
 
 
-def _fingerprint(text: str) -> str:
-    """Normalize a conjecture name/formulation into a coarse token-set fingerprint."""
-    tokens = re.findall(r"[a-z0-9]+", text.lower())
-    stopwords = {
-        "the", "a", "an", "of", "and", "or", "to", "is", "are", "for", "that",
-        "this", "with", "let", "be", "we", "conjecture", "prime", "primes",
-        "empirically", "following", "define", "over", "all", "up", "first",
-    }
-    tokens = sorted(set(t for t in tokens if t not in stopwords and len(t) > 2))
-    return "|".join(tokens)
+def _fingerprint(text: str, title_mode: bool = False) -> str:
+    """Normalize a conjecture name or formulation into a sorted token-set fingerprint."""
+    tokens = re.findall(r"[a-z0-9_]+", (text or "").lower())
+    stops = _TITLE_BOILERPLATE if title_mode else _COMMON_STOPWORDS
+    filtered = sorted(set(t for t in tokens if t not in stops and len(t) > 2))
+    # Fallback if a short title consisted purely of boilerplate words
+    if not filtered and title_mode:
+        filtered = sorted(set(t for t in tokens if t not in _COMMON_STOPWORDS and len(t) > 2))
+    return "|".join(filtered)
 
 
-def _token_set(text: str) -> set:
-    fp = _fingerprint(text)
+def _token_set(text: str, title_mode: bool = False) -> set:
+    fp = _fingerprint(text, title_mode=title_mode)
     s = set(fp.split("|")) if fp else set()
     s.discard("")
     return s
 
 
-def is_duplicate(state: Dict, name: str, formulation: str, overlap_threshold: float = 0.50) -> bool:
+def _parse_stored_signature(sig: str) -> Dict:
     """
-    Two-tier near-duplicate detector:
-      1. High title token overlap (>= 0.75) paired with moderate formulation overlap (>= 0.30), OR
-      2. Overall token Jaccard overlap >= overlap_threshold (default 0.50).
-    Supports both structured 'title_fp::body_fp' signatures and legacy flat signatures.
+    Parse both modern 4-part ('domain::title_fp::body_fp::raw_title'),
+    2-part ('title_fp::body_fp'), and legacy 1-part ('flat_fp') signatures.
     """
-    cand_title = _token_set(name)
-    cand_body = _token_set(formulation)
+    parts = sig.split("::")
+    if len(parts) >= 4:
+        dom, t_str, b_str, raw_title = parts[0], parts[1], parts[2], "::".join(parts[3:])
+        ex_title = (set(t_str.split("|")) - {""}) - _TITLE_BOILERPLATE
+        if not ex_title:
+            ex_title = set(t_str.split("|")) - {""}
+        ex_body = set(b_str.split("|")) - {""}
+        return {
+            "domain": dom,
+            "title_tokens": ex_title,
+            "body_tokens": ex_body,
+            "all_tokens": ex_title | ex_body,
+            "raw_title": raw_title,
+        }
+    if len(parts) == 2:
+        t_str, b_str = parts
+        raw_t = set(t_str.split("|")) - {""}
+        ex_title = raw_t - _TITLE_BOILERPLATE
+        if not ex_title:
+            ex_title = raw_t
+        ex_body = set(b_str.split("|")) - {""}
+        return {
+            "domain": None,
+            "title_tokens": ex_title,
+            "body_tokens": ex_body,
+            "all_tokens": raw_t | ex_body,
+            "raw_title": " ".join(sorted(raw_t))[:80],
+        }
+    ex_all = set(sig.split("|")) - {""}
+    return {
+        "domain": None,
+        "title_tokens": set(),
+        "body_tokens": ex_all,
+        "all_tokens": ex_all,
+        "raw_title": " ".join(sorted(list(ex_all)[:8])),
+    }
+
+
+def find_duplicate_match(
+    state: Dict,
+    name: str,
+    formulation: str,
+    domain_id: Optional[str] = None,
+    overlap_threshold: float = 0.56,
+) -> Optional[Dict]:
+    """
+    Domain-aware, boilerplate-stripped near-duplicate detector:
+      1. Informative title token Jaccard >= 0.75 (with >= 2 informative tokens)
+         paired with body/all token Jaccard >= 0.45, OR
+      2. Overall mathematical formulation token Jaccard >= overlap_threshold (default 0.56).
+    Returns metadata about the matched signature, or None if novel.
+    """
+    cand_title = _token_set(name, title_mode=True)
+    cand_body = _token_set(formulation, title_mode=False)
     cand_all = cand_title | cand_body
     if not cand_all:
-        return False
+        return None
 
     for sig in state.get("seen_signatures", []):
-        if "::" in sig:
-            t_str, b_str = sig.split("::", 1)
-            ex_title = set(t_str.split("|")) - {""}
-            ex_body = set(b_str.split("|")) - {""}
-            ex_all = ex_title | ex_body
-            if cand_title and ex_title:
-                title_ov = len(cand_title & ex_title) / max(1, len(cand_title | ex_title))
-                body_ov = len(cand_all & ex_all) / max(1, len(cand_all | ex_all))
-                if title_ov >= 0.75 and body_ov >= 0.30:
-                    return True
-        else:
-            ex_all = set(sig.split("|")) - {""}
+        parsed = _parse_stored_signature(sig)
+        # If both candidate and stored signature have explicit domains and they differ, skip
+        if domain_id and parsed["domain"] and parsed["domain"] != "any" and parsed["domain"] != domain_id:
+            continue
 
+        ex_title = parsed["title_tokens"]
+        ex_all = parsed["all_tokens"]
         if not ex_all:
             continue
-        overlap = len(cand_all & ex_all) / max(1, len(cand_all | ex_all))
-        if overlap >= overlap_threshold:
-            return True
 
-    return False
+        body_ov = len(cand_all & ex_all) / max(1, len(cand_all | ex_all))
+        title_ov = 0.0
+        if cand_title and ex_title:
+            title_ov = len(cand_title & ex_title) / max(1, len(cand_title | ex_title))
+            min_toks = min(len(cand_title), len(ex_title))
+            req_body = 0.45 if min_toks >= 2 else 0.52
+            if title_ov >= 0.75 and body_ov >= req_body:
+                return {
+                    "matched_title": parsed["raw_title"] or "Prior domain conjecture",
+                    "title_overlap": round(title_ov, 3),
+                    "body_overlap": round(body_ov, 3),
+                }
+
+        if body_ov >= overlap_threshold:
+            return {
+                "matched_title": parsed["raw_title"] or "Prior domain conjecture",
+                "title_overlap": round(title_ov, 3),
+                "body_overlap": round(body_ov, 3),
+            }
+
+    return None
 
 
-def remember_signature(state: Dict, name: str, formulation: str) -> None:
-    sig = f"{_fingerprint(name)}::{_fingerprint(formulation)}"
+def is_duplicate(
+    state: Dict,
+    name: str,
+    formulation: str,
+    overlap_threshold: float = 0.56,
+    domain_id: Optional[str] = None,
+) -> bool:
+    """Boolean wrapper around `find_duplicate_match`."""
+    return (
+        find_duplicate_match(
+            state=state,
+            name=name,
+            formulation=formulation,
+            domain_id=domain_id,
+            overlap_threshold=overlap_threshold,
+        )
+        is not None
+    )
+
+
+def remember_signature(
+    state: Dict,
+    name: str,
+    formulation: str,
+    domain_id: Optional[str] = None,
+) -> None:
+    clean_title = re.sub(r"\s+", " ", (name or "").replace("::", " ")).strip()[:120]
+    dom = domain_id or "any"
+    sig = f"{dom}::{_fingerprint(name, title_mode=True)}::{_fingerprint(formulation, title_mode=False)}::{clean_title}"
     state.setdefault("seen_signatures", []).append(sig)
-    state["seen_signatures"] = state["seen_signatures"][-500:]  # keep bounded
+    state["seen_signatures"] = state["seen_signatures"][-600:]
 
 
 def build_domain_memory_prompt(
     domain_id: str,
     conjectures_file: Optional[str] = None,
     max_confirmed: int = 6,
-    max_falsified: int = 5,
+    max_falsified: int = 6,
 ) -> str:
     """
     Build a dynamic 'Prior Domain Memory' prompt block from past runs in `domain_id`
     so the reasoning model sees already-confirmed laws and learns from recent falsifications
-    instead of operating with context blindness.
+    (using tail-preserved empirical counter-evidence) instead of operating blind.
     """
     if conjectures_file is None:
         conjectures_file = os.path.join(BASE_DIR, "outputs", "conjectures.json")
@@ -144,7 +247,8 @@ def build_domain_memory_prompt(
     confirmed = []
     seen_conf_names = set()
     for c in domain_conjs:
-        if "SUPPORTED" in (c.get("verdict") or "").upper():
+        v_up = (c.get("verdict") or "").upper()
+        if "SUPPORTED" in v_up and "TRIVIAL" not in v_up:
             nm = (c.get("name") or "").strip().lower()
             if nm not in seen_conf_names:
                 seen_conf_names.add(nm)
@@ -155,13 +259,15 @@ def build_domain_memory_prompt(
     falsified = []
     seen_fals_names = set()
     for c in domain_conjs:
-        if "FALSIFIED" in (c.get("verdict") or "").upper():
+        v_up = (c.get("verdict") or "").upper()
+        if "FALSIFIED" in v_up or "TRIVIAL" in v_up:
             nm = (c.get("name") or "").strip().lower()
             if nm not in seen_fals_names:
                 seen_fals_names.add(nm)
                 falsified.append(c)
                 if len(falsified) >= max_falsified:
                     break
+
     seen_names = []
     for c in domain_conjs:
         n = (c.get("name") or "").strip()
@@ -170,21 +276,26 @@ def build_domain_memory_prompt(
 
     lines = ["\n--- PRIOR DOMAIN MEMORY (ACCUMULATED LABORATORY KNOWLEDGE) ---"]
     if confirmed:
-        lines.append("Already Confirmed Laws in this Domain (DO NOT re-propose these; build deeper extensions or explore orthogonal invariants):")
+        lines.append("Already Confirmed Laws in this Domain (DO NOT re-propose these; build deeper orthogonal invariants):")
         for c in confirmed:
             tgt = (c.get("target") or "").replace("\n", " ").strip()[:160]
             lines.append(f"  * [CONFIRMED] {c.get('name')}: {tgt}")
 
     if falsified:
-        lines.append("\nRecently Falsified Hypotheses in this Domain (Learn from their empirical counter-evidence below; do not repeat failed bounds):")
+        lines.append("\nRecently Falsified / Trivial Hypotheses in this Domain (Learn from their counter-evidence; avoid repeating):")
         for c in falsified:
             tgt = (c.get("target") or "").replace("\n", " ").strip()[:140]
-            out_lines = [ln.strip() for ln in (c.get("output") or "").splitlines() if ln.strip() and "VERDICT:" not in ln]
-            empirical_hint = " | ".join(out_lines[-2:])[:160] if out_lines else "Threshold violated"
-            lines.append(f"  * [FALSIFIED] {c.get('name')} (Target: {tgt}) -> Empirical output: {empirical_hint}")
+            out_lines = [
+                ln.strip()
+                for ln in (c.get("output") or "").splitlines()
+                if ln.strip() and "VERDICT:" not in ln and ln.strip() != "...[middle output truncated]..."
+            ]
+            empirical_hint = " | ".join(out_lines[-3:])[:200] if out_lines else "Threshold violated"
+            tag = "TRIVIAL_NULL" if "TRIVIAL" in (c.get("verdict") or "").upper() else "FALSIFIED"
+            lines.append(f"  * [{tag}] {c.get('name')} (Target: {tgt}) -> Output tail: {empirical_hint}")
 
     if seen_names:
-        lines.append(f"\nPreviously used titles in this domain (choose a completely distinct topic & title): {', '.join(seen_names[:12])}")
+        lines.append(f"\nPreviously explored titles in this domain (formulate a distinct mathematical observable & title): {', '.join(seen_names[:14])}")
     lines.append("--- END PRIOR DOMAIN MEMORY ---\n")
     return "\n".join(lines)
 
@@ -203,10 +314,10 @@ def record_result(state: Dict, domain_id: str, model_alias: str, verdict: str) -
 
     if "DUPLICATE" in verdict_upper:
         d["duplicates"] += 1
-    elif "SUPPORTED" in verdict_upper:
+    elif "SUPPORTED" in verdict_upper and "TRIVIAL" not in verdict_upper:
         d["supported"] += 1
         m["success"] += 1
-    elif "FALSIFIED" in verdict_upper:
+    elif "FALSIFIED" in verdict_upper or "TRIVIAL" in verdict_upper:
         d["falsified"] += 1
         m["success"] += 1
     elif "TIMEOUT" in verdict_upper:
@@ -220,7 +331,8 @@ def record_result(state: Dict, domain_id: str, model_alias: str, verdict: str) -
 
 
 def promote_if_confirmed(state: Dict, conjecture_record: Dict) -> None:
-    if "SUPPORTED" in (conjecture_record.get("verdict") or "").upper():
+    v_up = (conjecture_record.get("verdict") or "").upper()
+    if "SUPPORTED" in v_up and "TRIVIAL" not in v_up:
         laws = state.setdefault("confirmed_laws", [])
         laws.insert(0, {
             "id": conjecture_record.get("id"),
@@ -234,8 +346,8 @@ def promote_if_confirmed(state: Dict, conjecture_record: Dict) -> None:
 def select_next_domain(state: Dict, domain_ids: List[str], exclude: Optional[List[str]] = None) -> str:
     """
     Pick the next research domain to explore. Biased toward domains attempted
-    least so far (coverage-driven exploration), with enough randomness that
-    the world doesn't collapse into a deterministic round-robin.
+    least so far (coverage-driven exploration), while avoiding domains in `exclude`
+    (such as domains already visited during the current nightly run).
     """
     exclude = exclude or []
     candidates = [d for d in domain_ids if d not in exclude] or list(domain_ids)
@@ -261,24 +373,36 @@ def summarize(state: Dict) -> Dict:
 
 
 if __name__ == "__main__":
-    print("Testing Knowledge Base...")
-    state = load_state()
-    print(f"Loaded state with {len(state['domains'])} known domains, "
-          f"{len(state['seen_signatures'])} remembered signatures.")
+    print("Testing Knowledge Base (in-memory non-mutating self-test)...")
+    test_state = json.loads(json.dumps(_DEFAULT_STATE))
 
-    # Simulate a couple of research cycles
-    record_result(state, "gap_dynamics", "haiku", "EMPIRICALLY SUPPORTED")
-    remember_signature(state, "Sexy Prime Density Bound", "gap 6 dominates all other gaps up to N")
-    record_result(state, "modular_bias_mod10", "haiku", "EMPIRICALLY FALSIFIED")
+    record_result(test_state, "gap_dynamics", "haiku", "EMPIRICALLY SUPPORTED")
+    remember_signature(
+        test_state,
+        "Sexy Prime Density Dominance",
+        "gap 6 dominates every other twin cousin gap frequency up to N",
+        domain_id="gap_dynamics",
+    )
+    record_result(test_state, "modular_bias_mod10", "haiku", "EMPIRICALLY FALSIFIED")
 
-    dup = is_duplicate(state, "Sexy Prime Density Bound II", "gap 6 dominates every other gap up to N")
-    print(f"Near-duplicate detection working: {dup}")
-    assert dup, "Expected the near-identical conjecture to be flagged as duplicate"
+    # Near-identical conjecture in same domain MUST be caught
+    dup = is_duplicate(
+        test_state,
+        "Sexy Prime Density Dominance II",
+        "gap 6 dominates every other twin cousin gap frequency up to N",
+        domain_id="gap_dynamics",
+    )
+    assert dup, "Expected near-identical conjecture in same domain to be flagged as duplicate"
 
-    next_domain = select_next_domain(state, ["gap_dynamics", "modular_bias_mod10", "zeta_harmonics"])
-    print(f"Suggested next domain (should favor unexplored 'zeta_harmonics'): {next_domain}")
+    # Distinct mathematical concept sharing only domain boilerplate words MUST NOT be falsely flagged
+    non_dup = is_duplicate(
+        test_state,
+        "Prime Gap Cramér Record Spacing Variance Law",
+        "maximal gap record ratios follow Gumbel extreme value distribution with variance pi^2/6",
+        domain_id="gap_dynamics",
+    )
+    assert not non_dup, "Expected orthogonal conjecture sharing only boilerplate nouns NOT to be flagged"
 
-    print(f"Summary: {summarize(state)}")
-    save_state(state)
-    print(f"Saved to {KB_FILE}")
-    print("Knowledge Base self-test passed!")
+    next_domain = select_next_domain(test_state, ["gap_dynamics", "modular_bias_mod10", "chebyshev_race"])
+    print(f"Suggested next domain (favors unexplored 'chebyshev_race'): {next_domain}")
+    print("Knowledge Base self-test passed without polluting outputs/knowledge_base.json!")

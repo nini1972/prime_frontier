@@ -13,6 +13,8 @@ import sys
 import os
 import math
 import numpy as np
+import matplotlib
+matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from typing import Tuple
 

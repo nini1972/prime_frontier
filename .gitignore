@@ -7,6 +7,9 @@ __pycache__/
 *.py[cod]
 *.class
 _temp_verify.py
+_temp_verify_*.py
+outputs/_temp_verify*.py
+.mypy_cache/
 
 # OS artifacts
 .DS_Store

@@ -10,10 +10,10 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
 
     - name: Set up Python
-      uses: actions/setup-python@v5
+      uses: actions/setup-python@v6
       with:
         python-version: '3.11'
 
@@ -34,11 +34,17 @@ jobs:
     - name: Test Goldbach Engine
       run: python -m core.goldbach
 
+    - name: Test Multiplicative, Race, Constellation, Smooth & Null Engines
+      run: python -m core.arithmetic_functions
+
     - name: Test Domain Registry
       run: python -m core.domains
 
     - name: Test Knowledge Base
       run: python -m models.knowledge_base
+
+    - name: Test Research Pipeline & Verdict Gate
+      run: python -m tests.test_research_pipeline
 
     - name: Compile Dashboard
       run: python -m visualizer.compile_dashboard

@@ -14,6 +14,8 @@ frequencies that compose the distribution of prime numbers.
 import math
 import numpy as np
 import mpmath
+import matplotlib
+matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import os
 from typing import List, Tuple, Dict
