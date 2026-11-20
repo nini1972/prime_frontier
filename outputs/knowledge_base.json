@@ -1,22 +1,22 @@
 {
   "domains": {
     "gap_dynamics": {
-      "attempts": 56,
-      "supported": 11,
+      "attempts": 57,
+      "supported": 12,
       "falsified": 40,
       "errors": 3,
       "timeout": 0,
       "duplicates": 2,
-      "last_run": "2026-11-18 02:23:15"
+      "last_run": "2026-11-20 02:25:47"
     },
     "modular_bias_mod10": {
-      "attempts": 57,
+      "attempts": 58,
       "supported": 12,
-      "falsified": 40,
+      "falsified": 41,
       "errors": 4,
       "timeout": 0,
       "duplicates": 1,
-      "last_run": "2026-11-19 02:23:43"
+      "last_run": "2026-11-20 02:28:25"
     },
     "prime_powers": {
       "attempts": 57,
@@ -55,13 +55,13 @@
       "last_run": "2026-11-19 02:24:31"
     },
     "chebyshev_race": {
-      "attempts": 1,
-      "supported": 0,
+      "attempts": 2,
+      "supported": 1,
       "falsified": 1,
       "errors": 0,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-11-19 18:57:12"
+      "last_run": "2026-11-20 02:21:39"
     },
     "prime_constellations": {
       "attempts": 1,
@@ -73,22 +73,22 @@
       "last_run": "2026-11-19 19:00:04"
     },
     "multiplicative_walk": {
-      "attempts": 1,
+      "attempts": 2,
       "supported": 1,
-      "falsified": 0,
+      "falsified": 1,
       "errors": 0,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-11-19 20:20:21"
+      "last_run": "2026-11-20 02:18:49"
     },
     "smooth_numbers": {
-      "attempts": 1,
+      "attempts": 2,
       "supported": 1,
-      "falsified": 0,
+      "falsified": 1,
       "errors": 0,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-11-19 20:21:29"
+      "last_run": "2026-11-20 02:27:08"
     }
   },
   "models": {
@@ -108,22 +108,34 @@
       "errors": 13
     },
     "sonnet": {
-      "attempts": 207,
-      "success": 193,
+      "attempts": 209,
+      "success": 195,
       "errors": 10
     },
     "glm": {
-      "attempts": 2,
-      "success": 2,
+      "attempts": 4,
+      "success": 4,
       "errors": 0
     },
     "deepseek": {
-      "attempts": 1,
-      "success": 1,
+      "attempts": 2,
+      "success": 2,
       "errors": 0
     }
   },
   "confirmed_laws": [
+    {
+      "id": "PRIME-CONJ-1795141547",
+      "name": "Hardy\u2013Littlewood Sexy-Gap Anti-Persistence Constant (HL-SGAC)",
+      "domain": "gap_dynamics",
+      "timestamp": "2026-11-20 02:25:47"
+    },
+    {
+      "id": "PRIME-CONJ-1795141299",
+      "name": "Variance-Suppressed Saturation Law with Random-Walk-Calibrated Null",
+      "domain": "chebyshev_race",
+      "timestamp": "2026-11-20 02:21:39"
+    },
     {
       "id": "PRIME-CONJ-1795116089",
       "name": "Dickman Quadratic Maximal-Gap Law",
@@ -940,6 +952,15 @@
     "prime_constellations::class|convergence|oscillation|stabilized|triplet|variance::958|actually|asymptotically|average|because|below|bias|biases|both|bounded|but|cancel|captures|cdot|class|comparable|competing|constant|contradicting|controls|convergence|converges|correction|cram|create|data|decay|delta|delta_|dependent|differential|direction|distinguishable|distributions|does|driven|dyadic|effect|empirical|equal|equally|exceed|excess|exhibits|explanation|failed|fluctuations|follow|frac|framework|geq|hardy|have|identical|indicating|infty|initial|insight|instead|key|larger|law|left|leq|lim_|littlewood|log|logarithmic|mathfrak|mean|mechanistic|modular|modulo|monotonic|monotonically|multi|must|noise|normalization|normalized|not|null|oscillate|oscillations|oscillatory|patterns|pi_|probable|prod_|products|quad|random|rather|ratio|ratios|real|refined|residue|reveals|rho|right|running|scale|scales|separation|series|showed|simple|singular|small|some|specific|specifically|sqrt|stabilization|stabilizes|structured|sum_|systematic|text|than|transient|true|unity|var|variance|via|was|zero::Prime Triplet Residue-Class Oscillation Law with Variance-Stabilized Convergence",
     "goldbach_partitions::cram|null|rank|series|singular|spearman|superiority::6601618|acute|approx|baseline|because|beyond|c_2|comet|convolution|correlation|count|cram|denote|density|deterministic|divisibility|even|exceeds|frac|goldbach|growth|hardy|littlewood|mathfrak|mathrm|mid|modulates|partition|predictor|prod_|random|rank|rho_s|scales|series|singular|small|spearman|strictly|text|true|widehat::Goldbach Singular-Series Spearman Rank Superiority over Cram\u00e9r Null",
     "multiplicative_walk::density|euler|factor|product|smallest::assignment|asymptotic|converges|delta|denote|density|distance|each|euler|exclusion|factor|frac|inclusion|integer|integers|its|least|left|mid|min|multiplicative|operatorname|prod_|product|random|rapidly|right|scales|separating|sieve|spf|strictly|text|total|uniform|variation::Smallest Prime Factor Euler-Product Asymptotic Density Law",
-    "smooth_numbers::dickman|maximal|quadratic::153871|240000|36929|6206|against|approx|baseline|bernoulli|bigl|bigr|boxed|consecutive|density|dickman|equivalently|error|expected|fixed|frac|gap|gives|heuristic|integers|large|law|left|log|maximal|normalized|not|null|observed|order|poisson|pred|prediction|predicts|prompt|proposed|psi|qquad|quadratic|relative|rho_u|right|roughly|same|satisfy|should|smaller|smooth|snapshot|suppression|than|thus|while::Dickman Quadratic Maximal-Gap Law"
+    "smooth_numbers::dickman|maximal|quadratic::153871|240000|36929|6206|against|approx|baseline|bernoulli|bigl|bigr|boxed|consecutive|density|dickman|equivalently|error|expected|fixed|frac|gap|gives|heuristic|integers|large|law|left|log|maximal|normalized|not|null|observed|order|poisson|pred|prediction|predicts|prompt|proposed|psi|qquad|quadratic|relative|rho_u|right|roughly|same|satisfy|should|smaller|smooth|snapshot|suppression|than|thus|while::Dickman Quadratic Maximal-Gap Law",
+    "multiplicative_walk::antisymmetric|bius|cancellation::1000|annihilated|antisymmetric|approx|arithmetic|baseline|behavior|below|beyond|bius|both|bound|but|cancellation|cdot|claims|compensation|completely|constraints|contrast|coordinated|correlation|count|create|destructive|distinct|exhibit|expectation|expected|factor|factors|frac|function|fundamental|have|holds|however|independence|independent|interference|joint|lambda|linking|liouville|lower|magnitudes|mathbb|measure|mid|multiplicative|multiplicity|naive|null|omega|opposite|opposition|oscillation|our|parity|phi|predicts|quad|quantifying|r_1|r_2|r_i|rademacher|random|reduces|regime|representing|scale|sgn|sign|signs|specifically|sqrt|squarefree|squares|structure|systematically|text|their|theorem|through|total|universally|value|var|walk|walks|whenever|while::M\u00f6bius-Liouville Antisymmetric Cancellation Law",
+    "chebyshev_race::arithmetic|constant|drift|lead|nonresidue|saturation::000|400|400000|above|accessible|arithmetic|assigned|baseline|below|bias|borrows|bulk|chebyshev|class|combined|computed|concentrated|constant|contrast|contribution|control|converges|cram|cramer_random_primes|data|decaying|deep|degenerate|density|deterministic|deviations|distribution|dominated|drift|each|effect|empirical|equivalently|every|exactly|fail|far|function|generic|governed|grows|identical|law|low|lying|mandatory|mass|mean|mechanism|mod|model|must|naive|noise|nonresidue|normalized|not|null|obeys|observed|oscillation|oscillatory|outlier|persistent|pinned|pnt|point|positive|prediction|predicts|producing|proving|race|rather|regime|requires|residue|residues|reversal|root|rubinstein|sarnak|saturating|saturation|scale|scales|sign|single|sit|sketch|spread|square|standard|statistic|stays|structure|suggest|sum|tail|than|tighter|uniform|uniformly|vanishing|variance|whose|within|yield|zero|zeros::Nonresidue-Lead Saturation Law with Arithmetic Drift Constant \u03bc",
+    "chebyshev_race::calibrated|null|random|saturation|suppressed|variance::1015|156|205|475|adds|approx|arithmetic|ast|bar|based|below|bias|broken|came|category|cdot|clause|constraint|content|contradicted|contrast|control|correct|cram|data|delta|delta_|demanding|deterministic|diagnosis|direction|drift|ensemble|error|evidence|exceed|factor|failure|far|fixed|floor|four|frac|fresh|generic|genuinely|has|iid|iii|inter|itself|law|many|martingale|mathbb|mean|mean_cram|means|median|mis|mod|more|must|n_1|n_2|near|noise|non|not|null|observed|operatorname|opposite|out|path|per|plus|point|positions|prediction|qquad|quad|quasi|random|real|realization|refined|regular|rejection|relative|replaces|residue|residues|sample|sat|satisfied|saturation|scale|scales|seeds|sem|separation|sequence|sigma_|sign|signal|sim|single|solely|specified|sqrt|stability|stable|std|suppressed|suppression|test|tests|text|than|their|therefore|threshold|tightens|triggered|trivial|trivial_null|triviality|unbiased|uniform|unit|var|variable|variance|verdict|walk|was|which|widening|window|zero::Variance-Suppressed Saturation Law with Random-Walk-Calibrated Null",
+    "gap_dynamics::anti|persistence|ratio|sexy|sgap::alone|anti|approx|arithmetic|consecutive|cram|density|distribution|effect|equivalently|explained|frac|frequent|g_i|gap|gaps|generic|genuine|gives|i_i|indicator|less|marginal|mathbf|mid|model|multiset|n_6|nor|not|number|order|p_i|persistence|predicted|random|ratio|same|scale|sexy|shuf|shuffled|than|uniformly|version|within::Sexy-Gap Anti-Persistence Ratio (SGAP)",
+    "gap_dynamics::anti|constant|hardy|littlewood|persistence|sexy|sgac::821|already|anti|approx|arithmetic|asymptotic|because|below|bound|consecutive|constant|control|correct|dipped|due|effect|exact|expectation|failed|finite|frac|g_i|gap|genuine|given|hardy|hypergeometric|initial|itself|law|left|littlewood|longrightarrow|mu_|multiset|n_6|noise|null|only|p_i|patterns|persistence|present|prod_|qquad|right|sample|separation|series|shuf|shuffled|singular|stays|thus|uniformly|was|while|within::Hardy\u2013Littlewood Sexy-Gap Anti-Persistence Constant (HL-SGAC)",
+    "smooth_numbers::clustering|dichotomy|dickman::above|anti|approx|becomes|below|bound|cdot|chinese|claims|cluster|clustering|consecutive|constraints|correlations|critical|denotes|density|detectable|dickman|distribution|enforces|enough|exhibit|exists|frac|friable|gap|gaps|hypothesis|independently|integers|intuition|like|local|mathbb|mathcal|model|more|multiplicative|null|our|parameter|periodic|physical|poisson|poissonian|probability|products|quasi|random|randomness|ratio|regardless|regime|regular|regularity|remainder|rho|satisfy|selecting|should|small|smooth|smoothness|spacing|sparse|structure|sub|super|text|than|theorem|there|thinning|tightly|u_c|uniform|vanish|var|variance|via::Smooth-Gap Clustering Dichotomy at the Dickman Transition",
+    "smooth_numbers::correlation|number|regularity|via::actual|alpha|amplification|anti|approx|approximate|averaging|baseline|behavior|beta|bias|but|careful|cdot|chinese|computed|consistency|consistent|constant|contrast|correlation|count|critical|data|defect|delta_|density|dependent|detectable|deviation|dispersion|distributions|empirical|examination|excess|exhibit|fluctuations|frac|gap|gaps|grows|however|hypothesis|induces|initial|integers|interference|key|log|logarithmically|magnitude|matched|mathcal|misidentified|multi|multiplicative|near|normalized|null|numbers|our|parameter|pattern|patterns|poisson|poissonian|positive|predictions|predicts|random|ratio|refined|reflecting|reg|regime|regimes|regularity|relative|remainder|reveals|scale|scales|sequences|should|shows|shuffled|sign|significant|slight|smooth|sqrt|statistics|structure|subtle|systematic|tested|text|theorem|thinned|thinning|universal|variance|via|weak|yield::Smooth-Number Gap Regularity via Multiplicative Sieve Correlation",
+    "modular_bias_mod10::constants|hierarchy|lag|logarithmic|renormalization|repulsion::054|09305|admit|also|anti|approx|autocorrelation|bands|both|c_1|c_2|c_3|c_k|cdot|constants|contrast|control|converge|cram|data|decay|e_k|equal|equiv|excess|far|frac|gives|hierarchy|infty|lag|lemke|level|like|lim_|mathbf|mechanism|mod|narrow|noise|null|observed|oliver|overlap|p_n|pinned|pmod|predicts|qquad|r_1|r_2|r_3|r_k|random|ratios|real|renormalized|residues|rigid|scales|sim|snapshot|soundararajan|sqrt|sum_|synthetic|text|times|times10|trivial_null|triviality|two|values::Logarithmic Renormalization of the Lag-Hierarchy Residue Repulsion Constants",
+    "modular_bias_mod10::affine|coprimality|drift|lag|log|matched|null|repulsion::0493|0699|3355|3542|3612|3995|4021|4184|affine|claim|conjecture_name|constant|constants|converging|coprimality|diagnosis|distinct|drift|each|failures|falls|lag|law|log|matched|mod|not|null|one|r_1|r_2|r_3|r_k|rejection|repulsion|rigid|rises|side|test|two|was|wrong::Affine-in-1/log Drift Law for Mod-10 Lag Repulsion with Coprimality-Matched Null"
   ]
 }
