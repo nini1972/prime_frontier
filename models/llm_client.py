@@ -44,6 +44,14 @@ REASONING_MODEL_PREFIXES = (
     "xiaomi/mimo",
 )
 
+# OpenRouter provider slugs that forwarded MiniMax requests to MiniMax's non-ZDR moderation endpoints
+MINIMAX_BLOCKED_OPENROUTER_PROVIDERS = (
+    "minimax",
+    "novita",
+    "streamlake",
+    "atlas-cloud",
+)
+
 
 def load_api_key() -> str:
     """Load OPENROUTER_API_KEY from environment or configuration files."""
@@ -140,6 +148,8 @@ def query_math_model(
         }
         if is_reasoning:
             payload["reasoning"] = {"effort": effort_level}
+        if "minimax" in model_id.lower():
+            payload["provider"] = {"ignore": list(MINIMAX_BLOCKED_OPENROUTER_PROVIDERS)}
 
         req = urllib.request.Request(
             OPENROUTER_URL,
