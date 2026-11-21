@@ -97,9 +97,13 @@ def generate_html(data: dict) -> str:
 
     conjectures = data.get("conjectures", [])
     total_conjs = len(conjectures)
-    supported_conjs = sum(1 for c in conjectures if "SUPPORTED" in (c.get("verdict") or "").upper())
+    supported_conjs = sum(
+        1 for c in conjectures
+        if "SUPPORTED" in (c.get("verdict") or "").upper() and "TRIVIAL" not in (c.get("verdict") or "").upper()
+    )
     falsified_conjs = sum(1 for c in conjectures if "FALSIFIED" in (c.get("verdict") or "").upper())
-    other_conjs = total_conjs - supported_conjs - falsified_conjs
+    trivial_conjs = sum(1 for c in conjectures if "TRIVIAL" in (c.get("verdict") or "").upper())
+    other_conjs = total_conjs - supported_conjs - falsified_conjs - trivial_conjs
 
     domain_options_list = ['<option value="ALL">All Research Domains</option>']
     for did, dom in DOMAINS.items():
@@ -110,12 +114,15 @@ def generate_html(data: dict) -> str:
     for c in conjectures:
         verdict_raw = c.get("verdict") or "PENDING"
         verdict_up = verdict_raw.upper()
-        if "SUPPORTED" in verdict_up:
+        if "SUPPORTED" in verdict_up and "TRIVIAL" not in verdict_up:
             v_cat = "SUPPORTED"
             v_class = "verdict-supported"
         elif "FALSIFIED" in verdict_up:
             v_cat = "FALSIFIED"
             v_class = "verdict-falsified"
+        elif "TRIVIAL" in verdict_up:
+            v_cat = "TRIVIAL"
+            v_class = "verdict-other"
         else:
             v_cat = "OTHER"
             v_class = "verdict-other"
@@ -128,8 +135,8 @@ def generate_html(data: dict) -> str:
         c_model = html.escape(str(c.get("model", "")))
         c_code = html.escape(str(c.get("code", "")))
         c_output = html.escape(str(c.get("output", "")))
-        c_formulation = c.get("formulation") or ""
-        c_target = c.get("target") or ""
+        c_formulation = html.escape(str(c.get("formulation") or ""))
+        c_target = html.escape(str(c.get("target") or ""))
         refined_from = c.get("refined_from")
         refined_badge = (
             f'<div style="font-size:0.75rem; color:var(--accent-amber); margin-top:0.2rem;">'
@@ -871,6 +878,7 @@ def generate_html(data: dict) -> str:
                 <button class="filter-chip active" data-filter="ALL" onclick="setVerdictFilter('ALL', this)">All ({total_conjs})</button>
                 <button class="filter-chip" data-filter="SUPPORTED" onclick="setVerdictFilter('SUPPORTED', this)">🏆 Confirmed Laws ({supported_conjs})</button>
                 <button class="filter-chip" data-filter="FALSIFIED" onclick="setVerdictFilter('FALSIFIED', this)">❌ Falsified ({falsified_conjs})</button>
+                <button class="filter-chip" data-filter="TRIVIAL" onclick="setVerdictFilter('TRIVIAL', this)">🛡️ Null-Rejected ({trivial_conjs})</button>
                 <button class="filter-chip" data-filter="OTHER" onclick="setVerdictFilter('OTHER', this)">🪞 Duplicates / Errors ({other_conjs})</button>
             </div>
             <div style="display:flex; gap:0.6rem; flex-wrap:wrap; align-items:center;">

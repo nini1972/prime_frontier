@@ -1,157 +1,80 @@
 # Prime Frontier
 
-An empirical number-theory laboratory that combines classical computational
-prime-number engines with an autonomous, LLM-driven "Agent World" that
-formulates, tests, and archives novel mathematical conjectures about primes
-— then compiles everything into an interactive dashboard.
+An empirical number-theory laboratory combining fast deterministic computational engines with an autonomous, multi-model AI **"Agent World"** that formulates, stress-tests against null baselines, refines, and archives mathematical conjectures across **10 prime-number domains**—compiling everything into an interactive dark-mode laboratory dashboard.
 
-## What's in here
+## Architecture
 
 ```
-core/                 Deterministic math engines (no AI, no network)
-  sieve.py              Segmented prime sieve, gap statistics, Cramer-conjecture records
-  modular_orbits.py      Lemke Oliver-Soundararajan consecutive-prime modular bias (mod 10 / mod 30)
-  zeta_harmonics.py       Riemann zeta zero harmonics & the explicit-formula prime staircase
-  goldbach.py             Goldbach partition counts g(n) and record-low tracking
-  domains.py              Registry that turns each engine above into a "research domain"
-                          the AI agents can be pointed at
+core/                       Deterministic math engines (vectorized NumPy / FFT / pre-cached tables)
+  sieve.py                    Segmented prime sieve, gap statistics, Cramér maximal-gap records
+  modular_orbits.py           Lemke Oliver–Soundararajan consecutive-prime modular bias (mod 10 / mod 30)
+  zeta_harmonics.py           Riemann zeta zero harmonics (3,000 pre-cached zeros) & explicit-formula staircase
+  goldbach.py                 FFT-accelerated Goldbach partition counts g(n) and record-low tracking
+  arithmetic_functions.py     Möbius/Mertens/Liouville sieves, Chebyshev prime races, k-tuple constellations,
+                              y-smooth friable numbers, and Cramér random-prime null controls
+  domains.py                  Registry packaging all 10 research domains + Null-Baseline prompt contracts
 
-models/                The autonomous research agents
-  llm_client.py           Zero-dependency OpenRouter client (DeepSeek R1, Qwen 2.5 Math, Claude)
-  math_researcher.py      Runs one research cycle: harvest data -> ask the LLM for a
-                          conjecture -> execute its verification script -> self-repair
-                          on errors -> log the verdict
-  knowledge_base.py       Persistent memory: per-domain coverage stats, duplicate-conjecture
-                          detection, confirmed-law "hall of fame"
-  agent_world.py          Orchestrator that runs many research cycles in a loop, rotating
-                          domains and models
+models/                     Autonomous research & verification agents
+  llm_client.py               Zero-dependency OpenRouter client with CoT token-budget protection
+  math_researcher.py          Single inquiry cycle: harvest + Domain Memory -> conjecture -> 4-layer sandboxed
+                              verification + AST/Null gates -> self-repair -> 1-step Scientific Refinement
+  knowledge_base.py           Persistent memory: domain coverage, boilerplate-stripped dedup, Confirmed Laws
+  agent_world.py              Multi-cycle orchestrator rotating across 10 domains and frontier reasoning models
 
-visualizer/            Presentation layer
-  compile_dashboard.py    Compiles all of the above into a single self-contained dashboard.html
-  ulam_sacks.py            Generates the Ulam / Sacks prime spiral images
+visualizer/                 Presentation layer
+  compile_dashboard.py        Compiles empirical metrics and escaped KaTeX cards into dashboard.html
+  ulam_sacks.py               Generates Ulam square and Sacks Archimedean prime spiral plots
 
-outputs/               Generated artifacts (plots, conjectures.json, knowledge_base.json)
-dashboard.html          The compiled interactive dashboard (open directly in a browser)
+experiments/                Standalone exploratory scripts (e.g., analyze_user_formula.py)
+tests/                      Automated pipeline, verdict-gate, dedup, XSS, and sandbox regression tests
+outputs/                    Persistent research state (conjectures.json, knowledge_base.json, *.png)
+AUDIT.md                    Security, performance, and scientific pipeline audit log
 ```
 
-## Requirements
+## 10 Research Domains
 
-- Python 3.9+
-- The packages in [requirements.txt](requirements.txt): `numpy`, `matplotlib`, `mpmath`
-- (Optional, only needed for the AI agents) An [OpenRouter](https://openrouter.ai/) API key
+1. `gap_dynamics` — Prime gap distribution, twin/cousin/sexy ratios, and Cramér records
+2. `modular_bias_mod10` — Consecutive-prime transition memory modulo 10
+3. `modular_bias_mod30` — 8-residue singular-series & Markov spectral structure modulo 30
+4. `goldbach_partitions` — Goldbach comet modulation, dyadic scaling, and record lows of $g(n)$
+5. `zeta_harmonics` — Riemann zeta zero spacing statistics (3,000 cached zeros) & GUE repulsion
+6. `prime_powers` — Least-prime-factor Eratosthenes attrition starting at $p^2$ & Buchstab scaling
+7. `chebyshev_race` — Rubinstein–Sarnak prime races $\pi(x; q, a) - \pi(x; q, b)$
+8. `multiplicative_walk` — Möbius $\mu(n)$, Mertens $M(x)/\sqrt{x}$, and Liouville/Pólya walks
+9. `prime_constellations` — Admissible prime $k$-tuples vs. Hardy–Littlewood singular series
+10. `smooth_numbers` — Friable ($y$-smooth) counts $\Psi(x, y)$, Dickman $\rho(u)$, and $P^+(n)$
 
-## Setup
+## Setup & Quick Start
 
 ```powershell
-# From the repository root
 python -m venv .venv
 .venv\Scripts\Activate.ps1
 pip install -r requirements.txt
-```
 
-## Quick start
+# Run all deterministic engine & security/pipeline regression tests
+python -m tests.test_research_pipeline
 
-### 1. Generate the dashboard (no API key needed)
-
-This runs the sieve, modular-bias, and zeta-harmonics engines over real data and
-compiles everything already in `outputs/` (including any past AI conjectures)
-into `dashboard.html`:
-
-```powershell
+# Compile the interactive dashboard (no API key needed)
 python -m visualizer.compile_dashboard
 ```
 
-Then open `dashboard.html` in a browser (double-click it, or `start dashboard.html`
-on Windows).
+### Running Autonomous Research Cycles
 
-### 2. (Optional) Enable the AI research agents
-
-The agents need an OpenRouter API key. Provide it either as an environment
-variable:
+Provide an OpenRouter API key via `$env:OPENROUTER_API_KEY = "sk-or-..."` or `config/.env` (gitignored):
 
 ```powershell
-$env:OPENROUTER_API_KEY = "sk-or-..."
-```
-
-or in a `config\.env` file at the repo root (already gitignored):
-
-```
-OPENROUTER_API_KEY=sk-or-...
-```
-
-Without a key, the agent scripts still run and print a clear "DRY RUN" notice
-instead of crashing — useful for sanity-checking the pipeline.
-
-### 3. Run a single research cycle
-
-```powershell
-python -m models.math_researcher
-```
-
-Picks one research domain (coverage-weighted), asks the model for a novel
-conjecture, executes its self-contained verification script (self-repairing
-once or twice if the script errors out), and appends the result to
-`outputs/conjectures.json`.
-
-### 4. Run the autonomous Agent World (multiple cycles)
-
-```powershell
-python -m models.agent_world --cycles 10 --sleep 5 --models haiku,sonnet
-```
-
-Common options:
-
-| Flag            | Meaning                                                              | Default |
-|-----------------|-----------------------------------------------------------------------|---------|
-| `--cycles`      | Number of research cycles to run                                     | `3`     |
-| `--sleep`       | Seconds to wait between cycles (be kind to the API)                  | `5.0`   |
-| `--models`      | Comma-separated OpenRouter model aliases to rotate through            | `haiku` |
-| `--domain`      | Pin every cycle to one domain instead of letting the explorer choose  | (auto)  |
-| `--max-repairs` | Max self-repair attempts per broken verification script               | `2`     |
-
-Model aliases (see [models/llm_client.py](models/llm_client.py)):
-`haiku`, `sonnet`, `r1`, `r1_full`, `qwen_math`.
-
-### 5. Re-compile the dashboard to see new results
-
-```powershell
+python -m models.agent_world --cycles 9 --sleep 9 --temperature 0.75 --models sonnet,glm,deepseek
 python -m visualizer.compile_dashboard
 ```
 
-Re-run this any time after step 3/4 to refresh `dashboard.html` with the
-latest conjectures and Agent World coverage stats.
+## Verification Sandbox & Null-Baseline Gate
 
-## Running the core engines standalone
+Every LLM-generated verification script in `models/math_researcher.py` runs inside a **4-layer sandbox**:
+- Static AST validation blocking network/process/filesystem modules, dynamic execution (`eval`/`exec`/`open`), and uncached `mpmath.zetazero` loops;
+- Secret-stripped allowlist subprocess environment (`OPENROUTER_API_KEY` is never passed to child scripts);
+- Isolated ephemeral working directory (`TemporaryDirectory`) + POSIX memory/file limits;
+- CPython `sys.addaudithook` runtime enforcement blocking sockets, subprocesses, and file writes.
 
-Each engine in `core/` has a self-test you can run directly, useful for
-verifying the math independent of any AI/network dependency:
+## License
 
-```powershell
-python -m core.sieve             # prime sieve + gap statistics
-python -m core.modular_orbits     # modular transition bias + heatmap plot
-python -m core.zeta_harmonics     # zeta zero harmonics + staircase plot
-python -m core.goldbach           # Goldbach partition counts
-python -m core.domains            # sanity-check every research domain's data + prompt
-python -m models.knowledge_base   # sanity-check the knowledge base / dedup logic
-```
-
-## Reproducibility
-
-- **`core/*` and the dashboard's numeric content are deterministic** — same
-  inputs always produce the same statistics and plots.
-- **The AI research cycles are intentionally non-deterministic.** Conjectures
-  are sampled from an LLM (temperature > 0) and the whole point is to keep
-  discovering *new* ideas, so re-running `math_researcher.py` / `agent_world.py`
-  will generally produce different conjectures, ids, and timestamps each time.
-- `outputs/knowledge_base.json` is what keeps runs from repeating themselves:
-  it remembers what's already been tried so the world explores new territory
-  and skips near-duplicate conjectures instead of re-discovering the same one.
-
-## Outputs
-
-| File                                   | Produced by                     | Contents |
-|-----------------------------------------|----------------------------------|----------|
-| `outputs/conjectures.json`              | `math_researcher.py` / `agent_world.py` | Every AI-generated conjecture, its verification code, and verdict |
-| `outputs/knowledge_base.json`           | same                              | Agent World coverage stats, confirmed laws, dedup memory |
-| `outputs/*.png`                         | `core/*.py` / `visualizer/ulam_sacks.py` | Modular bias heatmap, zeta staircase, Ulam/Sacks spirals |
-| `dashboard.html`                        | `visualizer/compile_dashboard.py` | The interactive dashboard (open in a browser) |
+Released under the [MIT License](LICENSE).

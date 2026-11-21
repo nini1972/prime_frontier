@@ -60,12 +60,6 @@ def load_api_key() -> str:
 
     candidates = [
         os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "config", ".env"),
-        os.path.join(
-            os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
-            "evolution_sandbox",
-            "config",
-            ".env",
-        ),
     ]
 
     for path in candidates:

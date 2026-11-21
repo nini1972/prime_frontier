@@ -15,6 +15,7 @@ import sys
 import os
 import json
 import re
+import tempfile
 import time
 import subprocess
 from datetime import datetime
@@ -47,9 +48,10 @@ Note core utility return signatures if used:
 - generate_primes(limit: int) -> np.ndarray
 - compute_modular_transitions(primes, mod=10) -> dict with keys "residues", "transition_matrix" (2D list), "transition_counts" (2D list), "expected_uniform"
 - goldbach_partition_counts(limit: int) -> dict {{even_n: count}}
-- get_zeta_zeros(count: int) -> list of floats (up to 1000 cached)
+- get_zeta_zeros(count: int) -> list of floats (up to 3000 cached; NEVER call mpmath.zetazero directly)
 - mobius_sieve(limit), mertens_function(limit), liouville_sieve(limit), sum_liouville(limit), largest_prime_factor(limit) -> np.ndarray
-- smooth_number_counts(limit, y_bound), chebyshev_prime_race(limit, mod, r_lead, r_trail), prime_constellation_counts(limit) -> dict
+- smooth_number_counts(limit, y_bound), chebyshev_prime_race(limit, mod, r_lead, r_trail) -> dict
+- prime_constellation_counts(limit) -> dict with keys "twins_0_2", "cousins_0_4", "sexy_0_6", "triplets_0_2_6", "triplets_0_4_6", "quadruplets_0_2_6_8"
 - cramer_random_primes(limit, seed=42) -> np.ndarray
 IMPORTANT: Do NOT print 'VERDICT:' on intermediate per-scale lines (use PASS/FAIL instead).
 Print 'VERDICT: SUPPORTED', 'VERDICT: FALSIFIED', or 'VERDICT: TRIVIAL_NULL' ONLY ONCE on the very last line, with genuine branches for both SUPPORTED and FALSIFIED!
@@ -157,11 +159,31 @@ def format_head_tail_output(text: str, head_chars: int = 1000, tail_chars: int =
     return f"{cleaned[:head_chars]}\n...[middle output truncated]...\n{cleaned[-tail_chars:]}"
 
 
+_BLOCKED_IMPORT_ROOTS = {
+    "subprocess", "socket", "ssl", "urllib", "http", "requests", "httpx", "aiohttp",
+    "ftplib", "smtplib", "poplib", "imaplib", "telnetlib", "xmlrpc", "shutil", "ctypes",
+    "multiprocessing", "webbrowser", "pty", "pickle", "marshal", "shelve", "importlib",
+    "builtins", "tempfile", "pathlib", "glob",
+}
+
+_BLOCKED_CALL_NAMES = {"eval", "exec", "compile", "__import__", "open", "input", "breakpoint"}
+
+_BLOCKED_ATTR_NAMES = {
+    "system", "popen", "spawnl", "spawnle", "spawnlp", "spawnlpe", "spawnv", "spawnve",
+    "spawnvp", "spawnvpe", "execl", "execle", "execlp", "execlpe", "execv", "execve",
+    "execvp", "execvpe", "fork", "kill", "remove", "unlink", "rmdir", "removedirs",
+    "rename", "replace", "makedirs", "mkdir", "chmod", "chown", "chdir", "listdir",
+    "scandir", "walk", "environ", "getenv", "putenv",
+}
+
+
 def validate_script_falsifiability(code: str) -> Optional[str]:
     """
-    Static AST & anti-tautology pre-check before subprocess execution:
+    Static AST security, performance, & anti-tautology pre-check before subprocess execution:
       1. Catch Python SyntaxErrors immediately.
-      2. Ensure the script has at least one conditional (`If` / `IfExp`) and contains
+      2. Block dangerous imports, dynamic execution builtins, filesystem/process/env access,
+         and uncached `mpmath.zetazero` loops.
+      3. Ensure the script has at least one conditional (`If` / `IfExp`) and contains
          both 'SUPPORTED' and 'FALSIFIED' tokens so a script cannot unconditionally pass.
     Returns an error message string if invalid, or None if valid.
     """
@@ -169,6 +191,28 @@ def validate_script_falsifiability(code: str) -> Optional[str]:
         tree = ast.parse(code)
     except SyntaxError as exc:
         return f"SyntaxError at line {exc.lineno}: {exc.msg}"
+
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Import):
+            for alias in node.names:
+                root = alias.name.split(".")[0]
+                if root in _BLOCKED_IMPORT_ROOTS:
+                    return f"SecurityError: importing '{root}' is forbidden in verification scripts."
+        elif isinstance(node, ast.ImportFrom):
+            root = (node.module or "").split(".")[0]
+            if root in _BLOCKED_IMPORT_ROOTS:
+                return f"SecurityError: importing from '{root}' is forbidden in verification scripts."
+        elif isinstance(node, ast.Call):
+            if isinstance(node.func, ast.Name) and node.func.id in _BLOCKED_CALL_NAMES:
+                return f"SecurityError: calling '{node.func.id}()' is forbidden in verification scripts."
+        elif isinstance(node, ast.Attribute):
+            if node.attr == "zetazero":
+                return (
+                    "PerformanceError: direct mpmath.zetazero() calls time out; "
+                    "use the pre-cached get_zeta_zeros(count) helper (instantaneous up to count=3000)."
+                )
+            if node.attr in _BLOCKED_ATTR_NAMES:
+                return f"SecurityError: accessing '.{node.attr}' is forbidden in verification scripts."
 
     upper = code.upper()
     if "SUPPORTED" not in upper or "FALSIFIED" not in upper:
@@ -219,8 +263,41 @@ def parse_verification_verdict(stdout: str, stderr: str, returncode: int) -> str
     return "INCONCLUSIVE"
 
 
+def _build_sandboxed_env(tmp_dir: str) -> Dict[str, str]:
+    """
+    Construct a minimal, secret-free environment allowlist for verification subprocesses
+    so API keys (OPENROUTER_API_KEY, GITHUB_TOKEN, etc.) are never exposed to LLM code.
+    """
+    env: Dict[str, str] = {}
+    safe_os_keys = (
+        "PATH", "SYSTEMROOT", "WINDIR", "COMSPEC", "LD_LIBRARY_PATH",
+        "LANG", "LC_ALL", "APPDATA", "LOCALAPPDATA", "USERPROFILE",
+        "HOMEDRIVE", "HOMEPATH", "VIRTUAL_ENV",
+    )
+    for safe_key in safe_os_keys:
+        val = os.environ.get(safe_key)
+        if val:
+            env[safe_key] = val
+    env.setdefault("HOME", os.environ.get("HOME") or tmp_dir)
+    env["TMPDIR"] = tmp_dir
+    env["TEMP"] = tmp_dir
+    env["TMP"] = tmp_dir
+    env["MPLCONFIGDIR"] = tmp_dir
+    env["MPLBACKEND"] = "Agg"
+    env["PYTHONIOENCODING"] = "utf-8"
+    env["PYTHONDONTWRITEBYTECODE"] = "1"
+    env["PYTHONPATH"] = BASE_DIR
+    return env
+
+
 def execute_verification_script(code: str, timeout_sec: int = 120) -> Dict:
-    """Safely execute generated verification code with pre-imported fast domain helpers and capture stdout/verdict."""
+    """
+    Execute generated verification code inside a 4-layer sandbox:
+      1. Static AST security & falsifiability gate (`validate_script_falsifiability`)
+      2. Stripped secret-free allowlist environment (`_build_sandboxed_env`)
+      3. Isolated ephemeral `TemporaryDirectory` working directory + POSIX `resource` caps
+      4. Unremovable CPython `sys.addaudithook` blocking outbound sockets, subprocesses, and file writes
+    """
     static_err = validate_script_falsifiability(code)
     if static_err:
         return {
@@ -230,11 +307,8 @@ def execute_verification_script(code: str, timeout_sec: int = 120) -> Dict:
             "success": False,
         }
 
-    test_script_path = os.path.join(OUTPUTS_DIR, f"_temp_verify_{os.getpid()}.py")
-    os.makedirs(OUTPUTS_DIR, exist_ok=True)
-
     preamble = (
-        "import sys, os, math\n"
+        "import sys, math\n"
         "import numpy as np\n"
         f"sys.path.insert(0, {repr(BASE_DIR)})\n"
         "from core.sieve import generate_primes, compute_prime_gaps, compute_gap_statistics, find_maximal_gap_records\n"
@@ -246,52 +320,61 @@ def execute_verification_script(code: str, timeout_sec: int = 120) -> Dict:
         "    largest_prime_factor, smooth_number_counts, chebyshev_prime_race,\n"
         "    prime_constellation_counts, cramer_random_primes,\n"
         ")\n"
+        "try:\n"
+        "    import resource as _res\n"
+        "    _res.setrlimit(_res.RLIMIT_CORE, (0, 0))\n"
+        "    _res.setrlimit(_res.RLIMIT_FSIZE, (4 * 1024 * 1024, 4 * 1024 * 1024))\n"
+        "    _res.setrlimit(_res.RLIMIT_AS, (3 * 1024 * 1024 * 1024, 3 * 1024 * 1024 * 1024))\n"
+        "except Exception:\n"
+        "    pass\n"
+        "def _pf_audit_guard(event, args):\n"
+        "    if event.startswith(('socket.', 'urllib.', 'http.', 'ftplib.', 'smtplib.', 'telnetlib.')):\n"
+        "        raise PermissionError(f'Network access blocked by sandbox: {event}')\n"
+        "    if event in ('subprocess.Popen', 'os.system', 'os.exec', 'os.posix_spawn', 'os.spawn', 'os.fork', 'os.remove', 'os.unlink', 'os.rmdir', 'os.rename', 'os.replace', 'os.chmod', 'os.chown'):\n"
+        "        raise PermissionError(f'System/filesystem mutation blocked by sandbox: {event}')\n"
+        "    if event == 'open' and len(args) >= 2 and isinstance(args[1], str) and any(c in args[1] for c in 'wax+'):\n"
+        "        raise PermissionError('File writes are blocked by sandbox')\n"
+        "sys.addaudithook(_pf_audit_guard)\n"
+        "del _pf_audit_guard\n"
     )
     full_code = preamble + "\n" + code
 
-    with open(test_script_path, "w", encoding="utf-8") as f:
-        f.write(full_code)
+    with tempfile.TemporaryDirectory(prefix="pf_verify_") as tmp_dir:
+        test_script_path = os.path.join(tmp_dir, "_verify.py")
+        with open(test_script_path, "w", encoding="utf-8") as f:
+            f.write(full_code)
 
-    env = os.environ.copy()
-    env["PYTHONIOENCODING"] = "utf-8"
-    env["MPLBACKEND"] = "Agg"
-    env["PYTHONPATH"] = BASE_DIR + os.pathsep + env.get("PYTHONPATH", "")
+        env = _build_sandboxed_env(tmp_dir)
+        t0 = time.time()
+        try:
+            proc = subprocess.run(
+                [sys.executable, "-B", test_script_path],
+                cwd=tmp_dir,
+                capture_output=True,
+                text=True,
+                encoding="utf-8",
+                errors="replace",
+                env=env,
+                timeout=timeout_sec,
+            )
+            elapsed = time.time() - t0
+            verdict = parse_verification_verdict(proc.stdout, proc.stderr, proc.returncode)
+            combined_output = (proc.stdout or "") + (("\n" + proc.stderr) if proc.stderr else "")
+            stored_output = format_head_tail_output(combined_output, head_chars=1000, tail_chars=2200)
 
-    t0 = time.time()
-    try:
-        proc = subprocess.run(
-            [sys.executable, test_script_path],
-            capture_output=True,
-            text=True,
-            encoding="utf-8",
-            errors="replace",
-            env=env,
-            timeout=timeout_sec,
-        )
-        elapsed = time.time() - t0
-        verdict = parse_verification_verdict(proc.stdout, proc.stderr, proc.returncode)
-        combined_output = (proc.stdout or "") + (("\n" + proc.stderr) if proc.stderr else "")
-        stored_output = format_head_tail_output(combined_output, head_chars=1000, tail_chars=2200)
-
-        return {
-            "verdict": verdict,
-            "output": stored_output,
-            "elapsed_s": round(elapsed, 2),
-            "success": proc.returncode == 0 and not _needs_repair(verdict),
-        }
-    except subprocess.TimeoutExpired:
-        return {
-            "verdict": "TIMEOUT EXCEEDED",
-            "output": f"Computation exceeded {timeout_sec} seconds.",
-            "elapsed_s": timeout_sec,
-            "success": False,
-        }
-    finally:
-        if os.path.exists(test_script_path):
-            try:
-                os.remove(test_script_path)
-            except Exception:
-                pass
+            return {
+                "verdict": verdict,
+                "output": stored_output,
+                "elapsed_s": round(elapsed, 2),
+                "success": proc.returncode == 0 and not _needs_repair(verdict),
+            }
+        except subprocess.TimeoutExpired:
+            return {
+                "verdict": "TIMEOUT EXCEEDED",
+                "output": f"Computation exceeded {timeout_sec} seconds.",
+                "elapsed_s": timeout_sec,
+                "success": False,
+            }
 
 
 def _needs_repair(verdict: str) -> bool:

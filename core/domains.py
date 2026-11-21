@@ -78,7 +78,7 @@ IMPORTANT:
     from core.goldbach import goldbach_partition_counts, goldbach_stats
         # goldbach_partition_counts(limit: int) -> dict {{even_n: g_n_count}} (FFT-accelerated up to limit=500,000)
     from core.zeta_harmonics import get_zeta_zeros, exact_psi, approximate_psi_riemann
-        # get_zeta_zeros(count: int = 50) -> list of float imaginary parts gamma_k (pre-cached up to count=1000)
+        # get_zeta_zeros(count: int = 50) -> list of float imaginary parts gamma_k (pre-cached and instantaneous up to count=3000; NEVER call mpmath.zetazero directly!)
     from core.arithmetic_functions import (
         mobius_sieve, mertens_function, liouville_sieve, sum_liouville,
         largest_prime_factor, smooth_number_counts, chebyshev_prime_race,
@@ -91,7 +91,9 @@ IMPORTANT:
         # largest_prime_factor(limit: int) -> np.ndarray of P^+(0..limit)
         # smooth_number_counts(limit: int, y_bound: int) -> dict with "psi_count", "u_param", "density", "max_smooth_gap"
         # chebyshev_prime_race(limit: int, mod=4, r_lead=3, r_trail=1) -> dict with "lead_fraction", "sign_changes", "mean_rs_bias"
-        # prime_constellation_counts(limit: int) -> dict of twin/cousin/sexy/triplet/quadruplet counts & HL ratios
+        # prime_constellation_counts(limit: int) -> dict with exact keys:
+        #   "twins_0_2", "cousins_0_4", "sexy_0_6", "triplets_0_2_6", "triplets_0_4_6", "quadruplets_0_2_6_8",
+        #   "ratio_twin_to_hl", "ratio_sexy_to_hl", "ratio_triplet026_to_hl", "ratio_quad_to_hl"
         # cramer_random_primes(limit: int, seed=42) -> np.ndarray synthetic Cramér random-prime control sequence
 - Do not import third-party packages other than numpy, scipy, and mpmath.
 
@@ -286,7 +288,7 @@ def _harvest_zeta() -> Dict[str, Any]:
 
 ZETA_HARMONICS_PROMPT = """You are an elite research mathematician at the Prime Frontier laboratory.
 Below is real empirical data on non-trivial Riemann zeta zeros rho_k = 1/2 + i*gamma_k
-in index window k in [{idx_start}, {idx_end}] ({num_zeros} consecutive zeros; up to 1,000 cached in `get_zeta_zeros(1000)`):
+in index window k in [{idx_start}, {idx_end}] ({num_zeros} consecutive zeros; up to 3,000 pre-cached in `get_zeta_zeros(3000)`):
 
 - First 5 imaginary parts in this window: {sample_zeros}
 - Empirical mean spacing in window: {mean_zero_gap} (Riemann-von Mangoldt asymptotic 2*pi / ln(T / 2*pi): {rv_expected_gap})

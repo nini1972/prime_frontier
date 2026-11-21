@@ -13,11 +13,13 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from core.domains import DOMAINS, list_domain_ids
 from models import knowledge_base as kb
 from models.math_researcher import (
+    _build_sandboxed_env,
     execute_verification_script,
     format_head_tail_output,
     parse_verification_verdict,
     validate_script_falsifiability,
 )
+from visualizer.compile_dashboard import generate_html
 
 
 def test_verdict_shadowing_fixed():
@@ -133,6 +135,84 @@ def test_ten_domains_registered():
         assert expected in DOMAINS
 
 
+def test_dashboard_xss_escaping_and_katex_preservation():
+    sample_data = {
+        "generated_at": "Nov 21, 2026",
+        "stats": {
+            "total_primes": 10,
+            "max_prime": 29,
+            "max_gap": 6,
+            "mean_gap": 2.8,
+            "sexy_primes_count": 3,
+            "twin_primes_count": 2,
+            "cousin_primes_count": 2,
+        },
+        "gap_records": [],
+        "mod10": {},
+        "autocorr": {1: -0.05},
+        "zeta_zeros": [14.1347],
+        "images": {"zeta_staircase": None, "modular_bias": None, "ulam_spiral": None, "sacks_spiral": None},
+        "agent_world": {
+            "totals": {"attempts": 1, "supported": 1, "falsified": 0, "errors": 0, "timeout": 0, "duplicates": 0},
+            "domain_coverage": [],
+            "confirmed_laws_count": 1,
+        },
+        "conjectures": [
+            {
+                "id": "PRIME-CONJ-XSS",
+                "timestamp": "2026-11-21 12:00:00",
+                "domain": "gap_dynamics",
+                "name": "Test <script>alert(1)</script>",
+                "model": "sonnet",
+                "verdict": "EMPIRICALLY SUPPORTED",
+                "formulation": "For $p_n < x$, <script>alert('xss_form')</script> holds.",
+                "target": "<img src=x onerror=alert('xss_target')> with $\\Delta < 0.05$",
+                "code": "if 1 < 2:\n    print('VERDICT: SUPPORTED')\nelse:\n    print('VERDICT: FALSIFIED')",
+                "output": "VERDICT: SUPPORTED",
+            }
+        ],
+    }
+    rendered = generate_html(sample_data)
+    assert "<script>alert('xss_form')</script>" not in rendered
+    assert "<img src=x onerror=" not in rendered
+    assert "&lt;script&gt;alert(&#x27;xss_form&#x27;)&lt;/script&gt;" in rendered
+    assert "$p_n &lt; x$" in rendered
+
+
+def test_sandbox_blocks_secrets_network_and_slow_zetazero():
+    # 1. Secret stripping in child environment
+    os.environ["OPENROUTER_API_KEY"] = "sk-or-test-secret-do-not-leak"
+    env = _build_sandboxed_env("/tmp/pf_test")
+    assert "OPENROUTER_API_KEY" not in env
+    del os.environ["OPENROUTER_API_KEY"]
+
+    # 2. AST gate blocks dangerous imports, builtins, env access, and raw mpmath.zetazero
+    for forbidden in (
+        "import subprocess\nif True:\n    print('VERDICT: SUPPORTED')\nelse:\n    print('VERDICT: FALSIFIED')",
+        "import urllib.request\nif True:\n    print('VERDICT: SUPPORTED')\nelse:\n    print('VERDICT: FALSIFIED')",
+        "import os\nx = os.environ\nif x:\n    print('VERDICT: SUPPORTED')\nelse:\n    print('VERDICT: FALSIFIED')",
+        "f = open('pwn.txt', 'w')\nif f:\n    print('VERDICT: SUPPORTED')\nelse:\n    print('VERDICT: FALSIFIED')",
+        "import mpmath as mp\nz = mp.zetazero(1)\nif z:\n    print('VERDICT: SUPPORTED')\nelse:\n    print('VERDICT: FALSIFIED')",
+    ):
+        err = validate_script_falsifiability(forbidden)
+        assert err is not None, f"Expected AST gate to reject: {forbidden}"
+
+    # 3. Legitimate scipy + numpy verification script runs cleanly inside the 4-layer sandbox
+    legit_scipy = """
+from scipy.stats import spearmanr
+xs = np.arange(1, 20, dtype=float)
+ys = 2.0 * xs + 1.0
+rho, _ = spearmanr(xs, ys)
+print(f"rho={rho:.4f}")
+if rho > 0.99:
+    print("VERDICT: SUPPORTED")
+else:
+    print("VERDICT: FALSIFIED")
+"""
+    res = execute_verification_script(legit_scipy, timeout_sec=30)
+    assert res["verdict"] == "EMPIRICALLY SUPPORTED", f"Sandbox broke legitimate scipy script: {res}"
+
+
 if __name__ == "__main__":
     print("Running Prime Frontier Research Pipeline regression suite...")
     test_verdict_shadowing_fixed()
@@ -140,4 +220,6 @@ if __name__ == "__main__":
     test_ast_anti_tautology_gate()
     test_dedup_domain_scope_and_boilerplate()
     test_ten_domains_registered()
-    print("All 5 pipeline regression test groups passed!")
+    test_dashboard_xss_escaping_and_katex_preservation()
+    test_sandbox_blocks_secrets_network_and_slow_zetazero()
+    print("All 7 pipeline & security regression test groups passed!")
