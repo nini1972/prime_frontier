@@ -77,6 +77,7 @@ Scientific Refinement Task:
 Use the exact numerical observations in the empirical output above (especially the large-N out-of-sample rows and null/baseline comparison at the bottom) to diagnose why your initial bound, scaling exponent, or null contrast failed.
 Formulate a REFINED, mathematically non-trivial conjecture that captures the true empirical behavior AND beats or separates from a trivial null baseline (e.g., Cramér random primes, shuffled gaps, or first-order PNT/HL heuristic).
 Test your refined law across MULTIPLE scales (including a larger out-of-sample scale than the initial script, to prevent overfitting).
+IMPORTANT PERFORMANCE RULE: All fast C/NumPy/FFT project utilities (`generate_primes`, `compute_prime_gaps`, `compute_modular_transitions`, `goldbach_partition_counts`, `get_zeta_zeros`, `mobius_sieve`, `mertens_function`, `liouville_sieve`, `sum_liouville`, `largest_prime_factor`, `smooth_number_counts`, `chebyshev_prime_race`, `prime_constellation_counts`, `cramer_random_primes`) are ALREADY pre-imported in the execution harness — use them directly and NEVER redefine slow Python-loop versions (e.g. do NOT write your own `def goldbach_partition_counts` or `mpmath.zetazero` loop)!
 Do NOT widen tolerances into a trivial tautology! Print PASS/FAIL on per-scale lines and print 'VERDICT: SUPPORTED', 'VERDICT: FALSIFIED', or 'VERDICT: TRIVIAL_NULL' ONLY ONCE on the final line.
 
 Format your output strictly as:
@@ -177,6 +178,12 @@ _BLOCKED_ATTR_NAMES = {
 }
 
 
+_PROTECTED_ENGINE_FUNCS = {
+    "generate_primes", "goldbach_partition_counts", "get_zeta_zeros",
+    "mobius_sieve", "mertens_function", "liouville_sieve", "largest_prime_factor",
+}
+
+
 def validate_script_falsifiability(code: str) -> Optional[str]:
     """
     Static AST security, performance, & anti-tautology pre-check before subprocess execution:
@@ -205,6 +212,11 @@ def validate_script_falsifiability(code: str) -> Optional[str]:
         elif isinstance(node, ast.Call):
             if isinstance(node.func, ast.Name) and node.func.id in _BLOCKED_CALL_NAMES:
                 return f"SecurityError: calling '{node.func.id}()' is forbidden in verification scripts."
+        elif isinstance(node, ast.FunctionDef) and node.name in _PROTECTED_ENGINE_FUNCS:
+            return (
+                f"PerformanceError: do not redefine pre-imported fast engine '{node.name}()' "
+                "with a slow Python loop; call the built-in vectorized/FFT helper directly."
+            )
         elif isinstance(node, ast.Attribute):
             if node.attr == "zetazero":
                 return (

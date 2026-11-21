@@ -36,7 +36,7 @@ def run_world(
     model_aliases,
     domain_id=None,
     max_repairs: int = 2,
-    temperature: float = 0.75,
+    temperature: float = 0.55,
 ) -> None:
     if not load_api_key():
         print("=" * 72)
@@ -116,7 +116,7 @@ def main() -> None:
     )
     parser.add_argument("--domain", type=str, default=None, help="Pin every cycle to one domain id")
     parser.add_argument("--max-repairs", type=int, default=2, help="Max self-repair attempts per broken script")
-    parser.add_argument("--temperature", type=float, default=0.75, help="Sampling temperature (default: 0.75)")
+    parser.add_argument("--temperature", type=float, default=0.55, help="Sampling temperature (default: 0.55)")
     args = parser.parse_args()
 
     run_world(

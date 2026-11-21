@@ -13,7 +13,7 @@ on:
       temperature:
         description: 'Speculation temperature'
         required: false
-        default: '0.75'
+        default: '0.55'
       models:
         description: 'Model aliases to rotate through'
         required: false
@@ -49,7 +49,7 @@ jobs:
         python -m models.agent_world \
           --cycles ${{ github.event.inputs.cycles || '9' }} \
           --sleep 9 \
-          --temperature ${{ github.event.inputs.temperature || '0.75' }} \
+          --temperature ${{ github.event.inputs.temperature || '0.55' }} \
           --models ${{ github.event.inputs.models || 'sonnet,glm,deepseek' }}
 
     - name: Recompile Laboratory Dashboard
