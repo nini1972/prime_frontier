@@ -10,85 +10,85 @@
       "last_run": "2026-11-20 02:25:47"
     },
     "modular_bias_mod10": {
-      "attempts": 58,
+      "attempts": 59,
       "supported": 12,
-      "falsified": 41,
+      "falsified": 42,
       "errors": 4,
       "timeout": 0,
       "duplicates": 1,
-      "last_run": "2026-11-20 02:28:25"
+      "last_run": "2026-11-21 12:06:43"
     },
     "prime_powers": {
-      "attempts": 57,
-      "supported": 9,
+      "attempts": 58,
+      "supported": 10,
       "falsified": 40,
       "errors": 4,
       "timeout": 1,
       "duplicates": 3,
-      "last_run": "2026-11-19 02:25:15"
+      "last_run": "2026-11-21 12:05:21"
     },
     "goldbach_partitions": {
-      "attempts": 59,
-      "supported": 14,
+      "attempts": 60,
+      "supported": 15,
       "falsified": 38,
       "errors": 2,
       "timeout": 0,
       "duplicates": 5,
-      "last_run": "2026-11-19 19:00:42"
+      "last_run": "2026-11-21 12:12:09"
     },
     "modular_bias_mod30": {
-      "attempts": 72,
+      "attempts": 73,
       "supported": 15,
-      "falsified": 51,
+      "falsified": 52,
       "errors": 1,
       "timeout": 0,
       "duplicates": 5,
-      "last_run": "2026-11-18 02:18:48"
+      "last_run": "2026-11-21 12:03:10"
     },
     "zeta_harmonics": {
-      "attempts": 62,
+      "attempts": 63,
       "supported": 17,
       "falsified": 30,
       "errors": 3,
-      "timeout": 4,
+      "timeout": 5,
       "duplicates": 8,
-      "last_run": "2026-11-21 02:38:18"
+      "last_run": "2026-11-21 12:10:18"
     },
     "chebyshev_race": {
-      "attempts": 3,
-      "supported": 2,
+      "attempts": 4,
+      "supported": 3,
       "falsified": 1,
       "errors": 0,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-11-21 02:33:04"
+      "last_run": "2026-11-21 11:55:17"
     },
     "prime_constellations": {
-      "attempts": 2,
+      "attempts": 3,
       "supported": 0,
       "falsified": 2,
-      "errors": 0,
+      "errors": 1,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-11-21 02:18:32"
+      "last_run": "2026-11-21 11:52:46"
     },
     "multiplicative_walk": {
-      "attempts": 3,
+      "attempts": 4,
       "supported": 1,
-      "falsified": 2,
+      "falsified": 3,
       "errors": 0,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-11-21 02:34:28"
+      "last_run": "2026-11-21 11:59:11"
     },
     "smooth_numbers": {
-      "attempts": 3,
+      "attempts": 4,
       "supported": 1,
-      "falsified": 1,
+      "falsified": 2,
       "errors": 0,
       "timeout": 1,
       "duplicates": 0,
-      "last_run": "2026-11-21 02:27:21"
+      "last_run": "2026-11-21 12:02:01"
     }
   },
   "models": {
@@ -108,22 +108,40 @@
       "errors": 13
     },
     "sonnet": {
-      "attempts": 211,
-      "success": 197,
-      "errors": 10
+      "attempts": 214,
+      "success": 199,
+      "errors": 11
     },
     "glm": {
-      "attempts": 6,
-      "success": 4,
-      "errors": 2
+      "attempts": 9,
+      "success": 6,
+      "errors": 3
     },
     "deepseek": {
-      "attempts": 3,
-      "success": 3,
+      "attempts": 6,
+      "success": 6,
       "errors": 0
     }
   },
   "confirmed_laws": [
+    {
+      "id": "PRIME-CONJ-1795263129",
+      "name": "Goldbach Prime-Factor Rank Decoupling (GPFRD) Conjecture",
+      "domain": "goldbach_partitions",
+      "timestamp": "2026-11-21 12:12:09"
+    },
+    {
+      "id": "PRIME-CONJ-1795262721",
+      "name": "Mertens Rough-Cofactor Attrition Calibration",
+      "domain": "prime_powers",
+      "timestamp": "2026-11-21 12:05:21"
+    },
+    {
+      "id": "PRIME-CONJ-1795262117",
+      "name": "Hann\u2013Whitened Coherent-Line Law for the Mod-8 Chebyshev Race (HWCL-8)",
+      "domain": "chebyshev_race",
+      "timestamp": "2026-11-21 11:55:17"
+    },
     {
       "id": "PRIME-CONJ-1795228384",
       "name": "Logarithmic Extreme-Value Floor for the Mod-8 Chebyshev Race (LEVF-8)",
@@ -977,6 +995,20 @@
     "multiplicative_walk::correlation|phase|spectral::average|bar|baseline|beyond|bias|captures|cdot|conjectured|constraints|contrast|correlation|corresponding|cram|cumulative|decorrelation|density|distinct|distribution|dominant|empirical|exhibits|factor|fluctuations|frac|fundamentally|independent|individual|lambda|law|liouville|log|logarithmic|logarithmically|mertens|model|motivated|multiplicative|near|negative|normalization|normalized|not|null|observable|oscillates|phase|points|posits|preserving|primary|psi|quantitative|rademacher|random|replaced|running|s_x|sample|satisfies|scale|secondary|sequences|skewness|slow|spaced|specifically|spectral|sqrt|squarefree|structure|sum_|sums|text|visible|walk|walks::Mertens-Liouville Spectral Phase Correlation Law",
     "multiplicative_walk::asymmetry|bias|dependent|product|reversal|scale::arithmetic|average|bar|becomes|bias|both|but|calibration|captures|cdot|coefficient|constant|contrary|contrast|correlation|cram|data|decreases|dependent|distinguishing|empirical|exhibits|expected|factor|frac|geq|growing|have|hypothesis|increasing|initial|insight|key|large|larger|law|liouville|log|logarithmically|lower|magnitude|maintain|mertens|more|moreover|multi|negative|noise|normalization|normalized|not|null|persistence|phi|phi_|points|positive|product|provides|pure|random|ratio|reduction|refined|relative|reveals|running|s_x|sample|satisfies|satisfying|scale|scales|shows|sigma|sign|signal|skewness|slowly|small|spaced|sqrt|stability|stabilizes|stable|statistic|strongly|structural|sum_|test|text|than|uses|variance|variation|via|walk|walks|weak|weaker|which|while::Mertens-Liouville Product Asymmetry Law with Scale-Dependent Bias Reversal",
     "zeta_harmonics::cram|dyson|growth|logarithmic|mehta|obey|poisson|remain|rigidity|spectral|statistic|transfer|while::100|1000|300|600|alignment|also|amplitude|anchoring|anti|approx|arithmetic|autocorrelation|average|big|both|bounds|cdot|cointoss|consecutive|const|constant|control|coupled|cram|delta|delta_|density|diagnostic|distinguishes|domain|dyson|each|eigenvalues|entropy|error|exhibit|exhibits|fail|fit|fluctuation|frac|gamma|gap|generic|growth|gue|has|hold|kurtosis|laws|least|level|line|linear|log|logarithmic|long|longrightarrow|mathrm|matrix|maximal|mean|mehta|moment|moments|montgomery|must|n_w|noise|null|obeys|observation|odlyzko|order|orthogonal|p_n|passes|phase|point|points|poisson|precisely|predictions|predicts|prior|probing|process|propto|pseudorandomness|qquad|quad|random|range|ratio|relative|residual|riemann|rigidity|s_i|same|satisfies|second|separation|sequence|showing|sim|sliding|smooth|spacing|spacings|specifically|spectra|spectral|squares|staircase|stairs|statistic|statistics|sum|sum_|test|text|tfrac|theory|transfer|trivial|trivial_null|true|u_i|u_k|u_n|unfolded|unit|universality|verdict|whereas|which|while|window|windows|within|zero|zeros|zeta::Dyson-Mehta Spectral Rigidity Transfer: Zeta Zeros Obey Logarithmic \u0394-Statistic Growth While Cram\u00e9r Primes Remain Poisso",
-    "zeta_harmonics::anchor|calibrated|degenerate|excision|hierarchy|rigidity|separation|three|tier::100|179|200|210|215|403|502|529|587|670|752|already|anchor|anchored|anything|approx|arithmetic|asserts|attributable|before|below|blind|boxed|but|calibrated|cannot|clustering|control|correlation|correlations|cram|crude|curve|curves|data|degeneracy|degenerate|delta|delta_|destroyed|diagnosis|diagnostic|dichotomy|distribution|driven|empirical|equiv|error|every|exact|excess|excise|exhibits|failed|failure|fit|free|gap|gaps|growth|gue|held|hence|hierarchy|identically|infty|initial|law|least|level|line|linear|log|marginal|mathcal|mathrm|memoryless|merely|moves|nearly|non|normalized|not|null|observed|out|parallel|point|points|poisson|positive|prediction|printed|process|processes|produce|qquad|quad|quantitatively|ratios|refined|relative|repulsion|rigid|rigidity|same|sample|saturate|scale|scales|separate|sequences|shapes|sharply|show|shuffled|shuffling|sits|small|squares|staircase|statistic|strict|strictly|structurally|sublinearly|suppression|test|text|their|therefore|three|through|tier|to0|toward|trivial|trivial_null|twin|type|uninformative|unusually|use|was|were|which|why|worse|zeros|zeta::Rigidity Hierarchy Law \u2014 Calibrated Three-Tier Separation with Degenerate-Anchor Excision"
+    "zeta_harmonics::anchor|calibrated|degenerate|excision|hierarchy|rigidity|separation|three|tier::100|179|200|210|215|403|502|529|587|670|752|already|anchor|anchored|anything|approx|arithmetic|asserts|attributable|before|below|blind|boxed|but|calibrated|cannot|clustering|control|correlation|correlations|cram|crude|curve|curves|data|degeneracy|degenerate|delta|delta_|destroyed|diagnosis|diagnostic|dichotomy|distribution|driven|empirical|equiv|error|every|exact|excess|excise|exhibits|failed|failure|fit|free|gap|gaps|growth|gue|held|hence|hierarchy|identically|infty|initial|law|least|level|line|linear|log|marginal|mathcal|mathrm|memoryless|merely|moves|nearly|non|normalized|not|null|observed|out|parallel|point|points|poisson|positive|prediction|printed|process|processes|produce|qquad|quad|quantitatively|ratios|refined|relative|repulsion|rigid|rigidity|same|sample|saturate|scale|scales|separate|sequences|shapes|sharply|show|shuffled|shuffling|sits|small|squares|staircase|statistic|strict|strictly|structurally|sublinearly|suppression|test|text|their|therefore|three|through|tier|to0|toward|trivial|trivial_null|twin|type|uninformative|unusually|use|was|were|which|why|worse|zeros|zeta::Rigidity Hierarchy Law \u2014 Calibrated Three-Tier Separation with Degenerate-Anchor Excision",
+    "prime_constellations::clustering|defect|hierarchy|quadratic::a_k|admissible|against|alone|alpha|approx|approximately|arithmetic|asymptotic|baseline|beyond|cdot|claims|coefficient|compare|constant|constellation|constellations|contrast|correction|count|cram|defect|defects|delta_2|delta_3|delta_4|delta_k|denote|density|exhibit|exhibits|experience|fluctuations|frac|genuine|geq|grows|hardy|hierarchy|higher|integral|itself|larger|law|littlewood|log|mathcal|models|not|null|only|order|pattern|pi_k|prediction|present|quad|quadratic|random|relative|scaling|second|should|showing|significant|sim|size|some|specifically|sqrt|statistically|structure|systematic|systematically|text|these|tuples|uniform|universal::Quadratic Defect Hierarchy in Prime Constellation Clustering",
+    "chebyshev_race::beta|bzsf|fingerprint|spectral::0209489|9581|applied|arithmetic|band|beta|bias|big|bzsf|character|chi_|chi_8|coherent|computation|contrast|corresponding|cram|cycles|decaying|decomposition|delta|detrended|direct|dirichlet|dominant|dominates|drift|driven|each|effect|equiv1|exact|explicit|formula|frac|frequency|function|gamma|gamma_1|generic|gives|has|identical|identity|iff|its|labels|ldots|line|located|location|locked|logarithmic|lowest|mathrm|med|must|noise|normalized|null|odd|oscillations|otherwise|phi|pi_1|pi_3|pi_j|pipeline|pmod|prominence|propto|random|residue|rho|rubinstein|sarnak|scales|sequences|shuffled|sin|spectral|spectrum|sqrt|stable|star|sum|sum_|superposition|textstyle|tfrac12|therefore|times|trivial_null|two|underbrace|uniformly|unit|verdict|viewed|weights|writing|yield|zero|zeros::Beta-Zero Spectral Fingerprint of the Mod-8 Chebyshev Race (BZSF-8)",
+    "chebyshev_race::coherent|hann|hwcl|line|whitened::1000|129|2_2|7435|8977|9440|9581|absorbs|accumulates|after|against|apodization|apparent|approx|arith|arithmetic|artifact|band|baseline|because|beta|bias|blindness|both|bounded|boxcar|brownian|bzsf|cannot|causes|cdot|center|centered|chi|chi_|clipped|coherence|coherent|color|confinement|contains|continuum|contrast|cos|counter|cram|criterion|critical|cubic|decoy|deep|defects|delta|detrend|detrending|diagnosis|does|downward|drift|eject|estimator|every|evidence|exactly|exceeds|explicit|failure|falsification|fewer|fft|fitted|fix|flat|fluctuations|formula|frac|frequency|full|gamma|gamma_1|gives|global|grows|hann|has|hence|identical|identifiable|iii|incoherent|induced|inverted|its|kills|labels|law|leading|leakage|lesssim|line|linear|low|manufacture|manufactures|mathrm|max|maximum|measures|median|merely|migrate|migration|min|monotone|monotonically|multi|noise|normalization|normalizing|not|now|null|obeys|observed|orthogonalizing|p_n|part|peak|peaks|periodogram|periods|phi_|pipeline|power|process|prominence|prominences|propto|pulls|pure|qquad|random|red|refined|replace|residual|residue|restored|rho|robustly|rolling|rubinstein|sarnak|satisfies|scale|separation|sequences|short|shuffled|sidelobes|sigma|signal|sin|sits|spectral|spectrum|spurious|star|sum_|superposition|tail|tfrac12|than|therefore|true|two|unique|violated|visible|walk|walks|was|whereas|which|while|white|whitened|whitening|whose|widetilde|window|yields::Hann\u2013Whitened Coherent-Line Law for the Mod-8 Chebyshev Race (HWCL-8)",
+    "multiplicative_walk::attenuation|square::actual|alignment|approx|arithmetic|attenuate|attenuation|baseline|bias|cdot10|composite|consistency|control|controls|density|divisor|dots|exact|formed|frac|frac1p|has|identity|independent|lambda|law|layer|leading|least|left|lfloor|lies|liouville|logarithmically|magnitude|make|median|negative|neq0|non|null|obeys|observed|part|points|positive|predict|qquad|rademacher|random|range|ratio|raw|replacing|retaining|rfloor|right|scale|sense|separated|set|should|shows|sign|signs|since|spaced|sqrt|square|squarefree|statistically|substack|sum_|synthetic|term|terms|tested|walk|weak|while::Prime-Square Liouville Attenuation Law",
+    "smooth_numbers::density|interference|local|number|oscillation|spectral|via::134725|admits|amplitude|analogous|approx|asymptotic|averaged|baseline|captures|cdot|classical|control|corrections|cos|cosine|count|counting|cram|data|decay|delta|density|dickman|drawn|enhancement|exhibits|explicit|factor|formula|fourier|frac|frequency|gamma_1|integers|interference|largest|left|local|modulation|non|null|oscillations|oscillatory|parameter|psi|pure|random|real|require|rho|riemann|right|set|should|sim|sliding|smooth|spectral|suppression|term|text|times|trivial|uniformly|var|variance|whose|windows|without|x_i|zero|zeros|zeta::Smooth-Number Local Density Oscillation via Zeta-Zero Spectral Interference",
+    "smooth_numbers::baseline|cram|inversion|number|suppression|variance::alpha|also|analogous|approx|baseline|because|beta|cdot|clusters|compared|contrast|control|correlations|count|counting|cram|creates|data|decay|delta|delta_i|densities|density|deserts|deviation|dickman|empirical|enforces|enhancement|exhibit|exhibits|exponent|faster|frac|independent|initial|integers|interpretation|law|local|lower|multiples|multiplicative|must|nearby|null|number|numbers|obeys|opposite|oscillations|oscillatory|parameter|phenomenon|physical|predicted|psi|quad|random|ratio|real|refined|regularity|relative|represents|reveals|rho|sampling|satisfies|scales|scaling|set|show|sieve|sim|sliding|smooth|strong|stronger|structure|suppression|systematic|test|text|than|true|var|variance|while|windows|x_i::Smooth-Number Variance Suppression Law with Cram\u00e9r-Baseline Inversion",
+    "modular_bias_mod30::bias|character|projection|rank|triple::aligned|alignment|also|arithmetic|attraction|b_n|band|bias|bound|but|c_d|character|characters|chi_3|chi_5|chi_6|chi_d|components|computed|consecutive|contains|contrast|control|correction|correlated|cram|decompose|dirichlet|dominated|effect|empirical|every|exactly|factors|frac|generic|geq|has|holds|kronecker|ldots|legendre|loose|matrix|max_d|mod|must|noise|not|null|otimes|outer|passes|prod_|producing|product|projection|quad|quadratic|random|rank|real|reduced|repulsion|residues|same|satisfy|scale|sequence|series|signed|since|singular|sqrt|statistic|sum_|text|tfrac18|their|three|times10|transition|trivial_null|uniform|verdict::Triple-Character Rank Projection Law for Mod-30 Transition Bias",
+    "modular_bias_mod30::character|coherence|normalized|projection|rank|series|singular::above|actually|against|alignment|along|any|arithmetic|basis|bias|biased|bmod|both|c_3|c_5|c_6|c_d|calibrated|calibration|can|character|chebyshev|chi_3|chi_6|chi_d|class|classes|coherence|collapsed|column|component|composite|consecutive|constant|construction|contrast|control|converges|correlation|count|counter|cram|destroys|diagnosis|divisible|dominating|each|empirical|ensemble|equal|erasing|even|every|evidence|expectation|factor|failed|falsifiable|falsification|falsified|far|fatally|favors|filtered|forces|frac|frequency|gap|gaps|generic|genuine|hardy|hence|independence|its|itself|judged|langle|large|law|littlewood|marginal|marginals|mathfrak|matrices|matrix|meaning|mechanism|mid|mixing|mod|must|near|noise|norm|normalization|normalizing|not|null|observed|onto|ordering|original|otimes|own|positive|predicts|present|prod_|produces|producing|project|projection|pure|qquad|rangle|rank|raw|reach|real|reasons|reduced|refined|requires|rescales|residue|residues|restoring|row|rows|run|sampling|saturated|scale|score|separation|series|signal|similarly|singular|statistic|strict|structural|structure|substack|subtract|text|tfrac|though|tot|toward|transition|transitions|true|two|uniform|unit|unnormalized|unreachable|used|values|visible|was|weakest|work|wrong|zero::Gap-Singular-Series Character Coherence Law (Normalized Rank-1 Projection)",
+    "prime_powers::attrition|calibration|cofactor|rough::a_p|arithmetic|attrition|baseline|beat|bounds|c_p|calibration|cofactor|composite|density|empirical|equivalently|error|factor|forall|frac|frac1q|ignores|least|left|lfloor|lpf|mean|mertens|model|multiple|nmid|null|odd|operatorname|order|pointwise|prediction|predictor|prod_|proposed|qquad|relative|requires|rfloor|right|rough|satisfying|sieve|sqrt|text|tight|uniform|varepsilon_p|which|while|widehat::Mertens Rough-Cofactor Attrition Calibration",
+    "modular_bias_mod10::bipartite|collapse|covariance|logarithmic|threshold::005|015|arithmetic|around|bar|beyond|bias|bipartite|bmod|cdot|collapse|collapses|computed|contrast|correlations|coupling|covariance|cram|critical|demonstrating|density|dependent|ending|exhibit|exhibits|frac|g_n|gap|gaps|genuinely|larger|logarithmic|mathbb|mathcal|mean|measures|mod|modulo|must|non|null|observable|opposite|p_n|persistent|posits|pre|precede|r_n|random|residue|residues|same|satisfy|scale|scales|set|sgn|signal|smaller|sum_|symmetric|systematically|tested|text|threshold|transitions|unlike|versa|vice|whether|while|will|zero::Bipartite Residue-Gap Covariance Collapse with Logarithmic Threshold",
+    "modular_bias_mod10::bipartite|covariance|persistent|stabilization::approach|approx|asymptotic|bar|bipartite|bmod|but|cdot|characteristic|class|collapse|constant|contrast|controls|convergence|counting|covariance|cram|criterion|data|discovery|does|empirical|exhibit|exhibits|followed|frac|function|g_n|gap|grows|growth|high|infty|large|law|left|level|magnitude|mathcal|mean|modulo|much|multi|must|near|non|not|null|p_n|persistent|phase|r_n|random|range|rate|rather|refined|residue|reveals|right|satisfy|saturation|scale|scales|separation|sgn|shows|small|smaller|sqrt|stabilization|stabilizes|sum_|text|times|variance|zero::Persistent Bipartite Residue-Gap Covariance with Asymptotic Stabilization",
+    "zeta_harmonics::drift|extrapolation|gue|lock|logarithmic|surmise|variance::0127|100|1000|17810|200|2953|400|600|above|acceptance|also|bands|baseline|because|below|claims|computed|contrast|control|cram|declared|drift|empirical|error|every|exact|excess|f_n|far|finite|fitting|fraction|gap|gaps|gue|has|identical|imaginary|law|least|level|lock|logarithmic|magnitude|mass|mean|moments|must|non|null|obeys|observables|observed|only|order|out|outside|p_g|parts|pass|passes|poisson|predict|predictive|quantitative|random|repulsion|s_1|s_k|sample|satisfies|satisfy|scales|sits|spacings|squares|statistics|surmise|three|trivial|trivial_null|unfolded|unseen|value|var|var_n|variance|wide|wigner|zero|zeros|zeta::GUE Surmise Variance Lock with Logarithmic Drift Extrapolation",
+    "zeta_harmonics::deficit|richardson|term|two|unfolded|variance::0079|0127|034|055|100|1000|165|177|200|2000|295|400|600|about|acceptance|any|approx|asymptotic|band|barely|below|boxed|cannot|captures|cleanly|component|constant|contrast|control|correct|cram|critically|decaying|decays|deficit|deflation|delta|delta_n|diagnosis|distributed|dots|dragged|empirical|enough|entire|estimator|even|every|exponentially|failed|fails|falsification|finite|fitted|fitting|flattening|flattens|frac|gamma_n|gaps|grows|gue|has|have|its|large|larger|law|leading|least|made|magnitude|marginal|mass|mathcal|mathrm|model|must|negative|next|not|null|observed|one|order|origin|original|overshoots|p_g|parameter|passed|points|poisson|possesses|precisely|pred|predict|qquad|random|range|reachable|reason|refined|region|represent|repulsion|responsible|retained|richardson|s_1|scale|scales|second|separates|shrink|sided|sigma_g|single|slowly|smallest|spacing|squares|structural|surmise|systematically|t_n|term|than|there|therefore|through|tighter|tolerance|toward|two|unfolded|unseen|value|var|variance|was|weight|weights|which|wide|widen|within|would|zero|zeros|zeta::Two-Term Richardson Variance Deficit Law for Unfolded Zeta Spacings",
+    "goldbach_partitions::decoupling|factor|gpfrd|rank::10000|20000|40000|5000|80000|after|applying|arithmetic|artifact|asserts|baseline|because|before|but|cancellation|collapses|contrast|control|correlated|correlation|count|counts|cram|decoupling|denominator|density|deterministic|dyadic|even|factor|frac|g_c|generic|genuine|hardy|induce|left|littlewood|log|mid|much|multiplying|must|naive|normalization|normalized|null|odd|omega_2|partition|pnt|precisely|predicts|prod_|qquad|random|rank|remains|require|residual|rho_|rho_c|rho_s|right|same|separates|series|singular|smaller|spurious|strongly|substack|text|thus|true|unrelated|windows|zero::Goldbach Prime-Factor Rank Decoupling (GPFRD) Conjecture"
   ]
 }
