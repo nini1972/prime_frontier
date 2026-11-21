@@ -9,7 +9,7 @@ on:
       cycles:
         description: 'Number of autonomous research cycles'
         required: false
-        default: '5'
+        default: '9'
       temperature:
         description: 'Speculation temperature'
         required: false
