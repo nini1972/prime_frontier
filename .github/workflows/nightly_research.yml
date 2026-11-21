@@ -47,8 +47,8 @@ jobs:
         OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
       run: |
         python -m models.agent_world \
-          --cycles ${{ github.event.inputs.cycles || '5' }} \
-          --sleep 5 \
+          --cycles ${{ github.event.inputs.cycles || '9' }} \
+          --sleep 9 \
           --temperature ${{ github.event.inputs.temperature || '0.75' }} \
           --models ${{ github.event.inputs.models || 'sonnet,glm,deepseek' }}
 
