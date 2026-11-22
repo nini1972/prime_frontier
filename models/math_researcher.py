@@ -517,7 +517,7 @@ def run_hypothesis_cycle(
         print(f"Error querying model: {res['error']}")
         return {"success": False, "error": res["error"], "domain": domain_id}
 
-    content = res.get("content") or res.get("reasoning") or ""
+    content = res.get("content") or ""
     reasoning = res.get("reasoning") or ""
     parsed = parse_conjecture_sections(content)
     name = parsed["name"]
@@ -535,10 +535,10 @@ def run_hypothesis_cycle(
             system_prompt=system_prompt,
             model_alias=model_alias,
             temperature=max(0.3, temperature - 0.15),
-            max_tokens=8192,
+            max_tokens=16384,
         )
         if fmt_res["success"]:
-            fmt_content = fmt_res.get("content") or fmt_res.get("reasoning") or ""
+            fmt_content = fmt_res.get("content") or ""
             fmt_parsed = parse_conjecture_sections(fmt_content)
             if fmt_parsed["code"]:
                 res = fmt_res
@@ -576,7 +576,7 @@ def run_hypothesis_cycle(
         )
         if not retry_res["success"]:
             break
-        retry_content = retry_res.get("content") or retry_res.get("reasoning") or ""
+        retry_content = retry_res.get("content") or ""
         retry_parsed = parse_conjecture_sections(retry_content)
         if retry_parsed["code"]:
             res = retry_res
@@ -592,6 +592,13 @@ def run_hypothesis_cycle(
 
     repairs_attempted = 0
     refined_from = None
+    if not code:
+        log("Model failed to generate a Python verification script after retry; skipping persistence of empty stub.")
+        return {
+            "success": False,
+            "error": "NO CODE GENERATED after structured retry",
+            "domain": domain_id,
+        }
     if dup_match is not None:
         log("Rejected after novelty retries: still too similar to prior research. Skipping execution.")
         verif = {

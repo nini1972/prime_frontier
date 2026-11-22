@@ -448,7 +448,7 @@
                 <span class="status-pill">⚡ Engine: SymPy • mpmath • NumPy</span>
                 <span class="status-pill">🧠 AI: DeepSeek R1 • Qwen 2.5 Math • Claude Sonnet</span>
             </div>
-            <div class="status-pill">November 22, 2026, 02:39 UTC</div>
+            <div class="status-pill">November 22, 2026, 11:20 UTC</div>
         </div>
 
         <div class="header-title-wrap">
@@ -484,7 +484,7 @@
         </div>
         <div class="kpi-card">
             <div class="kpi-label">Conjectures Tested <span>🧠</span></div>
-            <div class="kpi-value">405</div>
+            <div class="kpi-value">404</div>
             <div class="kpi-subtext">Formulated by DeepSeek R1 / Qwen Math</div>
         </div>
     </div>
@@ -496,7 +496,7 @@
             <button class="tab-btn" onclick="switchTab('zeta')">🌊 Riemann Zeta Wave Synthesizer</button>
             <button class="tab-btn" onclick="switchTab('modular')">🔄 Modular Memory & Chebyshev Bias</button>
             <button class="tab-btn" onclick="switchTab('geometry')">🌀 Geometric Spirals (Ulam & Sacks)</button>
-            <button class="tab-btn" onclick="switchTab('ai_lab')">🧠 Autonomous Conjectures Lab (405)</button>
+            <button class="tab-btn" onclick="switchTab('ai_lab')">🧠 Autonomous Conjectures Lab (404)</button>
         </nav>
     </div>
 
@@ -661,10 +661,10 @@
                 giving up; a duplicate-detection index rejects conjectures too similar to ones already tried.
             </div>
             <div style="display:flex; gap:1.5rem; flex-wrap:wrap; margin: 0.5rem 0 1.25rem;">
-                <div class="status-pill">🔁 Total Cycles: 401</div>
+                <div class="status-pill">🔁 Total Cycles: 400</div>
                 <div class="status-pill">✅ Supported: 94</div>
                 <div class="status-pill">❌ Falsified: 257</div>
-                <div class="status-pill">⚠️ Errors/Timeouts: 26</div>
+                <div class="status-pill">⚠️ Errors/Timeouts: 25</div>
                 <div class="status-pill">🪞 Duplicates Rejected: 24</div>
                 <div class="status-pill">🏆 Confirmed Laws: 94</div>
             </div>
@@ -724,10 +724,10 @@
                             <td style="font-family: var(--font-mono); color: var(--text-muted); font-size:0.8rem;">2026-11-22 02:24:04</td>
                         </tr><tr>
                             <td style="color:#fff;">Base Prime Powers & Sieve Mechanics<div style="font-size:0.75rem;color:var(--text-muted);">Higher prime powers (p^k <= N), least-prime-factor sieve attrition, and Buchstab scaling.</div></td>
-                            <td style="font-family: var(--font-mono); color: var(--text-secondary);">60</td>
+                            <td style="font-family: var(--font-mono); color: var(--text-secondary);">59</td>
                             <td style="font-family: var(--font-mono); color: var(--accent-emerald);">11</td>
                             <td style="font-family: var(--font-mono); color: var(--accent-rose);">40</td>
-                            <td style="font-family: var(--font-mono); color: var(--accent-amber);">6</td>
+                            <td style="font-family: var(--font-mono); color: var(--accent-amber);">5</td>
                             <td style="font-family: var(--font-mono); color: var(--text-muted);">3</td>
                             <td style="font-family: var(--font-mono); color: var(--text-muted); font-size:0.8rem;">2026-11-22 02:34:48</td>
                         </tr><tr>
@@ -770,11 +770,11 @@
 
         <div class="filter-bar">
             <div style="display:flex; gap:0.5rem; flex-wrap:wrap;" id="verdictFilterGroup">
-                <button class="filter-chip active" data-filter="ALL" onclick="setVerdictFilter('ALL', this)">All (405)</button>
+                <button class="filter-chip active" data-filter="ALL" onclick="setVerdictFilter('ALL', this)">All (404)</button>
                 <button class="filter-chip" data-filter="SUPPORTED" onclick="setVerdictFilter('SUPPORTED', this)">🏆 Confirmed Laws (94)</button>
                 <button class="filter-chip" data-filter="FALSIFIED" onclick="setVerdictFilter('FALSIFIED', this)">❌ Falsified (250)</button>
                 <button class="filter-chip" data-filter="TRIVIAL" onclick="setVerdictFilter('TRIVIAL', this)">🛡️ Null-Rejected (9)</button>
-                <button class="filter-chip" data-filter="OTHER" onclick="setVerdictFilter('OTHER', this)">🪞 Duplicates / Errors (52)</button>
+                <button class="filter-chip" data-filter="OTHER" onclick="setVerdictFilter('OTHER', this)">🪞 Duplicates / Errors (51)</button>
             </div>
             <div style="display:flex; gap:0.6rem; flex-wrap:wrap; align-items:center;">
                 <select id="domainFilterSelect" class="filter-input" onchange="applyConjectureFilters()">
@@ -1335,28 +1335,6 @@ Test 5: Out-of-Sample Validation (N=10^7)
 FINAL VERDICT
 ================================================================================
 VERDICT: FALSIFIED
-                </div>
-            </div>
-            <div class="conjecture-card" data-verdict="OTHER" data-domain="prime_powers">
-                <div class="conj-header">
-                    <div>
-                        <span style="font-size: 0.75rem; font-family: var(--font-mono); color: var(--accent-cyan);">PRIME-CONJ-1795314888 • 2026-11-22 02:34:48 • <span style="color: var(--accent-purple);">Base Prime Powers &amp; Sieve Mechanics</span></span>
-                        <div class="conj-title">Empirical Prime Invariant</div>
-                        
-                    </div>
-                    <span class="verdict-badge verdict-other">NO CODE GENERATED</span>
-                </div>
-                <div style="margin-bottom: 0.75rem; font-size: 0.9rem; color: #cbd5e1;">
-                    <b>Formulation:</b> We need formulate one novel conjecture orthogonal to prior. Need use data. Need script under 60s. Need final only format. Need think concise.
-
-We need propose mathematically precise. Domain base prime powers and sieve. Prior confirmed include C_p exact for p&gt;N^(1/3), Mertens rough cofactor for p&lt;=N^(1/3), autocorrelation, multiplicative capacity, cross-harmonic, residual capacity. Falsified many s
-                </div>
-                <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">
-                    <b>Target:</b> Quantitative multi-scale &amp; null-baseline validation • Model: <code>deepseek/deepseek-v4.1-flash</code>
-                </div>
-                <div class="code-box"></div>
-                <div style="margin-top: 0.5rem; font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-emerald);">
-                    <b>Execution Output:</b> 
                 </div>
             </div>
             <div class="conjecture-card" data-verdict="FALSIFIED" data-domain="smooth_numbers">

@@ -169,14 +169,27 @@ def query_math_model(
                     content = parts[1].strip()
 
                 # Guard against reasoning token exhaustion leaving `content` empty:
-                # retry immediately with lower reasoning effort rather than dumping raw CoT into content!
+                # only salvage `reasoning` if it actually contains structured sections + a fenced code block;
+                # otherwise retry with effort="low" and 32k token budget, and fail cleanly if still empty.
                 if not content and reasoning:
-                    if ("CONJECTURE_NAME" in reasoning and "```" in reasoning) or attempt == max_retries - 1:
+                    if "CONJECTURE_NAME" in reasoning and "```" in reasoning:
                         content = reasoning
-                    else:
+                    elif attempt < max_retries - 1:
                         effort_level = "low"
+                        max_tokens = max(max_tokens, 32768)
+                        timeout = max(timeout, 300)
                         last_err = f"Reasoning exhausted max_tokens (finish_reason={finish_reason}) with empty content"
                         continue
+                    else:
+                        last_err = f"Reasoning exhausted max_tokens (finish_reason={finish_reason}) without generating code"
+                        return {
+                            "content": "",
+                            "reasoning": reasoning,
+                            "model": model_id,
+                            "latency_s": round(elapsed, 2),
+                            "success": False,
+                            "error": last_err,
+                        }
 
                 return {
                     "content": content,

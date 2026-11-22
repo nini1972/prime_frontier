@@ -213,6 +213,44 @@ else:
     assert res["verdict"] == "EMPIRICALLY SUPPORTED", f"Sandbox broke legitimate scipy script: {res}"
 
 
+def test_reasoning_exhaustion_never_leaks_raw_cot_stub():
+    import json
+    from unittest.mock import MagicMock, patch
+    from models.llm_client import query_math_model
+
+    captured_payloads = []
+
+    def fake_urlopen(req, timeout=None):
+        captured_payloads.append(json.loads(req.data.decode("utf-8")))
+        m = MagicMock()
+        m.__enter__.return_value.read.return_value = json.dumps({
+            "choices": [{
+                "finish_reason": "length",
+                "message": {
+                    "content": "",
+                    "reasoning": "We need formulate one novel conjecture. Need script under 60s...",
+                },
+            }]
+        }).encode("utf-8")
+        return m
+
+    prev_key = os.environ.get("OPENROUTER_API_KEY")
+    os.environ["OPENROUTER_API_KEY"] = "test-key"
+    try:
+        with patch("urllib.request.urlopen", side_effect=fake_urlopen):
+            res = query_math_model("test prompt", model_alias="deepseek")
+        assert res["success"] is False, f"Expected failure when content is empty, got {res}"
+        assert res["content"] == "", f"Expected empty content, got {res['content']}"
+        assert len(captured_payloads) == 3, f"Expected 3 attempts, got {len(captured_payloads)}"
+        assert captured_payloads[1]["max_tokens"] == 32768
+        assert captured_payloads[1]["reasoning"] == {"effort": "low"}
+    finally:
+        if prev_key is None:
+            os.environ.pop("OPENROUTER_API_KEY", None)
+        else:
+            os.environ["OPENROUTER_API_KEY"] = prev_key
+
+
 if __name__ == "__main__":
     print("Running Prime Frontier Research Pipeline regression suite...")
     test_verdict_shadowing_fixed()
@@ -222,4 +260,5 @@ if __name__ == "__main__":
     test_ten_domains_registered()
     test_dashboard_xss_escaping_and_katex_preservation()
     test_sandbox_blocks_secrets_network_and_slow_zetazero()
-    print("All 7 pipeline & security regression test groups passed!")
+    test_reasoning_exhaustion_never_leaks_raw_cot_stub()
+    print("All 8 pipeline & security regression test groups passed!")

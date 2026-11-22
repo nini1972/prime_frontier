@@ -51,23 +51,6 @@
     "refined_from": "Quadratic Repulsion Amplification in Cross-Residue Transition Deficits"
   },
   {
-    "id": "PRIME-CONJ-1795314888",
-    "timestamp": "2026-11-22 02:34:48",
-    "model": "deepseek/deepseek-v4.1-flash",
-    "domain": "prime_powers",
-    "name": "Empirical Prime Invariant",
-    "formulation": "We need formulate one novel conjecture orthogonal to prior. Need use data. Need script under 60s. Need final only format. Need think concise.\n\nWe need propose mathematically precise. Domain base prime powers and sieve. Prior confirmed include C_p exact for p>N^(1/3), Mertens rough cofactor for p<=N^(1/3), autocorrelation, multiplicative capacity, cross-harmonic, residual capacity. Falsified many s",
-    "target": "Quantitative multi-scale & null-baseline validation",
-    "reasoning": "We need formulate one novel conjecture orthogonal to prior. Need use data. Need script under 60s. Need final only format. Need think concise.\n\nWe need propose mathematically precise. Domain base prime powers and sieve. Prior confirmed include C_p exact for p>N^(1/3), Mertens rough cofactor for p<=N^(1/3), autocorrelation, multiplicative capacity, cross-harmonic, residual capacity. Falsified many scaling laws. Need distinct observable.\n\nIdea: \"Prime Power Sieve Buchstab Defect / Mertens Third-Order Curvature Law\" involving C_p(N) for small p and Buchstab's function. Need compare to baseline. Need empirical test across scales. Need define observable and threshold.\n\nWe have C_p(N) counts odd n<=N with lpf(n)=p. For p odd prime, C_p(N) = count m <= N/p, m odd? Actually n=p*m, lpf(n)=p means m has no prime factor < p and m odd? Since n odd, p odd, m odd. Also m may be 1? n=p prime? But C_p counts odd composites starting p^2, so m>=p? For n composite with lpf p, m>=p and all prime factors >=",
-    "code": "",
-    "verdict": "NO CODE GENERATED",
-    "output": "",
-    "elapsed_s": 0.0,
-    "repairs_attempted": 0,
-    "novelty_retries": 0,
-    "refined_from": null
-  },
-  {
     "id": "PRIME-CONJ-1795314547",
     "timestamp": "2026-11-22 02:29:07",
     "model": "z-ai/glm-5.3-flash",
