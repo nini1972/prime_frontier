@@ -10,85 +10,85 @@
       "last_run": "2026-11-20 02:25:47"
     },
     "modular_bias_mod10": {
-      "attempts": 59,
+      "attempts": 60,
       "supported": 13,
-      "falsified": 41,
+      "falsified": 42,
       "errors": 4,
       "timeout": 0,
       "duplicates": 1,
-      "last_run": "2026-11-21 14:17:32"
+      "last_run": "2026-11-22 02:36:32"
     },
     "prime_powers": {
-      "attempts": 59,
+      "attempts": 60,
       "supported": 11,
       "falsified": 40,
-      "errors": 4,
+      "errors": 5,
       "timeout": 1,
       "duplicates": 3,
-      "last_run": "2026-11-21 14:11:35"
+      "last_run": "2026-11-22 02:34:48"
     },
     "goldbach_partitions": {
-      "attempts": 61,
+      "attempts": 62,
       "supported": 15,
-      "falsified": 38,
+      "falsified": 39,
       "errors": 2,
       "timeout": 1,
       "duplicates": 5,
-      "last_run": "2026-11-21 14:15:12"
+      "last_run": "2026-11-22 02:37:12"
     },
     "modular_bias_mod30": {
-      "attempts": 74,
-      "supported": 16,
+      "attempts": 75,
+      "supported": 17,
       "falsified": 52,
       "errors": 1,
       "timeout": 0,
       "duplicates": 5,
-      "last_run": "2026-11-21 14:10:47"
+      "last_run": "2026-11-22 02:39:14"
     },
     "zeta_harmonics": {
-      "attempts": 64,
+      "attempts": 65,
       "supported": 18,
-      "falsified": 31,
+      "falsified": 32,
       "errors": 3,
       "timeout": 4,
       "duplicates": 8,
-      "last_run": "2026-11-21 14:20:58"
+      "last_run": "2026-11-22 02:24:04"
     },
     "chebyshev_race": {
-      "attempts": 5,
+      "attempts": 6,
       "supported": 4,
-      "falsified": 1,
+      "falsified": 2,
       "errors": 0,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-11-21 13:59:36"
+      "last_run": "2026-11-22 02:19:09"
     },
     "prime_constellations": {
-      "attempts": 4,
-      "supported": 1,
+      "attempts": 5,
+      "supported": 2,
       "falsified": 2,
       "errors": 1,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-11-21 14:04:06"
+      "last_run": "2026-11-22 02:22:28"
     },
     "multiplicative_walk": {
-      "attempts": 5,
-      "supported": 1,
+      "attempts": 6,
+      "supported": 2,
       "falsified": 4,
       "errors": 0,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-11-21 14:01:09"
+      "last_run": "2026-11-22 02:20:14"
     },
     "smooth_numbers": {
-      "attempts": 5,
+      "attempts": 6,
       "supported": 1,
-      "falsified": 3,
+      "falsified": 4,
       "errors": 0,
       "timeout": 1,
       "duplicates": 0,
-      "last_run": "2026-11-21 14:06:17"
+      "last_run": "2026-11-22 02:29:07"
     }
   },
   "models": {
@@ -108,22 +108,40 @@
       "errors": 13
     },
     "sonnet": {
-      "attempts": 217,
-      "success": 201,
+      "attempts": 220,
+      "success": 204,
       "errors": 12
     },
     "glm": {
-      "attempts": 12,
-      "success": 9,
+      "attempts": 15,
+      "success": 12,
       "errors": 3
     },
     "deepseek": {
-      "attempts": 9,
-      "success": 9,
-      "errors": 0
+      "attempts": 12,
+      "success": 11,
+      "errors": 1
     }
   },
   "confirmed_laws": [
+    {
+      "id": "PRIME-CONJ-1795315154",
+      "name": "Logarithmic Gap-Anisotropy Law with Constant Chirality Excess",
+      "domain": "modular_bias_mod30",
+      "timestamp": "2026-11-22 02:39:14"
+    },
+    {
+      "id": "PRIME-CONJ-1795314148",
+      "name": "The Sexy\u2013Twin Doubling Anchor: A Singular-Series Ratio Lattice Separating Arithmetic Primes from Cram\u00e9r Noise",
+      "domain": "prime_constellations",
+      "timestamp": "2026-11-22 02:22:28"
+    },
+    {
+      "id": "PRIME-CONJ-1795314014",
+      "name": "Arcsine-Broken Liouville Occupation Law with Universal \u22122/3 Well Depth",
+      "domain": "multiplicative_walk",
+      "timestamp": "2026-11-22 02:20:14"
+    },
     {
       "id": "PRIME-CONJ-1795270652",
       "name": "Mod-30 Divisibility Offset Law (Persistent Offset + Log-Drift Resonance)",
@@ -1061,6 +1079,21 @@
     "goldbach_partitions::amplification|divisor|variance::012|100|20000|40000|80000|amplification|arises|arithmetic|baseline|because|beyond|bounded|but|cascade|cdot|classes|compute|contrast|correction|correlations|count|cram|demonstrating|denote|depth|despite|deviation|divisor|divisors|each|even|exhibit|exhibits|extremely|failed|frac|geq|goldbach|governs|growth|hardy|inappropriate|including|initial|instead|integers|ldots|leq|littlewood|making|max_|means|median|multiplicative|multiplicity|nmid|normalized|null|numbers|observe|odd|partition|partitions|placement|powers|prod_|quad|random|ratio|remains|same|sample|satisfies|scale|scaling|series|sigma_j|signature|singular|size|sparse|stability|standard|std|stratification|stratified|structure|sum_|suppressed|text|total|true|variance|w_j|weight::Goldbach Partition Prime-Divisor Variance Amplification Law",
     "modular_bias_mod10::asymmetry|repulsion|self|series|singular|stratified::2c_2|approx|arithmetic|arithmetically|bias|big|bmod|carried|cdot|cdots|class|concentrated|conditioned|confirmed|constant|contrast|control|cram|delta|delta_|divisible|drift|driven|entropy|exactly|exists|factor|fixed|frac|gains|gap|gaps|genuinely|giving|governed|h_n|hardy|harmonic|here|kappa|lag|large|law|laws|lemke|littlewood|log|mathfrak|matrices|means|mechanism|merely|mid|must|nmid|not|null|oliver|orthogonal|p_1|p_2|p_n|prediction|prior|probabilities|prod_|qquad|quad|r_n|random|repulsion|residue|resolved|returns|s_0|s_1|satisfies|self|separate|series|should|sigma_|sim|since|singular|soundararajan|stratified|sufficiently|text|transition|triadic|type|unconditional|uniform|used|which|x_n::Gap-Stratified Singular-Series Repulsion Asymmetry (Mod-3 Resonance of Residue Self-Repulsion)",
     "modular_bias_mod10::divisibility|drift|log|offset|persistent::008|0274|107|116|1405|14246|786|against|approx|asymptotics|bias|big|blind|both|boxed|calibrated|carries|caused|cdot10|conditional|consecutive|constant|contrast|control|correct|cram|data|decay|delta|delta_|diagnosis|divisibility|does|drift|enormous|equiv|error|errors|even|every|exactly|excellent|excess|failure|far|fit|fitting|fixed|frac|functional|gap|gaps|genuine|gives|h_n|had|hence|iff|iii|including|infty|its|kappa|law|mathbb|mid|mis|mod|nmid|not|null|observable|observed|offset|one|only|original|out|own|parameter|persistent|pmod|positive|predicted|priori|probability|prod_|producing|propto|pure|qquad|quad|r_n|raw|refined|residues|sample|satisfy|scale|scaled|scales|scaling|separation|sequence|sharper|show|sigma|sigma_|sign|signed|sim|smallest|statistic|structural|survives|text|than|threshold|times10|trivial_null|two|units|unreachable|validation|values|was|weights|which|wrong|x_n::Mod-30 Divisibility Offset Law (Persistent Offset + Log-Drift Resonance)",
-    "zeta_harmonics::factor|form|gue|ramp|separation|spectral|unfolded::120|240|asymptotically|baseline|bound|but|consecutive|contrast|correlations|cumulative|destroys|distribution|empirical|extract|factor|form|frac|gamma_k|genuine|gue|imaginary|independent|infty|k_n|left|level|like|log|marginal|mean|non|null|parts|permute|poisson|positions|preserves|process|provides|qquad|quantitative|randomly|relaxed|repulsion|riemann|right|s_j|same|satisfies|separation|sequence|sharp|shuff|shuffled|spacing|spacings|spectral|statistics|sum_|summation|synthetic|tau|tested|text|them|trivial|unfolded|window|x_j|x_k|yielding|zero|zeros|zeta::GUE Ramp Separation Law for Unfolded Zeta Zero Spectral Form Factor"
+    "zeta_harmonics::factor|form|gue|ramp|separation|spectral|unfolded::120|240|asymptotically|baseline|bound|but|consecutive|contrast|correlations|cumulative|destroys|distribution|empirical|extract|factor|form|frac|gamma_k|genuine|gue|imaginary|independent|infty|k_n|left|level|like|log|marginal|mean|non|null|parts|permute|poisson|positions|preserves|process|provides|qquad|quantitative|randomly|relaxed|repulsion|riemann|right|s_j|same|satisfies|separation|sequence|sharp|shuff|shuffled|spacing|spacings|spectral|statistics|sum_|summation|synthetic|tau|tested|text|them|trivial|unfolded|window|x_j|x_k|yielding|zero|zeros|zeta::GUE Ramp Separation Law for Unfolded Zeta Zero Spectral Form Factor",
+    "chebyshev_race::curvature|inflection|logarithmic|lrcil::absent|approximated|asymmetry|bias|bimodal|capturing|cdot|central|coherent|concentration|cram|creating|curvature|delta|derivative|differences|discrete|distribution|empirical|exhibits|finite|frac|function|gaussian|governed|inflection|interquartile|intuition|iqr|kappa|kappa_|kurt|kurtosis|lack|like|logarithmic|mechanism|noise|non|normalized|organization|oscillatory|p_n|physical|predicts|quadratic|race|random|range|real|residue|rubinstein|sarnak|satisfies|scales|second|separation|sequence|signature|skew|spectral|sqrt|structure|systematic|tail|text|times10|trajectories|trajectory|via|yielding|zeros::Chebyshev Race Logarithmic Curvature Inflection Law (LRCIL-8)",
+    "chebyshev_race::breaking|crcsb|curvature|symmetry::absent|amplification|bias|but|captures|capturing|cdot|coherence|corr|correlation|correlations|cram|create|cross|curvature|delta|directional|diverge|due|empirical|exhibit|falsification|fluctuations|frac|frequency|function|high|higher|identical|indistinguishable|induces|intuition|iqr|kappa|kappa_|kappa_i|kurtosis|lack|leads|level|lfloor|locking|logarithmic|maintain|mean|mechanism|medium|memory|mod|moment|multi|nearly|noise|normalized|organization|oscillatory|output|p_n|persist|persistence|persistent|phase|physical|point|race|random|range|ratio|real|reduces|refined|reflects|reveals|rfloor|rho_|rubinstein|sarnak|satisfies|scale|scales|sgn|shows|sigma|sign|similar|single|skewness|spectral|sqrt|stability|statistics|structure|suppress|suppression|systematic|temporal|text|their|through|trajectory|variance|versus|volatility|zero|zeros::Chebyshev Race Curvature Symmetry Breaking Law (CRCSB)",
+    "multiplicative_walk::lya|negativity|rademacher|separation|well::002|063|100|approx|approximate|arithmetic|around|asymmetry|baseline|bias|bius|blocks|but|cdot10|coherent|completely|components|coupled|data|depth|difference|every|falsifiable|fluctuations|frac|fraction|gap|has|inject|integers|lambda|last|law|liouville|lives|log|logarithmically|lya|margin|mathcal|mathrm|multi|multiplicative|negative|negativity|non|null|numbers|occupation|one|only|oscillates|otherwise|out|phenomenon|pm1|points|qquad|quantitative|rademacher|reflecting|relative|restoring|sample|satisfies|scale|separates|sharpen|show|sim|snapshot|spaced|sqrt|squarefree|squareful|stark|strictly|structural|sum_|sum_j|symmetry|trivial|trivial_null|two|unif|values|vanishes|varepsilon_n|verdict|via|walk|well|whereas|while|wide|x_j::P\u00f3lya Negativity Well with Rademacher-Separation Law",
+    "multiplicative_walk::arcsine|broken|depth|occupation|universal|well::0000|100|200|354|567|602|615|624|648|660|661|663|667|9991|9999|additionally|against|analogously|any|approx|approx0|approximate|arcsine|arithmetic|averaged|averaging|bar|bias|bigl|bigr|bius|blocks|but|calibration|cdot10|chance|coherent|complete|conjectured|constant|content|contrast|converges|correct|corrected|correlated|cross|data|demanding|depth|design|destroyed|deviation|diagnosis|discriminability|discriminator|drifting|effect|entirely|every|failed|failure|falsification|follows|frac|frac1j|fraction|functional|gap|genuine|heavily|impossible|increments|initial|injects|instead|integers|its|itself|lambda|large|law|length|lil|limiting|log|made|makes|mathcal|mathrm|mean|mechanism|multiplicativity|natural|near|negativity|normalized|not|null|observed|occupation|originally|points|qquad|rademacher|random|refined|reflecting|remarkably|restores|restoring|sampling|scale|separation|show|shrinking|shrinks|sigma|single|sized|spaced|sqrt|sqrt8|squarefrees|squareful|stable|standard|statistic|statistics|stays|sum|sum_|sum_j|support|symmetry|tfrac23|threshold|total|toward|unbounded|universal|unstable|walk|walks|was|well|while|x_j|z_f::Arcsine-Broken Liouville Occupation Law with Universal \u22122/3 Well Depth",
+    "prime_constellations::anchor|arithmetic|cram|doubling|lattice|noise|ratio|separating|series|sexy|singular|twin::2c_2|4c_2|algebraic|arithmetic|baseline|baselines|both|carries|consequently|constants|contrast|control|correlations|count|cram|density|deviation|drift|each|even|every|factor|finite|fluctuation|frac|gap|genuine|gives|hardy|hence|int_2|last|lattice|likewise|littlewood|mathfrak|mid|n_2|n_4|n_6|n_h|naive|noise|not|null|occurs|only|order|pinned|pnt|prediction|probability|prod_|pure|qquad|random|ratio|real|reflection|same|satisfies|scale|separated|series|set|shape|signature|sim|singular|symmetry|systematic|text|thus|trip|triplets|value|while::The Sexy\u2013Twin Doubling Anchor: A Singular-Series Ratio Lattice Separating Arithmetic Primes from Cram\u00e9r Noise",
+    "zeta_harmonics::correlation|damping|rigidity|triple|versus::100|200|400|arithmetic|bar|beyond|biases|captures|class|clustering|computed|correlation|correlations|corresponding|cram|density|detect|ell|ensures|exhibits|frac|function|g_k|gamma_n|gap|gaps|gaussian|genuine|geq|gue|hierarchy|higher|hold|intuition|lag|lags|least|leq|lfloor|like|local|log|max_|mean|must|noise|non|normalized|null|number|omega|one|order|p_k|physical|point|poisson|random|ratio|residue|retain|rfloor|riemann|rigidity|s_k|same|satisfy|scales|separation|sequence|shows|sizes|spacing|spacings|spectral|sqrt|structure|sum_|suppresses|suppression|t_3|test|text|theoretic|three|triple|twin|unfolded|universal|while|window|windows|zero|zeta::Zeta Zero Spacing Triple-Correlation Rigidity versus Prime Gap Triple-Correlation Damping Law",
+    "zeta_harmonics::correlation|cram|crossover|decay|hierarchy|triple::150|2000|amplitude|approaching|approx|arithmetic|bar|become|behavior|below|beyond|both|but|c_c|c_p|correlation|correlations|corresponding|cram|crossover|decay|deep|different|ell|empirical|enhancement|evidence|exceeding|exhibit|exhibits|fall|fluctuations|frac|fundamentally|g_k|gap|gaps|gue|have|hierarchy|higher|indicating|interpretation|inverted|large|law|left|leq|lfloor|like|log|logarithmic|mathcal|matrix|max_|model|more|multi|noise|normalized|null|order|p_k|phenomenon|physical|poisson|power|prefactor|quad|random|randomness|rates|refined|reflects|relative|retain|revealing|reveals|rfloor|riemann|right|rigid|rigidity|s_k|satisfies|scale|scales|separation|sequence|sim|similar|small|smaller|spacings|spectral|sqrt|structure|sum_|suppress|suppression|text|than|triple|unfolded|universal|universality|vanishing|weaker|zero|zeros|zeta::Zeta-Prime Triple-Correlation Asymptotic Decay Hierarchy with Cram\u00e9r Crossover Law",
+    "smooth_numbers::buchstab|conditional|densities|dickman|divisibility|shift|transfer::approx|arithmetic|arithmetically|baselines|beat|conditional|conditioning|control|cram|d_m|declared|density|dickman|divisibility|each|effect|equivalent|factors|fixed|frac|function|generic|genuinely|gives|have|hence|independence|independent|independently|integer|lattice|left|mid|model|modulus|must|naive|noise|not|null|obey|one|parameter|prediction|probability|proving|qquad|ranges|rather|rho|right|shifted|shifting|should|since|smooth|smoothness|style|synthetic|text|tfrac|than|transfers|uniform|uniformly|what::Divisibility-Shift Law for Conditional Smooth Densities (Buchstab-Dickman Transfer)",
+    "prime_powers::invariant::60s|autocorrelation|base|c_p|capacity|cofactor|concise|confirmed|cross|data|domain|exact|falsified|final|format|formulate|harmonic|include|many|mathematically|mertens|multiplicative|need|novel|one|only|orthogonal|powers|precise|prior|propose|residual|rough|script|sieve|think|use::Empirical Prime Invariant",
+    "modular_bias_mod10::amplification|cross|deficits|quadratic|repulsion::0001|2016|amplification|approx|approximately|arithmetic|attraction|baseline|cdot|constant|constraints|correlated|corresponding|cram|cross|deficit|deficits|delta_r|density|diagonal|distinct|divisibility|driven|due|exhibit|frac|genuine|geq|grows|growth|individual|insight|key|known|law|left|lemke|linearly|los|mathcal|mid|model|modulus|monotonic|n_1|n_2|null|oliver|only|order|phenomenon|predict|predictions|prod_|product|quadratic|quadratically|quantitative|random|repulsion|residue|residues|reveals|right|scale|scales|scaling|second|separation|series|shared|should|show|signal|sim|singular|small|soundararajan|stabilizes|strong|structure|super|text|their|thus|transitions|uniform|while|within|yielding::Quadratic Repulsion Amplification in Cross-Residue Transition Deficits",
+    "modular_bias_mod10::cram|decay|diagonal|logarithmic|product|repulsion|separation::011|0114|2016|alpha|amplification|approx|arithmetic|around|asymptotically|because|beta|but|c_r|calibration|cdot|comparable|consistent|constant|contradicts|cram|data|decay|decays|deeper|deficits|delta_r|diagonal|distinguishable|distribution|does|empirical|expect|four|frac|genuine|grow|grows|hypothesis|independent|individual|initial|insight|key|law|left|lemke|linearly|magnitudes|mathcal|mid|model|modulus|normalized|not|null|oliver|power|prod_|product|providing|quadratic|quantity|random|range|rather|ratio|refined|repulsion|residue|revealing|reveals|right|scaling|separation|shows|signal|sim|slowly|soundararajan|stabilizes|structure|suggesting|tested|text|their|underlying|uniform|while|yielding|yields::Logarithmic Decay Law for Diagonal Repulsion Product with Cram\u00e9r Separation",
+    "goldbach_partitions::adjusted|compression|cram|noise|poisson|residual|singular|versus::2c_2|6601618|after|approx|arithmetic|ast|asymp|band|because|bound|c_2|cdot|compression|computed|constant|constrained|contrast|correction|counts|cram|cramer_random_primes|data|dyadic|effect|every|expose|fluctuation|frac|full|gap|genuine|goldbach|hardy|have|holds|identical|larger|law|littlewood|logarithmic|longrightarrow|mathrm|max_n|mid|min_n|must|null|observable|only|order|poissonian|predictor|prod_|produces|qquad|quad|random|ratio|real|remaining|removing|residual|rho|rigid|same|satisfies|scale|scatter|series|set|sigma|sigma_|singular|spurious|sqrt|stable|structure|substantially|test|text|trivial_null|verdict|whereas|wide|widehat|will|windows::Goldbach Singular-Adjusted Residual Compression versus Cram\u00e9r Poisson Noise",
+    "goldbach_partitions::compression|exponent|inverse|residual::0010|0015|0025|0038|0091|0120|0157|0201|061|086|2133|2263|375|396|683|692|695|700|after|against|amplitudes|approx|arithmetic|band|beaten|beta|beta_|both|boxed|but|c_n|check|compression|constant|contrast|converts|corrected|count|cram|data|decay|decays|decisively|diagnosis|doubling|drifted|dyadic|exponent|factor|failure|far|flat|fluctuation|frac|full|gamma|gap|geometric|giving|hardy|has|hence|identical|initial|inverse|law|littlewood|log_2|logarithmic|meanwhile|nearly|noise|not|null|obeys|one|per|pipeline|plus|poisson|posited|power|qquad|quantitative|random|ratio|ratios|real|refined|refute|removing|residual|rho|rigidity|run|sanity|scale|scatter|separation|series|set|shrinkage|sigma|sigma_|sim|singular|slower|spurious|sqrt|stability|stable|text|through|whereas|wide|within::Goldbach Residual Inverse-Power Compression Law (3/8-Exponent)",
+    "modular_bias_mod30::chirality|logarithmic|persistence::a_n|antisymmetric|approximately|arithmetic|beyond|chirality|consecutive|constant|cram|decays|denote|density|effect|equivalently|estimated|far|floor|fluctuation|frac|frobenius|gaps|generic|genuine|its|log|matrix|model|modulo|noise|non|norm|null|p_n|part|persists|predicts|product|quantity|random|rather|real|residue|reversibility|same|shuffled|sim|sqrt|statistical|systematic|text|than|therefore|times|transition|transitions|whereas|while::Logarithmic Chirality Persistence in Mod-30 Prime Transitions",
+    "modular_bias_mod30::anisotropy|chirality|constant|excess|logarithmic::a_n|according|already|also|anisotropy|approx|approx1|arithmetic|asymp|baseline|beta|both|c_c|c_r|calibrated|calibration|carries|chirality|consecutive|constant|control|convention|cram|decays|e_c|empirical|excess|factor|falsification|fitted|frac|gap|genuine|gives|growing|harness|initial|instead|large|left|log|logarithmically|longrightarrow|m_n|mathbb|matrix|mod|modular|multiplicative|noise|normalized|null|number|observed|order|overestimated|p_n|persistently|qquad|r_n|random|ratio|real|residue|right|roughly|row|scale|scaling|seeds|separated|separation|shows|signal|sqrt|stable|sum_|thus|times|transition|transitions|trivial|truly|uniform|while|would|wrong::Logarithmic Gap-Anisotropy Law with Constant Chirality Excess"
   ]
 }
