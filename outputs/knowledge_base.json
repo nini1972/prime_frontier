@@ -1,31 +1,31 @@
 {
   "domains": {
     "gap_dynamics": {
-      "attempts": 58,
-      "supported": 12,
+      "attempts": 59,
+      "supported": 13,
       "falsified": 41,
       "errors": 3,
       "timeout": 0,
       "duplicates": 2,
-      "last_run": "2026-11-24 02:48:56"
+      "last_run": "2026-11-25 02:35:01"
     },
     "modular_bias_mod10": {
-      "attempts": 62,
+      "attempts": 63,
       "supported": 13,
-      "falsified": 44,
+      "falsified": 45,
       "errors": 4,
       "timeout": 0,
       "duplicates": 1,
-      "last_run": "2026-11-24 02:32:16"
+      "last_run": "2026-11-25 02:37:30"
     },
     "prime_powers": {
-      "attempts": 61,
+      "attempts": 62,
       "supported": 12,
-      "falsified": 41,
+      "falsified": 42,
       "errors": 4,
       "timeout": 1,
       "duplicates": 3,
-      "last_run": "2026-11-24 02:38:44"
+      "last_run": "2026-11-25 02:44:54"
     },
     "goldbach_partitions": {
       "attempts": 64,
@@ -37,58 +37,58 @@
       "last_run": "2026-11-24 02:44:43"
     },
     "modular_bias_mod30": {
-      "attempts": 76,
-      "supported": 17,
+      "attempts": 77,
+      "supported": 18,
       "falsified": 53,
       "errors": 1,
       "timeout": 0,
       "duplicates": 5,
-      "last_run": "2026-11-24 02:36:33"
+      "last_run": "2026-11-25 02:36:26"
     },
     "zeta_harmonics": {
-      "attempts": 66,
-      "supported": 18,
+      "attempts": 67,
+      "supported": 19,
       "falsified": 33,
       "errors": 3,
       "timeout": 4,
       "duplicates": 8,
-      "last_run": "2026-11-23 02:43:32"
+      "last_run": "2026-11-25 02:31:45"
     },
     "chebyshev_race": {
-      "attempts": 8,
-      "supported": 4,
+      "attempts": 9,
+      "supported": 5,
       "falsified": 4,
       "errors": 0,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-11-24 02:19:16"
+      "last_run": "2026-11-25 02:23:06"
     },
     "prime_constellations": {
-      "attempts": 7,
+      "attempts": 8,
       "supported": 2,
-      "falsified": 4,
+      "falsified": 5,
       "errors": 1,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-11-24 02:21:14"
+      "last_run": "2026-11-25 02:19:54"
     },
     "multiplicative_walk": {
-      "attempts": 8,
-      "supported": 2,
+      "attempts": 9,
+      "supported": 3,
       "falsified": 6,
       "errors": 0,
       "timeout": 0,
       "duplicates": 0,
-      "last_run": "2026-11-24 02:28:15"
+      "last_run": "2026-11-25 02:29:09"
     },
     "smooth_numbers": {
-      "attempts": 8,
+      "attempts": 9,
       "supported": 2,
-      "falsified": 5,
+      "falsified": 6,
       "errors": 0,
       "timeout": 1,
       "duplicates": 0,
-      "last_run": "2026-11-24 02:29:42"
+      "last_run": "2026-11-25 02:30:35"
     }
   },
   "models": {
@@ -108,22 +108,52 @@
       "errors": 13
     },
     "sonnet": {
-      "attempts": 226,
-      "success": 210,
+      "attempts": 229,
+      "success": 213,
       "errors": 12
     },
     "glm": {
-      "attempts": 21,
-      "success": 18,
+      "attempts": 24,
+      "success": 21,
       "errors": 3
     },
     "deepseek": {
-      "attempts": 17,
-      "success": 17,
+      "attempts": 20,
+      "success": 20,
       "errors": 0
     }
   },
   "confirmed_laws": [
+    {
+      "id": "PRIME-CONJ-1795574186",
+      "name": "Quadratic Character Flux Decay with Cram\u00e9r Separation Law",
+      "domain": "modular_bias_mod30",
+      "timestamp": "2026-11-25 02:36:26"
+    },
+    {
+      "id": "PRIME-CONJ-1795574101",
+      "name": "Sexy-Gap Pair Enrichment Constant (SGPE-0.816)",
+      "domain": "gap_dynamics",
+      "timestamp": "2026-11-25 02:35:01"
+    },
+    {
+      "id": "PRIME-CONJ-1795573905",
+      "name": "Calibrated Repulsion-Lock (c\\",
+      "domain": "zeta_harmonics",
+      "timestamp": "2026-11-25 02:31:45"
+    },
+    {
+      "id": "PRIME-CONJ-1795573749",
+      "name": "Liouville Block-Ratio Deficit Law (Adjacent-Increment Anti-Correlation)",
+      "domain": "multiplicative_walk",
+      "timestamp": "2026-11-25 02:29:09"
+    },
+    {
+      "id": "PRIME-CONJ-1795573386",
+      "name": "Bounded-Skew Sign-Collapse Law for the Mod-8 Chebyshev Race (BSSC-8)",
+      "domain": "chebyshev_race",
+      "timestamp": "2026-11-25 02:23:06"
+    },
     {
       "id": "PRIME-CONJ-1795488536",
       "name": "Gap-Mod-6 Hardy\u2013Littlewood Ratio with Logarithmic Deficit (GM6-HLRD)",
@@ -1151,6 +1181,21 @@
     "goldbach_partitions::collapse|cram|detachment|full|null|residual|series|singular::2c_2|66016|absent|absorbs|against|amplification|approx|arithmetic|asserts|bar|baseline|bias|boost|boosted|c_2|cdot|clear|closer|collapse|comet|contrast|control|corrected|correlation|correlations|cram|data|decaying|density|detachment|drift|effect|essentially|evaluated|even|far|frac|full|fully|generic|genuine|hardy|has|independent|law|leaving|left|littlewood|margin|mathbb|mathrm|mean|mid|model|must|noise|not|null|only|predictor|primality|prod_|qquad|quantitative|random|ratio|residual|right|same|satisfies|series|sharper|show|since|singular|slowly|statement|substack|systematic|text|than|trivially|tuple|twofold|uncorrected|widehat|windowed::Goldbach Full-Singular-Series Residual Collapse with Cram\u00e9r Null Detachment",
     "goldbach_partitions::calibrated|collapse|cram|detached|inverse|log|ordered|residual|term|two|unordered::004|2028|2166|2310|2526|2892|2c_2|2r_|358|474|5000|601|645|above|absorbed|absorbs|applied|approach|approx|approx0|approx1|arithmetic|bar|baseline|bias|binary|both|boxed|but|calibrated|calibration|can|cdot10|collapsing|confirms|conflated|consistent|contrast|control|convention|convergence|corrected|correction|correlations|counted|counter|counts|cram|criterion|data|decays|destroys|detached|detachment|diagnosis|distinct|does|drift|effect|effects|empirical|error|evidence|exactly|excellent|factor|failure|falsified|fit|five|flattening|frac|gap|genuine|gives|global|goldbach|hardy|harness|hence|heuristic|hovering|impossible|initial|instead|just|law|least|littlewood|local|main|mathbb|mathrm|mid|model|modulus|monotonically|noise|not|null|odd|only|ordered|out|overline|parameter|predictor|proceeds|prod_|product|qquad|quad|ratio|real|refined|rejected|remove|representations|residual|residuals|residue|respect|same|sample|satisfy|scales|secondary|series|show|singular|slow|small|squares|stays|structurally|structure|survives|systematically|term|text|therefore|through|tilde|to1|to200000|twice|two|uncorrected|unordered|validated|visible|was|which|while|widehat|work|yields::Ordered/Unordered-Calibrated Goldbach Residual Law with Inverse-Log Two-Term Collapse (Cram\u00e9r-Detached)",
     "gap_dynamics::enhancement|gm6|hardy|hler|littlewood|ratio::2c_2|any|approx|arithmetic|asymptotically|baseline|carry|classes|consecutive|constant|correction|cram|denote|density|divisible|enhancement|equiv|even|extra|factor|far|finite|fluctuation|frac|g_n|gap|gaps|geometric|giving|hardy|infty|lack|littlewood|longrightarrow|mathrm|mean|mid|mod|null|outside|p_n|partition|pmod|prediction|prod_|qquad|random|ratio|residue|separation|series|singular|size|summing|text|tfrac12|their|therefore|uniform|yields::Gap-Mod-6 Hardy\u2013Littlewood Enhancement Ratio (GM6-HLER)",
-    "gap_dynamics::deficit|gm6|hardy|hlrd|littlewood|logarithmic|ratio::approach|approx|approximately|asymptotic|because|below|but|c_c|classes|constant|control|cram|deficit|denominator|divisible|equiv0|equiv2|equiv4|equivalently|explains|extra|factor|falsified|finite|frac|frac12|g_n|gaps|gives|governed|hardy|infty|initial|leading|left|littlewood|logarithmic|not|null|p_n|pmod6|prediction|qquad|quad|random|ratio|residue|right|same|satisfies|separation|series|singular|sums|text|to2|two|were|why::Gap-Mod-6 Hardy\u2013Littlewood Ratio with Logarithmic Deficit (GM6-HLRD)"
+    "gap_dynamics::deficit|gm6|hardy|hlrd|littlewood|logarithmic|ratio::approach|approx|approximately|asymptotic|because|below|but|c_c|classes|constant|control|cram|deficit|denominator|divisible|equiv0|equiv2|equiv4|equivalently|explains|extra|factor|falsified|finite|frac|frac12|g_n|gaps|gives|governed|hardy|infty|initial|leading|left|littlewood|logarithmic|not|null|p_n|pmod6|prediction|qquad|quad|random|ratio|residue|right|same|satisfies|separation|series|singular|sums|text|to2|two|were|why::Gap-Mod-6 Hardy\u2013Littlewood Ratio with Logarithmic Deficit (GM6-HLRD)",
+    "prime_constellations::amplification|asymmetric|bias|cram|null|separation|triplet::642|668|absent|amplification|amplifies|approx|arithmetic|asymmetry|avoids|bias|cdot|central|class|counts|cram|creating|data|due|efficiently|exhibits|fluctuations|frac|gap|geq|have|high|intuition|leq|log|logarithmic|logarithmically|more|noise|null|observation|parameter|pattern|persistent|physical|pi_3|pmod|positive|probability|random|rather|residue|scale|separation|should|signature|sim|since|sqrt|structure|systematic|text|than|theta_3|times10|triplet|triplets|yielding::Asymmetric Triplet Bias Amplification Law with Cram\u00e9r Null Separation",
+    "prime_constellations::asymmetry|cram|separation|triplet|variance|via|volatility::210|approx|arith|arithmetic|around|asymmetry|bias|but|case|coherent|competition|cram|create|data|distinguishes|does|dramatically|effects|empirical|etc|excursion|exhibit|exhibits|extremal|falsification|favoring|fluctuations|frac|genuine|grow|have|high|higher|indicate|instead|interpretation|key|langle|large|larger|leading|log|max_n|mean|mod|modulated|monotonically|much|multi|not|null|observations|oscillates|oscillations|out|parameter|patterns|periodic|phase|physical|pi_3|positive|quasi|random|range|rangle_|ratio|refined|reflects|residues|reveals|rho|robust|scale|scales|separation|shows|sieve|signature|spikes|sqrt|structure|structured|substantial|suppressed|text|than|these|theta_3|times10|triplet|values|var|variance|via|volatility|washed::Triplet Asymmetry Volatility Law with Cram\u00e9r Separation via Variance Scaling",
+    "chebyshev_race::asymmetry|excursion|negative|nsea|skew::005|49094|any|approx|arithmetic|asserts|asymmetry|bar|bias|cdot10|computed|condition|construction|contrast|control|cram|data|delta|density|dots|downward|drawdown|drift|empirical|ensemble|essential|every|forces|frac|fraction|gamma_1|gap|generic|genuine|has|identical|last|law|left|mathbb|mean|median|mod|model|moment|must|normalization|normalized|nsea|null|only|out|p_1|p_2|p_n|passed|penetrations|persistence|plus|positive|qquad|quad|race|random|rare|real|reproduces|reversal|right|rubinstein|same|sample|sarnak|satisfies|satisfy|scale|separation|sign|signature|skew|skewness|sqrt|statistic|std|strong|structure|symmetric|text|third|threshold|trivial|visible|walk|which|while|would|zero::Negative-Skew Excursion Asymmetry Law for the Mod-8 Chebyshev Race (NSEA-8)",
+    "chebyshev_race::bounded|bssc|collapse|sign|skew::029|048|082|087|232|251|785|952|about|approx|arithmetic|band|because|bias|bound|bounded|collapse|collapses|confined|constant|content|control|controls|converges|counts|cram|decays|delta|destroys|deterministic|downward|drawdown|drift|ensemble|equiv|every|exact|excursions|failed|falsified|fast|feuerverger|frac|frac1n|fraction|gamma_1|gap|genuine|has|increasing|increment|increments|instead|its|large|law|least|leaves|makes|martin|mathbf|max_n|moment|multiset|never|non|normalized|not|nsea|null|one|order|ordering|oscillates|oscillating|overline|p_n|penetration|permuting|positive|preserving|produces|property|proves|qquad|quad|race|random|rare|real|refuting|regime|retaining|rubinstein|s_n|sarnak|satisfies|scale|separation|sequence|shuffled|sided|sign|signal|signature|skew|skewness|source|sqrt|stable|statement|statistic|structure|sum_|symmetric|text|theory|third|through|trivial|true|two|unconfined|uncontrolled|unlike|varepsilon_n|walk|while|zero|zeroth::Bounded-Skew Sign-Collapse Law for the Mod-8 Chebyshev Race (BSSC-8)",
+    "multiplicative_walk::deficit|density|return::100|1000|100th|12345|200|200000|2024|225|2cov|414c|4var|500|5671|581|581c|5_000_000|707|707c|718|732|732c|7979|798|816|894|about|abs|absent|accept|actual|actually|add|adding|adic|adjust|after|all_pass|almost|alright|also|alternative|always|ambiguous|amplification|amplitude|anti|any|append|approach|approximately|arange|argument|arithmetic|arithmetic_functions|around|array|assumes|assumption|astype|autocorrelated|autocorrelation|average|averaged|avoids|back|backup|based|basis|because|behave|behaves|behavior|believed|below|better|big|bit|block|blocks|both|boundaries|bounded|brownian|but|c_l|calc|can|careful|carefully|case|cases|cauchy|chance|changes|check|chips|choice|chowla|clean|cleaner|cleanest|cleanly|clear|clearer|close|code|comes|commit|compare|compares|comparison|completely|complicated|compute|computed|computes|condition|conditioned|conditioning|confidence|confident|conjectures|consecutive|consequence|consider|consistency|constant|constraint|content|continue|contradicts|contrast|contribution|converges|core|corr|correlated|correlation|correlations|count|counts|cov|covariance|creates|creating|crossings|cum|cumsum|cumulative|d_k|data|decision|deep|def|default_rng|deficit|definitely|density|dependence|depends|determined|deterministic|detrended|dev|deviate|deviates|deviation|deviations|differ|difference|different|differently|direct|direction|directly|discrepancy|disjoint|distribution|divide|doesn|dominated|don|double|dtype|due|dyadic|each|earlier|either|else|empirical|ensemble|equal|error|essentially|estimate|even|every|exact|exactly|exceed|exceeds|except|excursion|execute|expect|fact|factor|fail|fails|fair|fall|falsified|far|few|final|finalize|fine|fixed|float|fluctuate|fluctuates|fluctuation|fluctuations|forced|forces|formulation|frame|framework|free|full|function|functions|gaussians|generate|genuinely|geomspace|get|getting|give|gives|giving|got|great|grows|guaranteed|half|handle|happens|hard|has|have|hedge|here|heuristic|highly|hmm|hold|holds|hole|honestly|how|huge|idea|identity|iff|iid|implies|import|increase|increment|increments|indeed|independent|individual|insight|instead|int|interesting|involve|involves|isn|issue|its|joint|just|key|know|l_even|l_j|l_odd|l_vals|lag|lam|large|larger|law|least|length|less|like|likely|lil|liouville|liouville_sieve|liouville_vals|local|log|long|look|lot|lower|lya|m_l|made|making|many|match|matches|mathematical|matters|max|max_|maximum|mean|meander|meaningful|means|measure|memory|mentally|mertens|method|might|mod|more|motion|multiple|multiplicativity|n_0|n_1|n_j|name|need|negative|nmax|non|normalization|normalized|not|novel|now|nseeds|null|null_mean|null_std|null_stds|null_vals|number|numbers|numerically|numpy|o_j|o_odd|o_vals|observable|observables|odd|odd_lam|odd_rw|once|one|only|overall|overlap|overlapping|overthink|pairs|part|pass|path|paths|perfectly|pick|pivot|plan|plus|point|points|positions|positive|precisely|predict|predicted|prediction|predicts|print|prior|probe|probes|problem|process|properly|python|quantities|r_arith|r_null|rabbit|rademacher|random|range|rarely|ratio|real|realization|realizations|realize|realized|really|reasonable|recall|reconsider|record|redo|reduces|refine|rel_dev|related|relation|relationship|relative|report|residues|resolution|rest|restricts|return|returns|reverse|right|risk|rms|rng|robust|roughly|round|rs_null|run|s_k|same|sample|samples|sanity|satisfies|say|scale|scales|score|second|secondary|see|seed|seeds|self|sequence|set|sets|setting|several|share|short|should|show|showed|shows|sieve|sign|signature|similar|similarity|similarly|simple|simpler|simplify|since|single|size|sliding|slowly|small|smooth|some|something|spaced|sparse|specific|specifically|spending|sqrt|squarefree|standard|statistic|statistics|stay|staying|stays|std|stds|step|sticky|strengthen|strong|structure|studied|subsequence|subtlety|succeed|sum|sum_|sum_liouville|sums|supported|sure|symmetry|t_0|t_1|take|task|tells|term|terms|test|testable|than|then|theory|there|these|they|think|threshold|times|too|touches|touching|treats|trend|trivial|true|trust|try|twist|type|unambiguous|uncorrelated|unique|until|use|using|val|valid|value|values|var|variables|variance|varies|vary|varying|verify|version|via|visits|wait|walk|walks|want|wants|was|way|well|were|what|whereas|whether|which|whichever|whole|will|window|work|worried|would|write|writing|wrote|yes|you|z_l|z_rand|zcount|zero|zeros|zip|zscore::Liouville Zero-Return Density Deficit Law",
+    "multiplicative_walk::adjacent|anti|block|correlation|deficit|increment|ratio::2247|4491|7071|7236|899|adjacent|anti|approx|arith|arithmetic|artifact|assumed|b_k|because|block|blocks|boxed|c_l|cannot|construction|corr|correlation|cov|deficit|dyadic|effect|empirical|equivalently|exhibits|falsified|finite|forces|frac|genuine|giving|have|hence|i_k|identity|increments|independent|infty|j_k|key|lambda|law|left|lfloor|lim|liouville|longrightarrow|mathrm|mean|near|normalized|not|null|odd|original|output|perfect|prediction|qquad|rademacher|ratio|refined|relative|reproduces|reversion|rfloor|rho_l|right|sample|script|sim|sqrt|statistic|std|strong|structural|sum_|text|tfrac12|therefore|var|walk|within|xrightarrow::Liouville Block-Ratio Deficit Law (Adjacent-Increment Anti-Correlation)",
+    "smooth_numbers::buchstab|compression|entropy|factor|number|spectral::against|alpha|approx|baseline|beyond|buchstab|cdot|coefficient|compare|compression|concentrate|contrast|control|cram|creating|crosses|crossover|density|dickman|distribution|dividing|divisibility|entropy|equally|exhibit|exhibits|f_p|factor|frac|frequency|generated|geq|grows|growth|increases|integers|intensely|interpretation|left|leq|likely|mathcal|mid|more|null|numbers|parameter|phenomenon|physical|psi|quadratic|quadratically|random|regime|rho|right|should|smaller|smooth|spectral|sum_|surplus|text|than|transition|unif|uniform::Smooth-Number Prime-Factor Entropy Transition Law (Buchstab Spectral Compression)",
+    "smooth_numbers::entropy|factor|logarithmic|number|regime|surplus::against|approx|arises|available|baseline|because|beta|bias|bound|but|cdot|coefficient|compare|confirming|constructed|contrast|control|controls|cram|creating|data|density|dependence|dickman|dilution|dividing|divisibility|empirical|entropy|equally|exceeding|exhibit|exhibits|f_p|factor|far|frac|frequency|genuine|geq|growth|insight|integers|intensifies|interpretation|key|larger|law|left|leq|like|likely|linear|logarithmic|logarithmically|mathcal|mid|more|multiplicatively|not|null|numbers|parameter|physical|psi|quadratic|random|ratio|refined|regime|respect|reveals|right|satisfies|scaling|search|should|show|small|smaller|smooth|smoothness|space|specifically|structure|sum_|surplus|tempered|tested|text|toward|unif|uniform|within::Smooth-Number Prime-Factor Entropy Scaling Law (Logarithmic Surplus Regime)",
+    "zeta_harmonics::band|fluctuation|gue|lock|ratio|statistic|unfolded::0102|0307|2400|300|53070|_gue|_poisson|adjacent|arithmetic|atas|band|bias|bogomolny|control|covariance|density|destroys|drives|eventually|exactly|exceeds|exchangeability|exponential|fail|fixed|fluctuation|free|gaps|generic|genuine|giraud|gue|hold|large|law|level|ller|lock|max|mean|min|must|noise|null|offset|poisson|r_k|ratio|repulsion|rigidity|s_k|separates|shuffled|spacings|spectral|statistic|uncorrelated|unfolded|unfolding|universal|using|value|violate|which|zeros|zeta::GUE Ratio-Statistic Lock with Fluctuation Band for Unfolded Zeta Spacings",
+    "zeta_harmonics::calibrated|lock|repulsion::0007|015|0863|1200|2400|2ln2|300|3000|386|53070|600|61693|6170|61702|61734|61766|665|_null|_poisson|_zeta|above|absolute|amount|anti|asymptotic|band|baseline|because|bias|biased|but|calibrated|carried|claim|compounding|constant|contrast|control|counter|data|decays|density|dependent|destroys|deterministic|deviation|deviations|diagnosis|dominated|drift|empirical|essentially|every|evidence|exact|exponential|factor|failed|false|falsification|far|finite|fitting|fluctuation|forall|frac|gap|gaps|gives|gue|height|immune|increasing|independent|inflates|inheriting|initial|instead|inverted|langle|large|law|leading|least|level|lie|lock|low|mass|max|mean|median|min|must|narrows|nearly|noise|non|not|null|observed|offset|order|pair|poisson|predicted|qquad|quad|r_k|r_null|r_zeta|raising|random|range|rangle_|rangle_n|ratio|ratios|reasons|refined|repulsion|robust|s_k|same|sample|sampling|scale|scales|second|separation|shape|shift|short|show|shuffled|shuffles|shuffling|sign|signature|sits|size|slowly|small|smaller|spacing|spacings|sqrt|statistic|strictly|systematically|text|than|therefore|three|tight|tighter|tightness|too|triviality|trivialized|unfolded|unfolding|universal|value|varying|violates|visible|was|well|which|while|why|wrong|zeta::Calibrated Repulsion-Lock (c\\",
+    "gap_dynamics::816|constant|enrichment|pair|sexy|sgpe::816|conjecture_name|constant|denominator|enrichment|frac|g_i|gap|gaps|mathematical_formulation|n_6|p_i|pair|ratio|sequence|sexy|sgpe|text::Sexy-Gap Pair Enrichment Constant (SGPE-0.816)",
+    "modular_bias_mod30::amplification|asymmetry|bipartite|character|quadratic::act|among|amplification|amplified|asymmetry|based|baseline|bias|bipartite|but|cdot|character|classes|correlated|cram|creating|decays|delta|delta_|density|detectable|directional|empirical|equiv|etc|exceeds|exhibit|extreme|fluctuations|flux|frac|geq|interpretation|key|least|left|log|mere|mod|modulo|net|noise|non|not|null|observations|observed|operator|partition|physical|preferentially|probability|profile|quadratic|r_i|r_j|random|real|remains|residue|residues|right|same|satisfies|separation|series|set|sets|should|show|significantly|since|singular|sources|sqrt|statistical|strict|structure|sublogarithmically|suggest|sum_|systematic|text|transition|transitioning|transitions|two::Bipartite Transition Asymmetry with Quadratic Character Amplification Law",
+    "modular_bias_mod30::character|cram|decay|flux|quadratic|separation::00015|001|absent|absolute|approx|approximately|around|asymmetry|baseline|behavior|below|bipartite|but|cancellation|cdot|character|correlation|cram|creating|criterion|data|decays|delta|delta_|deviations|empirical|exhibit|exhibits|faster|flux|frac|geq|hardy|induces|initial|interpretation|large|left|leq|littlewood|log|mathbb|mathcal|mean|mod|much|negative|non|observations|oscillates|oscillatory|persistent|physical|quad|quadratic|random|rather|ratio|real|refined|relative|represents|residues|reveals|right|satisfies|scales|scaling|separation|series|shows|sign|singular|sqrt|structure|sum_|suppression|systematic|text|than|weak|while|zero::Quadratic Character Flux Decay with Cram\u00e9r Separation Law",
+    "modular_bias_mod10::chain|class|flip|hardy|kernel|littlewood|markov|matrix|singular|weight::100|against|approx|arithmetic|artifact|baseline|bias|but|character|chi|claim|class|classes|combined|conditional|consecutive|constant|contrasts|cram|cramer_random_primes|data|density|deviate|diagonal|displaystyle|entry|entrywise|equiv|evaluated|even|exact|exponential|extreme|fail|far|frac|full|gap|given|governed|hardy|independent|kernel|law|lemke|littlewood|local|log|makes|mathbb|mathfrak|matrix|mean|mechanism|mid|mod|model|more|must|next|not|null|observed|oliver|only|order|p_n|pair|per|pmod|predictor|prod_|proving|qquad|quadratic|qualitative|rather|real|reduced|repulsion|residue|residues|same|series|sharpened|show|sim|singular|soundararajan|stay|structure|substack|sum_|than|times|transition|true|twin|underlying|uniform|value|viewed|weight::\u03c7-Chain Singular-Weight Matrix Law (Class-Flip Residue Markov from Hardy\u2013Littlewood Gap Kernel)",
+    "prime_powers::attrition|cumulative|defect|rigidity::approx|arithmetic|attrition|baseline|beats|beyond|bigl|bigr|c_p|composites|contrast|control|count|cumulative|defect|delta|denote|destroys|equivalently|error|every|exact|exclusion|factor|frac|fractional|grows|hence|including|inclusion|inflates|integers|its|least|legendre|lfloor|like|log|mertens|naive|null|number|numbers|odd|omits|order|part|permuting|prod_|product|qquad|randomly|reaches|residual|rfloor|rigidity|rough|satisfies|shuffled|sieve|structure|substack|sum_|term|text|therefore|values|well|which::Cumulative Sieve Attrition Mertens Defect Rigidity"
   ]
 }
