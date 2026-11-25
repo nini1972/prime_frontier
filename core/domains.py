@@ -295,6 +295,13 @@ in index window k in [{idx_start}, {idx_end}] ({num_zeros} consecutive zeros; up
 
 By Riemann's explicit formula, psi_0(x) = x - sum_rho x^rho / rho - ln(2*pi) - 1/2 ln(1 - x^-2),
 and unfolded spacings s_k = (gamma_{{k+1}} - gamma_k) * ln(gamma_k / (2*pi)) / (2*pi) exhibit GUE level repulsion.
+
+Frontier Context (Nov 2026 RH Formalization & Active Confirmed Law `PRIME-CONJ-1795263018`):
+With Mathlib's `RiemannHypothesis` (Re(rho) = 1/2) formally verified in Lean 4 v4.33.1 (eliminating off-line
+x^beta drift, locking |psi(x) - x| <= (1/(8*pi)) * sqrt(x) * ln^2(x) for x >= 73.2), explore finite-T
+sub-leading structures beyond raw Re(rho) = 1/2 — such as Berry prime-orbit resummations of our confirmed
+Two-Term Richardson Variance Deficit Law for unfolded zeta spacings or explicit-formula truncation residuals
+inside Schoenfeld's sqrt(x)*ln^2(x)/(8*pi) envelope (verified on `get_zeta_zeros(3000)` + null control).
 """ + OUTPUT_FORMAT_INSTRUCTIONS
 
 
@@ -377,6 +384,14 @@ evaluated across all {primes_checked} primes p <= {limit} coprime to {mod}:
 Chebyshev (1853) noticed non-quadratic residues systematically lead quadratic residues even though Dirichlet's
 theorem guarantees asymptotic 50/50 density; Rubinstein & Sarnak (1994) linked logarithmic race densities to
 prime-square offsets and zeros of Dirichlet L-functions L(s, chi).
+
+Frontier Context (Nov 2026 Dirichlet GRH Formalization & Active Confirmed Laws `SMOL-8`, `HWCL-8`, `LEVF-8`):
+Note the sharp dividing line after the Lean 4 verification of `DirichletLZerosOnLine` (Dirichlet GRH): while
+GRH anchors every oscillatory term at sqrt(x), full Rubinstein-Sarnak logarithmic race densities STILL depend
+on Linear Independence (LI) of zero ordinates gamma_chi > 0 over Q. Connect our confirmed mod-8 laws
+(`PRIME-CONJ-1795269576` SMOL-8, `PRIME-CONJ-1795262117` HWCL-8, `PRIME-CONJ-1795228384` LEVF-8) to finite-scale
+cross-modulus LI signatures, rational-relation resonance diagnostics, or prime-power correction terms beyond
+naive sqrt(x) envelopes.
 """ + OUTPUT_FORMAT_INSTRUCTIONS
 
 
@@ -426,6 +441,12 @@ and Liouville/Pólya walk L(x) = sum_{{n<=x}} lambda(n) up to x = {limit}:
 Recall that M(x) = O(x^{{1/2 + eps}}) is equivalent to the Riemann Hypothesis, while Chowla's conjecture
 predicts higher-order sign correlations sum_{{n<=x}} mu(n) mu(n+h) = o(x), yet short-scale multiplicative
 constraints create structured deviations from an i.i.d. Rademacher random walk.
+
+Frontier Context (Nov 2026 RH Formalization & Active Confirmed Law `PRIME-CONJ-1795314014`):
+With critical-line spectral rigidity confining M(x) = O(x^{{1/2 + eps}}), polynomial deviations above x^{{1/2}} are
+ruled out, shifting the research frontier to fine-scale sub-polynomial / iterated-logarithmic extremal envelopes
+of |M(x)|/sqrt(x) and L(x)/sqrt(x) and their connection to our confirmed Arcsine-Broken Liouville Occupation Law
+(`PRIME-CONJ-1795314014`), contrasting directly with i.i.d. Rademacher and Cramer random-walk null controls.
 """ + OUTPUT_FORMAT_INSTRUCTIONS
 
 
