@@ -64,7 +64,7 @@ IMPORTANT:
 - VERDICT PRINTING RULE:
   For intermediate per-scale checks, print `PASS` or `FAIL` (do NOT print `VERDICT:` on intermediate lines).
   Print `VERDICT: SUPPORTED`, `VERDICT: FALSIFIED`, or `VERDICT: TRIVIAL_NULL` ONLY ONCE on the final line of stdout!
-- You can directly import and use any of the fast project utilities (all pre-imported in the execution harness):
+- You can directly import and use any of the fast project utilities (all pre-imported in the execution harness — NEVER redefine them with your own `def generate_primes(...)`, `def goldbach_partition_counts(...)`, `def get_zeta_zeros(...)`, `def mobius_sieve(...)`, `def mertens_function(...)`, `def liouville_sieve(...)`, or `def largest_prime_factor(...)`, as shadowing pre-imported C/NumPy engines raises a `PerformanceError`!):
     from core.sieve import generate_primes, compute_prime_gaps, compute_gap_statistics, find_maximal_gap_records
         # generate_primes(limit: int) -> np.ndarray of primes <= limit
         # compute_prime_gaps(primes) -> np.ndarray of consecutive gaps
