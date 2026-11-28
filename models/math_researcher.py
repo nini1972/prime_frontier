@@ -42,9 +42,10 @@ mathematical conjecture about prime numbers, but it failed to run or lacked a va
 --- ERROR / OUTPUT ---
 {error}
 
-Fix the bug and return the corrected, complete, self-contained script. Keep the same conjecture and
+Fix the bug and return the corrected, complete verification script. Keep the same conjecture and
 intent, just make it run cleanly and print quantitative multi-scale + null-baseline diagnostics.
-Note core utility return signatures if used:
+IMPORTANT PERFORMANCE RULE: All core C/NumPy/FFT project utilities listed below are ALREADY pre-imported in the execution harness — call them directly (or `from core... import ...`) and NEVER redefine them with your own `def generate_primes(...)`, `def compute_modular_transitions(...)`, `def goldbach_partition_counts(...)`, `def get_zeta_zeros(...)`, `def mobius_sieve(...)`, `def mertens_function(...)`, `def liouville_sieve(...)`, or `def largest_prime_factor(...)` (redefining protected engines raises `PerformanceError`)!
+Core utility return signatures if used:
 - generate_primes(limit: int) -> np.ndarray
 - compute_modular_transitions(primes, mod=10) -> dict with keys "residues", "transition_matrix" (2D list), "transition_counts" (2D list), "expected_uniform"
 - goldbach_partition_counts(limit: int) -> dict {{even_n: count}}
