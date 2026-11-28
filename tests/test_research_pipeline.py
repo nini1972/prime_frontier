@@ -251,6 +251,34 @@ def test_reasoning_exhaustion_never_leaks_raw_cot_stub():
             os.environ["OPENROUTER_API_KEY"] = prev_key
 
 
+def test_cramer_multiplicative_and_timeout_repair():
+    from models.math_researcher import _needs_repair
+    from core.arithmetic_functions import cramer_mobius_liouville
+
+    assert _needs_repair("TIMEOUT EXCEEDED") is True
+    mu_n, lam_n = cramer_mobius_liouville(50_000, seed=19)
+    assert mu_n.shape == (50_001,) and lam_n.shape == (50_001,)
+
+    # Verify @njit decorator and cramer_mobius_liouville work inside the 4-layer verification sandbox
+    jit_script = """
+@njit(cache=True)
+def fast_dot(a, b):
+    s = 0
+    for i in range(len(a)):
+        s += int(a[i]) * int(b[i])
+    return s
+
+mu_c, lam_c = cramer_mobius_liouville(20_000, seed=5)
+val = fast_dot(mu_c[1:], lam_c[1:])
+if abs(val) <= 20_000:
+    print("VERDICT: SUPPORTED")
+else:
+    print("VERDICT: FALSIFIED")
+"""
+    res = execute_verification_script(jit_script, timeout_sec=30)
+    assert res["verdict"] == "EMPIRICALLY SUPPORTED", f"Expected njit + cramer_mobius_liouville script to pass, got: {res}"
+
+
 if __name__ == "__main__":
     print("Running Prime Frontier Research Pipeline regression suite...")
     test_verdict_shadowing_fixed()
@@ -261,4 +289,5 @@ if __name__ == "__main__":
     test_dashboard_xss_escaping_and_katex_preservation()
     test_sandbox_blocks_secrets_network_and_slow_zetazero()
     test_reasoning_exhaustion_never_leaks_raw_cot_stub()
-    print("All 8 pipeline & security regression test groups passed!")
+    test_cramer_multiplicative_and_timeout_repair()
+    print("All 9 pipeline & security regression test groups passed!")

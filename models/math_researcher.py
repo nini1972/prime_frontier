@@ -54,6 +54,8 @@ Core utility return signatures if used:
 - smooth_number_counts(limit, y_bound), chebyshev_prime_race(limit, mod, r_lead, r_trail) -> dict
 - prime_constellation_counts(limit) -> dict with keys "twins_0_2", "cousins_0_4", "sexy_0_6", "triplets_0_2_6", "triplets_0_4_6", "quadruplets_0_2_6_8"
 - cramer_random_primes(limit, seed=42) -> np.ndarray
+- cramer_mobius_liouville(limit, seed=42) -> (mu_null, lam_null) vectorized random-multiplicative Möbius/Liouville arrays
+- njit (from numba import njit): use `@njit` (WITHOUT `cache=True`) to compile any remaining tight numeric loops to C speed
 IMPORTANT: Do NOT print 'VERDICT:' on intermediate per-scale lines (use PASS/FAIL instead).
 Print 'VERDICT: SUPPORTED', 'VERDICT: FALSIFIED', or 'VERDICT: TRIVIAL_NULL' ONLY ONCE on the very last line, with genuine branches for both SUPPORTED and FALSIFIED!
 Return ONLY the corrected script as a single Python code block, with no other commentary.
@@ -78,7 +80,7 @@ Scientific Refinement Task:
 Use the exact numerical observations in the empirical output above (especially the large-N out-of-sample rows and null/baseline comparison at the bottom) to diagnose why your initial bound, scaling exponent, or null contrast failed.
 Formulate a REFINED, mathematically non-trivial conjecture that captures the true empirical behavior AND beats or separates from a trivial null baseline (e.g., Cramér random primes, shuffled gaps, or first-order PNT/HL heuristic).
 Test your refined law across MULTIPLE scales (including a larger out-of-sample scale than the initial script, to prevent overfitting).
-IMPORTANT PERFORMANCE RULE: All fast C/NumPy/FFT project utilities (`generate_primes`, `compute_prime_gaps`, `compute_modular_transitions`, `goldbach_partition_counts`, `get_zeta_zeros`, `mobius_sieve`, `mertens_function`, `liouville_sieve`, `sum_liouville`, `largest_prime_factor`, `smooth_number_counts`, `chebyshev_prime_race`, `prime_constellation_counts`, `cramer_random_primes`) are ALREADY pre-imported in the execution harness — use them directly and NEVER redefine slow Python-loop versions (e.g. do NOT write your own `def goldbach_partition_counts` or `mpmath.zetazero` loop)!
+IMPORTANT PERFORMANCE RULE: All fast C/NumPy/FFT project utilities (`generate_primes`, `compute_prime_gaps`, `compute_modular_transitions`, `goldbach_partition_counts`, `get_zeta_zeros`, `mobius_sieve`, `mertens_function`, `liouville_sieve`, `sum_liouville`, `largest_prime_factor`, `smooth_number_counts`, `chebyshev_prime_race`, `prime_constellation_counts`, `cramer_random_primes`, `cramer_mobius_liouville`, and `@njit`) are ALREADY pre-imported in the execution harness — use them directly and NEVER redefine slow Python-loop versions (e.g. do NOT write your own `def goldbach_partition_counts`, `def generate_primes`, or `mpmath.zetazero` loop)!
 Do NOT widen tolerances into a trivial tautology! Print PASS/FAIL on per-scale lines and print 'VERDICT: SUPPORTED', 'VERDICT: FALSIFIED', or 'VERDICT: TRIVIAL_NULL' ONLY ONCE on the final line.
 
 Format your output strictly as:
@@ -182,6 +184,7 @@ _BLOCKED_ATTR_NAMES = {
 _PROTECTED_ENGINE_FUNCS = {
     "generate_primes", "goldbach_partition_counts", "get_zeta_zeros",
     "mobius_sieve", "mertens_function", "liouville_sieve", "largest_prime_factor",
+    "cramer_mobius_liouville",
 }
 
 
@@ -299,6 +302,7 @@ def _build_sandboxed_env(tmp_dir: str) -> Dict[str, str]:
     env["MPLBACKEND"] = "Agg"
     env["PYTHONIOENCODING"] = "utf-8"
     env["PYTHONDONTWRITEBYTECODE"] = "1"
+    env["NUMBA_CACHE_DIR"] = tmp_dir
     env["PYTHONPATH"] = BASE_DIR
     return env
 
@@ -331,8 +335,20 @@ def execute_verification_script(code: str, timeout_sec: int = 120) -> Dict:
         "from core.arithmetic_functions import (\n"
         "    mobius_sieve, mertens_function, liouville_sieve, sum_liouville,\n"
         "    largest_prime_factor, smooth_number_counts, chebyshev_prime_race,\n"
-        "    prime_constellation_counts, cramer_random_primes,\n"
+        "    prime_constellation_counts, cramer_random_primes, cramer_mobius_liouville,\n"
         ")\n"
+        "try:\n"
+        "    from numba import njit as _raw_njit\n"
+        "    import numba as _numba_mod\n"
+        "    def njit(*args, **kwargs):\n"
+        "        kwargs.pop('cache', None)\n"
+        "        return _raw_njit(*args, **kwargs)\n"
+        "    _numba_mod.njit = njit\n"
+        "except Exception:\n"
+        "    def njit(*args, **kwargs):\n"
+        "        if len(args) == 1 and callable(args[0]) and not kwargs:\n"
+        "            return args[0]\n"
+        "        return lambda fn: fn\n"
         "try:\n"
         "    import resource as _res\n"
         "    _res.setrlimit(_res.RLIMIT_CORE, (0, 0))\n"
@@ -384,7 +400,13 @@ def execute_verification_script(code: str, timeout_sec: int = 120) -> Dict:
         except subprocess.TimeoutExpired:
             return {
                 "verdict": "TIMEOUT EXCEEDED",
-                "output": f"Computation exceeded {timeout_sec} seconds.",
+                "output": (
+                    f"Computation exceeded {timeout_sec} seconds due to slow Python loops or excessive N. "
+                    "Vectorize loops with NumPy, decorate custom tight numeric loops with `@njit` "
+                    "(without cache=True), use pre-imported vectorized helpers such as "
+                    "`cramer_mobius_liouville(limit, seed)` and `generate_primes(limit)`, "
+                    "or slightly reduce the largest scale N so total runtime stays under 45s."
+                ),
                 "elapsed_s": timeout_sec,
                 "success": False,
             }
@@ -392,7 +414,7 @@ def execute_verification_script(code: str, timeout_sec: int = 120) -> Dict:
 
 def _needs_repair(verdict: str) -> bool:
     v = (verdict or "").upper()
-    return ("ERROR" in v) or (v == "INCONCLUSIVE")
+    return ("ERROR" in v) or (v == "INCONCLUSIVE") or (v == "TIMEOUT EXCEEDED")
 
 
 def _eligible_for_refinement(verdict: str) -> bool:
@@ -613,7 +635,12 @@ def run_hypothesis_cycle(
         if code:
             log("Executing verification script...")
             verif = execute_verification_script(code)
+            timeout_repairs = 0
             while _needs_repair(verif["verdict"]) and repairs_attempted < max_repairs:
+                if verif["verdict"] == "TIMEOUT EXCEEDED":
+                    if timeout_repairs >= 1:
+                        break
+                    timeout_repairs += 1
                 repairs_attempted += 1
                 log(
                     f"Verification errored ({verif['verdict']}). "

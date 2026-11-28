@@ -7,3 +7,6 @@ matplotlib>=3.8,<4.0
 
 # Statistical tests & nonlinear curve fitting imported by autonomous verification scripts
 scipy>=1.11,<2.0
+
+# LLVM JIT acceleration (@njit) for custom number-theoretic sieves and walks
+numba>=0.59,<1.0

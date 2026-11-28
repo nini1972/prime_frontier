@@ -82,7 +82,7 @@ IMPORTANT:
     from core.arithmetic_functions import (
         mobius_sieve, mertens_function, liouville_sieve, sum_liouville,
         largest_prime_factor, smooth_number_counts, chebyshev_prime_race,
-        prime_constellation_counts, cramer_random_primes,
+        prime_constellation_counts, cramer_random_primes, cramer_mobius_liouville,
     )
         # mobius_sieve(limit: int) -> np.ndarray of mu(0..limit) in {{-1, 0, 1}}
         # mertens_function(limit: int) -> np.ndarray of M(0..limit)
@@ -95,7 +95,9 @@ IMPORTANT:
         #   "twins_0_2", "cousins_0_4", "sexy_0_6", "triplets_0_2_6", "triplets_0_4_6", "quadruplets_0_2_6_8",
         #   "ratio_twin_to_hl", "ratio_sexy_to_hl", "ratio_triplet026_to_hl", "ratio_quad_to_hl"
         # cramer_random_primes(limit: int, seed=42) -> np.ndarray synthetic Cramér random-prime control sequence
-- Do not import third-party packages other than numpy, scipy, and mpmath.
+        # cramer_mobius_liouville(limit: int, seed=42) -> (mu_null, lam_null) fast vectorized random-multiplicative Möbius/Liouville control arrays (0..limit)
+- For custom tight loops that cannot be expressed in pure NumPy, `njit` (`from numba import njit`) is pre-imported for C-speed JIT compilation (use `@njit` WITHOUT `cache=True`, as sandbox file writes are disabled).
+- Do not import third-party packages other than numpy, scipy, mpmath, and numba.
 
 Format your output strictly as:
 ## CONJECTURE_NAME: <concise, distinctive title — avoid generic names like 'Harmonic Gap Resonance Conjecture'>
